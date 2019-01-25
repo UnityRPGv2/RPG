@@ -9,8 +9,15 @@ namespace RPG.Movement
     {
         [SerializeField] Transform target;
 
+        Ray lastRay;
+
         void Update()
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                lastRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            }
+            Debug.DrawRay(lastRay.origin, lastRay.direction * 1000);
             GetComponent<NavMeshAgent>().destination = target.position;
         }
     }
