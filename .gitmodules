@@ -1,6 +1,2 @@
-[submodule "RPG Project/Assets/Thirdparty"]
-	path = RPG Project/Assets/Thirdparty
-	url = C:\\Users\\Samuel Pattuzzi\\Documents\\Courses\\RPG\\Asset Pack
 [submodule "Asset Pack"]
 	path = Asset Pack
-url=git@github.com:GameDevTV/RPGAssetPack.git
