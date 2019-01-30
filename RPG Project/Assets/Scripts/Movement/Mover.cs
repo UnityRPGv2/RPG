@@ -9,10 +9,12 @@ namespace RPG.Movement
     {
 
         private NavMeshAgent navMeshAgent;
+        private Animator animator;
 
         private void Start() {
             navMeshAgent = GetComponent<NavMeshAgent>();
             navMeshAgent.updatePosition = false;
+            animator = GetComponent<Animator>();
         }
 
         void Update()
@@ -44,7 +46,14 @@ namespace RPG.Movement
             Vector3 velocity = navMeshAgent.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(velocity);
             float speed = localVelocity.z;
-            GetComponent<Animator>().SetFloat("forwardSpeed", speed);
+            animator.SetFloat("forwardSpeed", speed);
+        }
+
+        private void OnAnimatorMove()
+        {
+            var position = animator.rootPosition;
+            position.y = navMeshAgent.nextPosition.y;
+            transform.position = position;
         }
     }
 }
