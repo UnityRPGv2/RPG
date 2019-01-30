@@ -7,6 +7,14 @@ namespace RPG.Movement
 {
     public class Mover : MonoBehaviour
     {
+
+        private NavMeshAgent navMeshAgent;
+
+        private void Start() {
+            navMeshAgent = GetComponent<NavMeshAgent>();
+            navMeshAgent.updatePosition = false;
+        }
+
         void Update()
         {
             if (Input.GetMouseButtonDown(0))
@@ -15,6 +23,9 @@ namespace RPG.Movement
             }
 
             UpdateAnimator();
+
+            // Move navmesh cylinder back to our location.
+            navMeshAgent.nextPosition = transform.position;
         }
 
         private void MoveToCursor()
@@ -24,13 +35,13 @@ namespace RPG.Movement
             bool hasHit = Physics.Raycast(ray, out hit);
             if (hasHit)
             {
-                GetComponent<NavMeshAgent>().destination = hit.point;
+                navMeshAgent.destination = hit.point;
             }
         }
 
         private void UpdateAnimator()
         {
-            Vector3 velocity = GetComponent<NavMeshAgent>().velocity;
+            Vector3 velocity = navMeshAgent.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(velocity);
             float speed = localVelocity.z;
             GetComponent<Animator>().SetFloat("forwardSpeed", speed);
