@@ -8,18 +8,20 @@ namespace RPG.Movement
     public class Mover : MonoBehaviour
     {
 
-        private NavMeshAgent navMeshAgent;
-        private Animator animator;
+        NavMeshAgent navMeshAgent;
+        Animator animator;
+        [SerializeField] float animatorSpeed = 2f;
 
         private void Start() {
             navMeshAgent = GetComponent<NavMeshAgent>();
             navMeshAgent.updatePosition = false;
             animator = GetComponent<Animator>();
+            animator.speed = animatorSpeed;
         }
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
                 MoveToCursor();
             }
@@ -46,7 +48,7 @@ namespace RPG.Movement
             Vector3 velocity = navMeshAgent.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(velocity);
             float speed = localVelocity.z;
-            animator.SetFloat("forwardSpeed", speed);
+            animator.SetFloat("forwardSpeed", (speed/animatorSpeed));
         }
 
         private void OnAnimatorMove()

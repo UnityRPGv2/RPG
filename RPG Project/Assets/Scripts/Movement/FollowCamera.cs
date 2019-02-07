@@ -8,7 +8,7 @@ namespace RPG.Movement
     {
         [SerializeField] Transform target;
 
-        void Update()
+        void LateUpdate()
         {
             transform.position = target.position;
         }

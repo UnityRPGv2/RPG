@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -670,37 +670,37 @@ PrefabInstance:
     - target: {fileID: 6050818224060546019, guid: 22822b033e0e9b048a5fa80dff2ee8f8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.2474364
+      value: -0.34517485
       objectReference: {fileID: 0}
     - target: {fileID: 6050818224060546019, guid: 22822b033e0e9b048a5fa80dff2ee8f8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.3351873
+      value: -0.32054138
       objectReference: {fileID: 0}
     - target: {fileID: 6050818224060546019, guid: 22822b033e0e9b048a5fa80dff2ee8f8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.09170035
+      value: 0.12674583
       objectReference: {fileID: 0}
     - target: {fileID: 6050818224060546019, guid: 22822b033e0e9b048a5fa80dff2ee8f8,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.90444225
+      value: -0.87295073
       objectReference: {fileID: 0}
     - target: {fileID: 6050818224060546019, guid: 22822b033e0e9b048a5fa80dff2ee8f8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.039995
+      value: -5.6447296
       objectReference: {fileID: 0}
     - target: {fileID: 6050818224060546019, guid: 22822b033e0e9b048a5fa80dff2ee8f8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5658836
+      value: 8.945899
       objectReference: {fileID: 0}
     - target: {fileID: 6050818224060546019, guid: 22822b033e0e9b048a5fa80dff2ee8f8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.9910927
+      value: -6.817425
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22822b033e0e9b048a5fa80dff2ee8f8, type: 3}
@@ -776,6 +776,36 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2010739281}
+    - target: {fileID: 1465509168866930710, guid: 39fd478c0bc94b74583b49dad8f804c1,
+        type: 3}
+      propertyPath: animatorSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689328569895256055, guid: 39fd478c0bc94b74583b49dad8f804c1,
+        type: 3}
+      propertyPath: m_Speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689328569895256055, guid: 39fd478c0bc94b74583b49dad8f804c1,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689328569895256055, guid: 39fd478c0bc94b74583b49dad8f804c1,
+        type: 3}
+      propertyPath: m_Acceleration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689328569895256055, guid: 39fd478c0bc94b74583b49dad8f804c1,
+        type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689328569895256055, guid: 39fd478c0bc94b74583b49dad8f804c1,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39fd478c0bc94b74583b49dad8f804c1, type: 3}
 --- !u!4 &8643742312795595536 stripped
