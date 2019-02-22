@@ -771,41 +771,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1465509168866930710, guid: 39fd478c0bc94b74583b49dad8f804c1,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 2010739281}
-    - target: {fileID: 1465509168866930710, guid: 39fd478c0bc94b74583b49dad8f804c1,
-        type: 3}
-      propertyPath: animatorSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5689328569895256055, guid: 39fd478c0bc94b74583b49dad8f804c1,
-        type: 3}
-      propertyPath: m_Speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5689328569895256055, guid: 39fd478c0bc94b74583b49dad8f804c1,
-        type: 3}
-      propertyPath: m_AngularSpeed
-      value: 3000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5689328569895256055, guid: 39fd478c0bc94b74583b49dad8f804c1,
-        type: 3}
-      propertyPath: m_Acceleration
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5689328569895256055, guid: 39fd478c0bc94b74583b49dad8f804c1,
-        type: 3}
-      propertyPath: m_AutoBraking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5689328569895256055, guid: 39fd478c0bc94b74583b49dad8f804c1,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39fd478c0bc94b74583b49dad8f804c1, type: 3}
 --- !u!4 &8643742312795595536 stripped

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,10 +12,12 @@ namespace RPG.Movement
         NavMeshAgent navMeshAgent;
         Animator animator;
         [SerializeField] float animatorSpeed = 2f;
+        [SerializeField] float rotationRate = 2f;
 
         private void Start() {
             navMeshAgent = GetComponent<NavMeshAgent>();
             navMeshAgent.updatePosition = false;
+            navMeshAgent.updateRotation = false;
             animator = GetComponent<Animator>();
             animator.speed = animatorSpeed;
         }
@@ -25,6 +28,8 @@ namespace RPG.Movement
             {
                 MoveToCursor();
             }
+
+            ApplyRotation();
 
             UpdateAnimator();
 
@@ -41,6 +46,18 @@ namespace RPG.Movement
             {
                 navMeshAgent.destination = hit.point;
             }
+        }
+
+        private void ApplyRotation()
+        {
+            // Use desired because we are doing our own rotation acceleration.
+            Vector3 velocity = navMeshAgent.desiredVelocity;
+            // Stop rotation when we stop moving.
+            if (Mathf.Approximately(velocity.magnitude, 0)) return;
+
+            // Formula for exponential decay
+            float fractionThisFrame = 1 - Mathf.Exp(-rotationRate * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(velocity), fractionThisFrame);
         }
 
         private void UpdateAnimator()
