@@ -14,6 +14,8 @@ namespace RPG.Movement
         [SerializeField] float animatorSpeed = 2f;
         [SerializeField] float rotationRate = 2f;
 
+        float currentSpeed = 0;
+
         private void Start() {
             navMeshAgent = GetComponent<NavMeshAgent>();
             navMeshAgent.updatePosition = false;
@@ -29,6 +31,7 @@ namespace RPG.Movement
                 MoveToCursor();
             }
 
+            ApplyAcceleration();
             ApplyRotation();
 
             UpdateAnimator();
@@ -48,6 +51,14 @@ namespace RPG.Movement
             }
         }
 
+        private void ApplyAcceleration()
+        {
+            // Again using this as is before acceleration (see NavMeshAgent gizmos)
+            Vector3 velocity = navMeshAgent.desiredVelocity;
+            currentSpeed = Mathf.MoveTowards(currentSpeed, velocity.magnitude, navMeshAgent.acceleration * Time.deltaTime);
+
+        }
+
         private void ApplyRotation()
         {
             // Use desired because we are doing our own rotation acceleration.
@@ -62,10 +73,7 @@ namespace RPG.Movement
 
         private void UpdateAnimator()
         {
-            Vector3 velocity = navMeshAgent.velocity;
-            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
-            float speed = localVelocity.z;
-            animator.SetFloat("forwardSpeed", (speed/animatorSpeed));
+            animator.SetFloat("forwardSpeed", currentSpeed);
         }
 
         private void OnAnimatorMove()
