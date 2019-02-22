@@ -13,6 +13,7 @@ namespace RPG.Movement
         Animator animator;
         [SerializeField] float animatorSpeed = 2f;
         [SerializeField] float rotationRate = 2f;
+        [SerializeField] float minStoppingDistance = 0.1f;
 
         float currentSpeed = 0;
 
@@ -31,6 +32,7 @@ namespace RPG.Movement
                 MoveToCursor();
             }
 
+            CalculateStoppingDistance();
             ApplyAcceleration();
             ApplyRotation();
 
@@ -63,17 +65,30 @@ namespace RPG.Movement
         {
             // Use desired because we are doing our own rotation acceleration.
             Vector3 velocity = navMeshAgent.desiredVelocity;
-            // Stop rotation when we stop moving.
-            if (Mathf.Approximately(velocity.magnitude, 0)) return;
+            // This approach is more stable with dynamic stopping distance
+            if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance) return;
 
             // Formula for exponential decay
             float fractionThisFrame = 1 - Mathf.Exp(-rotationRate * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(velocity), fractionThisFrame);
         }
 
+        private void CalculateStoppingDistance()
+        {
+            // Autobraking must be on for this to work. TODO: Why?
+            float stoppingDistance = StoppingDistance(currentSpeed, navMeshAgent.acceleration);
+            // Need a min to allow us to stop spinning with very small vectors.
+            navMeshAgent.stoppingDistance = Mathf.Max(stoppingDistance, minStoppingDistance);
+        }
+
         private void UpdateAnimator()
         {
             animator.SetFloat("forwardSpeed", currentSpeed);
+        }
+
+        private float StoppingDistance(float speed, float decelleration)
+        {
+            return speed * speed / (2 * decelleration);
         }
 
         private void OnAnimatorMove()
