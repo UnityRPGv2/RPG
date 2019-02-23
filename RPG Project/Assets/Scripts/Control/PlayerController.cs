@@ -15,11 +15,12 @@ namespace RPG.Control
 
         private void Update()
         {
-            InteractWithCombat();
-            InteractWithMovement();
+            if (InteractWithCombat()) return;
+            if (InteractWithMovement()) return;
+            print("Hovering over nothing");
         }
 
-        private void InteractWithCombat()
+        private bool InteractWithCombat()
         {
             var hits = Physics.RaycastAll(GetRay());
             foreach (var hit in hits)
@@ -31,26 +32,29 @@ namespace RPG.Control
                     {
                         combatComponent.Attack(this);
                     }
+                    return true;
                 }
             }
+            return false;
         }
 
-        private void InteractWithMovement()
-        {
-            if (Input.GetMouseButton(0))
-            {
-                MoveToCursor();
-            }
-        }
-
-        private void MoveToCursor()
+        private bool InteractWithMovement()
         {
             RaycastHit hit;
             bool hasHit = Physics.Raycast(GetRay(), out hit);
             if (hasHit)
             {
-                mover.MoveTo(hit.point);
+                if (Input.GetMouseButton(0))
+                {
+                    mover.MoveTo(hit.point);
+                }
+                return true;
             }
+            return false;
+        }
+
+        private void MoveToCursor()
+        {
         }
 
         private static Ray GetRay()
