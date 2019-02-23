@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5689328569895256055}
   - component: {fileID: 1465509168866930710}
   - component: {fileID: 698528101711877642}
+  - component: {fileID: 1602160848309391006}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -50,7 +51,7 @@ NavMeshAgent:
   m_AngularSpeed: 3000
   m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
+  m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
@@ -70,6 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animatorSpeed: 1
   rotationRate: 11.21
+  minStoppingDistance: 0.1
 --- !u!95 &698528101711877642
 Animator:
   serializedVersion: 3
@@ -89,6 +91,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1602160848309391006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5527887719313631033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97d9920344aa9d4a88344ddbbb7a2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2774672072634507658
 PrefabInstance:
   m_ObjectHideFlags: 0
