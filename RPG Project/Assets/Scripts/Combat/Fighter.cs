@@ -1,9 +1,10 @@
+using RPG.Core;
 using RPG.Movement;
 using UnityEngine;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] float attackRange = 2;
 
@@ -18,18 +19,21 @@ namespace RPG.Combat
         private void Update() {
             if (!combatTarget) return;
 
+            // Disable movement to check that cancelling is working both ways
             if (!isInRange)
             {
                 mover.MoveTo(combatTarget.position);                
             } 
             else
             {
-                mover.Stop();
+                mover.Cancel();
             }
+            // To here
         }
 
         public void Attack(CombatTarget target)
         {
+            GetComponent<ActionScheduler>().StartAction(this);
             combatTarget = target.transform;
         }
 
