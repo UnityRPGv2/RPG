@@ -9,7 +9,8 @@ namespace RPG.Combat
     {
         public void Attack(PlayerController playerController)
         {
-            print("Help! Help! I'm being repressed! Come see the voilence inherent in the system.");
+            var playerCombatComponent = GameObject.FindGameObjectWithTag("Player").GetComponent<Fighter>();
+            playerCombatComponent.Attack(this);
         }
     }
 }
