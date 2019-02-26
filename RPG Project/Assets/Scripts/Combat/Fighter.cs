@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
@@ -21,6 +22,7 @@ namespace RPG.Combat
             else
             {
                 GetComponent<Mover>().Cancel();
+                AttackBehaviour();
             }
         }
 
@@ -39,5 +41,10 @@ namespace RPG.Combat
         {
             target = null;
         }
+        private void AttackBehaviour()
+        {
+            GetComponent<Animator>().SetTrigger("attack");
+        }
+
     }
 }
