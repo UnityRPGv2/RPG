@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using RPG.Movement;
 using UnityEngine;
@@ -27,6 +28,7 @@ namespace RPG.Combat
             else
             {
                 mover.Cancel();
+                AttackBehaviour();
             }
             // To here
         }
@@ -40,6 +42,11 @@ namespace RPG.Combat
         public void Cancel()
         {
             combatTarget = null;
+        }
+
+        private void AttackBehaviour()
+        {
+            GetComponent<Animator>().SetTrigger("attack");
         }
 
         private bool isInRange => Vector3.Distance(transform.position, combatTarget.position) < attackRange;
