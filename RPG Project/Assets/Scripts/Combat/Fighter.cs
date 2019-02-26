@@ -8,8 +8,10 @@ namespace RPG.Combat
     public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] float attackRange = 2;
+        [SerializeField] float timeBetweenAttacks = 2;
 
         Transform combatTarget;
+        float timeSinceLastAttack = 100;
 
         Mover mover;
 
@@ -31,6 +33,8 @@ namespace RPG.Combat
                 AttackBehaviour();
             }
             // To here
+
+            timeSinceLastAttack += Time.deltaTime;
         }
 
         public void Attack(CombatTarget target)
@@ -46,7 +50,10 @@ namespace RPG.Combat
 
         private void AttackBehaviour()
         {
+            if (timeBetweenAttacks > timeSinceLastAttack) return;
+            
             GetComponent<Animator>().SetTrigger("attack");
+            timeSinceLastAttack = 0;
         }
 
         private bool isInRange => Vector3.Distance(transform.position, combatTarget.position) < attackRange;
