@@ -1,12 +1,28 @@
+using RPG.Movement;
 using UnityEngine;
 
 namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour
     {
+        Transform combatTarget;
+
+        Mover mover;
+
+        private void Start() {
+            mover = GetComponent<Mover>();
+        }
+
+        private void Update() {
+            if (combatTarget)
+            {
+                mover.MoveTo(combatTarget.position);                
+            }
+        }
+
         public void Attack(CombatTarget target)
         {
-            print("Help! Help! I'm being repressed! Come see the voilence inherent in the system.");
+            combatTarget = target.transform;
         }
     }
 }
