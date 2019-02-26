@@ -5,6 +5,8 @@ namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour
     {
+        [SerializeField] float attackRange = 2;
+
         Transform combatTarget;
 
         Mover mover;
@@ -14,9 +16,13 @@ namespace RPG.Combat
         }
 
         private void Update() {
-            if (combatTarget)
+            if (combatTarget && !isInRange)
             {
                 mover.MoveTo(combatTarget.position);                
+            } 
+            else
+            {
+                mover.Stop();
             }
         }
 
@@ -24,5 +30,7 @@ namespace RPG.Combat
         {
             combatTarget = target.transform;
         }
+
+        private bool isInRange => Vector3.Distance(transform.position, combatTarget.position) < attackRange;
     }
 }
