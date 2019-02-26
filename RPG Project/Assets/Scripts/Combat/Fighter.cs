@@ -16,7 +16,9 @@ namespace RPG.Combat
         }
 
         private void Update() {
-            if (combatTarget && !isInRange)
+            if (!combatTarget) return;
+
+            if (!isInRange)
             {
                 mover.MoveTo(combatTarget.position);                
             } 
@@ -29,6 +31,11 @@ namespace RPG.Combat
         public void Attack(CombatTarget target)
         {
             combatTarget = target.transform;
+        }
+
+        public void Cancel()
+        {
+            combatTarget = null;
         }
 
         private bool isInRange => Vector3.Distance(transform.position, combatTarget.position) < attackRange;
