@@ -52,7 +52,13 @@ namespace RPG.Combat
             
             GetComponent<Animator>().SetTrigger("attack");
             timeSinceLastAttack = 0;
+        }
+
+        private void Hit()
+        {
+            if (target == null) return;
             Health healthComponent = target.GetComponent<Health>();
+            if (healthComponent == null) return;
             healthComponent.TakeDamage(attackDamage);
         }
     }
