@@ -21,10 +21,11 @@ namespace RPG.Control
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
                 if (target == null) continue;
+                if (!target.enabled) continue;
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    GetComponent<Fighter>().Attack(target);
+                    return GetComponent<Fighter>().Attack(target);
                 }
                 return true;
             }
