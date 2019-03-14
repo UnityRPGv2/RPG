@@ -20,9 +20,13 @@ namespace RPG.Control
         {
             GameObject player = GameObject.FindWithTag("Player");
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer < chaseDistance)
+            if (distanceToPlayer < chaseDistance && fighter.CanAttack(player))
             {
-                print("Should attack");
+                fighter.Attack(player);
+            }
+            else
+            {
+                fighter.Cancel();
             }
         }
     }
