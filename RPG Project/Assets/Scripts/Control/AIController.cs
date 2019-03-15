@@ -34,5 +34,11 @@ namespace RPG.Control
                 fighter.Cancel();
             }
         }
+
+        // Called from engine
+        private void OnDrawGizmos() {
+            Gizmos.color = new Color(0, 0, 255, .5f);
+            Gizmos.DrawWireSphere(transform.position, chaseDistance);
+        }
     }
 }
