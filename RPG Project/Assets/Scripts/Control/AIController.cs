@@ -13,13 +13,15 @@ namespace RPG.Control
         [SerializeField] float chaseDistance = 2;
         [SerializeField] WaypointContainer waypointContainer;
         [SerializeField] float suspicionTime = 3;
+        [SerializeField] float waypointProximity = 1f;
 
         Fighter fighter;
         Mover mover;
         Health health;
 
         Vector3 originalStation;
-        [SerializeField] float timeSinceLastSawPlayer = 0;
+        float timeSinceLastSawPlayer = 1000f;
+        int nextWaypointIndex = 0;
 
         void Start()
         {
@@ -46,8 +48,7 @@ namespace RPG.Control
             }
             else if (timeSinceLastSawPlayer < suspicionTime)
             {
-                // Cancel all other actions while we wait.
-                GetComponent<ActionScheduler>().StartAction(null);
+                SuspicionBehaviour();
             }
             else
             {
@@ -55,6 +56,12 @@ namespace RPG.Control
             }
 
             timeSinceLastSawPlayer += Time.deltaTime;
+        }
+
+        private void SuspicionBehaviour()
+        {
+            // Cancel all other actions while we wait.
+            GetComponent<ActionScheduler>().StartAction(null);
         }
 
         private void AttackBehaviour()
@@ -69,7 +76,25 @@ namespace RPG.Control
 
         private void PatrolBehaviour()
         {
-            mover.StartMoveAction(originalStation);
+            Vector3 nextLocation = originalStation;
+
+            if (waypointContainer != null && IsAtCurrentWaypoint())
+            {
+                nextWaypointIndex = waypointContainer.GetNextIndex(nextWaypointIndex);
+            }
+
+            if (waypointContainer != null)
+            {
+                nextLocation = waypointContainer.GetWaypoint(nextWaypointIndex);
+            }
+
+            mover.StartMoveAction(nextLocation);
+        }
+
+        private bool IsAtCurrentWaypoint()
+        {
+            Vector3 waypoint = waypointContainer.GetWaypoint(nextWaypointIndex);
+            return Vector3.Distance(transform.position, waypoint) < waypointProximity;
         }
 
         private static GameObject GetPlayer()
@@ -81,6 +106,8 @@ namespace RPG.Control
         private void OnDrawGizmos() {
             Gizmos.color = new Color(0, 0, 255, .5f);
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
+            if (waypointContainer != null)
+                Gizmos.DrawSphere(waypointContainer.GetWaypoint(nextWaypointIndex), 2);
         }
     }
 }
