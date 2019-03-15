@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using RPG.Combat;
 using RPG.Core;
@@ -11,6 +12,8 @@ namespace RPG.Control
     {
         [SerializeField] float chaseDistance = 2;
         [SerializeField] float suspicionTime = 3;
+        [SerializeField] PatrolPath patrolPath;
+        [SerializeField] float waypointProximity = 3;
 
         Fighter fighter;
         Mover mover;
@@ -18,6 +21,7 @@ namespace RPG.Control
 
         Vector3 originalPosition;
         float timeSinceLastSawPlayer = Mathf.Infinity;
+        int nextWaypointIndex = 0;
 
         void Start()
         {
@@ -52,7 +56,34 @@ namespace RPG.Control
 
         private void PatrolBehaviour()
         {
-            mover.StartMoveAction(originalPosition);
+            Vector3 nextPosition = originalPosition;
+            if (patrolPath != null)
+            {
+                if (AtWaypoint())
+                {
+                    CycleWaypoint();
+                }
+                nextPosition = GetWaypoint();
+            }
+
+            mover.StartMoveAction(nextPosition);
+        }
+
+        private Vector3 GetWaypoint()
+        {
+            // CHALLENGE
+            return patrolPath.GetWaypoint(nextWaypointIndex);
+        }
+
+        private void CycleWaypoint()
+        {
+            // CHALLENGE
+            nextWaypointIndex = patrolPath.GetNextIndex(nextWaypointIndex);
+        }
+
+        private bool AtWaypoint()
+        {
+            return Vector3.Distance(transform.position, GetWaypoint()) < waypointProximity;
         }
 
         private void SuspicionBehaviour()

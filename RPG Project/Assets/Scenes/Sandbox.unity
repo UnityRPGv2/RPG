@@ -137,12 +137,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58982271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0, z: 1.57}
+  m_LocalPosition: {x: -18.35, y: 0, z: 14.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1660845771}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &131978868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1778743376859205078, guid: 7db8ddd31461adf438a80cbb4a5e5fef,
+    type: 3}
+  m_PrefabInstance: {fileID: 1660845770}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff83f20133284dc4b9e7d3f5bd612b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &148064063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -717,6 +729,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5676911289623144521, guid: 97794e8f32d9d574c8ed85db378e8c47,
+        type: 3}
+      propertyPath: patrolPath
+      value: 
+      objectReference: {fileID: 131978868}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97794e8f32d9d574c8ed85db378e8c47, type: 3}
 --- !u!1001 &1095309200
@@ -901,7 +918,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322228969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.44, y: 0, z: -0.12}
+  m_LocalPosition: {x: 26.31, y: 0, z: 6.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1660845771}
@@ -1315,12 +1332,12 @@ PrefabInstance:
     - target: {fileID: 7380660848001858252, guid: 7db8ddd31461adf438a80cbb4a5e5fef,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3
+      value: -8.96
       objectReference: {fileID: 0}
     - target: {fileID: 7380660848001858252, guid: 7db8ddd31461adf438a80cbb4a5e5fef,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.44
+      value: -18.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7db8ddd31461adf438a80cbb4a5e5fef, type: 3}

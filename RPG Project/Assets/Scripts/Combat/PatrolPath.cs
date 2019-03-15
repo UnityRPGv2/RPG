@@ -16,7 +16,7 @@ namespace RPG.Control
             }
         }
 
-        private int GetNextIndex(int currentIndex)
+        public int GetNextIndex(int currentIndex)
         {
             //CHALLENGE
             if (currentIndex + 1 == transform.childCount)
@@ -26,7 +26,7 @@ namespace RPG.Control
             return currentIndex + 1;
         }
 
-        private Vector3 GetWaypoint(int index)
+        public Vector3 GetWaypoint(int index)
         {
             return transform.GetChild(index).position;
         }
