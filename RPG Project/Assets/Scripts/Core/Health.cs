@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace RPG.Core
 {
-    public class Health : MonoBehaviour, IAction
+    public class Health : MonoBehaviour
     {
         [SerializeField] float healthPoints = 100f;
 
@@ -27,13 +27,9 @@ namespace RPG.Core
             if (isDead) return;
 
             isDead = true;
-            GetComponent<ActionScheduler>().StartAction(this);
+            // Cancel all other actions
+            GetComponent<ActionScheduler>().StartAction(null);
             GetComponent<Animator>().SetTrigger("die");
-        }
-
-        public void Cancel()
-        {
-            Debug.LogError("Shouldn't cancel death.");
         }
     }
 }

@@ -12,12 +12,14 @@ namespace RPG.Control
     {
         [SerializeField] float chaseDistance = 2;
         [SerializeField] WaypointContainer waypointContainer;
+        [SerializeField] float suspicionTime = 3;
 
         Fighter fighter;
         Mover mover;
         Health health;
 
-        Vector3 positionBeforeAttack;
+        Vector3 originalStation;
+        [SerializeField] float timeSinceLastSawPlayer = 0;
 
         void Start()
         {
@@ -25,7 +27,7 @@ namespace RPG.Control
             mover = GetComponent<Mover>();
             health = GetComponent<Health>();
 
-            positionBeforeAttack = transform.position;
+            originalStation = transform.position;
         }
 
         void Update()
@@ -42,24 +44,32 @@ namespace RPG.Control
             {
                 AttackBehaviour();
             }
+            else if (timeSinceLastSawPlayer < suspicionTime)
+            {
+                // Cancel all other actions while we wait.
+                GetComponent<ActionScheduler>().StartAction(null);
+            }
             else
             {
                 PatrolBehaviour();
             }
+
+            timeSinceLastSawPlayer += Time.deltaTime;
         }
 
         private void AttackBehaviour()
         {
+            timeSinceLastSawPlayer = 0;
+
             GameObject player = GetPlayer();
             if (fighter.IsAttacking(player)) return;
 
-            positionBeforeAttack = transform.position;
             fighter.Attack(player);
         }
 
         private void PatrolBehaviour()
         {
-            mover.StartMoveAction(positionBeforeAttack);
+            mover.StartMoveAction(originalStation);
         }
 
         private static GameObject GetPlayer()

@@ -39,6 +39,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistance: 3.44
+  waypointContainer: {fileID: 0}
+  suspicionTime: 5
+  timeSinceLastSawPlayer: 0
 --- !u!1001 &7320679462223498046
 PrefabInstance:
   m_ObjectHideFlags: 0
