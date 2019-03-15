@@ -10,12 +10,14 @@ namespace RPG.Control
     public class AIController : MonoBehaviour
     {
         [SerializeField] float chaseDistance = 2;
+        [SerializeField] float suspicionTime = 3;
 
         Fighter fighter;
         Mover mover;
         Health health;
 
         Vector3 originalPosition;
+        float timeSinceLastSawPlayer = Mathf.Infinity;
 
         void Start()
         {
@@ -34,12 +36,19 @@ namespace RPG.Control
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
             if (distanceToPlayer < chaseDistance && fighter.CanAttack(player))
             {
+                timeSinceLastSawPlayer = 0;
                 fighter.Attack(player);
+            }
+            else if (timeSinceLastSawPlayer < suspicionTime)
+            {
+                GetComponent<ActionScheduler>().CancelAction();
             }
             else
             {
                 mover.StartMoveAction(originalPosition);
             }
+
+            timeSinceLastSawPlayer += Time.deltaTime;
         }
 
         // Called from engine
