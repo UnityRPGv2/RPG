@@ -36,19 +36,35 @@ namespace RPG.Control
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
             if (distanceToPlayer < chaseDistance && fighter.CanAttack(player))
             {
-                timeSinceLastSawPlayer = 0;
-                fighter.Attack(player);
+                AttackBehaviour();
             }
             else if (timeSinceLastSawPlayer < suspicionTime)
             {
-                GetComponent<ActionScheduler>().CancelAction();
+                SuspicionBehaviour();
             }
             else
             {
-                mover.StartMoveAction(originalPosition);
+                PatrolBehaviour();
             }
 
             timeSinceLastSawPlayer += Time.deltaTime;
+        }
+
+        private void PatrolBehaviour()
+        {
+            mover.StartMoveAction(originalPosition);
+        }
+
+        private void SuspicionBehaviour()
+        {
+            GetComponent<ActionScheduler>().CancelAction();
+        }
+
+        private void AttackBehaviour()
+        {
+            GameObject player = GameObject.FindWithTag("Player");
+            timeSinceLastSawPlayer = 0;
+            fighter.Attack(player);
         }
 
         // Called from engine
