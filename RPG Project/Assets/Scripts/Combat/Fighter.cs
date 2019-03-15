@@ -66,6 +66,11 @@ namespace RPG.Combat
             target = combatTarget.GetComponent<Health>();
         }
 
+        public bool IsAttacking(GameObject combatTarget)
+        {
+            return target == combatTarget.GetComponent<Health>();
+        }
+
         public void Cancel()
         {
             GetComponent<Animator>().SetTrigger("stopAttack");
