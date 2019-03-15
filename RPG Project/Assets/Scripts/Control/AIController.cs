@@ -23,7 +23,6 @@ namespace RPG.Control
         {
             GameObject player = GameObject.FindWithTag("Player");
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            print(health);
             if (!health.IsDead() && distanceToPlayer < chaseDistance && fighter.CanAttack(player))
             {
                 fighter.Attack(player);
@@ -32,6 +31,12 @@ namespace RPG.Control
             {
                 fighter.Cancel();
             }
+        }
+
+        // Called from engine
+        private void OnDrawGizmos() {
+            Gizmos.color = new Color(0, 0, 255, .5f);
+            Gizmos.DrawWireSphere(transform.position, chaseDistance);
         }
     }
 }
