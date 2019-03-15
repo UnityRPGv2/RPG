@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RPG.Combat;
 using RPG.Core;
+using RPG.Movement;
 using UnityEngine;
 
 namespace RPG.Control
@@ -11,12 +12,18 @@ namespace RPG.Control
         [SerializeField] float chaseDistance = 2;
 
         Fighter fighter;
+        Mover mover;
         Health health;
+
+        Vector3 originalPosition;
 
         void Start()
         {
             fighter = GetComponent<Fighter>();
+            mover = GetComponent<Mover>();
             health = GetComponent<Health>();
+
+            originalPosition = transform.position;
         }
 
         void Update()
@@ -31,7 +38,7 @@ namespace RPG.Control
             }
             else
             {
-                fighter.Cancel();
+                mover.StartMoveAction(originalPosition);
             }
         }
 
