@@ -14,6 +14,7 @@ namespace RPG.Control
         [SerializeField] WaypointContainer waypointContainer;
         [SerializeField] float suspicionTime = 3;
         [SerializeField] float waypointProximity = 1f;
+        [SerializeField] float dwellTime = 5f;
 
         Fighter fighter;
         Mover mover;
@@ -22,6 +23,7 @@ namespace RPG.Control
         Vector3 originalStation;
         float timeSinceLastSawPlayer = 1000f;
         int nextWaypointIndex = 0;
+        float timeAtCurrentWaypoint = 0f;
 
         void Start()
         {
@@ -56,6 +58,7 @@ namespace RPG.Control
             }
 
             timeSinceLastSawPlayer += Time.deltaTime;
+            timeAtCurrentWaypoint += Time.deltaTime;
         }
 
         private void SuspicionBehaviour()
@@ -81,6 +84,7 @@ namespace RPG.Control
             if (waypointContainer != null && IsAtCurrentWaypoint())
             {
                 nextWaypointIndex = waypointContainer.GetNextIndex(nextWaypointIndex);
+                timeAtCurrentWaypoint = 0;
             }
 
             if (waypointContainer != null)
@@ -88,7 +92,10 @@ namespace RPG.Control
                 nextLocation = waypointContainer.GetWaypoint(nextWaypointIndex);
             }
 
-            mover.StartMoveAction(nextLocation);
+            if (timeAtCurrentWaypoint > dwellTime)
+            {
+                mover.StartMoveAction(nextLocation);
+            }
         }
 
         private bool IsAtCurrentWaypoint()
