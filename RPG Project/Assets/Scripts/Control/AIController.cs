@@ -13,6 +13,15 @@ namespace RPG.Control
         Fighter fighter;
         Health health;
 
+        State currentState = State.Patrolling;
+
+        enum State
+        {
+            Attacking,
+            Patrolling,
+            Dead
+        }
+
         void Start()
         {
             fighter = GetComponent<Fighter>();
@@ -21,16 +30,56 @@ namespace RPG.Control
 
         void Update()
         {
-            GameObject player = GameObject.FindWithTag("Player");
+            GameObject player = GetPlayer();
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (!health.IsDead() && distanceToPlayer < chaseDistance && fighter.CanAttack(player))
+            if (health.IsDead())
             {
-                fighter.Attack(player);
+                Transition(State.Dead);
+            }
+            else if (distanceToPlayer < chaseDistance && fighter.CanAttack(player))
+            {
+                Transition(State.Attacking);
             }
             else
             {
-                fighter.Cancel();
+                Transition(State.Patrolling);
             }
+        }
+
+        private static GameObject GetPlayer()
+        {
+            return GameObject.FindWithTag("Player");
+        }
+
+        void Transition(State nextState)
+        {
+            if (currentState == nextState) return;
+
+            switch (currentState)
+            {
+                case State.Attacking:
+                    StopAttacking();
+                    break;
+            }
+
+            switch (nextState)
+            {
+                case State.Attacking:
+                    StartAttacking();
+                    break;
+            }
+
+            currentState = nextState;
+        }
+
+        void StartAttacking()
+        {
+            fighter.Attack(GetPlayer());
+        }
+
+        void StopAttacking()
+        {
+            fighter.Cancel();
         }
 
         // Called from engine
