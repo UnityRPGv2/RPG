@@ -14,14 +14,19 @@ public class WaypointContainer : MonoBehaviour
         return transform.childCount;
     }
 
+    public int GetNextIndex(int index)
+    {
+        if (index + 1 == GetWaypointCount())
+        {
+            return 0;
+        }
+        return index + 1;
+    }
+
     private void OnDrawGizmos() {
         for (int currentIndex = 0; currentIndex < GetWaypointCount(); currentIndex++)
         {
-            int nextIndex = currentIndex + 1;
-            if (nextIndex >= GetWaypointCount())
-            {
-                nextIndex = 0;
-            }
+            int nextIndex = GetNextIndex(currentIndex);
             Vector3 currentPos = GetWaypoint(currentIndex);
             Vector3 nextPos = GetWaypoint(nextIndex);
             Gizmos.DrawLine(nextPos, currentPos);
