@@ -38,7 +38,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04821f510f07ff84b874685ba4438a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDistance: 3.44
+  chaseDistance: 5.64
+  suspicionTime: 3
+  patrolPath: {fileID: 0}
+  waypointProximity: 3
+  patrolDwellTime: 3
 --- !u!1001 &7320679462223498046
 PrefabInstance:
   m_ObjectHideFlags: 0
