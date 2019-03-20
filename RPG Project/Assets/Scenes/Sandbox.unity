@@ -1222,6 +1222,11 @@ PrefabInstance:
       propertyPath: chaseDistance
       value: 4.17
       objectReference: {fileID: 0}
+    - target: {fileID: 983642264934612947, guid: 97794e8f32d9d574c8ed85db378e8c47,
+        type: 3}
+      propertyPath: patrolPath
+      value: 
+      objectReference: {fileID: 6863859803471152788}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97794e8f32d9d574c8ed85db378e8c47, type: 3}
 --- !u!1001 &1472721860
@@ -2007,6 +2012,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0751578d2707bb94ebd1a943a302f77a, type: 3}
+--- !u!114 &6863859803471152788 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6863859803471152788, guid: 7db8ddd31461adf438a80cbb4a5e5fef,
+    type: 3}
+  m_PrefabInstance: {fileID: 9150544002902700398}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010c8428cbc2a1541a78e3bae8a3073b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8839597017320931019 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8839597017320931019, guid: 7db8ddd31461adf438a80cbb4a5e5fef,
