@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-using RPG.Control;
-using RPG.Core;
 
-public class CinematicTrigger : MonoBehaviour
+namespace RPG.Cinematics
 {
-    [SerializeField] PlayerController PlayerController;
-    [SerializeField] ActionScheduler actionScheduler;
-
-    
-    private void OnTriggerEnter(Collider other) 
+    public class CinematicTrigger : MonoBehaviour
     {
-        print("triggered");
-        if(other.GetComponent<PlayerController>())
+        bool alreadyTriggered = false;
+
+        private void OnTriggerEnter(Collider other)
         {
-            GetComponent<PlayableDirector>().Play();
-            actionScheduler.CancelCurrentAction();
-            
+            if (!alreadyTriggered && other.gameObject.tag == "Player")
+            {
+                alreadyTriggered = true;
+                GetComponent<PlayableDirector>().Play();
+            }
         }
     }
 }
