@@ -26,6 +26,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af77275bc4688847bc54d446c56e643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkableMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &1080417002832114521
 PrefabInstance:
   m_ObjectHideFlags: 0

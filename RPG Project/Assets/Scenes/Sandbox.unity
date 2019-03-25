@@ -829,7 +829,7 @@ GameObject:
   - component: {fileID: 871023142}
   - component: {fileID: 871023141}
   - component: {fileID: 871023140}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}

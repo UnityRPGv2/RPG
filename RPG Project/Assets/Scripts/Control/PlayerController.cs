@@ -8,6 +8,8 @@ namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] LayerMask walkableMask;
+
         Health health;
 
         private void Start() {
@@ -47,7 +49,7 @@ namespace RPG.Control
         private bool InteractWithMovement()
         {
             RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+            bool hasHit = Physics.Raycast(GetMouseRay(), out hit, Mathf.Infinity, walkableMask);
             if (hasHit)
             {
                 if (Input.GetMouseButton(0))
