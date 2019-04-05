@@ -5,18 +5,30 @@ namespace RPG.SceneManagement
 {
     public class Fader : MonoBehaviour
     {
+        static Fader instance;
+
+        private void Awake() {
+            if (instance == null)
+            {
+                transform.parent = null;
+                DontDestroyOnLoad(gameObject);
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public static Fader GetFader()
+        {
+            return instance;
+        }
+
         CanvasGroup canvasGroup;
 
         private void Start() {
             canvasGroup = GetComponent<CanvasGroup>();
-            StartCoroutine(FadeOutIn());
-        }
-
-        private IEnumerator FadeOutIn()
-        {
-            yield return FadeOut(3f);
-            yield return FadeIn(1f);
-            print("Fading finished");
         }
 
         public IEnumerator FadeOut(float time)
