@@ -18,7 +18,11 @@ namespace RPG.Combat
             timeSinceLastAttack += Time.deltaTime;
 
             if (target == null) return;
-            if (target.IsDead()) return;
+            if (target.IsDead())
+            {
+                Cancel();
+                return;
+            }
 
             if (!GetIsInRange())
             {
