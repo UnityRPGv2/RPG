@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 
 namespace RPG.Saving
@@ -6,12 +7,18 @@ namespace RPG.Saving
     {
         public void Save(string saveFile)
         {
-            print("Save");
+            print("Save: " + GetPathFromSaveFile(saveFile));
         }
 
         public void Load(string saveFile)
         {
-            print("Load");
+            print("Load: " + GetPathFromSaveFile(saveFile));
+        }
+
+        private string GetPathFromSaveFile(string saveFile)
+        {
+            // CHALLENGE: show docs and ask to work out.
+            return Path.Combine(Application.persistentDataPath, saveFile + ".sav");
         }
     }
 }
