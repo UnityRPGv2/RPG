@@ -30,6 +30,12 @@ namespace RPG.Saving
         private Dictionary<string, object> LoadState(string saveFile)
         {
             string path = GetPathFromSaveFile(saveFile);
+
+            if (!File.Exists(path)) 
+            {
+                return new Dictionary<string, object>();
+            }
+
             print("Load: " + path);
             using (FileStream stream = File.Open(path, FileMode.Open))
             {
