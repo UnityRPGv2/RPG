@@ -1,5 +1,7 @@
+using RPG.Core;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace RPG.Saving
 {
@@ -15,14 +17,16 @@ namespace RPG.Saving
 
         public object CaptureState()
         {
-            print("Captured state for " + uniqueIdentifier);
-            return null;
+            return new SerializableVector3(transform.position);
         }
 
         public void RestoreState(object state)
         {
-            print("Restored state for " + uniqueIdentifier);
-
+            // CHALLENGE
+            var position = (SerializableVector3)state;
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+            GetComponent<NavMeshAgent>().enabled = false;
+            transform.position = position.ToVector();
         }
 
         private void Update() {
@@ -31,10 +35,8 @@ namespace RPG.Saving
             SerializedObject serializedObject = new SerializedObject(this);
             SerializedProperty serializedProperty = serializedObject.FindProperty("uniqueIdentifier");
 
-            // 2 Challenge:
             if (string.IsNullOrEmpty(serializedProperty.stringValue))
             {
-                // 1 Do this
                 serializedProperty.stringValue = System.Guid.NewGuid().ToString();
                 serializedObject.ApplyModifiedProperties();
             }
