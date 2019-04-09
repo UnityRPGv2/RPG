@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Text;
 using UnityEngine;
@@ -12,8 +13,9 @@ namespace RPG.Saving
             print("Save: " + path);
             using (FileStream stream = File.Open(path, FileMode.Create))
             {
-                byte[] messageBytes = Encoding.UTF8.GetBytes("Hello world");
-                stream.Write(messageBytes, 0, messageBytes.Length);
+                Transform player = GetPlayerTransform();
+                byte[] buffer = ToBytes(player.position);
+                stream.Write(buffer, 0, buffer.Length);
             }
         }
 
@@ -25,9 +27,35 @@ namespace RPG.Saving
             {
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);
-                //CHALLENGE convert to text:
-                print(Encoding.UTF8.GetString(buffer));
+                // CHALLENGE:
+                Transform player = GetPlayerTransform();
+                player.position = FromBytes(buffer);
             }
+        }
+
+        private byte[] ToBytes(Vector3 vector)
+        {
+            byte[] vectorBytes = new byte[4*3];
+            BitConverter.GetBytes(vector.x).CopyTo(vectorBytes, 0);
+            BitConverter.GetBytes(vector.y).CopyTo(vectorBytes, 4);
+            BitConverter.GetBytes(vector.z).CopyTo(vectorBytes, 8);
+            return vectorBytes;
+        }
+
+        private Vector3 FromBytes(byte[] bytes)
+        {
+            Vector3 result = new Vector3();
+            result.x = BitConverter.ToSingle(bytes, 0);
+            //CHALLENGE:
+            result.y = BitConverter.ToSingle(bytes, 4);
+            result.z = BitConverter.ToSingle(bytes, 8);
+            return result;
+        }
+
+        private Transform GetPlayerTransform()
+        {
+            //Mini challenge
+            return GameObject.FindWithTag("Player").transform;
         }
 
         private string GetPathFromSaveFile(string saveFile)
