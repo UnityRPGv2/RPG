@@ -45,7 +45,6 @@ namespace RPG.Saving
 
         private void RestoreState(object state)
         {
-            //Challenge:
             var stateDict = (Dictionary<string, object>)state;
             var saveables = FindObjectsOfType<SaveableEntity>();
             foreach (var saveable in saveables)
