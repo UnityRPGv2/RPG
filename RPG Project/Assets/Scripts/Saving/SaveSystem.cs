@@ -16,8 +16,7 @@ namespace RPG.Saving
             using (FileStream stream = File.Open(path, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                Transform player = GetPlayerTransform();
-                formatter.Serialize(stream, new SerializableVector3(player.position));
+                formatter.Serialize(stream, CaptureState());
             }
         }
 
@@ -27,11 +26,31 @@ namespace RPG.Saving
             print("Load: " + path);
             using (FileStream stream = File.Open(path, FileMode.Open))
             {
-                // CHALLENGE: given Deserialize:
                 BinaryFormatter formatter = new BinaryFormatter();
-                Transform player = GetPlayerTransform();
-                SerializableVector3 position = (SerializableVector3)formatter.Deserialize(stream);
-                player.position = position.ToVector();
+                RestoreState(formatter.Deserialize(stream));
+            }
+        }
+
+        private object CaptureState()
+        {
+            var state = new Dictionary<string, object>();
+            var saveables = FindObjectsOfType<SaveableEntity>();
+            print(saveables);
+            foreach (var saveable in saveables)
+            {
+                state[saveable.GetUniqueIdentifier()] = saveable.CaptureState();
+            }
+            return state;
+        }
+
+        private void RestoreState(object state)
+        {
+            //Challenge:
+            var stateDict = (Dictionary<string, object>)state;
+            var saveables = FindObjectsOfType<SaveableEntity>();
+            foreach (var saveable in saveables)
+            {
+                saveable.RestoreState(stateDict[saveable.GetUniqueIdentifier()]);
             }
         }
 
