@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text;
 using UnityEngine;
 
 namespace RPG.Saving
@@ -7,7 +8,14 @@ namespace RPG.Saving
     {
         public void Save(string saveFile)
         {
-            print("Save: " + GetPathFromSaveFile(saveFile));
+            string path = GetPathFromSaveFile(saveFile);
+            print("Save: " + path);
+            FileStream stream = File.Open(path, FileMode.Create);
+            // Challenge: write hello world;
+            // stream.WriteByte(102);
+            byte[] messageBytes = Encoding.UTF8.GetBytes("Hello world");
+            stream.Write(messageBytes, 0, messageBytes.Length);
+            stream.Close();
         }
 
         public void Load(string saveFile)
