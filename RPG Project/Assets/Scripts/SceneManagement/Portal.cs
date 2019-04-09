@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using RPG.Saving;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,10 +38,14 @@ namespace RPG.SceneManagement
             DontDestroyOnLoad(gameObject);
 
             Fader fader = FindObjectOfType<Fader>();
+            SaveTriggerer saveTriggerer = FindObjectOfType<SaveTriggerer>();
             
             yield return fader.FadeOut(fadeOutTime);
+            saveTriggerer.Save();
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
-            
+
+            saveTriggerer.Load();
+
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
 
