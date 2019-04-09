@@ -26,6 +26,8 @@ namespace RPG.Saving
         }
 
         private void Update() {
+            if (string.IsNullOrEmpty(gameObject.scene.path)) return;
+
             SerializedObject serializedObject = new SerializedObject(this);
             SerializedProperty serializedProperty = serializedObject.FindProperty("uniqueIdentifier");
 
