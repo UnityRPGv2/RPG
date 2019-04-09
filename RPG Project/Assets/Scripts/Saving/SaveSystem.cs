@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using UnityEngine;
 
@@ -13,9 +15,9 @@ namespace RPG.Saving
             print("Save: " + path);
             using (FileStream stream = File.Open(path, FileMode.Create))
             {
+                BinaryFormatter formatter = new BinaryFormatter();
                 Transform player = GetPlayerTransform();
-                byte[] buffer = ToBytes(player.position);
-                stream.Write(buffer, 0, buffer.Length);
+                formatter.Serialize(stream, new SerializableVector3(player.position));
             }
         }
 
@@ -25,36 +27,16 @@ namespace RPG.Saving
             print("Load: " + path);
             using (FileStream stream = File.Open(path, FileMode.Open))
             {
-                byte[] buffer = new byte[stream.Length];
-                stream.Read(buffer, 0, buffer.Length);
-                // CHALLENGE:
+                // CHALLENGE: given Deserialize:
+                BinaryFormatter formatter = new BinaryFormatter();
                 Transform player = GetPlayerTransform();
-                player.position = FromBytes(buffer);
+                SerializableVector3 position = (SerializableVector3)formatter.Deserialize(stream);
+                player.position = position.ToVector();
             }
-        }
-
-        private byte[] ToBytes(Vector3 vector)
-        {
-            byte[] vectorBytes = new byte[4*3];
-            BitConverter.GetBytes(vector.x).CopyTo(vectorBytes, 0);
-            BitConverter.GetBytes(vector.y).CopyTo(vectorBytes, 4);
-            BitConverter.GetBytes(vector.z).CopyTo(vectorBytes, 8);
-            return vectorBytes;
-        }
-
-        private Vector3 FromBytes(byte[] bytes)
-        {
-            Vector3 result = new Vector3();
-            result.x = BitConverter.ToSingle(bytes, 0);
-            //CHALLENGE:
-            result.y = BitConverter.ToSingle(bytes, 4);
-            result.z = BitConverter.ToSingle(bytes, 8);
-            return result;
         }
 
         private Transform GetPlayerTransform()
         {
-            //Mini challenge
             return GameObject.FindWithTag("Player").transform;
         }
 
