@@ -59,7 +59,10 @@ namespace RPG.Saving
             var saveables = FindObjectsOfType<SaveableEntity>();
             foreach (var saveable in saveables)
             {
-                saveable.RestoreState(state[saveable.GetUniqueIdentifier()]);
+                if (state.ContainsKey(saveable.GetUniqueIdentifier()))
+                {
+                    saveable.RestoreState(state[saveable.GetUniqueIdentifier()]);
+                }
             }
         }
 
