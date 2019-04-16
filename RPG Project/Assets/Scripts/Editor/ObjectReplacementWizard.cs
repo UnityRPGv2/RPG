@@ -43,7 +43,7 @@ public class ObjectReplacementWizard : ScriptableWizard
                 var prop = so.GetIterator();
                 do
                 {
-                    if (prop.prefabOverride, prop.)
+                    if (prop.prefabOverride)
                     {
                         var otherSo = new SerializedObject(newObject.GetComponent(component.GetType()));
                         otherSo.CopyFromSerializedProperty(prop);
