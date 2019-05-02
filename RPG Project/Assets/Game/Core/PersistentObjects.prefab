@@ -39,11 +39,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7696481871271465350}
     m_Modifications:
-    - target: {fileID: 4831703139073502536, guid: 9b796efcaf4be5a4ab432017c48bc0f4,
-        type: 3}
-      propertyPath: m_Name
-      value: SavingSystem
-      objectReference: {fileID: 0}
     - target: {fileID: 8396979509254914985, guid: 9b796efcaf4be5a4ab432017c48bc0f4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -99,6 +94,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4831703139073502536, guid: 9b796efcaf4be5a4ab432017c48bc0f4,
+        type: 3}
+      propertyPath: m_Name
+      value: SavingSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2650649144640769547, guid: 9b796efcaf4be5a4ab432017c48bc0f4,
+        type: 3}
+      propertyPath: fadeInTime
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b796efcaf4be5a4ab432017c48bc0f4, type: 3}
 --- !u!4 &7841007739188393340 stripped
@@ -114,11 +119,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7696481871271465350}
     m_Modifications:
-    - target: {fileID: 5202944468130448500, guid: 3a86cd817e7e1a14f908f2a172ca1bca,
-        type: 3}
-      propertyPath: m_Name
-      value: Fader
-      objectReference: {fileID: 0}
     - target: {fileID: 5202944468130448503, guid: 3a86cd817e7e1a14f908f2a172ca1bca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -223,6 +223,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202944468130448500, guid: 3a86cd817e7e1a14f908f2a172ca1bca,
+        type: 3}
+      propertyPath: m_Name
+      value: Fader
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a86cd817e7e1a14f908f2a172ca1bca, type: 3}
