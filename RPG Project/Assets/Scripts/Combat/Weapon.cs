@@ -11,16 +11,34 @@ namespace RPG.Combat
         [SerializeField] float range = 3f;
         [SerializeField] bool isRightHanded = true;
 
+        const string weaponName = "Weapon";
+
         public void Spawn(Transform leftHand, Transform rightHand, Animator animator)
         {
+            DestroyOldWeapon(leftHand, rightHand);
+
             if (equippedPrefab != null)
             {
-                Instantiate(equippedPrefab, isRightHanded ? rightHand : leftHand);
+                GameObject weapon = Instantiate(equippedPrefab, isRightHanded ? rightHand : leftHand);
+                weapon.name = weaponName;
             }
             if (animatorOverride != null)
             {
                 animator.runtimeAnimatorController = animatorOverride;
             }
+        }
+
+        private static void DestroyOldWeapon(Transform leftHand, Transform rightHand)
+        {
+            Transform oldWeapon = rightHand.Find(weaponName);
+            if (oldWeapon == null)
+            {
+                oldWeapon = leftHand.Find(weaponName);
+            }
+            if (oldWeapon == null) return;
+
+            oldWeapon.name = "DESTROYING";
+            Destroy(oldWeapon.gameObject);
         }
 
         public float GetDamage()
