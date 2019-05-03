@@ -17,3 +17,4 @@ MonoBehaviour:
     type: 3}
   damage: 5
   range: 13
+  isRightHanded: 0
