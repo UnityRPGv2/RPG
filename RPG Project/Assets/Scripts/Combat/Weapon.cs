@@ -12,8 +12,14 @@ namespace RPG.Combat
 
         public void Spawn(Transform handTransform, Animator animator)
         {
-            Instantiate(equippedPrefab, handTransform);
-            animator.runtimeAnimatorController = animatorOverride;
+            if (equippedPrefab != null)
+            {
+                Instantiate(equippedPrefab, handTransform);
+            }
+            if (animatorOverride != null)
+            {
+                animator.runtimeAnimatorController = animatorOverride;
+            }
         }
 
         public float GetDamage()
