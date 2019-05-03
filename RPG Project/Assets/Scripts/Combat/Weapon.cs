@@ -1,3 +1,4 @@
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -10,6 +11,7 @@ namespace RPG.Combat
         [SerializeField] float damage = 3f;
         [SerializeField] float range = 3f;
         [SerializeField] bool isRightHanded = true;
+        [SerializeField] Projectile projectile = null;
 
         const string weaponName = "Weapon";
 
@@ -19,13 +21,29 @@ namespace RPG.Combat
 
             if (equippedPrefab != null)
             {
-                GameObject weapon = Instantiate(equippedPrefab, isRightHanded ? rightHand : leftHand);
+                GameObject weapon = Instantiate(equippedPrefab, GetTranform(leftHand, rightHand));
                 weapon.name = weaponName;
             }
             if (animatorOverride != null)
             {
                 animator.runtimeAnimatorController = animatorOverride;
             }
+        }
+
+        private Transform GetTranform(Transform leftHand, Transform rightHand)
+        {
+            return isRightHanded ? rightHand : leftHand;
+        }
+
+        public bool HasProjectile()
+        {
+            return projectile != null;
+        }
+
+        public void LaunchProjectile(Transform leftHand, Transform rightHand, Health target)
+        {
+            Projectile projectileInstance = Instantiate(projectile, GetTranform(leftHand, rightHand).position, Quaternion.identity);
+            projectileInstance.SetTarget(target);
         }
 
         private static void DestroyOldWeapon(Transform leftHand, Transform rightHand)

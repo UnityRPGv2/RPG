@@ -1,3 +1,4 @@
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -5,7 +6,12 @@ namespace RPG.Combat
     public class Projectile : MonoBehaviour
     {
         [SerializeField] float speed = 1;
-        [SerializeField] Transform target = null;
+        Health target = null;
+
+        public void SetTarget(Health target)
+        {
+            this.target = target;
+        }
 
         private void Update() {
             if (target == null) return;
@@ -19,10 +25,11 @@ namespace RPG.Combat
             CapsuleCollider targetCapsule = target.GetComponent<CapsuleCollider>();
             if (targetCapsule == null)
             {
-                return target.position;
+                return target.transform.position;
             }
 
-            return target.position + Vector3.up * targetCapsule.height;
+            return target.transform.position + Vector3.up * targetCapsule.height / 2;
         }
+
     }
 }
