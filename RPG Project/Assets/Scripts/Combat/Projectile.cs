@@ -7,10 +7,12 @@ namespace RPG.Combat
     {
         [SerializeField] float speed = 1;
         Health target = null;
+        float damage = 0;
 
-        public void SetTarget(Health target)
+        public void SetTarget(Health target, float damage)
         {
             this.target = target;
+            this.damage = damage;
         }
 
         private void Update() {
@@ -31,5 +33,13 @@ namespace RPG.Combat
             return target.transform.position + Vector3.up * targetCapsule.height / 2;
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<Health>() != target) return;
+
+            target.TakeDamage(damage);
+
+            Destroy(gameObject);
+        }
     }
 }
