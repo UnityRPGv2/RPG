@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0af452973ecd77245b20300c499fe302, type: 3}
-  m_Name: Bow
+  m_Name: Spell
   m_EditorClassIdentifier: 
-  animatorOverride: {fileID: 22100000, guid: 720cef2680aefa248a54a9999057f1f0, type: 2}
-  equippedPrefab: {fileID: 1855752490113566314, guid: 34098d3e0d689c54fa027ca0ae8bd7bb,
-    type: 3}
+  animatorOverride: {fileID: 22100000, guid: 0bfd07cc8e1382f49a2cf4da5dad92d8, type: 2}
+  equippedPrefab: {fileID: 0}
   damage: 5
-  range: 13
-  isRightHanded: 0
-  projectile: {fileID: 4579728181210903895, guid: 05c0bedf976ef3546be7f76d1710b135,
+  range: 8
+  isRightHanded: 1
+  projectile: {fileID: 4511010842720443637, guid: 76ee8bb80e987574fbef148483c03121,
     type: 3}

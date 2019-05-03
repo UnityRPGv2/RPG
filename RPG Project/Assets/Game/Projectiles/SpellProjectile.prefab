@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223566701018229521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -0.939}
+  m_LocalPosition: {x: -0, y: 0, z: 1.209}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5064699037698634447}
@@ -46,8 +46,8 @@ ParticleSystem:
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
-  prewarm: 0
+  looping: 1
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -966,7 +966,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
+        scalar: 0
         minScalar: 1
         maxCurve:
           serializedVersion: 2
@@ -1018,7 +1018,7 @@ ParticleSystem:
           m_RotationOrder: 4
       cycleCount: 1
       repeatInterval: 0.01
-      probability: 1
+      probability: 0
   SizeModule:
     enabled: 1
     curve:
@@ -4701,7 +4701,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5259710677616298110}
   m_LocalRotation: {x: -0, y: 0.99998236, z: -0, w: -0.0059399116}
-  m_LocalPosition: {x: 0.002, y: 0, z: 0.155}
+  m_LocalPosition: {x: 0.019, y: 0, z: 1.546}
   m_LocalScale: {x: 0.92402, y: 0.92402, z: 0.92402}
   m_Children: []
   m_Father: {fileID: 5064699037698634447}
@@ -9497,6 +9497,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394726423684608348, guid: 14c54984443e79945b41ea3045c83edc,
+        type: 3}
+      propertyPath: destroyOnHit.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394726423684608348, guid: 14c54984443e79945b41ea3045c83edc,
+        type: 3}
+      propertyPath: destroyOnHit.Array.data[0]
+      value: 
+      objectReference: {fileID: 5259710677616298110}
+    - target: {fileID: 3394726423684608348, guid: 14c54984443e79945b41ea3045c83edc,
+        type: 3}
+      propertyPath: lifeAfterDestroy
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14c54984443e79945b41ea3045c83edc, type: 3}

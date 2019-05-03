@@ -6,6 +6,10 @@ namespace RPG.Combat
     public class Projectile : MonoBehaviour
     {
         [SerializeField] float speed = 1;
+        [SerializeField] float maxLifeTime = 10;
+        [SerializeField] float lifeAfterDestroy = 2;
+        [SerializeField] GameObject[] destroyOnHit = null;
+
         Health target = null;
         float damage = 0;
 
@@ -13,6 +17,10 @@ namespace RPG.Combat
         {
             this.target = target;
             this.damage = damage;
+            
+            transform.LookAt(GetAimLocation());
+
+            Destroy(gameObject, maxLifeTime);
         }
 
         private void Update() {
@@ -39,7 +47,13 @@ namespace RPG.Combat
 
             target.TakeDamage(damage);
 
-            Destroy(gameObject);
+            speed = 0;
+
+            foreach (GameObject toDestroy in destroyOnHit)
+            {
+                Destroy(toDestroy);
+            }
+            Destroy(gameObject, lifeAfterDestroy);
         }
     }
 }
