@@ -9513,6 +9513,12 @@ PrefabInstance:
       propertyPath: lifeAfterDestroy
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3394726423684608348, guid: 14c54984443e79945b41ea3045c83edc,
+        type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 2302457091093092515, guid: 69d1b1037536b504884c93bb73d662db,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14c54984443e79945b41ea3045c83edc, type: 3}
 --- !u!4 &5064699037698634447 stripped
