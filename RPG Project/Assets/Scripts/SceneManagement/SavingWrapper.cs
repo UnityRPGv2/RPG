@@ -9,8 +9,11 @@ namespace RPG.SceneManagement
         const string defaultSaveFile = "save";
 
         [SerializeField] float fadeInTime = 0.2f;
+        [SerializeField] bool loadingDisabled = false;
 
         private IEnumerator Start() {
+            if (loadingDisabled) yield break;
+
             Fader fader = FindObjectOfType<Fader>();
 
             fader.FadeOutImmediate();
