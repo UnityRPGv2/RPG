@@ -2,6 +2,7 @@ using RPG.Saving;
 using UnityEngine;
 using RPG.Core;
 using RPG.Stats;
+using System;
 
 namespace RPG.Resources
 {
@@ -20,12 +21,22 @@ namespace RPG.Resources
             return isDead;
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             if(healthPoints == 0)
             {
                 Die();
+                AwardXP(instigator);
+            }
+        }
+
+        private void AwardXP(GameObject instigator)
+        {
+            Experience experience = instigator.GetComponent<Experience>();
+            if (experience != null)
+            {
+                experience.GainPoints(GetComponent<BaseStats>().GetExperienceReward());
             }
         }
 		

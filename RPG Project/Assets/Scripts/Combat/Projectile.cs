@@ -11,11 +11,13 @@ namespace RPG.Combat
         [SerializeField] GameObject[] destroyOnHit = null;
         [SerializeField] GameObject hitEffect = null;
 
+        GameObject instigator = null;
         Health target = null;
         float damage = 0;
 
-        public void SetTarget(Health target, float damage)
+        public void SetTarget(GameObject instigator, Health target, float damage)
         {
+            this.instigator = instigator;
             this.target = target;
             this.damage = damage;
 
@@ -47,7 +49,7 @@ namespace RPG.Combat
         {
             if (other.GetComponent<Health>() != target) return;
 
-            target.TakeDamage(damage);
+            target.TakeDamage(instigator, damage);
 
             speed = 0;
 
