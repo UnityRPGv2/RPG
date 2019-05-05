@@ -1,6 +1,7 @@
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
+using RPG.Resources;
 using System;
 using UnityEngine.Serialization;
 

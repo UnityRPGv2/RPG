@@ -1,7 +1,9 @@
 using RPG.Saving;
 using UnityEngine;
+using RPG.Core;
+using RPG.Stats;
 
-namespace RPG.Core
+namespace RPG.Resources
 {
     public class Health : MonoBehaviour, ISaveable
     {
