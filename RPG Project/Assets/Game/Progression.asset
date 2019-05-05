@@ -22,6 +22,13 @@ MonoBehaviour:
       - 200
       - 250
       - 300
+    - stat: 2
+      levels:
+      - 20
+      - 50
+      - 100
+      - 250
+      - 10000000
   - characterClass: 1
     stats:
     - stat: 0
