@@ -7,7 +7,7 @@ namespace RPG.Combat
     {
         [SerializeField] float speed = 1;
         [SerializeField] float maxLifeTime = 10;
-        [SerializeField] float lifeAfterDestroy = 2;
+        [SerializeField] float lifeAfterHit = 2;
         [SerializeField] GameObject[] destroyOnHit = null;
         [SerializeField] GameObject hitEffect = null;
 
@@ -19,6 +19,7 @@ namespace RPG.Combat
             this.target = target;
             this.damage = damage;
 
+            // Make trails look good.
             transform.LookAt(GetAimLocation());
 
             Destroy(gameObject, maxLifeTime);
@@ -59,7 +60,7 @@ namespace RPG.Combat
             {
                 Destroy(toDestroy);
             }
-            Destroy(gameObject, lifeAfterDestroy);
+            Destroy(gameObject, lifeAfterHit);
         }
     }
 }

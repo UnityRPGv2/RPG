@@ -32,7 +32,15 @@ namespace RPG.Combat
 
         private Transform GetTranform(Transform leftHand, Transform rightHand)
         {
-            return isRightHanded ? rightHand : leftHand;
+            if (isRightHanded)
+            {
+                return rightHand;
+            }
+            else
+            {
+                return leftHand;
+            }
+            //return isRightHanded ? rightHand : leftHand;
         }
 
         public bool HasProjectile()
@@ -55,6 +63,7 @@ namespace RPG.Combat
             }
             if (oldWeapon == null) return;
 
+            // So that we don't clash with a new weapon created immediately after.
             oldWeapon.name = "DESTROYING";
             Destroy(oldWeapon.gameObject);
         }
