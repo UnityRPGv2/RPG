@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -6,26 +8,37 @@ namespace RPG.Stats
     public class Progression : ScriptableObject
     {
         [SerializeField] ProgressionClass[] progressionClasses = null;
+
+        Dictionary<CharacterClass, Dictionary<Stat, float[]>> lookup = null;
         
         public float GetStat(CharacterClass characterClass, Stat stat, int level)
         {
-            foreach (ProgressionClass progressionClass in progressionClasses)
+            BuildLookup();
+
+            float[] levels = lookup[characterClass][stat];
+
+            if (levels.Length < level)
             {
-                if (progressionClass.characterClass != characterClass) continue;
-
-                foreach (ProgressionStat progressionStat in progressionClass.stats)
-                {
-                    if (progressionStat.stat != stat) continue;
-
-                    if (progressionStat.levels.Length < level)
-                    {
-                        return progressionStat.levels[progressionStat.levels.Length - 1];
-                    }
-                    return progressionStat.levels[level - 1];
-                }
+                return levels[levels.Length - 1];
             }
 
-            return 0;
+            return levels[level - 1];
+        }
+
+        private void BuildLookup()
+        {
+            if (lookup != null) return;
+
+            lookup = new Dictionary<CharacterClass, Dictionary<Stat, float[]>>();
+            foreach (ProgressionClass progressionClass in progressionClasses)
+            {
+                lookup[progressionClass.characterClass] = new Dictionary<Stat, float[]>();
+                var classLookup = lookup[progressionClass.characterClass];
+                foreach (ProgressionStat progressionStat in progressionClass.stats)
+                {
+                    classLookup[progressionStat.stat] = progressionStat.levels;
+                }
+            }
         }
 
         [System.Serializable]
