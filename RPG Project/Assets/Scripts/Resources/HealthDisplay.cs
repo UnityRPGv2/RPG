@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ namespace RPG.Resources
         }
 
         private void Update() {
-            GetComponent<Text>().text = (health.GetPercentage() * 100).ToString() + "%";
+            GetComponent<Text>().text = String.Format("{0:0}%", health.GetPercentage() * 100);
         }
     }
 }
