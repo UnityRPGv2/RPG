@@ -133,5 +133,10 @@ namespace RPG.Combat
         {
             yield return currentWeapon.GetDamage();
         }
+
+        public IEnumerable<float> GetPercentageModifier(Stat stat)
+        {
+            yield return currentWeapon.GetPercentageBonus();
+        }
     }
 }

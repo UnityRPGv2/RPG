@@ -1,3 +1,4 @@
+using System;
 using RPG.Resources;
 using UnityEngine;
 
@@ -77,6 +78,11 @@ namespace RPG.Combat
         public float GetRange()
         {
             return range;
+        }
+
+        internal float GetPercentageBonus()
+        {
+            return percentageBonus;
         }
     }
 }
