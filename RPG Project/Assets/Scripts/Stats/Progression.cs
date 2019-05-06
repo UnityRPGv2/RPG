@@ -15,7 +15,12 @@ namespace RPG.Stats
         {
             BuildLookup();
 
-            float[] levels = lookup[characterClass][stat];
+            var classStats = lookup[characterClass];
+            if (!classStats.ContainsKey(stat))
+            {
+                return 0;
+            }
+            float[] levels = classStats[stat];
 
             if (levels.Length < level)
             {

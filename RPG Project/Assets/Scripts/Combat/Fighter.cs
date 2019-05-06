@@ -4,6 +4,7 @@ using RPG.Core;
 using RPG.Resources;
 using System;
 using UnityEngine.Serialization;
+using RPG.Stats;
 
 namespace RPG.Combat
 {
@@ -17,6 +18,12 @@ namespace RPG.Combat
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
         Weapon currentWeapon = null;
+
+        BaseStats stats = null;
+
+        private void Awake() {
+            stats = GetComponent<BaseStats>();
+        }
 
         private void Start() {
             EquipWeapon(defaultWeapon);
@@ -75,7 +82,7 @@ namespace RPG.Combat
             }
             else
             {
-                target.TakeDamage(gameObject, currentWeapon.GetDamage());
+                target.TakeDamage(gameObject, stats.GetStat(Stat.Damage));
             }
         }
 

@@ -30,6 +30,14 @@ MonoBehaviour:
       - 120
       - 170
       - 10000000
+    - stat: 3
+      levels:
+      - 10
+      - 12
+      - 15
+      - 20
+      - 25
+      - 10000000
   - characterClass: 1
     stats:
     - stat: 0
@@ -46,3 +54,10 @@ MonoBehaviour:
       - 30
       - 40
       - 50
+    - stat: 3
+      levels:
+      - 10
+      - 11
+      - 12
+      - 13
+      - 15
