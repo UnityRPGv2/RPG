@@ -79,7 +79,7 @@ namespace RPG.Combat
 
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LaunchProjectile(gameObject, leftHandTransform, rightHandTransform, target);
+                currentWeapon.LaunchProjectile(gameObject, stats.GetStat(Stat.Damage), leftHandTransform, rightHandTransform, target);
             }
             else
             {
@@ -131,12 +131,18 @@ namespace RPG.Combat
 
         public IEnumerable<float> GetAdditiveModifiers(Stat stat)
         {
-            yield return currentWeapon.GetDamage();
+            if (currentWeapon != null)
+            {
+                yield return currentWeapon.GetDamage();
+            }
         }
 
         public IEnumerable<float> GetPercentageModifier(Stat stat)
         {
-            yield return currentWeapon.GetPercentageBonus();
+            if (currentWeapon != null)
+            {
+                yield return currentWeapon.GetPercentageBonus();
+            }
         }
     }
 }
