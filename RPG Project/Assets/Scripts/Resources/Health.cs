@@ -26,6 +26,7 @@ namespace RPG.Resources
 
         public void TakeDamage(GameObject instigator, float damage)
         {
+            Debug.Log("Damage: " + damage + " taken by: " + gameObject.name);
             damagePoints += damage;
             if (ShouldDie())
             {
