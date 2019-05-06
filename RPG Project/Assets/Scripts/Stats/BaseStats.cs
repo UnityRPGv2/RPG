@@ -20,7 +20,7 @@ namespace RPG.Stats
 
         public float GetStat(Stat stat)
         {
-            return GetBaseStat(stat) + GetAdditiveModifiers(stat);
+            return (GetBaseStat(stat) + GetAdditiveModifiers(stat)) * (1 + GetPercentageModifier(stat)/100);
         }
 
         private float GetBaseStat(Stat stat)
@@ -31,7 +31,7 @@ namespace RPG.Stats
         private float GetAdditiveModifiers(Stat stat)
         {
             if (!shouldUseModifiers) return 0;
-            
+
             float total = 0;
             foreach (IModifierProvider provider in GetComponents<IModifierProvider>())
             {
@@ -41,6 +41,10 @@ namespace RPG.Stats
                 }
             }
             return total;
+        }
+
+        private float GetPercentageModifier(Stat stat)
+        {
         }
 
         public int GetLevel()
