@@ -9,6 +9,7 @@ namespace RPG.Stats
         [Range(1, 99)]
         [SerializeField] int startingLevel = 1;
         [SerializeField] Progression progression = null;
+        [SerializeField] bool shouldUseModifiers = false;
  
         private void Update() {
             if (Input.GetKeyDown(KeyCode.E))
@@ -29,6 +30,8 @@ namespace RPG.Stats
 
         private float GetAdditiveModifiers(Stat stat)
         {
+            if (!shouldUseModifiers) return 0;
+            
             float total = 0;
             foreach (IModifierProvider provider in GetComponents<IModifierProvider>())
             {
