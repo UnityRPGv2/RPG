@@ -28,7 +28,12 @@ namespace RPG.Resources
                 Die();
             }
         }
-
+		
+        public float GetPercentage()
+        {
+            return healthPoints / GetComponent<BaseStats>().GetHealth();
+        }
+		
         private void Die()
         {
             if (isDead) return;
