@@ -12,6 +12,11 @@ namespace RPG.Resources
             experiencePoints += earnedPoints;
         }
 
+        public float GetExperience()
+        {
+            return experiencePoints;
+        }
+
         public void RestoreState(object state)
         {
             experiencePoints = (float)state;
