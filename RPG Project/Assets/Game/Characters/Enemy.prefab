@@ -138,6 +138,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2c7272ad808b5a8449f77a375a2c4119,
         type: 2}
+    - target: {fileID: 3125957438692005694, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+        type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 7865944738741547367}
+    - target: {fileID: 3125957438692005694, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+        type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 7865944738741604709}
     - target: {fileID: 1172905977, guid: 750e3c6876a501e42b5827ec7a3d24d1, type: 3}
       propertyPath: m_Speed
       value: 3
