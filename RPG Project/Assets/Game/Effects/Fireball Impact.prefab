@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7222570074126485566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302457091093092515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4691e5c59a958ac4aa1d39dd53d4952f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2302457091092932355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9,7 +21,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 180128, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 3}
       propertyPath: m_Name
-      value: SpellBlast
+      value: Fireball Impact
       objectReference: {fileID: 0}
     - target: {fileID: 403952, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 3}
       propertyPath: m_LocalPosition.x
@@ -137,3 +149,9 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f1b0fea076fb0574d868f6e3d9523f52, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 3}
+--- !u!1 &2302457091093092515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 180128, guid: 6586ff0f14125534cae2f5d8f04b7871,
+    type: 3}
+  m_PrefabInstance: {fileID: 2302457091092932355}
+  m_PrefabAsset: {fileID: 0}

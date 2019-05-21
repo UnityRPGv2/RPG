@@ -28,6 +28,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7052069669789351578, guid: aead7987579702545ade89f549b33e0f,
         type: 3}
+    - target: {fileID: 4363093564197430368, guid: 14c54984443e79945b41ea3045c83edc,
+        type: 3}
+      propertyPath: destroyOnHit.Array.data[0]
+      value: 
+      objectReference: {fileID: 3858231898281691972}
     - target: {fileID: 6934960370579878028, guid: 14c54984443e79945b41ea3045c83edc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -110,3 +115,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14c54984443e79945b41ea3045c83edc, type: 3}
+--- !u!1 &3858231898281691972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3082023544310305730, guid: 14c54984443e79945b41ea3045c83edc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2255948742063085702}
+  m_PrefabAsset: {fileID: 0}
