@@ -18,8 +18,9 @@ namespace RPG.Resources
             print(gameObject.name + " Start");
             if (!wasRestored)
             {
-                healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+                SetFullHealth();
             }
+            GetComponent<BaseStats>().onLevelUp += SetFullHealth;
         }
 
         public bool IsDead()
@@ -50,6 +51,11 @@ namespace RPG.Resources
         public float GetMaxHealthPoints()
         {
             return GetComponent<BaseStats>().GetStat(Stat.Health);
+        }
+
+        public void SetFullHealth()
+        {
+            healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
         private void Die()

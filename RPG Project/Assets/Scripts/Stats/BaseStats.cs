@@ -13,6 +13,8 @@ namespace RPG.Stats
         [SerializeField] Progression progression = null;
         [SerializeField] GameObject levelUpParticleEffect = null;
 
+        public event Action onLevelUp;
+
         int currentLevel = 0;
 
         private void Start() 
@@ -32,6 +34,7 @@ namespace RPG.Stats
             {
                 currentLevel = newLevel;
                 LevelUpEffects();
+                if (onLevelUp != null) onLevelUp();
             }
         }
 
