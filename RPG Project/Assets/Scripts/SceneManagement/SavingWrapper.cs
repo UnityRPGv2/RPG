@@ -27,6 +27,10 @@ namespace RPG.SceneManagement
             {
                 Load();
             }
+            if (Input.GetKeyDown(KeyCode.Delete))
+            {
+                GetComponent<SavingSystem>().Delete(defaultSaveFile);
+            }
         }
 
         public void Load()
