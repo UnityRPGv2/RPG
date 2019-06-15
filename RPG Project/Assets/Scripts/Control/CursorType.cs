@@ -5,6 +5,7 @@
         Combat,
         Movement,
         None,
-        UI
+        UI,
+        Pickup
     }
 }
