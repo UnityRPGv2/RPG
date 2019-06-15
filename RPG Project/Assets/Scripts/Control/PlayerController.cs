@@ -39,6 +39,7 @@ namespace RPG.Control
 
             if (health.IsDead()) return;
 
+            if (InteractWithComponents()) return;
             if (InteractWithCombat()) return;
             if (InteractWithMovement()) return;
             SetCursor(CursorType.None);
@@ -50,6 +51,24 @@ namespace RPG.Control
             {
                 SetCursor(CursorType.UI);
                 return true;
+            }
+            return false;
+        }
+
+        private bool InteractWithComponents()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            foreach (RaycastHit hit in hits)
+            {
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach (IRaycastable raycastable in raycastables)
+                {
+                    if (raycastable.HandleRaycast(this))
+                    {
+                        SetCursor(CursorType.UI);
+                        return true;
+                    }
+                }
             }
             return false;
         }
