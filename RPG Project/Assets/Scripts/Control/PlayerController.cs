@@ -15,7 +15,8 @@ namespace RPG.Control
         {
             Combat,
             Movement,
-            None
+            None,
+            UI
         }
 
         [System.Serializable]
@@ -45,7 +46,12 @@ namespace RPG.Control
 
         private bool InteractWithUI()
         {
-            return EventSystem.current.IsPointerOverGameObject();
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(CursorType.UI);
+                return true;
+            }
+            return false;
         }
 
         private bool InteractWithCombat()
