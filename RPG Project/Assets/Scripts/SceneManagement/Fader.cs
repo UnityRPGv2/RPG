@@ -13,11 +13,13 @@ namespace RPG.SceneManagement
 
         public void FadeOutImmediate()
         {
+            canvasGroup.gameObject.SetActive(true);
             canvasGroup.alpha = 1;
         }
 
         public IEnumerator FadeOut(float time)
         {
+            canvasGroup.gameObject.SetActive(true);
             while (canvasGroup.alpha < 1)
             {
                 canvasGroup.alpha += Time.deltaTime / time;
@@ -32,6 +34,7 @@ namespace RPG.SceneManagement
                 canvasGroup.alpha -= Time.deltaTime / time;
                 yield return null;
             }
+            canvasGroup.gameObject.SetActive(false);
         }
     }
 }
