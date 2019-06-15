@@ -20,7 +20,9 @@ namespace RPG.Control
         [System.Serializable]
         public struct CursorMapping
         {
-            // Challenge
+           public CursorType type;
+           public Texture2D texture;
+           public Vector2 hotspot;
         }
 
         [SerializeField] CursorMapping[] cursorMappings = null;
@@ -79,13 +81,20 @@ namespace RPG.Control
 
         private void SetCursor(CursorType cursorType)
         {
-            CursorMapping mapping = GetCursorMapping();
+            CursorMapping mapping = GetCursorMapping(cursorType);
             Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
         }
 
-        private CursorMapping GetCursorMapping()
+        private CursorMapping GetCursorMapping(CursorType cursorType)
         {
-            // Challenge
+            foreach (CursorMapping mapping in cursorMappings)
+            {
+                if (mapping.type == cursorType)
+                {
+                    return mapping;
+                }
+            }
+            return cursorMappings[0];
         }
 
         private static Ray GetMouseRay()
