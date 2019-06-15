@@ -29,12 +29,19 @@ namespace RPG.Control
 
         [SerializeField] CursorMapping[] cursorMappings = null;
 
+        bool moveStarted = false;
+
         private void Start() {
             health = GetComponent<Health>();
         }
 
         private void Update()
         {
+            if (Input.GetMouseButtonUp(0))
+            {
+                moveStarted = false;
+            }
+
             if (InteractWithUI()) return;
 
             if (health.IsDead()) return;
@@ -78,7 +85,11 @@ namespace RPG.Control
             bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
             if (hasHit)
             {
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButtonDown(0))
+                {
+                    moveStarted = true;
+                }
+                if (Input.GetMouseButton(0) && moveStarted)
                 {
                     GetComponent<Mover>().StartMoveAction(hit.point, 1f);
                 }
