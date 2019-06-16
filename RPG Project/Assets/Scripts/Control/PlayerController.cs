@@ -75,6 +75,10 @@ namespace RPG.Control
         {
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
             float[] distances = new float[hits.Length];
+            for (int i = 0; i < distances.Length; i++)
+            {
+                distances[i] = hits[i].distance;
+            }
             Array.Sort(distances, hits);
             return hits;
         }
