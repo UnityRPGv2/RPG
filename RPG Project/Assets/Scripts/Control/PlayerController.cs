@@ -21,6 +21,7 @@ namespace RPG.Control
         }
 
         [SerializeField] CursorMapping[] cursorMappings = null;
+        [SerializeField] float navMeshProjectionDistance = 1f;
 
         bool moveStarted = false;
 
@@ -86,8 +87,6 @@ namespace RPG.Control
 
         private bool InteractWithMovement()
         {
-            // RaycastHit hit;
-            // bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
             Vector3 target;
             if (RaycastNavMesh(out target))
             {
@@ -108,8 +107,16 @@ namespace RPG.Control
         private bool RaycastNavMesh(out Vector3 target)
         {
             target = new Vector3();
-            //NavMesh.SamplePosition()
-            return false;
+            RaycastHit hit;
+            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+            if (!hasHit) return false;
+
+            NavMeshHit navMeshHit;
+            bool hasCastToNavmesh = NavMesh.SamplePosition(hit.point, out navMeshHit, navMeshProjectionDistance, NavMesh.AllAreas);
+            if (!hasCastToNavmesh) return false;
+
+            target = navMeshHit.position;
+            return true;
         }
 
         private void SetCursor(CursorType cursorType)
