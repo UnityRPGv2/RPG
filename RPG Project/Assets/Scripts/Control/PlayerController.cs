@@ -129,6 +129,12 @@ namespace RPG.Control
         private static float GetPathLength(NavMeshPath path)
         {
             float total = 0;
+            if (path.corners.Length < 2) return total;
+            for (int i = 1; i < path.corners.Length; i++)
+            {
+                total += Vector3.Distance(path.corners[i - 1], path.corners[i]);
+            }
+            print(total);
             return total;
         }
 
