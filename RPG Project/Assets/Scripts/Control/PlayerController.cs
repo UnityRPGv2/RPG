@@ -4,6 +4,7 @@ using UnityEngine;
 using RPG.Resources;
 using System;
 using UnityEngine.EventSystems;
+using UnityEngine.AI;
 
 namespace RPG.Control
 {
@@ -85,9 +86,10 @@ namespace RPG.Control
 
         private bool InteractWithMovement()
         {
-            RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
-            if (hasHit)
+            // RaycastHit hit;
+            // bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+            Vector3 target;
+            if (RaycastNavMesh(out target))
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -95,11 +97,18 @@ namespace RPG.Control
                 }
                 if (Input.GetMouseButton(0) && moveStarted)
                 {
-                    GetComponent<Mover>().StartMoveAction(hit.point, 1f);
+                    GetComponent<Mover>().StartMoveAction(target, 1f);
                 }
                 SetCursor(CursorType.Movement);
                 return true;
             }
+            return false;
+        }
+
+        private bool RaycastNavMesh(out Vector3 target)
+        {
+            target = new Vector3();
+            //NavMesh.SamplePosition()
             return false;
         }
 
