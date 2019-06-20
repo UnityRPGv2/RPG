@@ -1,5 +1,71 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1015061722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1015061725}
+  - component: {fileID: 1015061724}
+  - component: {fileID: 1015061723}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1015061725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015061722}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 30.491667, y: -4.9722357, z: 17.88929}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7696481871271465350}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1015061724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015061722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &1015061723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015061722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!1 &8025946066939357768
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,6 +95,7 @@ Transform:
   m_Children:
   - {fileID: 1884150640335891236}
   - {fileID: 7841007739188393340}
+  - {fileID: 1015061725}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39,6 +106,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7696481871271465350}
     m_Modifications:
+    - target: {fileID: 4831703139073502536, guid: 9b796efcaf4be5a4ab432017c48bc0f4,
+        type: 3}
+      propertyPath: m_Name
+      value: SavingSystem
+      objectReference: {fileID: 0}
     - target: {fileID: 8396979509254914985, guid: 9b796efcaf4be5a4ab432017c48bc0f4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -94,15 +166,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4831703139073502536, guid: 9b796efcaf4be5a4ab432017c48bc0f4,
-        type: 3}
-      propertyPath: m_Name
-      value: SavingSystem
-      objectReference: {fileID: 0}
     - target: {fileID: 2650649144640769547, guid: 9b796efcaf4be5a4ab432017c48bc0f4,
         type: 3}
       propertyPath: fadeInTime
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b796efcaf4be5a4ab432017c48bc0f4, type: 3}
@@ -119,6 +186,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7696481871271465350}
     m_Modifications:
+    - target: {fileID: 5202944468130448500, guid: 3a86cd817e7e1a14f908f2a172ca1bca,
+        type: 3}
+      propertyPath: m_Name
+      value: Fader
+      objectReference: {fileID: 0}
     - target: {fileID: 5202944468130448503, guid: 3a86cd817e7e1a14f908f2a172ca1bca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -223,11 +295,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5202944468130448500, guid: 3a86cd817e7e1a14f908f2a172ca1bca,
-        type: 3}
-      propertyPath: m_Name
-      value: Fader
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a86cd817e7e1a14f908f2a172ca1bca, type: 3}

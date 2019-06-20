@@ -18,14 +18,25 @@ namespace RPG.Stats
 
         int currentLevel = 0;
 
-        private void Start() 
-        {
-            currentLevel = CalculateLevel();
+        private void OnEnable() {
             Experience experience = GetComponent<Experience>();
             if (experience != null)
             {
                 experience.onExperienceGained += UpdateLevel;
             }
+        }
+
+        private void OnDisable() {
+            Experience experience = GetComponent<Experience>();
+            if (experience != null)
+            {
+                experience.onExperienceGained -= UpdateLevel;
+            }
+        }
+
+        private void Start() 
+        {
+            currentLevel = CalculateLevel();
         }
 
         private void UpdateLevel() 

@@ -1,5 +1,6 @@
 using System.Collections;
 using RPG.Saving;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.SceneManagement
@@ -13,13 +14,13 @@ namespace RPG.SceneManagement
         private void Awake() 
         {
             StartCoroutine(LoadLastScene());
-        }
+        }   
 
         private IEnumerator LoadLastScene() {
-            Fader fader = FindObjectOfType<Fader>();
-
-            fader.FadeOutImmediate();
             yield return GetComponent<SavingSystem>().LoadLastScene(defaultSaveFile);
+            
+            Fader fader = FindObjectOfType<Fader>();
+            fader.FadeOutImmediate();
             yield return fader.FadeIn(fadeInTime);
         }
 
