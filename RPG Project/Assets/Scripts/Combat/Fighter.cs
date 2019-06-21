@@ -18,6 +18,7 @@ namespace RPG.Combat
         Health target;
         float timeSinceLastAttack = Mathf.Infinity;
         Weapon currentWeapon = null;
+        public float damage {get;set;}
 
         private void Start() 
         {
@@ -79,7 +80,6 @@ namespace RPG.Combat
         {
             if(target == null) { return; }
 
-            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
             if (currentWeapon.HasProjectile())
             {
                 currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);

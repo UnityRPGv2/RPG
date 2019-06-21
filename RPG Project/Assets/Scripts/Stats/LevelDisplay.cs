@@ -6,16 +6,16 @@ namespace RPG.Stats
 {
     public class LevelDisplay : MonoBehaviour
     {
-        BaseStats baseStats;
+        Character character;
 
         private void Awake()
         {
-            baseStats = GameObject.FindWithTag("Player").GetComponent<BaseStats>();
+            character = GameObject.FindWithTag("Player").GetComponent<Character>();
         }
 
         private void Update()
         {
-            GetComponent<Text>().text = String.Format("{0:0}", baseStats.GetLevel());
+            GetComponent<Text>().text = String.Format("{0:0}", character.level);
         }
     }
 }
