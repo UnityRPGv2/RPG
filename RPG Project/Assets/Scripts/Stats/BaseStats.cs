@@ -16,10 +16,11 @@ namespace RPG.Stats
 
         public event Action onLevelUp;
 
+        Experience experience;
+
         int currentLevel = 0;
 
         private void OnEnable() {
-            Experience experience = GetComponent<Experience>();
             if (experience != null)
             {
                 experience.onExperienceGained += UpdateLevel;
@@ -27,15 +28,19 @@ namespace RPG.Stats
         }
 
         private void OnDisable() {
-            Experience experience = GetComponent<Experience>();
             if (experience != null)
             {
                 experience.onExperienceGained -= UpdateLevel;
             }
         }
 
-        private void Start() 
+        public void Init(Experience experience) 
         {
+            this.experience = experience;
+            if (experience != null)
+            {
+                experience.onExperienceGained += UpdateLevel;
+            }
             currentLevel = CalculateLevel();
         }
 
@@ -106,7 +111,6 @@ namespace RPG.Stats
 
         private int CalculateLevel()
         {
-            Experience experience = GetComponent<Experience>();
             if (experience == null) return startingLevel;
 
             float currentXP = experience.GetPoints();

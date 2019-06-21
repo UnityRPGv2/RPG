@@ -14,21 +14,30 @@ namespace RPG.Resources
 
         bool isDead = false;
 
-        private void OnEnable() {
+        BaseStats baseStats;
 
-            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
+        private void OnEnable() {
+            if (baseStats != null)
+                baseStats.onLevelUp += RegenerateHealth;
         }
 
         private void OnDisable() {
-            GetComponent<BaseStats>().onLevelUp -= RegenerateHealth;
+            if (baseStats != null)
+                baseStats.onLevelUp -= RegenerateHealth;
         }
 
         private void Start()
         {
+        }
+
+        internal void Init(BaseStats baseStats)
+        {
+            this.baseStats = baseStats;
             if (healthPoints < 0)
             {
-                healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+                healthPoints = baseStats.GetStat(Stat.Health);
             }
+            OnEnable();
         }
 
         public bool IsDead()
@@ -55,12 +64,12 @@ namespace RPG.Resources
 
         public float GetMaxHealthPoints()
         {
-            return GetComponent<BaseStats>().GetStat(Stat.Health);
+            return baseStats.GetStat(Stat.Health);
         }
 
         public float GetPercentage()
         {
-            return 100 * (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health));
+            return 100 * (healthPoints / baseStats.GetStat(Stat.Health));
         }
 
         private void Die()
@@ -77,12 +86,12 @@ namespace RPG.Resources
             Experience experience = instigator.GetComponent<Experience>();
             if (experience == null) return;
 
-            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
+            experience.GainExperience(baseStats.GetStat(Stat.ExperienceReward));
         }
 
         private void RegenerateHealth()
         {
-            float regenHealthPoints = GetComponent<BaseStats>().GetStat(Stat.Health) * (regenerationPercentage / 100);
+            float regenHealthPoints = baseStats.GetStat(Stat.Health) * (regenerationPercentage / 100);
             healthPoints = Mathf.Max(healthPoints, regenHealthPoints);
         }
 
