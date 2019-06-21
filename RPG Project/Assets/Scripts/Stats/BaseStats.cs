@@ -14,34 +14,22 @@ namespace RPG.Stats
         [SerializeField] GameObject levelUpParticleEffect = null;
         [SerializeField] bool shouldUseModifiers = false;
 
+        internal void SetStartingXP(float XP)
+        {
+            currentLevel = CalculateLevel(XP);
+        }
+
         public event Action onLevelUp;
 
         int currentLevel = 0;
 
-        private void OnEnable() {
-            Experience experience = GetComponent<Experience>();
-            if (experience != null)
-            {
-                experience.onExperienceGained += UpdateLevel;
-            }
+        private void Awake() {
+            currentLevel = startingLevel;
         }
 
-        private void OnDisable() {
-            Experience experience = GetComponent<Experience>();
-            if (experience != null)
-            {
-                experience.onExperienceGained -= UpdateLevel;
-            }
-        }
-
-        private void Start() 
+        public void UpdateLevel(float XP) 
         {
-            currentLevel = CalculateLevel();
-        }
-
-        private void UpdateLevel() 
-        {
-            int newLevel = CalculateLevel();
+            int newLevel = CalculateLevel(XP);
             if (newLevel > currentLevel)
             {
                 currentLevel = newLevel;
@@ -67,10 +55,6 @@ namespace RPG.Stats
 
         public int GetLevel()
         {
-            if (currentLevel < 1)
-            {
-                currentLevel = CalculateLevel();
-            }
             return currentLevel;
         }
 
@@ -104,12 +88,8 @@ namespace RPG.Stats
             return total;
         }
 
-        private int CalculateLevel()
+        private int CalculateLevel(float currentXP)
         {
-            Experience experience = GetComponent<Experience>();
-            if (experience == null) return startingLevel;
-
-            float currentXP = experience.GetPoints();
             int penultimateLevel = progression.GetLevels(Stat.ExperienceToLevelUp, characterClass);
             for (int level = 1; level <= penultimateLevel; level++)
             {

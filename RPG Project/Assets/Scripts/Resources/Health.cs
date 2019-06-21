@@ -1,7 +1,6 @@
 using System;
 using RPG.Core;
 using RPG.Saving;
-using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Resources
@@ -10,24 +9,20 @@ namespace RPG.Resources
     {
         [SerializeField] float regenerationPercentage = 70;
 
+
+        float maxHealthPoints;
         float healthPoints = -1f;
 
         bool isDead = false;
 
-        private void OnEnable() {
+        public event Action onDie;
 
-            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
-        }
-
-        private void OnDisable() {
-            GetComponent<BaseStats>().onLevelUp -= RegenerateHealth;
-        }
-
-        private void Start()
+        public void Init(float maxHealthPoints)
         {
+            this.maxHealthPoints = maxHealthPoints;
             if (healthPoints < 0)
             {
-                healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+                healthPoints = maxHealthPoints;
             }
         }
 
@@ -36,7 +31,7 @@ namespace RPG.Resources
             return isDead;
         }
 
-        public void TakeDamage(GameObject instigator, float damage)
+        public void TakeDamage(float damage)
         {
             print(gameObject.name + " took damage: " + damage);
 
@@ -44,7 +39,6 @@ namespace RPG.Resources
             if(healthPoints == 0)
             {
                 Die();
-                AwardExperience(instigator);
             }
         }
 
@@ -55,12 +49,12 @@ namespace RPG.Resources
 
         public float GetMaxHealthPoints()
         {
-            return GetComponent<BaseStats>().GetStat(Stat.Health);
+            return maxHealthPoints;
         }
 
         public float GetPercentage()
         {
-            return 100 * (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health));
+            return 100 * (healthPoints / maxHealthPoints);
         }
 
         private void Die()
@@ -72,17 +66,10 @@ namespace RPG.Resources
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
-        private void AwardExperience(GameObject instigator)
+        public void UpdateMaxHealth(float newMaxHealth)
         {
-            Experience experience = instigator.GetComponent<Experience>();
-            if (experience == null) return;
-
-            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
-        }
-
-        private void RegenerateHealth()
-        {
-            float regenHealthPoints = GetComponent<BaseStats>().GetStat(Stat.Health) * (regenerationPercentage / 100);
+            maxHealthPoints = newMaxHealth;
+            float regenHealthPoints = maxHealthPoints * (regenerationPercentage / 100);
             healthPoints = Mathf.Max(healthPoints, regenHealthPoints);
         }
 

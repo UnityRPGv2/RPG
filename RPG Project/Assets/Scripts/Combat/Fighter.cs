@@ -86,7 +86,7 @@ namespace RPG.Combat
             }
             else
             {
-                target.TakeDamage(gameObject, damage);
+                target.GetComponent<Character>().TakeDamage(gameObject, damage);
             }
         }
 

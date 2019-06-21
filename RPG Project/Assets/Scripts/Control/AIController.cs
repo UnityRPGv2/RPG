@@ -38,7 +38,6 @@ namespace RPG.Control
 
         private void Start() 
         {
-
             guardPosition = transform.position;
         }
 
