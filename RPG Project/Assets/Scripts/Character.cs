@@ -7,49 +7,28 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    BaseStats baseStats;
-    Health health;
-    Experience experience;
+    protected BaseStats baseStats;
+    protected Health health;
 
-    void Awake()
+    protected void Awake()
     {
         baseStats = GetComponent<BaseStats>();
         baseStats.onLevelUp += LevelUp;
         health = GetComponent<Health>();
-        experience = GetComponent<Experience>();
-        if (experience != null)
-            experience.onExperienceGained += UpdateBaseStatXP;
     }
 
-    private void Start() 
+    protected void Start() 
     {
-        if (experience)
-        {
-            baseStats.SetStartingXP(experience.GetPoints());
-        }
         health.Init(baseStats.GetStat(Stat.Health));
     }
 
-    public void TakeDamage(GameObject instigator, float damage)
+    public virtual void TakeDamage(GameObject instigator, float damage)
     {
         health.TakeDamage(damage);
-        Character character = instigator.GetComponent<Character>();
-        if (health.IsDead() && character != null && character.hasXP)
-        {
-            character.AwardXP(baseStats.GetStat(Stat.ExperienceReward));
-        }
     }
 
-    public bool hasXP => experience != null;
-
-    public void AwardXP(float XPReward)
+    public virtual void AwardXP(float XPReward)
     {
-        experience.GainExperience(XPReward);
-    }
-
-    private void UpdateBaseStatXP()
-    {
-        baseStats.UpdateLevel(experience.GetPoints());
     }
 
     private void LevelUp()
