@@ -26,10 +26,6 @@ namespace RPG.Resources
                 baseStats.onLevelUp -= RegenerateHealth;
         }
 
-        private void Start()
-        {
-        }
-
         internal void Init(BaseStats baseStats)
         {
             this.baseStats = baseStats;

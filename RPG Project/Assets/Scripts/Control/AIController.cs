@@ -24,7 +24,9 @@ namespace RPG.Control
         Mover mover;
         GameObject player;
 
+        // Init in Start, don't expose
         Vector3 guardPosition;
+        
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         int currentWaypointIndex = 0;
@@ -38,7 +40,6 @@ namespace RPG.Control
 
         private void Start() 
         {
-
             guardPosition = transform.position;
         }
 
@@ -68,6 +69,7 @@ namespace RPG.Control
             timeSinceArrivedAtWaypoint += Time.deltaTime;
         }
 
+        // Init in Start, don't expose
         private void PatrolBehaviour()
         {
             Vector3 nextPosition = guardPosition;

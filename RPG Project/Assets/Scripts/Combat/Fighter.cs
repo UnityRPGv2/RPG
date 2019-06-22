@@ -19,8 +19,18 @@ namespace RPG.Combat
         float timeSinceLastAttack = Mathf.Infinity;
         Weapon currentWeapon = null;
 
-        private void Start() 
+        Mover mover;
+        Animator animator;
+        ActionScheduler actionScheduler;
+        BaseStats baseStats;
+
+        public void Init(Mover mover, Animator animator, ActionScheduler actionScheduler, BaseStats baseStats) 
         {
+            this.mover = mover;
+            this.actionScheduler = actionScheduler;
+            this.animator = animator;
+            this.baseStats = baseStats;
+
             if (currentWeapon == null)
             {
                 EquipWeapon(defaultWeapon);
@@ -36,11 +46,11 @@ namespace RPG.Combat
 
             if (!GetIsInRange())
             {
-                GetComponent<Mover>().MoveTo(target.transform.position, 1f);
+                mover.MoveTo(target.transform.position, 1f);
             }
             else
             {
-                GetComponent<Mover>().Cancel();
+                mover.Cancel();
                 AttackBehaviour();
             }
         }
@@ -70,8 +80,8 @@ namespace RPG.Combat
 
         private void TriggerAttack()
         {
-            GetComponent<Animator>().ResetTrigger("stopAttack");
-            GetComponent<Animator>().SetTrigger("attack");
+            animator.ResetTrigger("stopAttack");
+            animator.SetTrigger("attack");
         }
 
         // Animation Event
@@ -79,7 +89,7 @@ namespace RPG.Combat
         {
             if(target == null) { return; }
 
-            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+            float damage = baseStats.GetStat(Stat.Damage);
             if (currentWeapon.HasProjectile())
             {
                 currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
@@ -109,7 +119,7 @@ namespace RPG.Combat
 
         public void Attack(GameObject combatTarget)
         {
-            GetComponent<ActionScheduler>().StartAction(this);
+            actionScheduler.StartAction(this);
             target = combatTarget.GetComponent<Health>();
         }
 
@@ -117,13 +127,13 @@ namespace RPG.Combat
         {
             StopAttack();
             target = null;
-            GetComponent<Mover>().Cancel();
+            mover.Cancel();
         }
 
         private void StopAttack()
         {
-            GetComponent<Animator>().ResetTrigger("attack");
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("stopAttack");
         }
 
         // Unlikely to be called in start but keep an eye on it.

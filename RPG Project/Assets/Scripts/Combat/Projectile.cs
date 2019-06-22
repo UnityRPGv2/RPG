@@ -18,6 +18,7 @@ namespace RPG.Combat
 
         private void Start()
         {
+            // Initialised in start, don't expose
             transform.LookAt(GetAimLocation());
         }
 
@@ -50,6 +51,7 @@ namespace RPG.Combat
             return target.transform.position + Vector3.up * targetCapsule.height / 2;
         }
 
+        // Init in Start, don't expose
         private void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<Health>() != target) return;
