@@ -2278,17 +2278,17 @@ PrefabInstance:
       propertyPath: chaseDistance
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 7160709215715417826, guid: 97794e8f32d9d574c8ed85db378e8c47,
-        type: 3}
-      propertyPath: uniqueIdentifier
-      value: 43426e49-ba80-4cbb-8e75-40b5cf832c90
-      objectReference: {fileID: 0}
     - target: {fileID: 5690833133133257728, guid: 97794e8f32d9d574c8ed85db378e8c47,
         type: 3}
       propertyPath: defaultWeapon
       value: 
       objectReference: {fileID: 11400000, guid: c2a2bd9b5a47ec64daeb6cdb3c2f18ee,
         type: 2}
+    - target: {fileID: 7160709215715417826, guid: 97794e8f32d9d574c8ed85db378e8c47,
+        type: 3}
+      propertyPath: uniqueIdentifier
+      value: 43426e49-ba80-4cbb-8e75-40b5cf832c90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97794e8f32d9d574c8ed85db378e8c47, type: 3}
 --- !u!4 &1113605396 stripped
@@ -3059,21 +3059,21 @@ PrefabInstance:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7160709215715417826, guid: 97794e8f32d9d574c8ed85db378e8c47,
-        type: 3}
-      propertyPath: uniqueIdentifier
-      value: c4bfee06-123a-45fa-91b3-4fcb087db862
-      objectReference: {fileID: 0}
-    - target: {fileID: 5224142304942228539, guid: 97794e8f32d9d574c8ed85db378e8c47,
-        type: 3}
-      propertyPath: healthPoints
-      value: 80
-      objectReference: {fileID: 0}
     - target: {fileID: 7865944738738660661, guid: 97794e8f32d9d574c8ed85db378e8c47,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 01b2546c969fe814794af634cb4534f4, type: 2}
+    - target: {fileID: 5224142304942228539, guid: 97794e8f32d9d574c8ed85db378e8c47,
+        type: 3}
+      propertyPath: healthPoints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7160709215715417826, guid: 97794e8f32d9d574c8ed85db378e8c47,
+        type: 3}
+      propertyPath: uniqueIdentifier
+      value: c4bfee06-123a-45fa-91b3-4fcb087db862
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97794e8f32d9d574c8ed85db378e8c47, type: 3}
 --- !u!4 &1328800409 stripped
@@ -3339,6 +3339,11 @@ PrefabInstance:
         type: 3}
       propertyPath: chaseDistance
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690833133133257728, guid: 97794e8f32d9d574c8ed85db378e8c47,
+        type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7160709215715417826, guid: 97794e8f32d9d574c8ed85db378e8c47,
         type: 3}
@@ -4089,7 +4094,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874861664}
-  m_LocalRotation: {x: 0.15534082, y: -0.06980496, z: 0.011005, w: 0.9853301}
+  m_LocalRotation: {x: 0.15534082, y: -0.06980496, z: 0.011004999, w: 0.9853301}
   m_LocalPosition: {x: 2.15, y: 4.69, z: -2.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5222,7 +5227,7 @@ PrefabInstance:
     - target: {fileID: 1224528721092827506, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.856773
+      value: 39.856777
       objectReference: {fileID: 0}
     - target: {fileID: 1224528721665636198, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}
@@ -5237,7 +5242,7 @@ PrefabInstance:
     - target: {fileID: 1224528721665636198, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.856773
+      value: 39.856777
       objectReference: {fileID: 0}
     - target: {fileID: 1224528720964347331, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}
@@ -5269,6 +5274,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4369008809457087996, guid: 9065ec7e81ca8034a865d6fdd7906af9,
+        type: 3}
+      propertyPath: startingLevel
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9065ec7e81ca8034a865d6fdd7906af9, type: 3}
