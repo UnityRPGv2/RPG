@@ -10,6 +10,10 @@ public class SavingWrapper : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Save();
+        }
         if (Input.GetKeyDown(KeyCode.L))
         {
             Load();
@@ -19,5 +23,10 @@ public class SavingWrapper : MonoBehaviour
     private void Load()
     {
         GetComponent<SavingSystem>().Load(defaultSaveFile);
+    }
+
+    private void Save()
+    {
+        GetComponent<SavingSystem>().Save(defaultSaveFile);
     }
 }
