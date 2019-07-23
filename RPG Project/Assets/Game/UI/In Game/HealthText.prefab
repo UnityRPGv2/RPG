@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7149109864811918578}
   - component: {fileID: 89614532316239361}
   - component: {fileID: 8259267074730085175}
+  - component: {fileID: 1557878231549493544}
+  - component: {fileID: 5066804545476956661}
   m_Layer: 2
   m_Name: HealthText
   m_TagString: Untagged
@@ -112,6 +114,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9820a81ff9f4bc442a6b247d2c5734ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &1557878231549493544
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319598911678944473}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 83326a89af748af4fa40c22d954a0d69, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 83326a89af748af4fa40c22d954a0d69, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!225 &5066804545476956661
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319598911678944473}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4644841558513580847
 GameObject:
   m_ObjectHideFlags: 0
