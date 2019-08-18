@@ -13,6 +13,7 @@ namespace RPG.Control
     public class AIController : MonoBehaviour
     {
         [SerializeField] float chaseDistance = 5f;
+        [SerializeField] float shoutDistance = 5f;
         [SerializeField] float suspicionTime = 3f;
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float waypointTolerance = 1f;
@@ -72,8 +73,29 @@ namespace RPG.Control
 
         public void SetSuspicionTarget(GameObject suspiciousTarget)
         {
+            SetSuspicionTarget(suspiciousTarget, true);
+        }
+
+        public void SetSuspicionTarget(GameObject suspiciousTarget, bool propagate)
+        {
+            // if (!hasPositionToInvestigate && propagate)
+            // {
+            //     print("Oi you!");
+            // }
+
             lastSeenPosition = suspiciousTarget.transform.position;
             hasPositionToInvestigate = true;
+
+            if (!propagate) return;
+            var all = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0.1f);
+            foreach (var hit in all)
+            {
+                var ai = hit.transform.GetComponent<AIController>();
+                if (ai) 
+                {
+                    ai.SetSuspicionTarget(suspiciousTarget, false);
+                }
+            }
         }
 
         private void UpdateTimers()
@@ -137,8 +159,7 @@ namespace RPG.Control
         private void AttackBehaviour()
         {
             timeSinceLastSawPlayer = 0;
-            hasPositionToInvestigate = true;
-            lastSeenPosition = player.transform.position;
+            SetSuspicionTarget(player);
             fighter.Attack(player);
         }
 
@@ -152,6 +173,8 @@ namespace RPG.Control
         private void OnDrawGizmosSelected() {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, shoutDistance);
         }
     }
 }
