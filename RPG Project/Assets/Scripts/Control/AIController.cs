@@ -7,6 +7,7 @@ using RPG.Movement;
 using UnityEngine;
 using RPG.Attributes;
 using GameDevTV.Utils;
+using UnityEngine.Events;
 
 namespace RPG.Control
 {
@@ -20,6 +21,7 @@ namespace RPG.Control
         [SerializeField] float waypointDwellTime = 3f;
         [Range(0,1)]
         [SerializeField] float patrolSpeedFraction = 0.2f;
+        [SerializeField] UnityEvent onShout;
 
         Fighter fighter;
         Health health;
@@ -78,10 +80,10 @@ namespace RPG.Control
 
         public void SetSuspicionTarget(GameObject suspiciousTarget, bool propagate)
         {
-            // if (!hasPositionToInvestigate && propagate)
-            // {
-            //     print("Oi you!");
-            // }
+            if (!hasPositionToInvestigate && propagate)
+            {
+                onShout.Invoke();
+            }
 
             lastSeenPosition = suspiciousTarget.transform.position;
             hasPositionToInvestigate = true;
