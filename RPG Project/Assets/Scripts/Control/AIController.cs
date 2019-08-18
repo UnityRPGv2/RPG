@@ -26,6 +26,8 @@ namespace RPG.Control
         GameObject player;
 
         LazyValue<Vector3> guardPosition;
+        Vector3 lastSeenPosition;
+        bool hasPositionToInvestigate = false;
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         int currentWaypointIndex = 0;
@@ -56,7 +58,7 @@ namespace RPG.Control
             {
                 AttackBehaviour();
             }
-            else if (timeSinceLastSawPlayer < suspicionTime)
+            else if (hasPositionToInvestigate || timeSinceLastSawPlayer < suspicionTime)
             {
                 SuspicionBehaviour();
             }
@@ -66,6 +68,12 @@ namespace RPG.Control
             }
 
             UpdateTimers();
+        }
+
+        public void SetSuspicionTarget(GameObject suspiciousTarget)
+        {
+            lastSeenPosition = suspiciousTarget.transform.position;
+            hasPositionToInvestigate = true;
         }
 
         private void UpdateTimers()
@@ -112,12 +120,25 @@ namespace RPG.Control
 
         private void SuspicionBehaviour()
         {
-            GetComponent<ActionScheduler>().CancelCurrentAction();
+            if (!hasPositionToInvestigate)
+            {
+                GetComponent<ActionScheduler>().CancelCurrentAction();
+                return;
+            }
+            mover.StartMoveAction(lastSeenPosition, 0.8f);
+            float distanceToPosition = Vector3.Distance(transform.position, lastSeenPosition);
+            if (distanceToPosition < waypointTolerance)
+            {
+                hasPositionToInvestigate = false;
+                timeSinceLastSawPlayer = 0;
+            }
         }
 
         private void AttackBehaviour()
         {
             timeSinceLastSawPlayer = 0;
+            hasPositionToInvestigate = true;
+            lastSeenPosition = player.transform.position;
             fighter.Attack(player);
         }
 
