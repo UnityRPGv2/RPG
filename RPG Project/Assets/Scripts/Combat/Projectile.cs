@@ -18,9 +18,12 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         if (target == null) return;
-        if (isHoming && !target.IsDead())
+        if (isHoming)
         {
-            transform.LookAt(GetAimLocation());
+            if (!target.IsDead())
+            {
+                transform.LookAt(GetAimLocation());
+            }
         }
         transform.Translate(Vector3.forward * speed * Time.deltaTime);      
     }
