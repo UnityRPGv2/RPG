@@ -157,11 +157,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3085117354557394056}
-<<<<<<< HEAD:RPG Project/Assets/Game/Projectiles/Root Arrow Projectile.prefab
   - {fileID: 5424922124584682177}
   - {fileID: 3275800566824927997}
-=======
->>>>>>> parent of e7b4931... 11 Trails & Prefab Variants:RPG Project/Assets/Game/Projectiles/ArrowProjectile.prefab
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -177,7 +174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b16e6d3fb737ea14983a5194a3612267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD:RPG Project/Assets/Game/Projectiles/Root Arrow Projectile.prefab
   speed: 20
   isHoming: 1
   hitEffect: {fileID: 7052069669789351578, guid: aead7987579702545ade89f549b33e0f,
@@ -202,9 +198,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-=======
-  speed: 10
->>>>>>> parent of e7b4931... 11 Trails & Prefab Variants:RPG Project/Assets/Game/Projectiles/ArrowProjectile.prefab
 --- !u!65 &6625348177331667087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -218,7 +211,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.23, y: 0.19, z: 0.82}
   m_Center: {x: 0, y: 0, z: 0.23}
-<<<<<<< HEAD:RPG Project/Assets/Game/Projectiles/Root Arrow Projectile.prefab
 --- !u!1 &5079027486732663750
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,8 +514,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
-=======
->>>>>>> parent of e7b4931... 11 Trails & Prefab Variants:RPG Project/Assets/Game/Projectiles/ArrowProjectile.prefab
 --- !u!1001 &3080577984571331644
 PrefabInstance:
   m_ObjectHideFlags: 0
