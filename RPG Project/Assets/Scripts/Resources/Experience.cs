@@ -1,6 +1,5 @@
 using UnityEngine;
 using RPG.Saving;
-using System;
 
 namespace RPG.Resources
 {
@@ -11,11 +10,6 @@ namespace RPG.Resources
         public void GainExperience(float experience)
         {
             experiencePoints += experience;
-        }
-
-        public float GetPoints()
-        {
-            return experiencePoints;
         }
 
         public object CaptureState()
