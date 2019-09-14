@@ -174,22 +174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   regenerationPercentage: 70
-  takeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1501492681116784289}
-        m_MethodName: Spawn
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 13
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &488557239800501724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,15 +295,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2362478109231118497}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1501492681116784289 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3755838200397688320, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2362478109231118497}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 565a6cf83d2e1ac4fa7d453686c7ff03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
