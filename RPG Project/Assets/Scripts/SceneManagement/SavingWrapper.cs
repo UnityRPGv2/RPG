@@ -39,7 +39,7 @@ namespace RPG.SceneManagement
 
         public void Load()
         {
-            GetComponent<SavingSystem>().Load(defaultSaveFile);
+            StartCoroutine(LoadLastScene());
         }
 
         public void Save()

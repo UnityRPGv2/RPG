@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6393032711310101895}
   - component: {fileID: 6997811445119991105}
   - component: {fileID: 6494234044896430859}
-  - component: {fileID: 6871441180857157232}
+  - component: {fileID: 7527700432893718070}
   m_Layer: 0
   m_Name: Pickup
   m_TagString: Untagged
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f208ba0dbe65d478b628ca24b59c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6871441180857157232
+--- !u!114 &7527700432893718070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1222577395524571727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03eec878f4d74164d8a9d6ce66901260, type: 3}
+  m_Script: {fileID: 11500000, guid: 8899e97f2ed00e44891fa5fdd0dd19d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4402231132195331375
