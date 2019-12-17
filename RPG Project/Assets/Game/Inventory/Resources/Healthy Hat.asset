@@ -15,10 +15,10 @@ MonoBehaviour:
   itemID: 4f42e260-219c-4b7a-8f0f-5d97ec3cdf1c
   displayName: Healthy Hat
   description: Increase your health by 10% when you put it on.
-  icon: {fileID: 0}
-  pickup: {fileID: 0}
+  icon: {fileID: 21300000, guid: c1b61b3a91732a747a8496fc75a13fe2, type: 3}
+  pickup: {fileID: 6494234044896430859, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
   stackable: 0
-  allowedEquipLocation: 5
+  allowedEquipLocation: 0
   addtiveModifiers: []
   percentageModifiers:
   - stat: 0
