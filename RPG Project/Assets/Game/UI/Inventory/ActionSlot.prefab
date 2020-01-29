@@ -96,7 +96,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 65b98a7e023cad84991c598add6111ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83069f538d9e0604a8bed52715d594c0, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -112,11 +112,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659362928223511067}
     m_Modifications:
-    - target: {fileID: 812101378272355093, guid: 1973af7fc3e1d2b428983f58906580be,
-        type: 3}
-      propertyPath: m_Name
-      value: InventoryItem
-      objectReference: {fileID: 0}
     - target: {fileID: 1847210799765944866, guid: 1973af7fc3e1d2b428983f58906580be,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -221,6 +216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 812101378272355093, guid: 1973af7fc3e1d2b428983f58906580be,
+        type: 3}
+      propertyPath: m_Name
+      value: InventoryItem
       objectReference: {fileID: 0}
     - target: {fileID: 7260453448564003565, guid: 1973af7fc3e1d2b428983f58906580be,
         type: 3}
