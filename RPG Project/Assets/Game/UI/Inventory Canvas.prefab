@@ -489,7 +489,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2012917585700316199}
   m_HandleRect: {fileID: 224153372062608982}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.0000016484812
   m_Size: 0.942579
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -991,6 +991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggleKey: 105
   uiContainer: {fileID: 1034273193031051067}
+  toSelect: {fileID: 6065502684261486005}
 --- !u!114 &7296689130965556425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,7 +1162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000060973212, y: -644.8002}
+  m_AnchoredPosition: {x: -0.000061035156, y: -570.75}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4131155162176750999
@@ -5142,6 +5143,12 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7b0f80c22b52fa4d9a26e6506a58671, type: 3}
+--- !u!1 &6065502684261486005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3561121645966637724, guid: c7b0f80c22b52fa4d9a26e6506a58671,
+    type: 3}
+  m_PrefabInstance: {fileID: 7297902648519178025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6284724571729411419 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3634554955836656242, guid: c7b0f80c22b52fa4d9a26e6506a58671,

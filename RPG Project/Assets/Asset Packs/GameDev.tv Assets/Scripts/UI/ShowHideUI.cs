@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace GameDevTV.UI
 {
@@ -8,6 +9,7 @@ namespace GameDevTV.UI
     {
         [SerializeField] KeyCode toggleKey = KeyCode.Escape;
         [SerializeField] GameObject uiContainer = null;
+        [SerializeField] GameObject toSelect = null;
 
         // Start is called before the first frame update
         void Start()
@@ -21,6 +23,10 @@ namespace GameDevTV.UI
             if (Input.GetKeyDown(toggleKey))
             {
                 uiContainer.SetActive(!uiContainer.activeSelf);
+                if (uiContainer.activeSelf)
+                {
+                    EventSystem.current.SetSelectedGameObject(toSelect);
+                }
             }
         }
     }
