@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace RPG.Dialogue.Editor
     {
         Dialogue selectedDialogue;
         GUIStyle nodeStyle;
+        DialogueNode draggingNode = null;
+        Vector2 draggingOffset;
 
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
@@ -48,14 +51,18 @@ namespace RPG.Dialogue.Editor
 
         // Only called when there is a reason. E.g. GetWindow called.
         private void OnGUI() {
+
             if (selectedDialogue == null)
             {
                 return;
             }
+
             foreach (DialogueNode node in selectedDialogue.GetAllNodes())
             {
                 OnGUINode(node);
             }
+
+            ProcessEvent(Event.current);
         }
 
         private void OnGUINode(DialogueNode node)
@@ -70,6 +77,42 @@ namespace RPG.Dialogue.Editor
                 node.text = newText;
             }
             GUILayout.EndArea();
+        }
+
+        private void ProcessEvent(Event e)
+        {
+            if (e.type == EventType.MouseDown && e.button == 0)
+            {
+                draggingNode = GetNodeAtPoint(e.mousePosition);
+                // Show why need for more natural.
+                if (draggingNode != null)
+                {
+                draggingOffset = draggingNode.rect.position - e.mousePosition;
+            }
+            }
+            else if (e.type == EventType.MouseUp && draggingNode != null)
+            {
+                draggingNode = null;
+            }
+            else if (e.type == EventType.MouseDrag && draggingNode != null)
+            {
+                Undo.RecordObject(selectedDialogue, "Reposition Dialogue Node");
+                draggingNode.rect.position = e.mousePosition + draggingOffset;
+                // Show lag before adding this.
+                GUI.changed = true;
+            }
+        }
+
+        private DialogueNode GetNodeAtPoint(Vector2 point)
+        {
+            foreach (DialogueNode node in selectedDialogue.GetAllNodes())
+            {
+                if (node.rect.Contains(point))
+                {
+                    return node;
+                }
+            }
+            return null;
         }
     }
 }

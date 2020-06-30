@@ -15,22 +15,53 @@ MonoBehaviour:
   nodes:
   - uniqueID: entry
     text: What do you want?
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 328
+      width: 200
+      height: 100
     children:
     - r1
     - r2
     - r3
   - uniqueID: r1
-    text: Who me? No one.
+    text: Who me? No one. asdf asdf adsf assd asdf asdf asdfasdf asdf asddf asdf asddf
+      asdf asdf asdfasdfsda fsadf asdf asdfasdfasdf sadf saddf sadf saas
+    rect:
+      serializedVersion: 2
+      x: 481
+      y: 90
+      width: 200
+      height: 100
     children:
     - g1
   - uniqueID: r2
     text: I'm hear to fight.
+    rect:
+      serializedVersion: 2
+      x: 663
+      y: 331
+      width: 200
+      height: 100
     children:
     - g1
   - uniqueID: r3
     text: I want to join the guard.
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 40
+      width: 200
+      height: 100
     children:
     - g1
   - uniqueID: g1
     text: You will regret that! You wild so and so asdfasdf
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 40
+      width: 200
+      height: 100
     children: []
