@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - uniqueID: entry
-    text: Who goes there?
+    text: Who goes there? Hi there
     children:
     - r1
     - r2

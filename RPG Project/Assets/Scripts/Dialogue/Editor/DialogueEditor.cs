@@ -46,7 +46,18 @@ namespace RPG.Dialogue.Editor
             {
                 return;
             }
-            EditorGUILayout.LabelField(selectedDialogue.name);
+            foreach (DialogueNode node in selectedDialogue.GetAllNodes())
+            {
+                GUILayout.Label("Name:");
+                // node.text = EditorGUILayout.TextArea(node.text);
+                string newText = EditorGUILayout.TextArea(node.text);
+                if (newText != node.text)
+                {
+                    node.text = newText;
+                    // See how can't update file if not marked.
+                    EditorUtility.SetDirty(selectedDialogue);
+                }
+            }
         }
     }
 }

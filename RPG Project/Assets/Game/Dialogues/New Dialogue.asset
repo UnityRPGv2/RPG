@@ -10,27 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b4fa1a1736eb3a44b5e83e715e6cf73, type: 3}
-  m_Name: Guard 2
+  m_Name: New Dialogue
   m_EditorClassIdentifier: 
   nodes:
-  - uniqueID: entry
-    text: What do you want?
-    children:
-    - r1
-    - r2
-    - r3
-  - uniqueID: r1
-    text: Who me? No one.
-    children:
-    - g1
-  - uniqueID: r2
-    text: I'm hear to fight.
-    children:
-    - g1
-  - uniqueID: r3
-    text: I want to join the guard.
-    children:
-    - g1
-  - uniqueID: g1
-    text: You will regret that! You wild so and so asdfasdf
+  - uniqueID: 
+    text: 
     children: []
