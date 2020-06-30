@@ -1,9 +1,12 @@
 using UnityEditor;
+using UnityEngine;
 
 namespace RPG.Dialogue.Editor
 {
     public class DialogueEditor : EditorWindow
     {
+        Dialogue selectedDialogue;
+
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
         {
@@ -20,6 +23,30 @@ namespace RPG.Dialogue.Editor
                 return true;
             }
             return false; // we did not handle the open
+        }
+
+        private void OnEnable()
+        {
+            Selection.selectionChanged += OnSelectionChanged;
+        }
+
+        private void OnSelectionChanged()
+        {
+            Dialogue newDialogue = Selection.activeObject as Dialogue;
+            if (newDialogue != null)
+            {
+                selectedDialogue = newDialogue;
+            }
+            Repaint();
+        }
+
+        // Only called when there is a reason. E.g. GetWindow called.
+        private void OnGUI() {
+            if (selectedDialogue == null)
+            {
+                return;
+            }
+            EditorGUILayout.LabelField(selectedDialogue.name);
         }
     }
 }
