@@ -50,12 +50,12 @@ namespace RPG.Dialogue.Editor
             {
                 GUILayout.Label("Name:");
                 // node.text = EditorGUILayout.TextArea(node.text);
+                EditorGUI.BeginChangeCheck();
                 string newText = EditorGUILayout.TextArea(node.text);
-                if (newText != node.text)
+                if (EditorGUI.EndChangeCheck())
                 {
+                    Undo.RecordObject(selectedDialogue, "Dialogue Text Change");
                     node.text = newText;
-                    // See how can't update file if not marked.
-                    EditorUtility.SetDirty(selectedDialogue);
                 }
             }
         }
