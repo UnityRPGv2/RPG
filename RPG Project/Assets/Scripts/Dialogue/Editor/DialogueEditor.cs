@@ -6,6 +6,7 @@ namespace RPG.Dialogue.Editor
     public class DialogueEditor : EditorWindow
     {
         Dialogue selectedDialogue;
+        GUIStyle nodeStyle;
 
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
@@ -28,6 +29,11 @@ namespace RPG.Dialogue.Editor
         private void OnEnable()
         {
             Selection.selectionChanged += OnSelectionChanged;
+            nodeStyle = new GUIStyle();
+            nodeStyle.normal.background = EditorGUIUtility.Load("node0") as Texture2D;
+            nodeStyle.normal.textColor = Color.white;
+            nodeStyle.border = new RectOffset(12, 12, 12, 12);
+            nodeStyle.padding = new RectOffset(20, 20, 20, 20);
         }
 
         private void OnSelectionChanged()
@@ -48,16 +54,22 @@ namespace RPG.Dialogue.Editor
             }
             foreach (DialogueNode node in selectedDialogue.GetAllNodes())
             {
-                GUILayout.Label("Name:");
-                // node.text = EditorGUILayout.TextArea(node.text);
-                EditorGUI.BeginChangeCheck();
-                string newText = EditorGUILayout.TextArea(node.text);
-                if (EditorGUI.EndChangeCheck())
-                {
-                    Undo.RecordObject(selectedDialogue, "Dialogue Text Change");
-                    node.text = newText;
-                }
+                OnGUINode(node);
             }
+        }
+
+        private void OnGUINode(DialogueNode node)
+        {
+            GUILayout.BeginArea(node.rect, nodeStyle);
+            EditorGUILayout.LabelField(node.uniqueID, EditorStyles.whiteLabel);
+            EditorGUI.BeginChangeCheck();
+            string newText = EditorGUILayout.TextArea(node.text, EditorStyles.textArea);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(selectedDialogue, "Dialogue Text Change");
+                node.text = newText;
+            }
+            GUILayout.EndArea();
         }
     }
 }
