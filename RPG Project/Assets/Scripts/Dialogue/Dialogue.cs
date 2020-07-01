@@ -16,7 +16,7 @@ namespace RPG.Dialogue
         private void Awake() {
             if (nodes.Count <= 0)
             {
-                nodes.Add(new DialogueNode());
+                CreateNode(null);
             }
         }
 #endif
@@ -25,7 +25,7 @@ namespace RPG.Dialogue
             nodeLookup.Clear();
             foreach (DialogueNode node in GetAllNodes())
             {
-                nodeLookup[node.uniqueID] = node;
+                nodeLookup[node.name] = node;
             }
         }
 
@@ -46,13 +46,18 @@ namespace RPG.Dialogue
         }
 
         public DialogueNode CreateNode(DialogueNode parent)
-        {
-            DialogueNode newNode = new DialogueNode();
-            newNode.uniqueID = System.Guid.NewGuid().ToString();
-            Vector2 childOffset = new Vector2(200, 0);
-            newNode.rect.position = parent.rect.position + childOffset;
-            parent.children.Add(newNode.uniqueID);
+        {   
+            DialogueNode newNode = CreateInstance<DialogueNode>();
+            Undo.RegisterCreatedObjectUndo(newNode, "");
+            newNode.name = System.Guid.NewGuid().ToString();
+            if (parent != null)
+            {
+                Vector2 childOffset = new Vector2(200, 0);
+                newNode.rect.position = parent.rect.position + childOffset;
+                parent.children.Add(newNode.name);
+            }
             nodes.Add(newNode);
+            AssetDatabase.AddObjectToAsset(newNode, this);
             OnValidate();
             return newNode;
         }
@@ -61,7 +66,8 @@ namespace RPG.Dialogue
         {
             nodes.Remove(deletingNode);
             OnValidate();
-            CleanDanglingChildren(deletingNode.uniqueID);
+            CleanDanglingChildren(deletingNode.name);
+            Undo.DestroyObjectImmediate(deletingNode);
         }
 
         private void CleanDanglingChildren(string IDToRemove)

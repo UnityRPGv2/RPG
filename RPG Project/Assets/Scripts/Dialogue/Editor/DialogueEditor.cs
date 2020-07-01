@@ -105,7 +105,7 @@ namespace RPG.Dialogue.Editor
         private void DrawNode(DialogueNode node)
         {
             GUILayout.BeginArea(node.rect, nodeStyle);
-            EditorGUILayout.LabelField(node.uniqueID, EditorStyles.whiteLabel);
+            EditorGUILayout.LabelField(node.name, EditorStyles.whiteLabel);
             EditorGUI.BeginChangeCheck();
             string newText = EditorGUILayout.TextArea(node.text, EditorStyles.textArea);
             if (EditorGUI.EndChangeCheck())
@@ -159,12 +159,12 @@ namespace RPG.Dialogue.Editor
                     linkingParent = null;
                 }
             }
-            else if (linkingParent.children.Contains(node.uniqueID))
+            else if (linkingParent.children.Contains(node.name))
             {
                 if (GUILayout.Button("unlink"))
                 {
                     Undo.RecordObject(selectedDialogue, "Remove Dialogue Node Link");
-                    linkingParent.children.Remove(node.uniqueID);
+                    linkingParent.children.Remove(node.name);
                     linkingParent = null;
                 }
             }
@@ -173,7 +173,7 @@ namespace RPG.Dialogue.Editor
                 if (GUILayout.Button("child"))
                 {
                     Undo.RecordObject(selectedDialogue, "Add Dialogue Node Link");
-                    linkingParent.children.Add(node.uniqueID);
+                    linkingParent.children.Add(node.name);
                     linkingParent = null;
                 }
             }
