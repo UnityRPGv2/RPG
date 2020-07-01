@@ -21,6 +21,8 @@ namespace RPG.Dialogue.Editor
         DialogueNode linkingParent = null;
         [NonSerialized]
         DialogueNode deletingNode = null;
+        [NonSerialized]
+        bool draggingCanvas = false;
 
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
@@ -180,22 +182,33 @@ namespace RPG.Dialogue.Editor
         {
             if (e.type == EventType.MouseDown && e.button == 0)
             {
-                draggingNode = GetNodeAtPoint(e.mousePosition);
+                draggingNode = GetNodeAtPoint(e.mousePosition + scrollPosition);
                 // Show why need for more natural.
                 if (draggingNode != null)
                 {
                     draggingOffset = draggingNode.rect.position - e.mousePosition;
                 }
+                else
+                {
+                    draggingCanvas = true;
+                    draggingOffset = scrollPosition + e.mousePosition;
                 }
+            }
             else if (e.type == EventType.MouseUp && draggingNode != null)
             {
                 draggingNode = null;
+                draggingCanvas = false;
             }
             else if (e.type == EventType.MouseDrag && draggingNode != null)
             {
                 Undo.RecordObject(selectedDialogue, "Reposition Dialogue Node");
                 draggingNode.rect.position = e.mousePosition + draggingOffset;
                 // Show lag before adding this.
+                GUI.changed = true;
+            }
+            else if (e.type == EventType.MouseDrag && draggingCanvas)
+            {
+                scrollPosition = draggingOffset - e.mousePosition;
                 GUI.changed = true;
             }
         }
