@@ -7,6 +7,8 @@ namespace RPG.Dialogue.Editor
     public class DialogueEditor : EditorWindow
     {
         Dialogue selectedDialogue;
+        Vector2 scrollPosition;
+
         [NonSerialized]
         GUIStyle nodeStyle;
         [NonSerialized]
@@ -66,6 +68,9 @@ namespace RPG.Dialogue.Editor
                 return;
             }
 
+            scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+
+            GUILayoutUtility.GetRect(4000, 4000);
             foreach (DialogueNode node in selectedDialogue.GetAllNodes())
             {
                 DrawConnection(node);
@@ -74,6 +79,8 @@ namespace RPG.Dialogue.Editor
             {
                 DrawNode(node);
             }
+
+            EditorGUILayout.EndScrollView();
 
             if (creatingNode != null)
             {
@@ -179,7 +186,7 @@ namespace RPG.Dialogue.Editor
                 {
                     draggingOffset = draggingNode.rect.position - e.mousePosition;
                 }
-            }
+                }
             else if (e.type == EventType.MouseUp && draggingNode != null)
             {
                 draggingNode = null;
