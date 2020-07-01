@@ -21,10 +21,7 @@ MonoBehaviour:
       y: 175
       width: 200
       height: 100
-    children:
-    - r1
-    - r2
-    - r3
+    children: []
   - uniqueID: r1
     text: Who me? No one. asdf asdf adsf assd asdf asdf asdfasdf asdf asddf asdf asddf
       asdf asdf asdfasdfsda fsadf asdf asdfasdfasdf sadf saddf sadf saas
@@ -34,37 +31,36 @@ MonoBehaviour:
       y: 10
       width: 200
       height: 180
-    children:
-    - g1
+    children: []
   - uniqueID: r2
     text: I'm hear to fight.
     rect:
       serializedVersion: 2
-      x: 310
-      y: 223
+      x: 257
+      y: 217
       width: 200
       height: 100
     children:
-    - g1
     - f0fdeaed-b2ce-4b3c-86d4-fef39f999003
+    - 83849d8c-4521-479c-a95e-8851d6804554
   - uniqueID: r3
     text: I want to join the guard.
     rect:
       serializedVersion: 2
-      x: 305
-      y: 362
+      x: 282
+      y: 358
       width: 200
       height: 100
     children:
-    - g1
     - 977bea4f-18f7-4d01-9d30-24b3602afada
     - 28975313-6d1d-4ff8-9d8f-28114d2ecd7d
+    - 48346c01-c627-4e36-a9b8-f9245a469e38
   - uniqueID: g1
     text: You will regret that! You wild so and so asdfasdf
     rect:
       serializedVersion: 2
-      x: 604
-      y: 193
+      x: 593
+      y: 152
       width: 200
       height: 100
     children:
@@ -73,30 +69,90 @@ MonoBehaviour:
     - 8c405a3b-43fe-44e5-9e0f-7de0fe09fb7b
     - 5669062d-edec-4345-a763-5c7ad109abff
     - c1e286bb-b35d-4db8-8081-9d14dbc3ee07
+    - r2
+    - 83849d8c-4521-479c-a95e-8851d6804554
   - uniqueID: 5669062d-edec-4345-a763-5c7ad109abff
     text: 
     rect:
       serializedVersion: 2
-      x: 816
-      y: 94
+      x: 1027
+      y: 58
       width: 200
       height: 100
-    children: []
+    children:
+    - 5669062d-edec-4345-a763-5c7ad109abff
+    - r1
   - uniqueID: c1e286bb-b35d-4db8-8081-9d14dbc3ee07
     text: 
     rect:
       serializedVersion: 2
-      x: 854
-      y: 241
+      x: 824
+      y: 198
       width: 200
       height: 100
-    children: []
-  - uniqueID: d307cc76-43b3-4587-a4a7-ea9424891590
+    children:
+    - 5669062d-edec-4345-a763-5c7ad109abff
+    - c1e286bb-b35d-4db8-8081-9d14dbc3ee07
+  - uniqueID: 83849d8c-4521-479c-a95e-8851d6804554
     text: 
     rect:
       serializedVersion: 2
-      x: 633
-      y: 389
+      x: 690
+      y: 303
+      width: 200
+      height: 100
+    children: []
+  - uniqueID: 48346c01-c627-4e36-a9b8-f9245a469e38
+    text: 
+    rect:
+      serializedVersion: 2
+      x: 707
+      y: 418
+      width: 200
+      height: 100
+    children: []
+  - uniqueID: 8396448b-a3d3-4a03-b610-88ba9d69ae3c
+    text: 
+    rect:
+      serializedVersion: 2
+      x: 240
+      y: 40
+      width: 200
+      height: 100
+    children: []
+  - uniqueID: e6c55699-c8d9-417d-9268-8a59ef3b1667
+    text: 
+    rect:
+      serializedVersion: 2
+      x: 240
+      y: 40
+      width: 200
+      height: 100
+    children: []
+  - uniqueID: f03fa8d4-f746-412d-88d5-a58304b503dd
+    text: 
+    rect:
+      serializedVersion: 2
+      x: 240
+      y: 40
+      width: 200
+      height: 100
+    children: []
+  - uniqueID: cb634166-7f18-4122-986b-1e121fa1cec3
+    text: 
+    rect:
+      serializedVersion: 2
+      x: 240
+      y: 40
+      width: 200
+      height: 100
+    children: []
+  - uniqueID: bd6defef-060b-4ef2-b93e-d0c0ff12365e
+    text: 
+    rect:
+      serializedVersion: 2
+      x: 240
+      y: 40
       width: 200
       height: 100
     children: []
