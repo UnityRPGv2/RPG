@@ -59,13 +59,17 @@ namespace RPG.Dialogue.Editor
 
             foreach (DialogueNode node in selectedDialogue.GetAllNodes())
             {
-                OnGUINode(node);
+                DrawConnection(node);
+            }
+            foreach (DialogueNode node in selectedDialogue.GetAllNodes())
+            {
+                DrawNode(node);
             }
 
             ProcessEvent(Event.current);
         }
 
-        private void OnGUINode(DialogueNode node)
+        private void DrawNode(DialogueNode node)
         {
             GUILayout.BeginArea(node.rect, nodeStyle);
             EditorGUILayout.LabelField(node.uniqueID, EditorStyles.whiteLabel);
@@ -77,6 +81,22 @@ namespace RPG.Dialogue.Editor
                 node.text = newText;
             }
             GUILayout.EndArea();
+        }
+
+        private void DrawConnection(DialogueNode node)
+        {
+            Vector2 ThisCenterRight = new Vector2(node.rect.xMax, node.rect.center.y);
+            foreach (DialogueNode childNode in selectedDialogue.GetChildren(node))
+            {
+                Vector2 ChildCentreLeft = new Vector2(childNode.rect.xMin, childNode.rect.center.y);
+                Vector2 HandleOffset = ChildCentreLeft - ThisCenterRight;
+                HandleOffset.x = HandleOffset.x * 0.8f;
+                HandleOffset.y = 0;
+                Handles.DrawBezier(
+                    ThisCenterRight, ChildCentreLeft, 
+                    ThisCenterRight + HandleOffset, ChildCentreLeft - HandleOffset, 
+                    Color.white, null, 4f);
+            }
         }
 
         private void ProcessEvent(Event e)
