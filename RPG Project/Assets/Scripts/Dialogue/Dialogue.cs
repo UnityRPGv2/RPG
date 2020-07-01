@@ -40,7 +40,7 @@ namespace RPG.Dialogue
             {
                 if (nodeLookup.ContainsKey(childID))
                 {
-                yield return nodeLookup[childID];
+                    yield return nodeLookup[childID];
                 }
             }
         }
@@ -55,6 +55,21 @@ namespace RPG.Dialogue
             nodes.Add(newNode);
             OnValidate();
             return newNode;
+        }
+
+        public void DeleteNode(DialogueNode deletingNode)
+        {
+            nodes.Remove(deletingNode);
+            OnValidate();
+            CleanDanglingChildren(deletingNode.uniqueID);
+        }
+
+        private void CleanDanglingChildren(string IDToRemove)
+        {
+            foreach (DialogueNode node in GetAllNodes())
+            {
+                node.children.Remove(IDToRemove);
+            }
         }
     }
 }
