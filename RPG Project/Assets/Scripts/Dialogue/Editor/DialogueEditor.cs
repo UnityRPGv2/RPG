@@ -72,7 +72,8 @@ namespace RPG.Dialogue.Editor
 
             scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
 
-            GUILayoutUtility.GetRect(4000, 4000);
+            Rect scrollContentRect = GUILayoutUtility.GetRect(4000, 4000);
+            GUI.DrawTextureWithTexCoords(scrollContentRect, EditorGUIUtility.Load("background.png") as Texture2D, new Rect(0, 0, 80, 80));
             foreach (DialogueNode node in selectedDialogue.GetAllNodes())
             {
                 DrawConnection(node);
