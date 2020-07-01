@@ -17,8 +17,8 @@ MonoBehaviour:
     text: What do you want?
     rect:
       serializedVersion: 2
-      x: 46
-      y: 169
+      x: 6
+      y: 175
       width: 200
       height: 100
     children:
@@ -30,38 +30,73 @@ MonoBehaviour:
       asdf asdf asdfasdfsda fsadf asdf asdfasdfasdf sadf saddf sadf saas
     rect:
       serializedVersion: 2
-      x: 370
-      y: 19
+      x: 303
+      y: 10
       width: 200
-      height: 140
+      height: 180
     children:
     - g1
   - uniqueID: r2
     text: I'm hear to fight.
     rect:
       serializedVersion: 2
-      x: 382
-      y: 194
+      x: 310
+      y: 223
       width: 200
       height: 100
     children:
     - g1
+    - f0fdeaed-b2ce-4b3c-86d4-fef39f999003
   - uniqueID: r3
     text: I want to join the guard.
     rect:
       serializedVersion: 2
-      x: 383
-      y: 358
+      x: 305
+      y: 362
       width: 200
       height: 100
     children:
     - g1
+    - 977bea4f-18f7-4d01-9d30-24b3602afada
+    - 28975313-6d1d-4ff8-9d8f-28114d2ecd7d
   - uniqueID: g1
     text: You will regret that! You wild so and so asdfasdf
     rect:
       serializedVersion: 2
-      x: 733
-      y: 192
+      x: 604
+      y: 193
+      width: 200
+      height: 100
+    children:
+    - 9cb841a1-4efb-44d5-9cac-9c2d1938c32e
+    - ca42ea62-1d0e-4ba9-a15b-282657f18f1e
+    - 8c405a3b-43fe-44e5-9e0f-7de0fe09fb7b
+    - 5669062d-edec-4345-a763-5c7ad109abff
+    - c1e286bb-b35d-4db8-8081-9d14dbc3ee07
+  - uniqueID: 5669062d-edec-4345-a763-5c7ad109abff
+    text: 
+    rect:
+      serializedVersion: 2
+      x: 816
+      y: 94
+      width: 200
+      height: 100
+    children: []
+  - uniqueID: c1e286bb-b35d-4db8-8081-9d14dbc3ee07
+    text: 
+    rect:
+      serializedVersion: 2
+      x: 854
+      y: 241
+      width: 200
+      height: 100
+    children: []
+  - uniqueID: d307cc76-43b3-4587-a4a7-ea9424891590
+    text: 
+    rect:
+      serializedVersion: 2
+      x: 633
+      y: 389
       width: 200
       height: 100
     children: []

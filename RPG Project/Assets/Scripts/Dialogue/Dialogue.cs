@@ -36,13 +36,25 @@ namespace RPG.Dialogue
 
         public IEnumerable<DialogueNode> GetChildren(DialogueNode node)
         {
-             foreach (string childID in node.children)
-             {
-                 if (nodeLookup.ContainsKey(childID))
-                 {
-                     yield return nodeLookup[childID];
-                 }
-             }
+            foreach (string childID in node.children)
+            {
+                if (nodeLookup.ContainsKey(childID))
+                {
+                yield return nodeLookup[childID];
+                }
+            }
+        }
+
+        public DialogueNode CreateNode(DialogueNode parent)
+        {
+            DialogueNode newNode = new DialogueNode();
+            newNode.uniqueID = System.Guid.NewGuid().ToString();
+            Vector2 childOffset = new Vector2(200, 0);
+            newNode.rect.position = parent.rect.position + childOffset;
+            parent.children.Add(newNode.uniqueID);
+            nodes.Add(newNode);
+            OnValidate();
+            return newNode;
         }
     }
 }
