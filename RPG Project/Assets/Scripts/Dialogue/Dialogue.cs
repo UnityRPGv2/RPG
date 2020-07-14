@@ -12,16 +12,13 @@ namespace RPG.Dialogue
         List<DialogueNode> nodes = new List<DialogueNode>();
         Dictionary<string, DialogueNode> nodeLookup = new Dictionary<string, DialogueNode>();
 
+        private void OnValidate() {
 #if UNITY_EDITOR
-        private void Awake() {
             if (nodes.Count <= 0)
             {
                 CreateNode(null);
             }
-        }
 #endif
-
-        private void OnValidate() {
             nodeLookup.Clear();
             foreach (DialogueNode node in GetAllNodes())
             {
@@ -36,7 +33,7 @@ namespace RPG.Dialogue
 
         public IEnumerable<DialogueNode> GetChildren(DialogueNode node)
         {
-            foreach (string childID in node.children)
+            foreach (string childID in node.GetChildren())
             {
                 if (nodeLookup.ContainsKey(childID))
                 {
@@ -45,6 +42,7 @@ namespace RPG.Dialogue
             }
         }
 
+#if UNITY_EDITOR
         public DialogueNode CreateNode(DialogueNode parent)
         {   
             DialogueNode newNode = CreateInstance<DialogueNode>();
@@ -53,8 +51,8 @@ namespace RPG.Dialogue
             if (parent != null)
             {
                 Vector2 childOffset = new Vector2(200, 0);
-                newNode.rect.position = parent.rect.position + childOffset;
-                parent.children.Add(newNode.name);
+                newNode.SetPosition(parent.GetRect().position + childOffset);
+                parent.AddChild(newNode.name);
             }
             nodes.Add(newNode);
             AssetDatabase.AddObjectToAsset(newNode, this);
@@ -74,8 +72,9 @@ namespace RPG.Dialogue
         {
             foreach (DialogueNode node in GetAllNodes())
             {
-                node.children.Remove(IDToRemove);
+                node.RemoveChild(IDToRemove);
             }
         }
+#endif
     }
 }
