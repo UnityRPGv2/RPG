@@ -180,10 +180,12 @@ namespace RPG.Dialogue.Editor
                 // Show why need for more natural.
                 if (draggingNode != null)
                 {
+                    Selection.activeObject = draggingNode;
                     draggingOffset = draggingNode.GetRect().position - e.mousePosition;
                 }
                 else
                 {
+                    Selection.activeObject = selectedDialogue;
                     draggingCanvas = true;
                     draggingOffset = scrollPosition + e.mousePosition;
                 }
