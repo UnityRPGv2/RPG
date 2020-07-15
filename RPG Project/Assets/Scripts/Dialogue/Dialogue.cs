@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 namespace RPG.Dialogue
 {
@@ -22,12 +23,45 @@ namespace RPG.Dialogue
                 CreateNode(null);
             }
 #endif
-            nodeLookup.Clear();
+            BuildNodeLookup();
+            BuildParentLookup();
+            SubscribeForChanges();
+            ValidateSameSpeaker();
+        }
+
+        private void ValidateSameSpeaker()
+        {
+            foreach (DialogueNode node in GetAllNodes())
+            {
+                List<string> childrenToRemove = new List<string>();
+                foreach (string childName in node.GetChildren())
+                {
+                    if (node.IsPlayerNextSpeaker() != IsPlayerSpeaking(childName))
+                    {
+                        childrenToRemove.Add(childName);
+                    }
+                }
+                foreach (string childToRemove in childrenToRemove)
+                {
+                    node.RemoveChild(childToRemove);
+                }
+            }
+        }
+
+        private void SubscribeForChanges()
+        {
+            foreach (DialogueNode node in GetAllNodes())
+            {
+                node.OnChange -= OnValidate;
+                node.OnChange += OnValidate;
+            }
+        }
+
+        private void BuildParentLookup()
+        {
             parentLookup.Clear();
             foreach (DialogueNode node in GetAllNodes())
             {
-                nodeLookup[node.name] = node;
-
                 foreach (string childName in node.GetChildren())
                 {
                     if (!parentLookup.ContainsKey(childName))
@@ -36,6 +70,15 @@ namespace RPG.Dialogue
                     }
                     parentLookup[childName].Add(node.name);
                 }
+            }
+        }
+
+        private void BuildNodeLookup()
+        {
+            nodeLookup.Clear();
+            foreach (DialogueNode node in GetAllNodes())
+            {
+                nodeLookup[node.name] = node;
             }
         }
 

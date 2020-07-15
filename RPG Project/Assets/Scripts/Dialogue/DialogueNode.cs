@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 namespace RPG.Dialogue
 {
@@ -11,6 +12,7 @@ namespace RPG.Dialogue
         [SerializeField] string text;
         [SerializeField] Rect rect = new Rect(40, 40, 200, 100);
         [SerializeField] List<string> children = new List<string>();
+        public event Action OnChange;
 
         public bool IsPlayerNextSpeaker()
         {
@@ -37,6 +39,13 @@ namespace RPG.Dialogue
             return rect;
         }
 
+        private void OnValidate() {
+            if (OnChange != null)
+            {
+                OnChange();
+            }
+        }
+
 #if UNITY_EDITOR
         public void SetNextSpeaker(bool newIsPlayerNextSpeaker)
         {
@@ -44,6 +53,7 @@ namespace RPG.Dialogue
             {
                 Undo.RecordObject(this, "Change Dialogue Node Speaker");
                 isPlayerNextSpeaker = newIsPlayerNextSpeaker;
+                OnValidate();
             }
         }
 
@@ -54,6 +64,7 @@ namespace RPG.Dialogue
                 Undo.RecordObject(this, "Change Dialogue Node Text");
                 text = newText;
                 EditorUtility.SetDirty(this);
+                OnValidate();
             }
         }
 
@@ -64,6 +75,7 @@ namespace RPG.Dialogue
                 Undo.RecordObject(this, "Link Dialogue Node");
                 children.Add(childID);
                 EditorUtility.SetDirty(this);
+                OnValidate();
             }
         }
 
@@ -74,6 +86,7 @@ namespace RPG.Dialogue
                 Undo.RecordObject(this, "Unlink Dialogue Node");
                 children.Remove(childID);
                 EditorUtility.SetDirty(this);
+                OnValidate();
             }
         }
 
@@ -84,6 +97,7 @@ namespace RPG.Dialogue
                 Undo.RecordObject(this, "Move Dialogue Node");
                 rect.position = newPos;
                 EditorUtility.SetDirty(this);
+                OnValidate();
             }
         }
 #endif

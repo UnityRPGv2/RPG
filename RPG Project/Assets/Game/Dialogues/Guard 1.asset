@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4fa1a1736eb3a44b5e83e715e6cf73, type: 3}
   m_Name: Guard 1
   m_EditorClassIdentifier: 
+  IsPlayerFirstSpeaker: 1
   nodes:
   - {fileID: 114500349759376762}
 --- !u!114 &114500349759376762
@@ -26,11 +27,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
   m_Name: 324b7cfc-2bbf-497a-8192-8fca02a48fc4
   m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 1
   text: 
   rect:
     serializedVersion: 2
-    x: 66
-    y: 65
+    x: 55
+    y: 62
     width: 200
     height: 100
   children: []
