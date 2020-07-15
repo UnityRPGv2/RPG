@@ -103,7 +103,7 @@ namespace RPG.Dialogue.Editor
 
         private void DrawNode(DialogueNode node)
         {
-            nodeStyle.normal.background = EditorGUIUtility.Load(node.IsPlayerNextSpeaker() ? "node1" : "node0") as Texture2D;
+            nodeStyle.normal.background = EditorGUIUtility.Load(selectedDialogue.IsPlayerSpeaking(node.name) ? "node1" : "node0") as Texture2D;
             GUILayout.BeginArea(node.GetRect(), nodeStyle);
             EditorGUILayout.LabelField(node.name, EditorStyles.whiteLabel);
             EditorGUI.BeginChangeCheck();

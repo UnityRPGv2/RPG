@@ -9,8 +9,11 @@ namespace RPG.Dialogue
     public class Dialogue : ScriptableObject
     {
         [SerializeField]
+        bool IsPlayerFirstSpeaker = true;
+        [SerializeField]
         List<DialogueNode> nodes = new List<DialogueNode>();
         Dictionary<string, DialogueNode> nodeLookup = new Dictionary<string, DialogueNode>();
+        Dictionary<string, List<string>> parentLookup = new Dictionary<string, List<string>>();
 
         private void OnValidate() {
 #if UNITY_EDITOR
@@ -20,9 +23,19 @@ namespace RPG.Dialogue
             }
 #endif
             nodeLookup.Clear();
+            parentLookup.Clear();
             foreach (DialogueNode node in GetAllNodes())
             {
                 nodeLookup[node.name] = node;
+
+                foreach (string childName in node.GetChildren())
+                {
+                    if (!parentLookup.ContainsKey(childName))
+                    {
+                        parentLookup[childName] = new List<string>();
+                    }
+                    parentLookup[childName].Add(node.name);
+                }
             }
         }
 
@@ -40,6 +53,15 @@ namespace RPG.Dialogue
                     yield return nodeLookup[childID];
                 }
             }
+        }
+
+        public bool IsPlayerSpeaking(string nodeName)
+        {
+            if (!parentLookup.ContainsKey(nodeName))
+            {
+                return IsPlayerFirstSpeaker;
+            }
+            return nodeLookup[parentLookup[nodeName][0]].IsPlayerNextSpeaker();
         }
 
 #if UNITY_EDITOR
