@@ -46,7 +46,6 @@ namespace RPG.Dialogue.Editor
         {
             Selection.selectionChanged += OnSelectionChanged;
             nodeStyle = new GUIStyle();
-            nodeStyle.normal.background = EditorGUIUtility.Load("node0") as Texture2D;
             nodeStyle.normal.textColor = Color.white;
             nodeStyle.border = new RectOffset(12, 12, 12, 12);
             nodeStyle.padding = new RectOffset(20, 20, 20, 20);
@@ -104,6 +103,7 @@ namespace RPG.Dialogue.Editor
 
         private void DrawNode(DialogueNode node)
         {
+            nodeStyle.normal.background = EditorGUIUtility.Load(node.IsPlayerNextSpeaker() ? "node1" : "node0") as Texture2D;
             GUILayout.BeginArea(node.GetRect(), nodeStyle);
             EditorGUILayout.LabelField(node.name, EditorStyles.whiteLabel);
             EditorGUI.BeginChangeCheck();

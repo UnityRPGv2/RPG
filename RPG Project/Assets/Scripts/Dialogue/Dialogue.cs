@@ -56,6 +56,7 @@ namespace RPG.Dialogue
             }
             nodes.Add(newNode);
             AssetDatabase.AddObjectToAsset(newNode, this);
+            newNode.SetNextSpeaker(!parent.IsPlayerNextSpeaker());
             OnValidate();
             return newNode;
         }

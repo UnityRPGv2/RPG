@@ -49,11 +49,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
   m_Name: cbdc7b29-e1c0-4082-8394-3b16c569f220
   m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
   text: 
   rect:
     serializedVersion: 2
     x: 34
-    y: 109
+    y: 107
     width: 200
     height: 100
   children:
@@ -71,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
   m_Name: c109606f-bee6-4d58-b1a0-e9ea644625cb
   m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 1
   text: 
   rect:
     serializedVersion: 2
