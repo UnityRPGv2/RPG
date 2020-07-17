@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: cbdc7b29-e1c0-4082-8394-3b16c569f220
   m_EditorClassIdentifier: 
   isPlayerNextSpeaker: 0
-  text: 
+  text: Hello world
   rect:
     serializedVersion: 2
     x: 34
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: c109606f-bee6-4d58-b1a0-e9ea644625cb
   m_EditorClassIdentifier: 
   isPlayerNextSpeaker: 1
-  text: 
+  text: Donkey!
   rect:
     serializedVersion: 2
     x: 464
