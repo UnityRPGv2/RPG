@@ -15,6 +15,28 @@ MonoBehaviour:
   nodes:
   - {fileID: 114381945859810388}
   - {fileID: 114898334652170344}
+  - {fileID: 114557491895011698}
+  - {fileID: 114082012827094928}
+--- !u!114 &114082012827094928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: fb64c32b-9ff7-4f56-81d7-89877aaffecf
+  m_EditorClassIdentifier: 
+  text: 
+  rect:
+    serializedVersion: 2
+    x: 799
+    y: 167
+    width: 200
+    height: 100
+  children: []
 --- !u!114 &114381945859810388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36,6 +58,27 @@ MonoBehaviour:
     height: 100
   children:
   - 5e09a0be-00af-49ea-903c-4852113d67ed
+  - c109606f-bee6-4d58-b1a0-e9ea644625cb
+--- !u!114 &114557491895011698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: c109606f-bee6-4d58-b1a0-e9ea644625cb
+  m_EditorClassIdentifier: 
+  text: 
+  rect:
+    serializedVersion: 2
+    x: 464
+    y: 304
+    width: 200
+    height: 100
+  children: []
 --- !u!114 &114898334652170344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,11 +91,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
   m_Name: 5e09a0be-00af-49ea-903c-4852113d67ed
   m_EditorClassIdentifier: 
-  text: 
+  text: Hello
   rect:
     serializedVersion: 2
-    x: 234
-    y: 109
+    x: 510
+    y: 151
     width: 200
     height: 100
-  children: []
+  children:
+  - fb64c32b-9ff7-4f56-81d7-89877aaffecf
