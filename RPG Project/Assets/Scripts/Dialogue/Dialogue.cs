@@ -112,6 +112,16 @@ namespace RPG.Dialogue
             }
         }
 
+        public bool IsPlayerNext(DialogueNode node)
+        {
+            if (node == null)
+            {
+                return IsPlayerFirstSpeaker;
+            }
+
+            return node.IsPlayerNextSpeaker();
+        }
+
         public bool IsPlayerSpeaking(string nodeName)
         {
             if (!parentLookup.ContainsKey(nodeName))

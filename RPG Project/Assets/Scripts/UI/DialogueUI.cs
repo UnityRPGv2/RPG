@@ -23,7 +23,14 @@ namespace RPG.UI
         // Update is called once per frame
         void Update()
         {
-            mainDialogue.text = playerConversant.GetCurrentText();
+            if (playerConversant.IsChoosing())
+            {
+                mainDialogue.text = "Choosing...";
+            }
+            else
+            {
+                mainDialogue.text = playerConversant.GetCurrentText();
+            }
             nextButton.gameObject.SetActive(playerConversant.HasNext());
         }
     }

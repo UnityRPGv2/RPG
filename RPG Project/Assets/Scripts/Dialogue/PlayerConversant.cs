@@ -8,11 +8,12 @@ namespace RPG.Dialogue
     {
         [SerializeField] Dialogue dialogue;
         DialogueNode currentNode = null;
+        bool isChoosing = false;
 
-        // public bool IsChoosing()
-        // {
-
-        // }
+        public bool IsChoosing()
+        {
+            return isChoosing;
+        }
 
         public string GetCurrentText()
         {
@@ -31,6 +32,12 @@ namespace RPG.Dialogue
 
         public void Next()
         {
+            if (dialogue.IsPlayerNext(currentNode))
+            {
+                isChoosing = true;
+                return;
+            }
+
             List<DialogueNode> choices = new List<DialogueNode>(dialogue.GetChildren(currentNode));
             int choice = Random.Range(0, choices.Count);
             currentNode = choices[choice];
@@ -38,6 +45,8 @@ namespace RPG.Dialogue
 
         public bool HasNext()
         {
+            if (isChoosing) return false;
+
             List<DialogueNode> choices = new List<DialogueNode>(dialogue.GetChildren(currentNode));
             return choices.Count > 0;
         }
