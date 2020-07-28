@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651fa983d862e8c4184cc06a0e12983f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedDialogue: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 726b5658574e8dd4fb7e81eded448c96, type: 2}
   currentNode: {fileID: 114381945859810388, guid: 726b5658574e8dd4fb7e81eded448c96,
     type: 2}
 --- !u!1001 &1080417002832114521
