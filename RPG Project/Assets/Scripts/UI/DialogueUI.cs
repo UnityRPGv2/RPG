@@ -40,17 +40,28 @@ namespace RPG.UI
             }
             else
             {
-                foreach (Transform child in choiceContainer)
-                {
-                    Destroy(child.gameObject);
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    var choiceButton = Instantiate(choicePrefab, choiceContainer);
-                }
-
+                DrawChoices();
             }
             nextButton.gameObject.SetActive(playerConversant.HasNext());
+        }
+
+        void DrawChoices()
+        {
+            foreach (Transform child in choiceContainer)
+            {
+                Destroy(child.gameObject);
+            }
+            foreach (DialogueNode choice in playerConversant.GetCurrentChoices())
+            {
+                var choiceButton = Instantiate(choicePrefab, choiceContainer);
+                TextMeshProUGUI text = choiceButton.GetComponentInChildren<TextMeshProUGUI>();
+                text.text = choice.GetText();
+                choiceButton.onClick.AddListener(() => 
+                {
+                    playerConversant.ChooseNext(choice);
+                    Redraw();
+                });
+            }
         }
     }
 }

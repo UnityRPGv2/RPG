@@ -25,10 +25,10 @@ namespace RPG.Dialogue
             return currentNode.GetText();
         }
 
-        // public string[] GetCurrentChoices()
-        // {
-
-        // }
+        public IEnumerable<DialogueNode> GetCurrentChoices()
+        {
+            return dialogue.GetChildren(currentNode);
+        }
 
         public void Next()
         {
@@ -51,10 +51,12 @@ namespace RPG.Dialogue
             return choices.Count > 0;
         }
 
-        // public void ChooseNext(int choice)
-        // {
-
-        // }
+        public void ChooseNext(DialogueNode choice)
+        {
+            currentNode = choice;
+            isChoosing = false;
+            Next();
+        }
 
         // Start is called before the first frame update
         void Awake()

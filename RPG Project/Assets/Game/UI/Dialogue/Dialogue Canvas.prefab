@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
 --- !u!1 &1868409438271571021
 GameObject:
@@ -742,7 +742,7 @@ PrefabInstance:
     - target: {fileID: 9189241581818249811, guid: 6ede2e1de1877ef4cb400ebbf4f5a3da,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 283
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9189241581818249811, guid: 6ede2e1de1877ef4cb400ebbf4f5a3da,
         type: 3}
@@ -788,6 +788,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949488565068337506, guid: 6ede2e1de1877ef4cb400ebbf4f5a3da,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949488565068337506, guid: 6ede2e1de1877ef4cb400ebbf4f5a3da,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ede2e1de1877ef4cb400ebbf4f5a3da, type: 3}
