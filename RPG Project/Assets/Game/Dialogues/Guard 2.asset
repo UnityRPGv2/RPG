@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4fa1a1736eb3a44b5e83e715e6cf73, type: 3}
   m_Name: Guard 2
   m_EditorClassIdentifier: 
-  IsPlayerFirstSpeaker: 1
+  IsPlayerFirstSpeaker: 0
   nodes:
   - {fileID: 114381945859810388}
   - {fileID: 114898334652170344}
@@ -31,11 +31,11 @@ MonoBehaviour:
   m_Name: fb64c32b-9ff7-4f56-81d7-89877aaffecf
   m_EditorClassIdentifier: 
   isPlayerNextSpeaker: 1
-  text: 
+  text: Okay then
   rect:
     serializedVersion: 2
-    x: 799
-    y: 167
+    x: 833
+    y: 190
     width: 200
     height: 100
   children: []
@@ -51,12 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
   m_Name: cbdc7b29-e1c0-4082-8394-3b16c569f220
   m_EditorClassIdentifier: 
-  isPlayerNextSpeaker: 0
+  isPlayerNextSpeaker: 1
   text: Hello world
   rect:
     serializedVersion: 2
-    x: 34
-    y: 107
+    x: 43
+    y: 156
     width: 200
     height: 100
   children:
@@ -74,15 +74,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
   m_Name: c109606f-bee6-4d58-b1a0-e9ea644625cb
   m_EditorClassIdentifier: 
-  isPlayerNextSpeaker: 1
+  isPlayerNextSpeaker: 0
   text: Donkey!
   rect:
     serializedVersion: 2
     x: 464
-    y: 304
+    y: 289
     width: 200
     height: 100
-  children: []
+  children:
+  - fb64c32b-9ff7-4f56-81d7-89877aaffecf
 --- !u!114 &114898334652170344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,12 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
   m_Name: 5e09a0be-00af-49ea-903c-4852113d67ed
   m_EditorClassIdentifier: 
-  isPlayerNextSpeaker: 1
+  isPlayerNextSpeaker: 0
   text: Hello
   rect:
     serializedVersion: 2
-    x: 510
-    y: 151
+    x: 462
+    y: 140
     width: 200
     height: 100
   children:

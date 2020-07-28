@@ -89,11 +89,25 @@ namespace RPG.Dialogue
 
         public IEnumerable<DialogueNode> GetChildren(DialogueNode node)
         {
-            foreach (string childID in node.GetChildren())
+            if (node == null)
             {
-                if (nodeLookup.ContainsKey(childID))
+                foreach (DialogueNode potentialRoot in nodes)
                 {
-                    yield return nodeLookup[childID];
+                    if (!parentLookup.ContainsKey(potentialRoot.name))
+                    {
+                        yield return potentialRoot;
+                    }
+                }
+                
+            }
+            else
+            {
+                foreach (string childID in node.GetChildren())
+                {
+                    if (nodeLookup.ContainsKey(childID))
+                    {
+                        yield return nodeLookup[childID];
+                    }
                 }
             }
         }

@@ -7,7 +7,7 @@ namespace RPG.Dialogue
     public class PlayerConversant : MonoBehaviour
     {
         [SerializeField] Dialogue dialogue;
-        [SerializeField] DialogueNode currentNode;
+        DialogueNode currentNode = null;
 
         // public bool IsChoosing()
         // {
@@ -31,8 +31,6 @@ namespace RPG.Dialogue
 
         public void Next()
         {
-            if (currentNode == null) return;
-
             List<DialogueNode> choices = new List<DialogueNode>(dialogue.GetChildren(currentNode));
             int choice = Random.Range(0, choices.Count);
             currentNode = choices[choice];
@@ -40,8 +38,6 @@ namespace RPG.Dialogue
 
         public bool HasNext()
         {
-            if (currentNode == null) return false;
-
             List<DialogueNode> choices = new List<DialogueNode>(dialogue.GetChildren(currentNode));
             return choices.Count > 0;
         }
@@ -54,7 +50,7 @@ namespace RPG.Dialogue
         // Start is called before the first frame update
         void Start()
         {
-
+            Next();
         }
 
         // Update is called once per frame
