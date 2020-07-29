@@ -15,17 +15,26 @@ MonoBehaviour:
   IsPlayerFirstSpeaker: 0
   nodes:
   - {fileID: 114381945859810388}
-  - {fileID: 114898334652170344}
-  - {fileID: 114557491895011698}
-  - {fileID: 114082012827094928}
-  - {fileID: 114800189872175054}
-  - {fileID: 114906182387824968}
-  - {fileID: 114441591899252972}
-  - {fileID: 114295617371783152}
-  - {fileID: 114323510591688066}
-  - {fileID: 114756520707324664}
-  - {fileID: 114143824000596072}
---- !u!114 &114082012827094928
+  - {fileID: 114665823422585276}
+  - {fileID: 114044077326713650}
+  - {fileID: 114868236327163792}
+  - {fileID: 114875618535453704}
+  - {fileID: 114850945679739426}
+  - {fileID: 114782202651861672}
+  - {fileID: 114523337509531358}
+  - {fileID: 114875283114883360}
+  - {fileID: 114987586943359276}
+  - {fileID: 114232875899438372}
+  - {fileID: 114076980620588160}
+  - {fileID: 114480534438824676}
+  - {fileID: 114715912661869522}
+  - {fileID: 114427782661008516}
+  - {fileID: 114850912514685820}
+  - {fileID: 114904380601060242}
+  - {fileID: 114613603424569266}
+  - {fileID: 114238567410895964}
+  - {fileID: 114446342032148132}
+--- !u!114 &114044077326713650
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35,61 +44,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
-  m_Name: fb64c32b-9ff7-4f56-81d7-89877aaffecf
-  m_EditorClassIdentifier: 
-  isPlayerNextSpeaker: 1
-  text: Okay then
-  rect:
-    serializedVersion: 2
-    x: 826
-    y: 80
-    width: 200
-    height: 100
-  children: []
---- !u!114 &114143824000596072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
-  m_Name: 47629c92-cd78-49f8-98c0-594e3a54e18b
-  m_EditorClassIdentifier: 
-  isPlayerNextSpeaker: 1
-  text: Hi there!
-  rect:
-    serializedVersion: 2
-    x: 825
-    y: 168
-    width: 200
-    height: 100
-  children: []
---- !u!114 &114295617371783152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
-  m_Name: 6e99f489-abf8-44b0-9a81-7145860d40c0
+  m_Name: 77ae1d78-3a09-4307-8461-7424201f104f
   m_EditorClassIdentifier: 
   isPlayerNextSpeaker: 0
-  text: Sorry, don't know what got into me.
+  text: Hello young wipper snapper
   rect:
     serializedVersion: 2
-    x: 1080
-    y: 396
+    x: 307
+    y: 251
     width: 200
     height: 100
   children:
-  - 3d2fd107-5c77-437f-88b8-b5813a6221d5
---- !u!114 &114323510591688066
+  - 70d664c0-de15-4bce-9930-e9c8c674a775
+--- !u!114 &114076980620588160
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,18 +66,62 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
-  m_Name: 3d2fd107-5c77-437f-88b8-b5813a6221d5
+  m_Name: 808b2bf3-a8f8-4774-9d2a-9ccbfe8e69eb
   m_EditorClassIdentifier: 
   isPlayerNextSpeaker: 0
-  text: Never mind eh?
+  text: Just you try!
   rect:
     serializedVersion: 2
-    x: 1316
-    y: 396
+    x: 1030
+    y: 506
     width: 200
     height: 100
   children:
-  - 06763db5-10c2-4368-9690-b2e8d8687ff0
+  - 442c798d-7a28-4e11-848c-0a901c036b8f
+--- !u!114 &114232875899438372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: 7da177d8-6dee-4fad-a177-4664b2ee2b26
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
+  text: Don't do that!
+  rect:
+    serializedVersion: 2
+    x: 1027
+    y: 409
+    width: 200
+    height: 100
+  children:
+  - 442c798d-7a28-4e11-848c-0a901c036b8f
+--- !u!114 &114238567410895964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: aa0d9281-0770-4116-bc6d-5c01926789bf
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
+  text: I don't have any soup!
+  rect:
+    serializedVersion: 2
+    x: 1262
+    y: 153
+    width: 200
+    height: 100
+  children:
+  - 1e38f3f0-a246-403f-ae40-97f189a61d13
 --- !u!114 &114381945859810388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +135,7 @@ MonoBehaviour:
   m_Name: cbdc7b29-e1c0-4082-8394-3b16c569f220
   m_EditorClassIdentifier: 
   isPlayerNextSpeaker: 1
-  text: Hello world
+  text: Ho there old man!
   rect:
     serializedVersion: 2
     x: 43
@@ -132,9 +143,11 @@ MonoBehaviour:
     width: 200
     height: 100
   children:
-  - 5e09a0be-00af-49ea-903c-4852113d67ed
-  - c109606f-bee6-4d58-b1a0-e9ea644625cb
---- !u!114 &114441591899252972
+  - 29093e61-15b1-4dca-9c56-6047164b0dc3
+  - 77ae1d78-3a09-4307-8461-7424201f104f
+  - f403d8ba-5b2b-433d-afdd-18efc1d36307
+  - c2b5874e-9300-4108-902e-82df9b981019
+--- !u!114 &114427782661008516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,18 +157,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
-  m_Name: 0925367c-3e47-485c-ab5c-ae2ad09a666c
+  m_Name: 2e713967-8a68-43e0-952a-829195c7882b
   m_EditorClassIdentifier: 
-  isPlayerNextSpeaker: 1
-  text: Donkey donkey donkey!
+  isPlayerNextSpeaker: 0
+  text: To attack the village!
   rect:
     serializedVersion: 2
-    x: 1307
-    y: 295
+    x: 1016
+    y: 265
+    width: 200
+    height: 100
+  children:
+  - 6b36a860-1dcd-43d5-be7a-357a670f0ce1
+--- !u!114 &114446342032148132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: 1e38f3f0-a246-403f-ae40-97f189a61d13
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
+  text: Now off with you!
+  rect:
+    serializedVersion: 2
+    x: 1462
+    y: 153
     width: 200
     height: 100
   children: []
---- !u!114 &114557491895011698
+--- !u!114 &114480534438824676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,19 +200,201 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
-  m_Name: c109606f-bee6-4d58-b1a0-e9ea644625cb
+  m_Name: 70d664c0-de15-4bce-9930-e9c8c674a775
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
+  text: Nice one!
+  rect:
+    serializedVersion: 2
+    x: 572
+    y: 253
+    width: 200
+    height: 100
+  children:
+  - e544ce98-6a03-4256-bb23-905cbed44146
+--- !u!114 &114523337509531358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: 9edfabe1-a599-4beb-b8c7-2a187ae8b694
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
+  text: What?
+  rect:
+    serializedVersion: 2
+    x: 561
+    y: 385
+    width: 200
+    height: 100
+  children:
+  - 6b36a860-1dcd-43d5-be7a-357a670f0ce1
+--- !u!114 &114613603424569266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: 0deae8e4-d278-4be3-8b9c-8c361202e247
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
+  text: Just some warm soup
+  rect:
+    serializedVersion: 2
+    x: 1014
+    y: 157
+    width: 200
+    height: 100
+  children:
+  - aa0d9281-0770-4116-bc6d-5c01926789bf
+--- !u!114 &114665823422585276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: 29093e61-15b1-4dca-9c56-6047164b0dc3
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
+  text: Who you calling old?
+  rect:
+    serializedVersion: 2
+    x: 303
+    y: 71
+    width: 200
+    height: 100
+  children:
+  - 9b214063-5b31-403c-bfdc-b1014ed4fabd
+  - 9d3c59cf-c189-43b4-bad9-2bf8487ed18a
+--- !u!114 &114715912661869522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: e544ce98-6a03-4256-bb23-905cbed44146
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 1
+  text: What do you want?
+  rect:
+    serializedVersion: 2
+    x: 783
+    y: 253
+    width: 200
+    height: 100
+  children:
+  - 2e713967-8a68-43e0-952a-829195c7882b
+  - 0deae8e4-d278-4be3-8b9c-8c361202e247
+--- !u!114 &114782202651861672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: 1fd96824-8f5a-4d23-9c28-75053e31f441
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 1
+  text: Hello old crone!
+  rect:
+    serializedVersion: 2
+    x: 41
+    y: 311
+    width: 200
+    height: 100
+  children:
+  - 29093e61-15b1-4dca-9c56-6047164b0dc3
+  - 77ae1d78-3a09-4307-8461-7424201f104f
+  - f403d8ba-5b2b-433d-afdd-18efc1d36307
+  - c2b5874e-9300-4108-902e-82df9b981019
+--- !u!114 &114850912514685820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: c2b5874e-9300-4108-902e-82df9b981019
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
+  text: I wish to attach the village!
+  rect:
+    serializedVersion: 2
+    x: 302
+    y: 524
+    width: 200
+    height: 100
+  children:
+  - 6b36a860-1dcd-43d5-be7a-357a670f0ce1
+--- !u!114 &114850945679739426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: 9d3c59cf-c189-43b4-bad9-2bf8487ed18a
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
+  text: You!
+  rect:
+    serializedVersion: 2
+    x: 565
+    y: 137
+    width: 200
+    height: 100
+  children:
+  - e544ce98-6a03-4256-bb23-905cbed44146
+--- !u!114 &114868236327163792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: f403d8ba-5b2b-433d-afdd-18efc1d36307
   m_EditorClassIdentifier: 
   isPlayerNextSpeaker: 0
   text: Donkey!
   rect:
     serializedVersion: 2
-    x: 464
-    y: 289
+    x: 301
+    y: 386
     width: 200
     height: 100
   children:
-  - 3bce8411-833c-4c37-b9f0-e9272d846c21
---- !u!114 &114756520707324664
+  - 9edfabe1-a599-4beb-b8c7-2a187ae8b694
+  - 242578ee-1cc0-477a-af9f-cbccf936556d
+--- !u!114 &114875283114883360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,65 +404,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
-  m_Name: 06763db5-10c2-4368-9690-b2e8d8687ff0
-  m_EditorClassIdentifier: 
-  isPlayerNextSpeaker: 1
-  text: What did you want?
-  rect:
-    serializedVersion: 2
-    x: 1544
-    y: 394
-    width: 200
-    height: 100
-  children:
-  - 5e09a0be-00af-49ea-903c-4852113d67ed
---- !u!114 &114800189872175054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
-  m_Name: 3bce8411-833c-4c37-b9f0-e9272d846c21
-  m_EditorClassIdentifier: 
-  isPlayerNextSpeaker: 1
-  text: What are you talking about?
-  rect:
-    serializedVersion: 2
-    x: 777
-    y: 293
-    width: 200
-    height: 100
-  children:
-  - 369c5693-6ba9-45fc-b57d-1c88739cb9fd
-  - 6e99f489-abf8-44b0-9a81-7145860d40c0
---- !u!114 &114898334652170344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
-  m_Name: 5e09a0be-00af-49ea-903c-4852113d67ed
+  m_Name: 242578ee-1cc0-477a-af9f-cbccf936556d
   m_EditorClassIdentifier: 
   isPlayerNextSpeaker: 0
-  text: Hello
+  text: Are you mad?
   rect:
     serializedVersion: 2
-    x: 462
-    y: 140
+    x: 562
+    y: 495
     width: 200
     height: 100
   children:
-  - fb64c32b-9ff7-4f56-81d7-89877aaffecf
-  - 47629c92-cd78-49f8-98c0-594e3a54e18b
---- !u!114 &114906182387824968
+  - 6b36a860-1dcd-43d5-be7a-357a670f0ce1
+--- !u!114 &114875618535453704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,15 +426,59 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
-  m_Name: 369c5693-6ba9-45fc-b57d-1c88739cb9fd
+  m_Name: 9b214063-5b31-403c-bfdc-b1014ed4fabd
   m_EditorClassIdentifier: 
   isPlayerNextSpeaker: 0
-  text: Donkeys!
+  text: Well you are!
   rect:
     serializedVersion: 2
-    x: 1082
-    y: 288
+    x: 564
+    y: 38
     width: 200
     height: 100
   children:
-  - 0925367c-3e47-485c-ab5c-ae2ad09a666c
+  - e544ce98-6a03-4256-bb23-905cbed44146
+--- !u!114 &114904380601060242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: 442c798d-7a28-4e11-848c-0a901c036b8f
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
+  text: We'll let you off this time, granddad!
+  rect:
+    serializedVersion: 2
+    x: 1263
+    y: 434
+    width: 200
+    height: 100
+  children: []
+--- !u!114 &114987586943359276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: 6b36a860-1dcd-43d5-be7a-357a670f0ce1
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 1
+  text: We should lock you up!
+  rect:
+    serializedVersion: 2
+    x: 792
+    y: 433
+    width: 200
+    height: 100
+  children:
+  - 7da177d8-6dee-4fad-a177-4664b2ee2b26
+  - 808b2bf3-a8f8-4774-9d2a-9ccbfe8e69eb
