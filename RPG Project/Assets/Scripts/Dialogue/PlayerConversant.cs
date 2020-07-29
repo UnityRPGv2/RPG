@@ -7,22 +7,25 @@ namespace RPG.Dialogue
 {
     public class PlayerConversant : MonoBehaviour
     {
-        Dialogue currentDialogue;
+        Dialogue currentDialogue = null;
         DialogueNode currentNode = null;
+        AIConversant currentConversant = null;
         bool isChoosing = false;
 
         public event Action conversationUpdated;
 
-        public void StartDialogue(Dialogue dialogue)
+        public void StartDialogue(AIConversant conversant, Dialogue dialogue)
         {
             currentDialogue = dialogue;
+            currentConversant = conversant;
             Next();
         }
-        
+
         public void EndDialogue()
         {
             currentDialogue = null;
-            currentNode = null;
+            SetCurrentNode(null);
+            currentConversant = null;
             if (conversationUpdated != null)
             {
                 conversationUpdated();
@@ -68,7 +71,7 @@ namespace RPG.Dialogue
 
             List<DialogueNode> choices = new List<DialogueNode>(currentDialogue.GetChildren(currentNode));
             int choice = UnityEngine.Random.Range(0, choices.Count);
-            currentNode = choices[choice];
+            SetCurrentNode(choices[choice]);
             if (conversationUpdated != null)
             {
                 conversationUpdated();
@@ -86,9 +89,33 @@ namespace RPG.Dialogue
 
         public void ChooseNext(DialogueNode choice)
         {
-            currentNode = choice;
+            SetCurrentNode(choice);
             isChoosing = false;
             Next();
+        }
+
+        void SetCurrentNode(DialogueNode newNode)
+        {
+            if (currentNode != null)
+            {
+                TriggerEvents(currentNode.GetOnExitTriggers());
+            }
+            currentNode = newNode;
+            if (currentNode != null)
+            {
+                TriggerEvents(currentNode.GetOnEnterTriggers());
+            }
+        }
+
+        void TriggerEvents(string[] triggers)
+        {
+            foreach (DialogueTrigger triggerScript in currentConversant.GetComponents<DialogueTrigger>())
+            {
+                foreach (string trigger in triggers)
+                {
+                    triggerScript.Trigger(trigger);
+                }
+            }
         }
 
     }

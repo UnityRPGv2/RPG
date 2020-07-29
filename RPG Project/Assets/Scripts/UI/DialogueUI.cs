@@ -38,6 +38,7 @@ namespace RPG.UI
         void Redraw()
         {
             root.SetActive(playerConversant.HasActiveConversation());
+            if (!playerConversant.HasActiveConversation()) return;
             mainDialogue.gameObject.SetActive(!playerConversant.IsChoosing());
             choiceContainer.gameObject.SetActive(playerConversant.IsChoosing());
 

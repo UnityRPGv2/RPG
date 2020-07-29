@@ -12,6 +12,8 @@ namespace RPG.Dialogue
         [SerializeField] string text;
         [SerializeField] Rect rect = new Rect(40, 40, 200, 100);
         [SerializeField] List<string> children = new List<string>();
+        [SerializeField] string[] onEnterTriggers;
+        [SerializeField] string[] onExitTriggers;
         public event Action OnChange;
 
         public bool IsPlayerNextSpeaker()
@@ -37,6 +39,16 @@ namespace RPG.Dialogue
         public Rect GetRect()
         {
             return rect;
+        }
+
+        public string[] GetOnEnterTriggers()
+        {
+            return onEnterTriggers;
+        }
+
+        public string[] GetOnExitTriggers()
+        {
+            return onExitTriggers;
         }
 
         private void OnValidate() {
