@@ -18,6 +18,16 @@ namespace RPG.Dialogue
             currentDialogue = dialogue;
             Next();
         }
+        
+        public void EndDialogue()
+        {
+            currentDialogue = null;
+            currentNode = null;
+            if (conversationUpdated != null)
+            {
+                conversationUpdated();
+            }
+        }
 
         public bool HasActiveConversation()
         {

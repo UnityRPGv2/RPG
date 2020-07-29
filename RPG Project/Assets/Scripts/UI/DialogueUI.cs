@@ -15,15 +15,20 @@ namespace RPG.UI
         [SerializeField] Transform choiceContainer;
         [SerializeField] Button choicePrefab;
         [SerializeField] Button nextButton;
+        [SerializeField] Button quitButton;
 
         // Start is called before the first frame update
         void Start()
         {
             playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
             playerConversant.conversationUpdated += Redraw;
-            nextButton.onClick.AddListener(() => 
+            nextButton.onClick.AddListener(() =>
             {
-                    playerConversant.Next(); 
+                playerConversant.Next();
+            });
+            quitButton.onClick.AddListener(() =>
+            {
+                playerConversant.EndDialogue();
             });
 
             Redraw();
