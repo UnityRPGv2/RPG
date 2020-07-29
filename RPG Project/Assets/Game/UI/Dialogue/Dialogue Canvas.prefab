@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c559ee0f4401254a9632ce5872b4d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  root: {fileID: 5247954789338241319}
   mainDialogue: {fileID: 5180773571307320787}
   choiceContainer: {fileID: 3378216373023371514}
   choicePrefab: {fileID: 7549282209180939718, guid: 6ede2e1de1877ef4cb400ebbf4f5a3da,

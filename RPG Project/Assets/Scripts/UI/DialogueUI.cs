@@ -10,6 +10,7 @@ namespace RPG.UI
     public class DialogueUI : MonoBehaviour
     {
         PlayerConversant playerConversant;
+        [SerializeField] GameObject root;
         [SerializeField] TextMeshProUGUI mainDialogue;
         [SerializeField] Transform choiceContainer;
         [SerializeField] Button choicePrefab;
@@ -31,6 +32,7 @@ namespace RPG.UI
         // Update is called once per frame
         void Redraw()
         {
+            root.SetActive(playerConversant.HasActiveConversation());
             mainDialogue.gameObject.SetActive(!playerConversant.IsChoosing());
             choiceContainer.gameObject.SetActive(playerConversant.IsChoosing());
 

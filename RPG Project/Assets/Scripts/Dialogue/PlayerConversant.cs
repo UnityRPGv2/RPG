@@ -7,22 +7,21 @@ namespace RPG.Dialogue
 {
     public class PlayerConversant : MonoBehaviour
     {
-        [SerializeField] Dialogue dialogueTmp;
         Dialogue currentDialogue;
         DialogueNode currentNode = null;
         bool isChoosing = false;
 
         public event Action conversationUpdated;
 
-        // Will only work in start with the notification:
-        private void Start() {
-            StartDialogue(dialogueTmp);
-        }
-
         public void StartDialogue(Dialogue dialogue)
         {
             currentDialogue = dialogue;
             Next();
+        }
+
+        public bool HasActiveConversation()
+        {
+            return currentDialogue != null;
         }
 
         public bool IsChoosing()
