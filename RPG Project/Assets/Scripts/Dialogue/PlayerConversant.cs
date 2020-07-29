@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +7,23 @@ namespace RPG.Dialogue
 {
     public class PlayerConversant : MonoBehaviour
     {
-        [SerializeField] Dialogue dialogue;
+        [SerializeField] Dialogue dialogueTmp;
+        Dialogue currentDialogue;
         DialogueNode currentNode = null;
         bool isChoosing = false;
+
+        public event Action conversationUpdated;
+
+        // Will only work in start with the notification:
+        private void Start() {
+            StartDialogue(dialogueTmp);
+        }
+
+        public void StartDialogue(Dialogue dialogue)
+        {
+            currentDialogue = dialogue;
+            Next();
+        }
 
         public bool IsChoosing()
         {
@@ -27,27 +42,36 @@ namespace RPG.Dialogue
 
         public IEnumerable<DialogueNode> GetCurrentChoices()
         {
-            return dialogue.GetChildren(currentNode);
+            return currentDialogue.GetChildren(currentNode);
         }
 
         public void Next()
         {
-            if (dialogue.IsPlayerNext(currentNode))
+            if (currentDialogue.IsPlayerNext(currentNode))
             {
                 isChoosing = true;
+                if (conversationUpdated != null)
+                {
+                    conversationUpdated();
+                }
                 return;
             }
 
-            List<DialogueNode> choices = new List<DialogueNode>(dialogue.GetChildren(currentNode));
-            int choice = Random.Range(0, choices.Count);
+            List<DialogueNode> choices = new List<DialogueNode>(currentDialogue.GetChildren(currentNode));
+            int choice = UnityEngine.Random.Range(0, choices.Count);
             currentNode = choices[choice];
+            if (conversationUpdated != null)
+            {
+                conversationUpdated();
+            }
         }
 
         public bool HasNext()
         {
+            if (currentDialogue == null) return false;
             if (isChoosing) return false;
 
-            List<DialogueNode> choices = new List<DialogueNode>(dialogue.GetChildren(currentNode));
+            List<DialogueNode> choices = new List<DialogueNode>(currentDialogue.GetChildren(currentNode));
             return choices.Count > 0;
         }
 
@@ -56,18 +80,6 @@ namespace RPG.Dialogue
             currentNode = choice;
             isChoosing = false;
             Next();
-        }
-
-        // Start is called before the first frame update
-        void Awake()
-        {
-            Next();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
     }

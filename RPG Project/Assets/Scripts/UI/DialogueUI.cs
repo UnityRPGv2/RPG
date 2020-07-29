@@ -19,10 +19,10 @@ namespace RPG.UI
         void Start()
         {
             playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
+            playerConversant.conversationUpdated += Redraw;
             nextButton.onClick.AddListener(() => 
             {
                     playerConversant.Next(); 
-                    Redraw();
             });
 
             Redraw();
@@ -59,7 +59,6 @@ namespace RPG.UI
                 choiceButton.onClick.AddListener(() => 
                 {
                     playerConversant.ChooseNext(choice);
-                    Redraw();
                 });
             }
         }
