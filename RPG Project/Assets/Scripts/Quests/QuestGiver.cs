@@ -13,7 +13,6 @@ namespace RPG.Quests
 
         public void GiveQuest()
         {
-            Debug.Log("Quest!");
             playerQuestList.AddQuest(quest);
         }
     }

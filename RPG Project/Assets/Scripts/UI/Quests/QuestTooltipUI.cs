@@ -25,6 +25,22 @@ public class QuestTooltipUI : MonoBehaviour
             var objectiveUI = Instantiate(objectivePrefab, objectiveContainer);
             objectiveUI.GetComponentInChildren<TextMeshProUGUI>().text = objective;
         }
-        rewardsText.text = string.Join(", ", status.GetQuest().GetRewardNames());
+        rewardsText.text = string.Join(", ", GetRewardTexts(status.GetQuest()));
+    }
+
+    IEnumerable<string> GetRewardTexts(Quest quest)
+    {
+        foreach (var reward in quest.GetRewards())
+        {
+            if (reward.number < 1) continue;
+            if (reward.number == 1)
+            {
+                yield return reward.item.GetDisplayName();
+            }
+            else
+            {
+                yield return reward.number + " " + reward.item.GetDisplayName();
+            }
+        }
     }
 }

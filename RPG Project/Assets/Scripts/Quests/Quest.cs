@@ -10,13 +10,20 @@ namespace RPG.Quests
     public class Quest : ScriptableObject
     {
         [SerializeField] Objective[] objectives;
-        [SerializeField] InventoryItem[] rewards;
+        [SerializeField] Reward[] rewards;
 
         [System.Serializable]
         public struct Objective
         {
             public string reference;
             public string description;
+        }
+
+        [System.Serializable]
+        public struct Reward
+        {
+            public int number;
+            public InventoryItem item;
         }
 
         public string GetTitle()
@@ -29,12 +36,9 @@ namespace RPG.Quests
             return objectives.Length;
         }
 
-        public IEnumerable<string> GetRewardNames()
+        public IEnumerable<Reward> GetRewards()
         {
-            foreach (var reward in rewards)
-            {
-                yield return reward.GetDisplayName();
-            }
+            return rewards;
         }
 
         public IEnumerable<Objective> GetObjectives()
