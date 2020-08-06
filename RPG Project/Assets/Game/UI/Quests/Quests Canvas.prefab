@@ -226,7 +226,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6487082757355101039}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -837,7 +837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0005187988, y: -0.000010009474}
+  m_AnchoredPosition: {x: 0.0005187988, y: -0.000028051798}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &6250004083677027661
@@ -889,12 +889,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246063d762dff3f4baed68877fef94c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmpQuests:
-  - {fileID: 11400000, guid: fc0ad243055808642ad4e34f52270880, type: 2}
-  - {fileID: 11400000, guid: b6af67ed0367ad143abf55846689c0a7, type: 2}
-  - {fileID: 11400000, guid: bbb0f38312bc41f479d17ef2f52b5cf9, type: 2}
-  - {fileID: 11400000, guid: da6511fd1d0afb84a8a97d890c70bc57, type: 2}
   itemPrefab: {fileID: 6844652913721559882, guid: 00ba0b7a79aa61944b3fa6617f4310fc,
+    type: 3}
+  completedPrefab: {fileID: 6843135914322116401, guid: 1ba92eb5d88359a46bb5a26841c47b49,
     type: 3}
 --- !u!1 &8199517775487560117
 GameObject:

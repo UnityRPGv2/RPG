@@ -14,7 +14,7 @@ namespace RPG.UI.Quests
         public void Setup(QuestStatus status)
         {
             text.text = status.GetQuest().GetTitle();
-            completion.text = "0/" + status.GetQuest().GetObjectivesNum();
+            completion.text =  status.GetCompletedCount() + "/" + status.GetQuest().GetObjectivesNum();
             this.questStatus = status;
         }
 
