@@ -41,5 +41,17 @@ namespace RPG.Quests
         {
             return (IEnumerable<Objective>) objectives;
         }
+
+        public bool HasObjective(string testObjective)
+        {
+            foreach (var objective in objectives)
+            {
+                if (objective.reference == testObjective)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

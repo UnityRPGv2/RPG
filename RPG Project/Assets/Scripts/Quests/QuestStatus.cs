@@ -38,6 +38,13 @@ namespace RPG.Quests
             return count;
         }
 
+        public void CompleteObjective(string objective)
+        {
+            if (!quest.HasObjective(objective)) return;
+            if (completedObjectives.Contains(objective)) return;
+            completedObjectives.Add(objective);
+        }
+
         public Quest GetQuest()
         {
             return quest;
