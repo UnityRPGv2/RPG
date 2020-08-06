@@ -7,9 +7,19 @@ namespace RPG.UI.Quests
     {
         [SerializeField] QuestItemUI itemPrefab;
         [SerializeField] QuestItemUI completedPrefab;
+        QuestList questList;
 
         private void Start() {
-            var questList = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestList>();
+            questList = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestList>();
+            questList.onUpdate += UpdateList;
+            UpdateList();
+        }
+
+        private void UpdateList() {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
             foreach (QuestStatus quest in questList.GetQuestStatuses())
             {
                 if (quest.IsComplete()) continue;

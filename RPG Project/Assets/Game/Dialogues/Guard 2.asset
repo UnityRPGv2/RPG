@@ -35,6 +35,32 @@ MonoBehaviour:
   - {fileID: 114238567410895964}
   - {fileID: 114446342032148132}
   - {fileID: 114422633490007074}
+  - {fileID: 114006600567078616}
+  - {fileID: 114100137478672224}
+--- !u!114 &114006600567078616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: 38e309ae-8fce-4df9-9a1c-bdea76e124e1
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 0
+  text: Gimme a quest!
+  rect:
+    serializedVersion: 2
+    x: 297
+    y: 647
+    width: 200
+    height: 100
+  children:
+  - 323fbc27-e765-4a29-ae2b-4259eee138bb
+  onEnterTriggers: []
+  onExitTriggers: []
 --- !u!114 &114044077326713650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +109,30 @@ MonoBehaviour:
   - 7d0eaaa5-1f91-456e-b5c3-75807c5e7dc6
   onEnterTriggers: []
   onExitTriggers: []
+--- !u!114 &114100137478672224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf7e00e5170f540b4891ca1d6a66bc, type: 3}
+  m_Name: 323fbc27-e765-4a29-ae2b-4259eee138bb
+  m_EditorClassIdentifier: 
+  isPlayerNextSpeaker: 1
+  text: Sure
+  rect:
+    serializedVersion: 2
+    x: 563
+    y: 641
+    width: 200
+    height: 100
+  children: []
+  onEnterTriggers: []
+  onExitTriggers:
+  - quest
 --- !u!114 &114232875899438372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +206,7 @@ MonoBehaviour:
   - 77ae1d78-3a09-4307-8461-7424201f104f
   - f403d8ba-5b2b-433d-afdd-18efc1d36307
   - c2b5874e-9300-4108-902e-82df9b981019
+  - 38e309ae-8fce-4df9-9a1c-bdea76e124e1
   onEnterTriggers: []
   onExitTriggers: []
 --- !u!114 &114422633490007074
@@ -376,6 +427,7 @@ MonoBehaviour:
   - 77ae1d78-3a09-4307-8461-7424201f104f
   - f403d8ba-5b2b-433d-afdd-18efc1d36307
   - c2b5874e-9300-4108-902e-82df9b981019
+  - 38e309ae-8fce-4df9-9a1c-bdea76e124e1
   onEnterTriggers: []
   onExitTriggers: []
 --- !u!114 &114850912514685820
