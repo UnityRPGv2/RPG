@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using RPG.Quests;
 
 public class QuestTooltipUI : MonoBehaviour
 {
@@ -11,19 +12,19 @@ public class QuestTooltipUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI rewardsText;
     [SerializeField] TextMeshProUGUI titleText;
 
-    public void Setup(Quest quest)
+    public void Setup(QuestStatus status)
     {
-        titleText.text = quest.GetTitle();
-        foreach (string objective in quest.GetCompletedObjectives())
+        titleText.text = status.GetQuest().GetTitle();
+        foreach (string objective in status.GetCompletedObjectives())
         {
             var objectiveUI = Instantiate(completeObjectivePrefab, objectiveContainer);
             objectiveUI.GetComponentInChildren<TextMeshProUGUI>().text = objective;
         }
-        foreach (string objective in quest.GetOutstandingObjectives())
+        foreach (string objective in status.GetOutstandingObjectives())
         {
             var objectiveUI = Instantiate(objectivePrefab, objectiveContainer);
             objectiveUI.GetComponentInChildren<TextMeshProUGUI>().text = objective;
         }
-        rewardsText.text = string.Join(", ", quest.GetRewardNames());
+        rewardsText.text = string.Join(", ", status.GetQuest().GetRewardNames());
     }
 }

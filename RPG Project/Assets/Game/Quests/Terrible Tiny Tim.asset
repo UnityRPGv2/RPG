@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e3f8c2b2f62824f9ff47db04d99355, type: 3}
   m_Name: Terrible Tiny Tim
   m_EditorClassIdentifier: 
-  objectives: []
+  objectives:
+  - reference: a
+    description: Find the little brat called Tiny Tim.
+  - reference: b
+    description: Destroy the boy's confidence by slaying the dog.
+  - reference: c
+    description: Take the dog collar to the boy's mother.
   rewards: []

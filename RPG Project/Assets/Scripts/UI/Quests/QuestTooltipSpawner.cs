@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameDevTV.Core.UI.Tooltips;
 using UnityEngine;
+using RPG.Quests;
 
 namespace RPG.UI.Quests
 {

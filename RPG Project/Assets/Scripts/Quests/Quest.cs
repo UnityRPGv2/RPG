@@ -4,55 +4,42 @@ using System.Collections.Generic;
 using GameDevTV.Inventories;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Quest", menuName = "RPG/Quest", order = 0)]
-public class Quest : ScriptableObject {
-    [SerializeField] Objective[] objectives;
-    [SerializeField] InventoryItem[] rewards;
-
-    [System.Serializable]
-    struct Objective
+namespace RPG.Quests
+{
+    [CreateAssetMenu(fileName = "Quest", menuName = "RPG/Quest", order = 0)]
+    public class Quest : ScriptableObject
     {
-        public bool complete;
-        public string description;
-    }
+        [SerializeField] Objective[] objectives;
+        [SerializeField] InventoryItem[] rewards;
 
-    public string GetTitle()
-    {
-        return name;
-    }
-
-    public int GetObjectivesNum()
-    {
-        return objectives.Length;
-    }
-
-    public IEnumerable<string> GetCompletedObjectives()
-    {
-        foreach (var objective in objectives)
+        [System.Serializable]
+        public struct Objective
         {
-            if (objective.complete)
+            public string reference;
+            public string description;
+        }
+
+        public string GetTitle()
+        {
+            return name;
+        }
+
+        public int GetObjectivesNum()
+        {
+            return objectives.Length;
+        }
+
+        public IEnumerable<string> GetRewardNames()
+        {
+            foreach (var reward in rewards)
             {
-                yield return objective.description;
+                yield return reward.GetDisplayName();
             }
         }
-    }
 
-    public IEnumerable<string> GetOutstandingObjectives()
-    {
-        foreach (var objective in objectives)
+        public IEnumerable<Objective> GetObjectives()
         {
-            if (!objective.complete)
-            {
-                yield return objective.description;
-            }
-        }
-    }
-
-    public IEnumerable<string> GetRewardNames()
-    {
-        foreach (var reward in rewards)
-        {
-            yield return reward.GetDisplayName();
+            return (IEnumerable<Objective>) objectives;
         }
     }
 }

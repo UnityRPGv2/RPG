@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using RPG.Quests;
 
 namespace RPG.UI.Quests
 {
@@ -8,18 +9,18 @@ namespace RPG.UI.Quests
     {
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] TextMeshProUGUI completion;
-        Quest quest;
+        QuestStatus questStatus;
 
-        public void Setup(Quest quest)
+        public void Setup(QuestStatus status)
         {
-            text.text = quest.GetTitle();
-            completion.text = "0/" + quest.GetObjectivesNum();
-            this.quest = quest;
+            text.text = status.GetQuest().GetTitle();
+            completion.text = "0/" + status.GetQuest().GetObjectivesNum();
+            this.questStatus = status;
         }
 
-        public Quest GetQuest()
+        public QuestStatus GetQuest()
         {
-            return quest;
+            return questStatus;
         }
     }
 }

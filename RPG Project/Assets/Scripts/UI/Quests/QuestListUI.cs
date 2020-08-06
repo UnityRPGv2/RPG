@@ -1,14 +1,15 @@
 using UnityEngine;
+using RPG.Quests;
 
 namespace RPG.UI.Quests
 {
     public class QuestListUI : MonoBehaviour
     {
-        [SerializeField] Quest[] tmpQuests;
         [SerializeField] QuestItemUI itemPrefab;
 
         private void Start() {
-            foreach (Quest quest in tmpQuests)
+            var questList = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestList>();
+            foreach (QuestStatus quest in questList.GetQuestStatuses())
             {
                 var questUI = Instantiate(itemPrefab, transform);
                 questUI.Setup(quest);

@@ -123,6 +123,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651fa983d862e8c4184cc06a0e12983f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8336848730639738105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902660786131331472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc37dddefe14994c9ee1c8c48ab6fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpQuests:
+  - quest: {fileID: 11400000, guid: fc0ad243055808642ad4e34f52270880, type: 2}
+    completedObjectives:
+    - a
+  - quest: {fileID: 11400000, guid: b6af67ed0367ad143abf55846689c0a7, type: 2}
+    completedObjectives:
+    - a
+    - b
+    - c
+  - quest: {fileID: 11400000, guid: bbb0f38312bc41f479d17ef2f52b5cf9, type: 2}
+    completedObjectives: []
+  - quest: {fileID: 11400000, guid: da6511fd1d0afb84a8a97d890c70bc57, type: 2}
+    completedObjectives: []
 --- !u!1001 &1080417002832114521
 PrefabInstance:
   m_ObjectHideFlags: 0
