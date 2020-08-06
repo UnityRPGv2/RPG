@@ -14,7 +14,8 @@ namespace RPG.UI.Quests
 
         public override void UpdateTooltip(GameObject tooltip)
         {
-            
+            var questTooltip = tooltip.GetComponent<QuestTooltipUI>();
+            questTooltip.Setup(GetComponent<QuestItemUI>().GetQuest());
         }
     }
 }
