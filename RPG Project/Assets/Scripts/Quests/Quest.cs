@@ -26,6 +26,18 @@ namespace RPG.Quests
             public InventoryItem item;
         }
 
+        public static Quest GetByName(string name)
+        {
+            foreach (var quest in Resources.LoadAll<Quest>(""))
+            {
+                if (quest.name == name)
+                {
+                    return quest;
+                }
+            }
+            return null;
+        }
+
         public string GetTitle()
         {
             return name;

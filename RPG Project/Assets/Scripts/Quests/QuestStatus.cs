@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+ using UnityEngine;
 
 namespace RPG.Quests
 {
@@ -12,6 +12,28 @@ namespace RPG.Quests
         public QuestStatus(Quest quest)
         {
             this.quest = quest;
+        }
+
+        [System.Serializable]
+        struct QuestStatusRecord
+        {
+            public string questName;
+            public List<string> completedObjectives;
+        }
+
+        public QuestStatus(object state)
+        {
+            var record = (QuestStatusRecord) state;
+            quest = Quest.GetByName(record.questName);
+            completedObjectives = record.completedObjectives;
+        }
+
+        public object CaptureState()
+        {
+            var record = new QuestStatusRecord();
+            record.questName = quest.name;
+            record.completedObjectives = completedObjectives;
+            return record;
         }
 
         public IEnumerable<string> GetCompletedObjectives()
@@ -65,5 +87,6 @@ namespace RPG.Quests
         {
             return GetCompletedCount() == quest.GetObjectivesNum();
         }
+
     }
 }

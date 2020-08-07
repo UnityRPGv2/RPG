@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e3f8c2b2f62824f9ff47db04d99355, type: 3}
   m_Name: The Lost Sock
   m_EditorClassIdentifier: 
-  title: 
   objectives: []
   rewards: []

@@ -149,8 +149,8 @@ MonoBehaviour:
   text: Don't do that!
   rect:
     serializedVersion: 2
-    x: 1027
-    y: 409
+    x: 1038
+    y: 396
     width: 200
     height: 100
   children:
@@ -197,8 +197,8 @@ MonoBehaviour:
   text: Ho there old man!
   rect:
     serializedVersion: 2
-    x: 43
-    y: 156
+    x: 40
+    y: 153
     width: 200
     height: 100
   children:
@@ -225,8 +225,8 @@ MonoBehaviour:
   text: Let's show him how we get respect!
   rect:
     serializedVersion: 2
-    x: 1277
-    y: 517
+    x: 1292
+    y: 513
     width: 200
     height: 100
   children: []
@@ -249,8 +249,8 @@ MonoBehaviour:
   text: To attack the village!
   rect:
     serializedVersion: 2
-    x: 1016
-    y: 265
+    x: 1020
+    y: 270
     width: 200
     height: 100
   children:
@@ -296,8 +296,8 @@ MonoBehaviour:
   text: Nice one!
   rect:
     serializedVersion: 2
-    x: 572
-    y: 253
+    x: 555
+    y: 257
     width: 200
     height: 100
   children:
@@ -418,8 +418,8 @@ MonoBehaviour:
   text: Hello old crone!
   rect:
     serializedVersion: 2
-    x: 41
-    y: 311
+    x: 40
+    y: 291
     width: 200
     height: 100
   children:
