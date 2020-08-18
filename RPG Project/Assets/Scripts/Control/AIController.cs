@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using RPG.Combat;
 using RPG.Core;
 using UnityEngine;
+using RPG.Movement;
 
 namespace RPG.Control
 {
@@ -12,12 +13,17 @@ namespace RPG.Control
 
         Fighter fighter;
         Health health;
+        Mover mover;
         GameObject player;
+        Vector3 guardLocation;
+        
 
         private void Start() {
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
             player = GameObject.FindWithTag("Player");
+            mover = GetComponent<Mover>();
+            guardLocation = transform.position;
         }
 
         private void Update()
@@ -30,8 +36,9 @@ namespace RPG.Control
             }
             else
             {
-                fighter.Cancel();
+                mover.StartMoveAction(guardLocation);
             }
+           
         }
 
         private bool InAttackRangeOfPlayer()
@@ -39,6 +46,8 @@ namespace RPG.Control
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
             return distanceToPlayer < chaseDistance;
         }
+
+        
 
         // Called by Unity
         private void OnDrawGizmosSelected() {
