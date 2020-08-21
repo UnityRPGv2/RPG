@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Dialogue
@@ -54,7 +55,13 @@ namespace RPG.Dialogue
 
         public IEnumerable<DialogueNode> GetCurrentChoices()
         {
-            return currentDialogue.GetChildren(currentNode);
+            foreach (DialogueNode child in currentDialogue.GetChildren(currentNode))
+            {
+                if (CheckConditions(child.GetConditions()))
+                {
+                    yield return child;
+                }
+            }
         }
 
         public void Next()
@@ -69,7 +76,7 @@ namespace RPG.Dialogue
                 return;
             }
 
-            List<DialogueNode> choices = new List<DialogueNode>(currentDialogue.GetChildren(currentNode));
+            List<DialogueNode> choices = new List<DialogueNode>(GetCurrentChoices());
             int choice = UnityEngine.Random.Range(0, choices.Count);
             SetCurrentNode(choices[choice]);
             if (conversationUpdated != null)
@@ -116,6 +123,30 @@ namespace RPG.Dialogue
                     triggerScript.Trigger(trigger);
                 }
             }
+        }
+
+        bool CheckConditions(string[] conditions)
+        {
+            foreach (string condition in conditions)
+            {
+                if (!CheckCondition(condition)) return false;
+            }
+
+            return true;
+        }
+
+        bool CheckCondition(string condition)
+        {
+            foreach (IConditionEvaluator evaluator in currentConversant.GetComponents<IConditionEvaluator>())
+            {
+                if (evaluator.Evaluate(condition)) return true;
+            }
+            foreach (IConditionEvaluator evaluator in GetComponents<IConditionEvaluator>())
+            {
+                if (evaluator.Evaluate(condition)) return true;
+            }
+
+            return false;
         }
 
     }

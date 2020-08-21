@@ -14,6 +14,7 @@ namespace RPG.Dialogue
         [SerializeField] List<string> children = new List<string>();
         [SerializeField] string[] onEnterTriggers;
         [SerializeField] string[] onExitTriggers;
+        [SerializeField] string[] conditions;
         public event Action OnChange;
 
         public bool IsPlayerNextSpeaker()
@@ -49,6 +50,11 @@ namespace RPG.Dialogue
         public string[] GetOnExitTriggers()
         {
             return onExitTriggers;
+        }
+
+        public string[] GetConditions()
+        {
+            return conditions;
         }
 
         private void OnValidate() {

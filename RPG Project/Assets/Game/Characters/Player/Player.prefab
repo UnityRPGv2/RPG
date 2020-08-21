@@ -135,19 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc37dddefe14994c9ee1c8c48ab6fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmpQuests:
-  - quest: {fileID: 11400000, guid: fc0ad243055808642ad4e34f52270880, type: 2}
-    completedObjectives:
-    - a
-  - quest: {fileID: 11400000, guid: b6af67ed0367ad143abf55846689c0a7, type: 2}
-    completedObjectives:
-    - a
-    - b
-    - c
-  - quest: {fileID: 11400000, guid: bbb0f38312bc41f479d17ef2f52b5cf9, type: 2}
-    completedObjectives: []
-  - quest: {fileID: 11400000, guid: da6511fd1d0afb84a8a97d890c70bc57, type: 2}
-    completedObjectives: []
 --- !u!1001 &1080417002832114521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -155,16 +142,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5401972681186859721, guid: 750e3c6876a501e42b5827ec7a3d24d1,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401972681186859721, guid: 750e3c6876a501e42b5827ec7a3d24d1,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 8196697675836667564, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -230,26 +207,24 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2495515040136399149, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+    - target: {fileID: 5401972681186859721, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
-      propertyPath: characterClass
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401972681186859721, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 488557239800501724, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+        type: 3}
+      propertyPath: uniqueIdentifier
+      value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1172905977, guid: 750e3c6876a501e42b5827ec7a3d24d1, type: 3}
+      propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2495515040136399149, guid: 750e3c6876a501e42b5827ec7a3d24d1,
-        type: 3}
-      propertyPath: startingLevel
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2495515040136399149, guid: 750e3c6876a501e42b5827ec7a3d24d1,
-        type: 3}
-      propertyPath: levelUpParticleEffect
-      value: 
-      objectReference: {fileID: 3242380174161093250, guid: eb95d2cb3bbb2fe4db962566f8269867,
-        type: 3}
-    - target: {fileID: 2495515040136399149, guid: 750e3c6876a501e42b5827ec7a3d24d1,
-        type: 3}
-      propertyPath: shouldUseModifiers
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
@@ -315,14 +290,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2c7272ad808b5a8449f77a375a2c4119,
         type: 2}
-    - target: {fileID: 488557239800501724, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+    - target: {fileID: 2495515040136399149, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
-      propertyPath: uniqueIdentifier
-      value: player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1172905977, guid: 750e3c6876a501e42b5827ec7a3d24d1, type: 3}
-      propertyPath: m_Enabled
+      propertyPath: characterClass
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495515040136399149, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+        type: 3}
+      propertyPath: startingLevel
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495515040136399149, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+        type: 3}
+      propertyPath: levelUpParticleEffect
+      value: 
+      objectReference: {fileID: 3242380174161093250, guid: eb95d2cb3bbb2fe4db962566f8269867,
+        type: 3}
+    - target: {fileID: 2495515040136399149, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+        type: 3}
+      propertyPath: shouldUseModifiers
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 750e3c6876a501e42b5827ec7a3d24d1, type: 3}
@@ -369,10 +356,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9169026001514661365}
     m_Modifications:
-    - target: {fileID: 191330, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
-      propertyPath: m_Name
-      value: Character_Knights_Soldier_02
-      objectReference: {fileID: 0}
     - target: {fileID: 435482, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -416,6 +399,10 @@ PrefabInstance:
     - target: {fileID: 435482, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 191330, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+      propertyPath: m_Name
+      value: Character_Knights_Soldier_02
       objectReference: {fileID: 0}
     - target: {fileID: 13707166, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1124,11 +1111,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9169026001514661365}
     m_Modifications:
-    - target: {fileID: 2454377673268059348, guid: 831654dbd3bbdff45a087fa79b7c2506,
-        type: 3}
-      propertyPath: m_Name
-      value: Fairy Dust Particles
-      objectReference: {fileID: 0}
     - target: {fileID: 2457768577186542868, guid: 831654dbd3bbdff45a087fa79b7c2506,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1183,6 +1165,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454377673268059348, guid: 831654dbd3bbdff45a087fa79b7c2506,
+        type: 3}
+      propertyPath: m_Name
+      value: Fairy Dust Particles
       objectReference: {fileID: 0}
     - target: {fileID: 2362431292649389018, guid: 831654dbd3bbdff45a087fa79b7c2506,
         type: 3}
