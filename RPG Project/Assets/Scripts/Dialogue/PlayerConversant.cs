@@ -27,6 +27,7 @@ namespace RPG.Dialogue
             currentDialogue = null;
             SetCurrentNode(null);
             currentConversant = null;
+            isChoosing = false;
             if (conversationUpdated != null)
             {
                 conversationUpdated();
