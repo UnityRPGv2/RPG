@@ -5,14 +5,24 @@ namespace RPG.Quests
 {
     public class QuestCondition : MonoBehaviour, IConditionEvaluator
     {
-        [SerializeField] string condition;
-        [SerializeField] bool value;
+        [SerializeField] Quest quest;
+        [SerializeField] string objective;
+        [SerializeField] string conditionName;
+        QuestList playerQuestList;
 
-        public bool Evaluate(string queryCondition)
+        private void Start()
         {
-            if (queryCondition != condition) return false;
+            playerQuestList = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestList>();
+        }
 
-            return value;
+        public bool Evaluate(string condition)
+        {
+            if (condition != conditionName) return false;
+            if (string.IsNullOrEmpty(objective))
+            {
+                return playerQuestList.HasQuest(quest);
+            }
+            return playerQuestList.IsComplete(quest, objective);
         }
     }
 }

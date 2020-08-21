@@ -1351,8 +1351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17175d354b928f1479207444b5f4d5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  condition: quest
-  value: 0
+  quest: {fileID: 11400000, guid: fc0ad243055808642ad4e34f52270880, type: 2}
+  objective: 
+  conditionName: quest
 --- !u!114 &280401912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1433,7 +1434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db6cbe48bfb7f5546976cf46aebad931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerName: quest
+  triggerName: questComplete
   trigger:
     m_PersistentCalls:
       m_Calls:
@@ -8199,7 +8200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db6cbe48bfb7f5546976cf46aebad931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerName: quest
+  triggerName: questStart
   trigger:
     m_PersistentCalls:
       m_Calls:
@@ -9777,7 +9778,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874861664}
-  m_LocalRotation: {x: 0.15534082, y: -0.06980495, z: 0.011004999, w: 0.9853301}
+  m_LocalRotation: {x: 0.15534082, y: -0.06980496, z: 0.011005, w: 0.9853301}
   m_LocalPosition: {x: 2.15, y: 4.69, z: -2.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -11315,7 +11316,7 @@ PrefabInstance:
     - target: {fileID: 5263524460118599961, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00005090316
+      value: -0.000008959525
       objectReference: {fileID: 0}
     - target: {fileID: 5263181309239226457, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}
@@ -11330,7 +11331,7 @@ PrefabInstance:
     - target: {fileID: 5263181309239226457, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.7501221
+      value: -0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5263181309239226457, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}
