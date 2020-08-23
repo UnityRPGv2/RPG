@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2591c982fc81e940845bedeabeb30af, type: 3}
-  m_Name: Bow Blue Projectile
+  m_Name: Bow Blue Projectile 2
   m_EditorClassIdentifier: 
   itemID: 7d90a7e3-231b-4bfc-8a0f-c74c77bfe2c4
   displayName: Normal Bow

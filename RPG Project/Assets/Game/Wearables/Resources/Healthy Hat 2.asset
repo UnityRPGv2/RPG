@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e2b8caefce91084184d8ea94455bcf7, type: 3}
-  m_Name: Healthy Hat
+  m_Name: Healthy Hat 2
   m_EditorClassIdentifier: 
   itemID: dbc1e40e-d3bd-4e26-a62b-6cff0e46c415
   displayName: Healthy Hat
