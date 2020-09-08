@@ -25,7 +25,7 @@ MonoBehaviour:
     text: Go away!
     children: []
   - uniqueID: 
-    text: asdfasdfasdf asdfasdf asd
+    text: asdfasdfasdf asdfasd
     children: []
   - uniqueID: 
     text: asdfasdf
