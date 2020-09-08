@@ -10,6 +10,7 @@ namespace RPG.Dialogue.Editor
     {
         Dialogue selectedDialogue = null;
         GUIStyle nodeStyle;
+        bool dragging = false;
 
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
@@ -56,6 +57,7 @@ namespace RPG.Dialogue.Editor
             }
             else
             {
+                ProcessEvents();
                 foreach (DialogueNode node in selectedDialogue.GetAllNodes())
                 {
                     OnGUINode(node);
@@ -63,9 +65,27 @@ namespace RPG.Dialogue.Editor
             }
         }
 
+        private void ProcessEvents()
+        {
+            if (Event.current.type == EventType.MouseDown && !dragging)
+            {
+                dragging = true;
+            }
+            else if (Event.current.type == EventType.MouseDrag && dragging)
+            {
+                Undo.RecordObject(selectedDialogue, "Move Dialogue Node");
+                selectedDialogue.GetRootNode().rect.position = Event.current.mousePosition;
+                GUI.changed = true;
+            }
+            else if (Event.current.type == EventType.MouseUp && dragging)
+            {
+                dragging = false;
+            }
+        }
+
         private void OnGUINode(DialogueNode node)
         {
-            GUILayout.BeginArea(node.position, nodeStyle);
+            GUILayout.BeginArea(node.rect, nodeStyle);
             EditorGUI.BeginChangeCheck();
 
             EditorGUILayout.LabelField("Node:", EditorStyles.whiteLabel);
