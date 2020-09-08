@@ -18,15 +18,45 @@ MonoBehaviour:
     children:
     - b
     - c
+    position:
+      serializedVersion: 2
+      x: 30
+      y: 30
+      width: 300
+      height: 100
   - uniqueID: b
     text: Hello, your self.
     children: []
+    position:
+      serializedVersion: 2
+      x: 30
+      y: 200
+      width: 200
+      height: 100
   - uniqueID: c
     text: Go away!
     children: []
+    position:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
   - uniqueID: 
     text: asdfasdfasdf asdfasd
     children: []
+    position:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
   - uniqueID: 
     text: asdfasdf
     children: []
+    position:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
