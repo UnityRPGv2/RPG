@@ -17,11 +17,11 @@ MonoBehaviour:
     text: Hello
     children:
     - b
-    - d
+    - c
     rect:
       serializedVersion: 2
-      x: 442
-      y: -10
+      x: 30
+      y: 36
       width: 200
       height: 200
   - uniqueID: b
@@ -29,8 +29,8 @@ MonoBehaviour:
     children: []
     rect:
       serializedVersion: 2
-      x: 1
-      y: 97
+      x: 291
+      y: 162
       width: 200
       height: 100
   - uniqueID: c
@@ -38,8 +38,8 @@ MonoBehaviour:
     children: []
     rect:
       serializedVersion: 2
-      x: 160
-      y: 181
+      x: 322
+      y: 8
       width: 200
       height: 100
   - uniqueID: d
@@ -47,8 +47,8 @@ MonoBehaviour:
     children: []
     rect:
       serializedVersion: 2
-      x: 207
-      y: 46
+      x: 583
+      y: 41
       width: 200
       height: 100
   - uniqueID: 
@@ -56,7 +56,7 @@ MonoBehaviour:
     children: []
     rect:
       serializedVersion: 2
-      x: 435
-      y: 197
+      x: 483
+      y: 195
       width: 200
       height: 100
