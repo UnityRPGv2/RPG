@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20020754e2d077c45a6d80bb16361ff0, type: 3}
+  m_Name: New Dialogue 3
+  m_EditorClassIdentifier: 
+  nodes:
+  - uniqueID: 19aa9aa6-4069-4ee6-a6ac-cfca05cbfd00
+    text: 
+    children:
+    - 735c1d03-4de3-438f-8fd3-230ef6473e22
+    - 5226a526-e077-48af-b48a-af8ed068423f
+    rect:
+      serializedVersion: 2
+      x: 39
+      y: 147
+      width: 200
+      height: 100
+  - uniqueID: 735c1d03-4de3-438f-8fd3-230ef6473e22
+    text: 
+    children: []
+    rect:
+      serializedVersion: 2
+      x: 274
+      y: 49
+      width: 200
+      height: 100
+  - uniqueID: 5226a526-e077-48af-b48a-af8ed068423f
+    text: 
+    children:
+    - 805aef7a-8c0c-44a3-93d6-4f2edb54d231
+    rect:
+      serializedVersion: 2
+      x: 246
+      y: 255
+      width: 200
+      height: 100
+  - uniqueID: 805aef7a-8c0c-44a3-93d6-4f2edb54d231
+    text: 
+    children: []
+    rect:
+      serializedVersion: 2
+      x: 489
+      y: 175
+      width: 200
+      height: 100
