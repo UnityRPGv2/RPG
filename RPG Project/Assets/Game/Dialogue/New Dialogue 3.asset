@@ -20,8 +20,8 @@ MonoBehaviour:
     - 5226a526-e077-48af-b48a-af8ed068423f
     rect:
       serializedVersion: 2
-      x: 39
-      y: 147
+      x: 36
+      y: 144
       width: 200
       height: 100
   - uniqueID: 735c1d03-4de3-438f-8fd3-230ef6473e22
@@ -35,20 +35,10 @@ MonoBehaviour:
       height: 100
   - uniqueID: 5226a526-e077-48af-b48a-af8ed068423f
     text: 
-    children:
-    - 805aef7a-8c0c-44a3-93d6-4f2edb54d231
-    rect:
-      serializedVersion: 2
-      x: 246
-      y: 255
-      width: 200
-      height: 100
-  - uniqueID: 805aef7a-8c0c-44a3-93d6-4f2edb54d231
-    text: 
     children: []
     rect:
       serializedVersion: 2
-      x: 489
-      y: 175
+      x: 270
+      y: 245
       width: 200
       height: 100
