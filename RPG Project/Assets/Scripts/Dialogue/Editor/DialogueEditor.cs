@@ -79,7 +79,6 @@ namespace RPG.Dialogue.Editor
                 ProcessEvents();
 
                 scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
-                Debug.Log(scrollPosition);
 
                 Rect canvas = GUILayoutUtility.GetRect(canvasSize, canvasSize);
                 Texture2D backgroundTex = Resources.Load("background") as Texture2D;
@@ -120,11 +119,13 @@ namespace RPG.Dialogue.Editor
                 if (draggingNode != null)
                 {
                     draggingOffset = draggingNode.rect.position - Event.current.mousePosition;
+                    Selection.activeObject = draggingNode;
                 }
                 else
                 {
                     draggingCanvas = true;
                     draggingCanvasOffset = Event.current.mousePosition + scrollPosition;
+                    Selection.activeObject = selectedDialogue;
                 }
             }
             else if (Event.current.type == EventType.MouseDrag && draggingNode != null)
@@ -198,12 +199,12 @@ namespace RPG.Dialogue.Editor
                     linkingParentNode = null;
                 }
             }
-            else if (linkingParentNode.children.Contains(node.uniqueID))
+            else if (linkingParentNode.children.Contains(node.name))
             {
                 if (GUILayout.Button("unlink"))
                 {
                     Undo.RecordObject(selectedDialogue, "Remove Dialogue Link");
-                    linkingParentNode.children.Remove(node.uniqueID);
+                    linkingParentNode.children.Remove(node.name);
                     linkingParentNode = null;
                 }
             }
@@ -212,7 +213,7 @@ namespace RPG.Dialogue.Editor
                 if (GUILayout.Button("child"))
                 {
                     Undo.RecordObject(selectedDialogue, "Add Dialogue Link");
-                    linkingParentNode.children.Add(node.uniqueID);
+                    linkingParentNode.children.Add(node.name);
                     linkingParentNode = null;
                 }
             }
