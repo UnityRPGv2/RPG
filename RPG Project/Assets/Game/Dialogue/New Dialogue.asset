@@ -32,12 +32,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
   m_Name: 92ac522a-64e4-4099-85fb-f42c5b0eca73
   m_EditorClassIdentifier: 
-  text: 
+  text: asd;fkljas;
   children: []
   rect:
     serializedVersion: 2
-    x: 188
-    y: 230
+    x: 262
+    y: 277
     width: 200
     height: 100
 --- !u!114 &-5664070655272407355
@@ -56,8 +56,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 435
-    y: 183
+    x: 461
+    y: 153
     width: 200
     height: 100
 --- !u!114 &11400000
@@ -96,7 +96,7 @@ MonoBehaviour:
   - 92ac522a-64e4-4099-85fb-f42c5b0eca73
   rect:
     serializedVersion: 2
-    x: 97
-    y: 110
+    x: 71
+    y: 89
     width: 200
     height: 100
