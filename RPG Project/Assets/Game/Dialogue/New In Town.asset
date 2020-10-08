@@ -169,6 +169,7 @@ MonoBehaviour:
   children:
   - a4a35310-c46d-439c-a6e7-b4f8dfa2067f
   - 17f3237d-6f88-4466-9e88-b6e23067a84f
+  - 1b6fa02e-ef8f-4335-a118-c4d59ed6c4dd
   rect:
     serializedVersion: 2
     x: 547
@@ -185,7 +186,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20020754e2d077c45a6d80bb16361ff0, type: 3}
-  m_Name: New Dialogue
+  m_Name: New In Town
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 6388391180527436417}
@@ -194,12 +195,34 @@ MonoBehaviour:
   - {fileID: 7354686360060116108}
   - {fileID: -109935732593986643}
   - {fileID: -9044117499935546873}
-  - {fileID: 6508898933717920850}
   - {fileID: -2269859173898635050}
   - {fileID: -3607042247456705817}
   - {fileID: -7706724002735128974}
   - {fileID: -2736274835188972913}
+  - {fileID: 1525743417543769965}
   newNodeOffset: {x: 250, y: 0}
+--- !u!114 &1525743417543769965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 1b6fa02e-ef8f-4335-a118-c4d59ed6c4dd
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: I haven't heard about any trouble.
+  children:
+  - 99b29bb8-7f70-4c6c-b314-b70a73ed5eb9
+  rect:
+    serializedVersion: 2
+    x: 793
+    y: 334
+    width: 200
+    height: 100
 --- !u!114 &6388391180527436417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,28 +244,6 @@ MonoBehaviour:
     serializedVersion: 2
     x: 47
     y: 118
-    width: 200
-    height: 100
---- !u!114 &6508898933717920850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: New In Town
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 1
-  text: I haven't heard about any trouble.
-  children:
-  - 99b29bb8-7f70-4c6c-b314-b70a73ed5eb9
-  rect:
-    serializedVersion: 2
-    x: 789
-    y: 331
     width: 200
     height: 100
 --- !u!114 &7354686360060116108
