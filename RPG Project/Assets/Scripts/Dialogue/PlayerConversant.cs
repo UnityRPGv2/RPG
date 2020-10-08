@@ -23,6 +23,12 @@ namespace RPG.Dialogue
 
             return currentNode.GetText();
         }
+
+        public IEnumerable<string> GetChoices()
+        {
+            yield return "I've lived here all my life!";
+            yield return "I came here from Newton.";
+        }
     
         public void Next()
         {

@@ -820,6 +820,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AIText: {fileID: 3039488577320835543}
   nextButton: {fileID: 2336556915639062849}
+  choiceRoot: {fileID: 4447395866759993679}
+  choicePrefab: {fileID: 4856600071338685825, guid: 4727caf98f883a44c996a3b4fb727941,
+    type: 3}
 --- !u!1 &5881212322193145598
 GameObject:
   m_ObjectHideFlags: 0
