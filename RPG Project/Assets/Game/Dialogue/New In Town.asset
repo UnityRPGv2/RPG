@@ -22,6 +22,8 @@ MonoBehaviour:
     y: 234
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &-7706724002735128974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,6 +46,8 @@ MonoBehaviour:
     y: 24
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &-7137721878253192398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +70,8 @@ MonoBehaviour:
     y: 16
     width: 200
     height: 100
+  onEnterAction: TestSelection
+  onExitAction: 
 --- !u!114 &-5808646823886583516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +94,8 @@ MonoBehaviour:
     y: 196
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &-3607042247456705817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +118,8 @@ MonoBehaviour:
     y: 119
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &-2736274835188972913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,10 +137,12 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1048
-    y: 25
+    x: 1056
+    y: 27
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: Attack
 --- !u!114 &-2269859173898635050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +164,8 @@ MonoBehaviour:
     y: 233
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &-109935732593986643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +190,8 @@ MonoBehaviour:
     y: 197
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +239,8 @@ MonoBehaviour:
     y: 334
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: 
 --- !u!114 &6388391180527436417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +264,8 @@ MonoBehaviour:
     y: 91
     width: 200
     height: 100
+  onEnterAction: TestRootEntry
+  onExitAction: 
 --- !u!114 &7354686360060116108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,3 +289,5 @@ MonoBehaviour:
     y: 12
     width: 200
     height: 100
+  onEnterAction: 
+  onExitAction: TestAIExit
