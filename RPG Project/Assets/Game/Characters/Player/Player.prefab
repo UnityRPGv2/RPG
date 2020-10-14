@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bf70b1ee679384b9433a8bfd46e619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testDialogue: {fileID: 11400000, guid: e94dbacec53562249bdc41a0bdc407e4, type: 2}
+  playerName: Herbet Socksworthy
 --- !u!1001 &1080417002832114521
 PrefabInstance:
   m_ObjectHideFlags: 0
