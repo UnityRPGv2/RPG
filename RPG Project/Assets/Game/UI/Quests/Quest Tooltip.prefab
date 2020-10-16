@@ -606,6 +606,8 @@ MonoBehaviour:
   objectiveContainer: {fileID: 4115273043871441523}
   objectivePrefab: {fileID: 7350589663835773744, guid: d92f5fd02eb92e940a3e8626d26a0744,
     type: 3}
+  objectiveIncompletePrefab: {fileID: 1982702916027212935, guid: 39dc784597c64c842ae6f84edb726cb3,
+    type: 3}
 --- !u!1 &8509263585728983597
 GameObject:
   m_ObjectHideFlags: 0
