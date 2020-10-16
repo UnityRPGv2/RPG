@@ -567,6 +567,7 @@ GameObject:
   - component: {fileID: 6837039092385054595}
   - component: {fileID: 7800817016098076995}
   - component: {fileID: 4405025246655258311}
+  - component: {fileID: 123040241855589203}
   m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
@@ -645,6 +646,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &123040241855589203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3447842715435376122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446190037af8cbc4aa0d548eac244873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempQuests:
+  - {fileID: 11400000, guid: 53f5e70885f4d8f4d86b1905367a8695, type: 2}
+  - {fileID: 11400000, guid: e2e887044e96ad34a833b2680992d787, type: 2}
+  questPrefab: {fileID: 9202434366162664223, guid: 1295b36d9987c4a4ba6842842966112c,
+    type: 3}
 --- !u!1 &3800031028489721394
 GameObject:
   m_ObjectHideFlags: 0
