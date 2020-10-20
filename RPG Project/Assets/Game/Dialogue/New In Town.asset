@@ -160,12 +160,12 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1072
-    y: 233
+    x: 1054
+    y: 246
     width: 200
     height: 100
   onEnterAction: 
-  onExitAction: 
+  onExitAction: TestObjective
 --- !u!114 &-109935732593986643
 MonoBehaviour:
   m_ObjectHideFlags: 0
