@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Mother hubbards bunions
   m_EditorClassIdentifier: 
   objectives:
-  - 2
-  - 3
+  - reference: 2
+    description: Go irritate the guard.
+  - reference: 3
+    description: Visit the pharmacy.
+  rewards:
+  - number: 1
+    item: {fileID: 11400000, guid: d64a307491012e543995a2eef4f8cf74, type: 2}
