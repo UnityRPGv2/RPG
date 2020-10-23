@@ -18,12 +18,69 @@ MonoBehaviour:
   - 4395be77-f364-4cd3-a40c-9d6815cb2b5f
   rect:
     serializedVersion: 2
-    x: 292
+    x: 300
     y: 184
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    predicate: 
+    parameters: []
+--- !u!114 &-5148132537883989611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 135c3e95-ebf9-4174-a03a-82fae10cbfd9
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: I'm already on the case.
+  children:
+  - 5b0b5504-50b6-479b-979c-bc85774dba03
+  rect:
+    serializedVersion: 2
+    x: 295
+    y: 285
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    predicate: HasQuest
+    parameters:
+    - Mother hubbards bunions
+--- !u!114 &-4716720313835994501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 5b0b5504-50b6-479b-979c-bc85774dba03
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Oops, bad memory.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 523
+    y: 282
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,6 +98,8 @@ MonoBehaviour:
   - {fileID: 905803451091767119}
   - {fileID: -7879097906435689369}
   - {fileID: 4190128561256330419}
+  - {fileID: -5148132537883989611}
+  - {fileID: -4716720313835994501}
   newNodeOffset: {x: 250, y: 0}
 --- !u!114 &905803451091767119
 MonoBehaviour:
@@ -59,12 +118,15 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 297
-    y: 68
+    x: 303
+    y: 79
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &949785634050656329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,14 +144,18 @@ MonoBehaviour:
   children:
   - 3cffb7fd-582a-4d59-952d-d76fd4500d47
   - 525ff393-b9b4-425a-9fb9-7e399955c20d
+  - 135c3e95-ebf9-4174-a03a-82fae10cbfd9
   rect:
     serializedVersion: 2
-    x: 40
-    y: 72
+    x: 28
+    y: 71
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &4190128561256330419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,3 +179,6 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: GiveQuest
+  condition:
+    predicate: 
+    parameters: []
