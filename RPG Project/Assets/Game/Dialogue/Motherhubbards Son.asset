@@ -27,6 +27,32 @@ MonoBehaviour:
   condition:
     predicate: 
     parameters: []
+--- !u!114 &-6269283807570217392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 0e59cd58-70c6-44c7-80f8-6d07e27408ea
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: That's amazing thank you!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 513
+    y: 388
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &-5148132537883989611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +126,8 @@ MonoBehaviour:
   - {fileID: 4190128561256330419}
   - {fileID: -5148132537883989611}
   - {fileID: -4716720313835994501}
+  - {fileID: 5020004725108046702}
+  - {fileID: -6269283807570217392}
   newNodeOffset: {x: 250, y: 0}
 --- !u!114 &905803451091767119
 MonoBehaviour:
@@ -145,6 +173,7 @@ MonoBehaviour:
   - 3cffb7fd-582a-4d59-952d-d76fd4500d47
   - 525ff393-b9b4-425a-9fb9-7e399955c20d
   - 135c3e95-ebf9-4174-a03a-82fae10cbfd9
+  - 66e91603-f73a-47c8-b5d2-b8ecce698729
   rect:
     serializedVersion: 2
     x: 28
@@ -182,3 +211,31 @@ MonoBehaviour:
   condition:
     predicate: 
     parameters: []
+--- !u!114 &5020004725108046702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 66e91603-f73a-47c8-b5d2-b8ecce698729
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: I have the foot cream!
+  children:
+  - 0e59cd58-70c6-44c7-80f8-6d07e27408ea
+  rect:
+    serializedVersion: 2
+    x: 298
+    y: 388
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    predicate: HasInventoryItem
+    parameters:
+    - e75a0c32-d41c-4651-8496-92cb958a8f1e
