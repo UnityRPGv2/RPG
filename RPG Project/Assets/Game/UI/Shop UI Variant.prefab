@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopName: {fileID: 8159828884107362183}
+  listRoot: {fileID: 39698116870239036}
+  rowPrefab: {fileID: 245140227530180073, guid: f06ec7c43bbf4cd4b8af027722164285,
+    type: 3}
 --- !u!114 &6233778146781780206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,12 +1354,12 @@ PrefabInstance:
     - target: {fileID: 3143722227224870738, guid: 33cd4682d68805a4d9ed06bd8e63e8e9,
         type: 3}
       propertyPath: m_Size
-      value: 0.5523327
+      value: 0.6130453
       objectReference: {fileID: 0}
     - target: {fileID: 3143722227224870738, guid: 33cd4682d68805a4d9ed06bd8e63e8e9,
         type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0.99999976
       objectReference: {fileID: 0}
     - target: {fileID: 3199656185498587308, guid: 33cd4682d68805a4d9ed06bd8e63e8e9,
         type: 3}
