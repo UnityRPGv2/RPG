@@ -3341,6 +3341,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop Keeper (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3619746629219575201, guid: c3d7c41bcf0fbb24eb76cb87cd052d68,
+        type: 3}
+      propertyPath: shopName
+      value: Bongo's Emporium
+      objectReference: {fileID: 0}
     - target: {fileID: 4150308406675360907, guid: c3d7c41bcf0fbb24eb76cb87cd052d68,
         type: 3}
       propertyPath: m_RootOrder
@@ -9051,6 +9056,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop Keeper (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3619746629219575201, guid: c3d7c41bcf0fbb24eb76cb87cd052d68,
+        type: 3}
+      propertyPath: shopName
+      value: Mr Bongo's Shop
+      objectReference: {fileID: 0}
     - target: {fileID: 4150308406675360907, guid: c3d7c41bcf0fbb24eb76cb87cd052d68,
         type: 3}
       propertyPath: m_RootOrder
@@ -14210,7 +14220,7 @@ PrefabInstance:
     - target: {fileID: 5263524460118599961, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -569.9893
+      value: -569.7839
       objectReference: {fileID: 0}
     - target: {fileID: 5285593308015505502, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}

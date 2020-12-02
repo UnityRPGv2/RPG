@@ -9,6 +9,8 @@ namespace RPG.Inventories
 {
 public class Shop : MonoBehaviour, IRaycastable
     {
+        [SerializeField] string shopName;
+
         public class ShopItem
         {
             InventoryItem item;
@@ -25,6 +27,12 @@ public class Shop : MonoBehaviour, IRaycastable
         public void SelectMode(bool buying){}
         public bool IsBuyingMode(){ return default; }
         public bool CanTransact(){ return default; }
+
+        public string GetShopName()
+        {
+            return shopName;
+        }
+
         public void ConfirmTransaction(){}
         public float BasketTotal() { return default; }
         public void AddToTransaction(InventoryItem item, int quantity) {}
