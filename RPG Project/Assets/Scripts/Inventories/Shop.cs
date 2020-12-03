@@ -17,7 +17,19 @@ namespace RPG.Inventories
         {
             yield return new ShopItem(InventoryItem.GetFromID("77ad666c-513c-4c88-87b2-c8594bcd5a89"), 10, 10.50f, 0);
             yield return new ShopItem(InventoryItem.GetFromID("7f8ab35d-6fd6-42b0-9725-0121288138e4"), 10, 10.50f, 0);
-            yield return new ShopItem(InventoryItem.GetFromID("2bb41498-0e04-482d-a7fb-d0ce934b06c0"), 10, 10.50f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("2bb41498-0e04-482d-a7fb-d0ce934b06c0"), 10, 3499.99f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("e75a0c32-d41c-4651-8496-92cb958a8f1e"), 100, 2.0f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("77ad666c-513c-4c88-87b2-c8594bcd5a89"), 10, 10.50f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("7f8ab35d-6fd6-42b0-9725-0121288138e4"), 10, 10.50f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("2bb41498-0e04-482d-a7fb-d0ce934b06c0"), 10, 3499.99f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("e75a0c32-d41c-4651-8496-92cb958a8f1e"), 100, 2.0f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("77ad666c-513c-4c88-87b2-c8594bcd5a89"), 10, 10.50f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("7f8ab35d-6fd6-42b0-9725-0121288138e4"), 10, 10.50f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("2bb41498-0e04-482d-a7fb-d0ce934b06c0"), 10, 3499.99f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("e75a0c32-d41c-4651-8496-92cb958a8f1e"), 100, 2.0f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("77ad666c-513c-4c88-87b2-c8594bcd5a89"), 10, 10.50f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("7f8ab35d-6fd6-42b0-9725-0121288138e4"), 10, 10.50f, 0);
+            yield return new ShopItem(InventoryItem.GetFromID("2bb41498-0e04-482d-a7fb-d0ce934b06c0"), 10, 3499.99f, 0);
             yield return new ShopItem(InventoryItem.GetFromID("e75a0c32-d41c-4651-8496-92cb958a8f1e"), 100, 2.0f, 0);
         }
         public void SelectFilter(ItemCategory category){}

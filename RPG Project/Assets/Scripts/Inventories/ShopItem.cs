@@ -1,4 +1,6 @@
+using System;
 using GameDevTV.Inventories;
+using UnityEngine;
 
 namespace RPG.Inventories
 {
@@ -15,6 +17,26 @@ namespace RPG.Inventories
             this.stock = stock;
             this.price = price;
             this.quantityInTransaction = quantityInTransaction;
+        }
+
+        public string GetItemName()
+        {
+            return item.GetDisplayName();
+        }
+
+        public Sprite GetIcon()
+        {
+            return item.GetIcon();
+        }
+
+        public float GetPrice()
+        {
+            return price;
+        }
+
+        public int GetStock()
+        {
+            return stock;
         }
     }
 
