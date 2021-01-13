@@ -45,8 +45,6 @@ namespace RPG.Inventories
         public float BasketTotal() { return default; }
         public void AddToTransaction(InventoryItem item, int quantity)
         {
-            print($"Updating transaction {quantity} {item.GetDisplayName()}");
-
             if (!transaction.ContainsKey(item))
             {
                 transaction[item] = 0;
@@ -58,6 +56,8 @@ namespace RPG.Inventories
             {
                 transaction.Remove(item);
             }
+
+            if (onChange != null) onChange();
         }
 
         public CursorType GetCursorType()
