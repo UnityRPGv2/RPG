@@ -38,6 +38,11 @@ namespace RPG.Inventories
         {
             return stock;
         }
+
+        public InventoryItem GetInventoryItem()
+        {
+            return item;
+        }
     }
 
 }

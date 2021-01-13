@@ -36,7 +36,10 @@ namespace RPG.Inventories
 
         public void ConfirmTransaction(){}
         public float BasketTotal() { return default; }
-        public void AddToTransaction(InventoryItem item, int quantity) {}
+        public void AddToTransaction(InventoryItem item, int quantity)
+        {
+            print($"Updating transaction {quantity} {item.GetDisplayName()}");
+        }
 
         public CursorType GetCursorType()
         {
