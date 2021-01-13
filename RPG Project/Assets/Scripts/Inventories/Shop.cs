@@ -12,6 +12,8 @@ namespace RPG.Inventories
         [SerializeField] string shopName;
         [SerializeField] StockItemConfig[] stockConfig;
 
+        Dictionary<InventoryItem, int> transaction = new Dictionary<InventoryItem, int>();
+
         public event Action onChange; 
 
         public IEnumerable<ShopItem> GetFilteredItems()
@@ -19,7 +21,12 @@ namespace RPG.Inventories
             foreach (StockItemConfig item in stockConfig)
             {
                 float price = item.inventoryItem.GetPrice() * (1 - item.buyDiscountPercentage);
-                yield return new ShopItem(item.inventoryItem, item.initialStock, price, 0);
+                int transactionQuantity = 0;
+                if (transaction.ContainsKey(item.inventoryItem))
+                {
+                    transactionQuantity = transaction[item.inventoryItem];
+                }
+                yield return new ShopItem(item.inventoryItem, item.initialStock, price, transactionQuantity);
             }
         }
 
@@ -39,6 +46,18 @@ namespace RPG.Inventories
         public void AddToTransaction(InventoryItem item, int quantity)
         {
             print($"Updating transaction {quantity} {item.GetDisplayName()}");
+
+            if (!transaction.ContainsKey(item))
+            {
+                transaction[item] = 0;
+            }
+
+            transaction[item] += quantity;
+
+            if (transaction[item] <= 0)
+            {
+                transaction.Remove(item);
+            }
         }
 
         public CursorType GetCursorType()
