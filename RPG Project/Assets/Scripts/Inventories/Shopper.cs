@@ -10,7 +10,9 @@ namespace RPG.Inventories
 
         public void SetActiveShop(Shop shop)
         {
+            if (activeShop) activeShop.SetCurrentShopper(null);
             activeShop = shop;
+            if (activeShop) activeShop.SetCurrentShopper(this);
             activeShopChanged();
         }
 

@@ -13,8 +13,14 @@ namespace RPG.Inventories
         [SerializeField] StockItemConfig[] stockConfig;
 
         Dictionary<InventoryItem, int> transaction = new Dictionary<InventoryItem, int>();
+        Shopper shopper = null;
 
         public event Action onChange; 
+
+        public void SetCurrentShopper(Shopper newShopper)
+        {
+            shopper = newShopper;
+        }
 
         public IEnumerable<ShopItem> GetFilteredItems()
         {
@@ -41,7 +47,28 @@ namespace RPG.Inventories
             return shopName;
         }
 
-        public void ConfirmTransaction(){}
+        public void ConfirmTransaction()
+        {
+            // Transfer Items
+            var inventory = shopper.GetComponent<Inventory>();
+            if (!inventory) return;
+            var transactionCopy = new Dictionary<InventoryItem, int>(transaction);
+            foreach (var item in transactionCopy.Keys)
+            {
+                for (int i = 0; i < transactionCopy[item]; i++)
+                {
+                    bool success = inventory.AddToFirstEmptySlot(item, 1);
+                    if (success)
+                    {
+                        AddToTransaction(item, -1);
+                    }
+                }
+            }
+            // Deduct funds
+            // Clear transaction
+
+            if (onChange != null) onChange();
+        }
         public float BasketTotal() { return default; }
         public void AddToTransaction(InventoryItem item, int quantity)
         {
