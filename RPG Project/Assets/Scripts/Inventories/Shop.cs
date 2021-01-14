@@ -62,6 +62,7 @@ namespace RPG.Inventories
             // Not sufficient funds
             if (!HasSufficientFunds()) return false;
             // Not sufficient inventory space
+            if (!HasInventorySpace(shopper)) return false;
 
             return true;
         }
@@ -72,6 +73,30 @@ namespace RPG.Inventories
             if (!purse) return false;
 
             return purse.GetBalance() >= BasketTotal();
+        }
+
+        public bool HasInventorySpace(Shopper shopper)
+        {
+            var inventory = shopper.GetComponent<Inventory>();
+            if (!inventory) return false;
+
+            inventory.TakeSnapshot();
+
+            foreach (var item in GetAllItems())
+            {
+                for (int i = 0; i < item.GetQuantity(); i++)
+                {
+                    bool success = inventory.AddToFirstEmptySlot(item.GetInventoryItem(), 1);
+                    if (!success) 
+                    {
+                        inventory.RevertSnapshot();
+                        return false;
+                    }
+                }
+            }
+
+            inventory.RevertSnapshot();
+            return true;
         }
 
         public string GetShopName()
@@ -93,7 +118,7 @@ namespace RPG.Inventories
                     bool success = inventory.AddToFirstEmptySlot(item.GetInventoryItem(), 1);
                     if (success)
                     {
-                        AddToTransaction(item.GetInventoryItem(), -1);
+                        transaction[item.GetInventoryItem()]--;
                         stock[item.GetInventoryItem()]--;
                         purse.UpdateBalance(-item.GetPrice());
                     }

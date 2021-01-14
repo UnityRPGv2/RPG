@@ -2,6 +2,7 @@
 using UnityEngine;
 using GameDevTV.Saving;
 using RPG.Core;
+using System.Collections.Generic;
 
 namespace GameDevTV.Inventories
 {
@@ -19,6 +20,7 @@ namespace GameDevTV.Inventories
 
         // STATE
         InventorySlot[] slots;
+        InventorySlot[] snapshot;
 
         public struct InventorySlot
         {
@@ -50,6 +52,17 @@ namespace GameDevTV.Inventories
             return FindSlot(item) >= 0;
         }
 
+        public void TakeSnapshot()
+        {
+            snapshot = (InventorySlot[])slots.Clone();
+        }
+
+        public void RevertSnapshot()
+        {
+            slots = snapshot;
+            snapshot = null;
+        }
+
         /// <summary>
         /// How many slots are in the inventory?
         /// </summary>
@@ -75,10 +88,7 @@ namespace GameDevTV.Inventories
 
             slots[i].item = item;
             slots[i].number += number;
-            if (inventoryUpdated != null)
-            {
-                inventoryUpdated();
-            }
+            UpdateObservers();
             return true;
         }
 
@@ -125,10 +135,7 @@ namespace GameDevTV.Inventories
                 slots[slot].number = 0;
                 slots[slot].item = null;
             }
-            if (inventoryUpdated != null)
-            {
-                inventoryUpdated();
-            }
+            UpdateObservers();
         }
 
         /// <summary>
@@ -155,10 +162,7 @@ namespace GameDevTV.Inventories
 
             slots[slot].item = item;
             slots[slot].number += number;
-            if (inventoryUpdated != null)
-            {
-                inventoryUpdated();
-            }
+            UpdateObservers();
             return true;
         }
 
@@ -220,6 +224,15 @@ namespace GameDevTV.Inventories
             return -1;
         }
 
+        private void UpdateObservers()
+        {
+            if (snapshot != null) return;
+            if (inventoryUpdated != null)
+            {
+                inventoryUpdated();
+            }
+        }
+
         [System.Serializable]
         private struct InventorySlotRecord
         {
@@ -249,10 +262,7 @@ namespace GameDevTV.Inventories
                 slots[i].item = InventoryItem.GetFromID(slotStrings[i].itemID);
                 slots[i].number = slotStrings[i].number;
             }
-            if (inventoryUpdated != null)
-            {
-                inventoryUpdated();
-            }
+            UpdateObservers();
         }
 
         public bool? Evaluate(string predicate, string[] parameters)
