@@ -55,7 +55,24 @@ namespace RPG.Inventories
         public ItemCategory GetFilter(){ return default;}
         public void SelectMode(bool buying){}
         public bool IsBuyingMode(){ return default; }
-        public bool CanTransact(){ return default; }
+        public bool CanTransact()
+        { 
+            // Empty transaction
+            if (transaction.Count == 0) return false;
+            // Not sufficient funds
+            if (!HasSufficientFunds()) return false;
+            // Not sufficient inventory space
+
+            return true;
+        }
+
+        public bool HasSufficientFunds()
+        {
+            var purse = shopper.GetComponent<Purse>();
+            if (!purse) return false;
+
+            return purse.GetBalance() >= BasketTotal();
+        }
 
         public string GetShopName()
         {
