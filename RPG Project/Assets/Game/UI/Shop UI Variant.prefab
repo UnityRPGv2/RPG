@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopName: {fileID: 8159828884107362183}
+  basketTotalField: {fileID: 3540202096138988476}
   listRoot: {fileID: 39698116870239036}
   rowPrefab: {fileID: 245140227530180073, guid: f06ec7c43bbf4cd4b8af027722164285,
     type: 3}
@@ -3398,12 +3399,12 @@ PrefabInstance:
     - target: {fileID: 8876187250705292548, guid: 770da8a5485291b48b83201e0a21d5bb,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300.35962
+      value: 670.1345
       objectReference: {fileID: 0}
     - target: {fileID: 8876187250705292548, guid: 770da8a5485291b48b83201e0a21d5bb,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 64.28876
+      value: 64.2888
       objectReference: {fileID: 0}
     - target: {fileID: 8876187250705292548, guid: 770da8a5485291b48b83201e0a21d5bb,
         type: 3}
@@ -3443,7 +3444,7 @@ PrefabInstance:
     - target: {fileID: 8876187250705292548, guid: 770da8a5485291b48b83201e0a21d5bb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 71.28766
+      value: 256.17523
       objectReference: {fileID: 0}
     - target: {fileID: 8876187250705292548, guid: 770da8a5485291b48b83201e0a21d5bb,
         type: 3}
@@ -3468,10 +3469,22 @@ PrefabInstance:
     - target: {fileID: 8952049885951061232, guid: 770da8a5485291b48b83201e0a21d5bb,
         type: 3}
       propertyPath: m_text
-      value: 'Total: $40'
+      value: 'Total: $103,499.99'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770da8a5485291b48b83201e0a21d5bb, type: 3}
+--- !u!114 &3540202096138988476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8952049885951061232, guid: 770da8a5485291b48b83201e0a21d5bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 5556671166464477004}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5892588345550559427
 PrefabInstance:
   m_ObjectHideFlags: 0

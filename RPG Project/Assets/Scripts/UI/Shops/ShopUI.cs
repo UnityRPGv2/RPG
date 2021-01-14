@@ -13,6 +13,7 @@ namespace RPG.UI.Shops
         Shop currentShop = null;
 
         [SerializeField] TextMeshProUGUI shopName;
+        [SerializeField] TextMeshProUGUI basketTotalField;
         [SerializeField] Transform listRoot;
         [SerializeField] RowUI rowPrefab;
 
@@ -44,6 +45,7 @@ namespace RPG.UI.Shops
         private void RefreshUI()
         {
             shopName.text = currentShop.GetShopName();
+            basketTotalField.text = $"Total: ${currentShop.BasketTotal():N2}";
 
             foreach (Transform child in listRoot)
             {

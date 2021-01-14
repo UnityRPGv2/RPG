@@ -24,6 +24,11 @@ namespace RPG.Inventories
 
         public IEnumerable<ShopItem> GetFilteredItems()
         {
+            return GetAllItems();
+        }
+
+        public IEnumerable<ShopItem> GetAllItems()
+        {
             foreach (StockItemConfig item in stockConfig)
             {
                 float price = item.inventoryItem.GetPrice() * (1 - item.buyDiscountPercentage);
@@ -69,7 +74,15 @@ namespace RPG.Inventories
 
             if (onChange != null) onChange();
         }
-        public float BasketTotal() { return default; }
+        public float BasketTotal() 
+        {
+            float total = 0;
+            foreach (var item in GetAllItems())
+            {
+                total += item.GetPrice() * item.GetQuantity();
+            }
+            return total;
+        }
         public void AddToTransaction(InventoryItem item, int quantity)
         {
             if (!transaction.ContainsKey(item))
