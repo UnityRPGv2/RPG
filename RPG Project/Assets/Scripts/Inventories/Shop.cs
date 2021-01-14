@@ -56,16 +56,18 @@ namespace RPG.Inventories
         {
             // Transfer Items
             var inventory = shopper.GetComponent<Inventory>();
-            if (!inventory) return;
-            var transactionCopy = new Dictionary<InventoryItem, int>(transaction);
-            foreach (var item in transactionCopy.Keys)
+            var purse = shopper.GetComponent<Purse>();
+            if (!inventory || !purse) return;
+            foreach (var item in GetAllItems())
             {
-                for (int i = 0; i < transactionCopy[item]; i++)
+                for (int i = 0; i < item.GetQuantity(); i++)
                 {
-                    bool success = inventory.AddToFirstEmptySlot(item, 1);
+                    if (purse.GetBalance() < item.GetPrice()) break;
+                    bool success = inventory.AddToFirstEmptySlot(item.GetInventoryItem(), 1);
                     if (success)
                     {
-                        AddToTransaction(item, -1);
+                        AddToTransaction(item.GetInventoryItem(), -1);
+                        purse.UpdateBalance(-item.GetPrice());
                     }
                 }
             }
