@@ -62,7 +62,7 @@ namespace RPG.Inventories
             {
                 for (int i = 0; i < item.GetQuantity(); i++)
                 {
-                    if (purse.GetBalance() < item.GetPrice()) break;
+                    if (purse.GetBalance() < item.GetPrice()) break;                
                     bool success = inventory.AddToFirstEmptySlot(item.GetInventoryItem(), 1);
                     if (success)
                     {
