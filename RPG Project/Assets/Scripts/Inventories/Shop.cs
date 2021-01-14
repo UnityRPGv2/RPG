@@ -13,9 +13,18 @@ namespace RPG.Inventories
         [SerializeField] StockItemConfig[] stockConfig;
 
         Dictionary<InventoryItem, int> transaction = new Dictionary<InventoryItem, int>();
+        Dictionary<InventoryItem, int> stock = new Dictionary<InventoryItem, int>();
+        
         Shopper shopper = null;
 
         public event Action onChange; 
+
+        private void Awake() {
+            foreach (StockItemConfig item in stockConfig)
+            {
+                stock[item.inventoryItem] = item.initialStock;
+            }
+        }
 
         public void SetCurrentShopper(Shopper newShopper)
         {
@@ -37,7 +46,8 @@ namespace RPG.Inventories
                 {
                     transactionQuantity = transaction[item.inventoryItem];
                 }
-                yield return new ShopItem(item.inventoryItem, item.initialStock, price, transactionQuantity);
+                int itemStock = stock[item.inventoryItem];
+                yield return new ShopItem(item.inventoryItem, itemStock, price, transactionQuantity);
             }
         }
 
@@ -67,6 +77,7 @@ namespace RPG.Inventories
                     if (success)
                     {
                         AddToTransaction(item.GetInventoryItem(), -1);
+                        stock[item.GetInventoryItem()]--;
                         purse.UpdateBalance(-item.GetPrice());
                     }
                 }
@@ -92,11 +103,14 @@ namespace RPG.Inventories
                 transaction[item] = 0;
             }
 
-            transaction[item] += quantity;
-
-            if (transaction[item] <= 0)
+            if (stock[item] >= transaction[item] + quantity)
             {
-                transaction.Remove(item);
+                transaction[item] += quantity;
+
+                if (transaction[item] <= 0)
+                {
+                    transaction.Remove(item);
+                }
             }
 
             if (onChange != null) onChange();
