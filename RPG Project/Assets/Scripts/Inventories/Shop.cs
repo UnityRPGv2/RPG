@@ -52,8 +52,8 @@ namespace RPG.Inventories
                 {
                     transactionQuantity = transaction[item.inventoryItem];
                 }
-                int itemStock = stock[item.inventoryItem];
-                yield return new ShopItem(item.inventoryItem, itemStock, price, transactionQuantity);
+                int itemAvailability = GetItemAvailability(item.inventoryItem);
+                yield return new ShopItem(item.inventoryItem, itemAvailability, price, transactionQuantity);
             }
         }
 
@@ -155,7 +155,7 @@ namespace RPG.Inventories
                 transaction[item] = 0;
             }
 
-            if (stock[item] >= transaction[item] + quantity)
+            if (GetItemAvailability(item) >= transaction[item] + quantity)
             {
                 transaction[item] += quantity;
 
@@ -187,6 +187,34 @@ namespace RPG.Inventories
             }
 
             return true;
+        }
+
+        private int CountItemsInInventory(InventoryItem item)
+        {
+            var inventory = shopper.GetComponent<Inventory>();
+            if (!inventory) return 0;
+
+            int count = 0;
+            for (int i = 0; i < inventory.GetSize(); i++)
+            {
+                if (inventory.GetItemInSlot(i) == item)
+                {
+                    count += inventory.GetNumberInSlot(i);
+                }
+            }
+            return count;
+        }
+
+        private int GetItemAvailability(InventoryItem item)
+        {
+            if (isBuying)
+            {
+                return stock[item];
+            }
+            else
+            {
+                return CountItemsInInventory(item);
+            }
         }
 
         [System.Serializable]
