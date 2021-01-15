@@ -32,6 +32,7 @@ MonoBehaviour:
     button: {fileID: 7417340654763286045}
   - category: 5
     button: {fileID: 4794289383829641049}
+  filterButtonInactiveColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
 --- !u!114 &6233778146781780206
 MonoBehaviour:
   m_ObjectHideFlags: 0

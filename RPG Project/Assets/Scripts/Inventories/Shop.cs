@@ -61,7 +61,6 @@ namespace RPG.Inventories
         public void SelectFilter(ItemCategory category)
         {
             filter = category;
-            print($"Selected filter {filter}");
             if (onChange != null) onChange();
         }
 

@@ -25,7 +25,10 @@ namespace RPG.UI.Shops
         {
             public ItemCategory category;
             public Button button;
+            [NonSerialized]
+            public ColorBlock initialColors;
         }
+        [SerializeField] Color filterButtonInactiveColor;
 
         Color basketTotalFieldOriginalColor;
 
@@ -50,6 +53,7 @@ namespace RPG.UI.Shops
                 filterButton.button.onClick.AddListener(() => {
                     SetCategory(filterButton.category);
                 });
+                filterButton.initialColors = filterButton.button.colors;
             }
         }
 
@@ -80,6 +84,8 @@ namespace RPG.UI.Shops
             var confirmText = confirmButton.GetComponentInChildren<TextMeshProUGUI>();
             confirmText.text = currentShop.IsBuyingMode() ? "Buy" : "Sell";
 
+            SetActiveButtons();
+
             foreach (Transform child in listRoot)
             {
                 Destroy(child.gameObject);
@@ -89,6 +95,19 @@ namespace RPG.UI.Shops
             {
                 RowUI row = Instantiate<RowUI>(rowPrefab, listRoot);
                 row.Setup(currentShop, item);
+            }
+        }
+
+        private void SetActiveButtons()
+        {
+            foreach (var filterButton in filterButtons)
+            {
+                ColorBlock colors = filterButton.initialColors;
+                if (filterButton.category != currentShop.GetFilter())
+                {
+                    colors.normalColor = filterButtonInactiveColor;
+                }
+                filterButton.button.colors = colors; 
             }
         }
 
