@@ -36,7 +36,11 @@ namespace RPG.Inventories
 
         public IEnumerable<ShopItem> GetFilteredItems()
         {
-            return GetAllItems();
+            foreach (var item in GetAllItems())
+            {
+                if (filter != ItemCategory.None && item.GetInventoryItem().GetCategory() != filter) continue;
+                yield return item;
+            }
         }
 
         public IEnumerable<ShopItem> GetAllItems()

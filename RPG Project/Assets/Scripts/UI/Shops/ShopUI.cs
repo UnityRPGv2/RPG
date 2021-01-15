@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Inventories;
+using GameDevTV.Inventories;
 using System;
 using TMPro;
 using UnityEngine.UI;

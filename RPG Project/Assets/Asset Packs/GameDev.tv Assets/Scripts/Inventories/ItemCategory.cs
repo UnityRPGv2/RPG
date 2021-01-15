@@ -1,4 +1,4 @@
-namespace RPG.Inventories
+namespace GameDevTV.Inventories
 {
     public enum ItemCategory
     {
