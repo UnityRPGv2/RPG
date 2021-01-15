@@ -15,6 +15,7 @@ namespace RPG.UI.Shops
 
         [SerializeField] TextMeshProUGUI shopName;
         [SerializeField] TextMeshProUGUI basketTotalField;
+        [SerializeField] Button switchModeButton;
         [SerializeField] Button confirmButton;
         [SerializeField] Transform listRoot;
         [SerializeField] RowUI rowPrefab;
@@ -29,6 +30,7 @@ namespace RPG.UI.Shops
             if (shopper == null) return;
 
             shopper.activeShopChanged += ShopChanged;
+            switchModeButton.onClick.AddListener(SwitchMode);
             confirmButton.onClick.AddListener(ConfirmTransaction);
         }
 
@@ -54,6 +56,10 @@ namespace RPG.UI.Shops
             basketTotalField.text = $"Total: ${currentShop.BasketTotal():N2}";
             basketTotalField.color = currentShop.HasSufficientFunds() ? basketTotalFieldOriginalColor : Color.red;
             confirmButton.interactable = currentShop.CanTransact();
+            var switchModeText = switchModeButton.GetComponentInChildren<TextMeshProUGUI>();
+            switchModeText.text = currentShop.IsBuyingMode() ? "Switch to Selling" : "Switch to Buying";
+            var confirmText = confirmButton.GetComponentInChildren<TextMeshProUGUI>();
+            confirmText.text = currentShop.IsBuyingMode() ? "Buy" : "Sell";
 
             foreach (Transform child in listRoot)
             {
@@ -70,6 +76,11 @@ namespace RPG.UI.Shops
         public void Close()
         {
             shopper.SetActiveShop(null);
+        }
+
+        private void SwitchMode()
+        {
+            currentShop.SelectMode(!currentShop.IsBuyingMode());
         }
 
         public void ConfirmTransaction()

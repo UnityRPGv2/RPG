@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopName: {fileID: 8159828884107362183}
   basketTotalField: {fileID: 3540202096138988476}
+  switchModeButton: {fileID: 2609920029922866564}
   confirmButton: {fileID: 4559549142149061895}
   listRoot: {fileID: 39698116870239036}
   rowPrefab: {fileID: 245140227530180073, guid: f06ec7c43bbf4cd4b8af027722164285,
@@ -1760,15 +1761,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33cd4682d68805a4d9ed06bd8e63e8e9, type: 3}
---- !u!224 &39698116870239036 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3199656185498587308, guid: 33cd4682d68805a4d9ed06bd8e63e8e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 3236539346442724240}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8193790723761180997 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6727337855949353685, guid: 33cd4682d68805a4d9ed06bd8e63e8e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 3236539346442724240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &39698116870239036 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3199656185498587308, guid: 33cd4682d68805a4d9ed06bd8e63e8e9,
     type: 3}
   m_PrefabInstance: {fileID: 3236539346442724240}
   m_PrefabAsset: {fileID: 0}
@@ -4379,6 +4380,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ea871553dbeefa43a9ccfeaebf388f7, type: 3}
+--- !u!114 &2609920029922866564 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5841567671330605230, guid: 9ea871553dbeefa43a9ccfeaebf388f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 8442321482409557290}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9009181243213567529
 PrefabInstance:
   m_ObjectHideFlags: 0

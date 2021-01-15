@@ -11,10 +11,12 @@ namespace RPG.Inventories
     {
         [SerializeField] string shopName;
         [SerializeField] StockItemConfig[] stockConfig;
+        [SerializeField] float sellingDiscount = 0.6f;
 
         Dictionary<InventoryItem, int> transaction = new Dictionary<InventoryItem, int>();
         Dictionary<InventoryItem, int> stock = new Dictionary<InventoryItem, int>();
-        
+        bool isBuying = true;
+
         Shopper shopper = null;
 
         public event Action onChange; 
@@ -41,6 +43,10 @@ namespace RPG.Inventories
             foreach (StockItemConfig item in stockConfig)
             {
                 float price = item.inventoryItem.GetPrice() * (1 - item.buyDiscountPercentage);
+                if (!isBuying)
+                {
+                    price *= sellingDiscount;
+                }
                 int transactionQuantity = 0;
                 if (transaction.ContainsKey(item.inventoryItem))
                 {
@@ -53,8 +59,12 @@ namespace RPG.Inventories
 
         public void SelectFilter(ItemCategory category){}
         public ItemCategory GetFilter(){ return default;}
-        public void SelectMode(bool buying){}
-        public bool IsBuyingMode(){ return default; }
+        public void SelectMode(bool buying)
+        {
+            isBuying = buying;
+            if (onChange != null) onChange();
+        }
+        public bool IsBuyingMode(){ return isBuying; }
         public bool CanTransact()
         { 
             // Empty transaction
@@ -62,7 +72,7 @@ namespace RPG.Inventories
             // Not sufficient funds
             if (!HasSufficientFunds()) return false;
             // Not sufficient inventory space
-            if (!HasInventorySpace(shopper)) return false;
+            if (!HasInventorySpace()) return false;
 
             return true;
         }
@@ -75,7 +85,7 @@ namespace RPG.Inventories
             return purse.GetBalance() >= BasketTotal();
         }
 
-        public bool HasInventorySpace(Shopper shopper)
+        public bool HasInventorySpace()
         {
             var inventory = shopper.GetComponent<Inventory>();
             if (!inventory) return false;
