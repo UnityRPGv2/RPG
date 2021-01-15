@@ -16,6 +16,7 @@ namespace RPG.Inventories
         Dictionary<InventoryItem, int> transaction = new Dictionary<InventoryItem, int>();
         Dictionary<InventoryItem, int> stock = new Dictionary<InventoryItem, int>();
         bool isBuying = true;
+        ItemCategory filter = ItemCategory.None;
 
         Shopper shopper = null;
 
@@ -57,8 +58,15 @@ namespace RPG.Inventories
             }
         }
 
-        public void SelectFilter(ItemCategory category){}
-        public ItemCategory GetFilter(){ return default;}
+        public void SelectFilter(ItemCategory category)
+        {
+            filter = category;
+            print($"Selected filter {filter}");
+            if (onChange != null) onChange();
+        }
+
+        public ItemCategory GetFilter(){ return filter; }
+
         public void SelectMode(bool buying)
         {
             isBuying = buying;

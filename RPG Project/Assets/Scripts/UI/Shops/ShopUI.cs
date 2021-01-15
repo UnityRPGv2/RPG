@@ -19,6 +19,13 @@ namespace RPG.UI.Shops
         [SerializeField] Button confirmButton;
         [SerializeField] Transform listRoot;
         [SerializeField] RowUI rowPrefab;
+        [SerializeField] FilterButton[] filterButtons;
+        [System.Serializable]
+        private class FilterButton 
+        {
+            public ItemCategory category;
+            public Button button;
+        }
 
         Color basketTotalFieldOriginalColor;
 
@@ -32,6 +39,18 @@ namespace RPG.UI.Shops
             shopper.activeShopChanged += ShopChanged;
             switchModeButton.onClick.AddListener(SwitchMode);
             confirmButton.onClick.AddListener(ConfirmTransaction);
+
+            SetupCategoryButtons();
+        }
+
+        private void SetupCategoryButtons()
+        {
+            foreach (var filterButton in filterButtons)
+            {
+                filterButton.button.onClick.AddListener(() => {
+                    SetCategory(filterButton.category);
+                });
+            }
         }
 
         private void ShopChanged()
@@ -86,6 +105,11 @@ namespace RPG.UI.Shops
         public void ConfirmTransaction()
         {
             currentShop.ConfirmTransaction();
+        }
+
+        public void SetCategory(ItemCategory category)
+        {
+            currentShop.SelectFilter(category);
         }
     }
 }
