@@ -79,6 +79,8 @@ namespace RPG.Inventories
 
         public bool HasSufficientFunds()
         {
+            if (!isBuying) return true;
+
             var purse = shopper.GetComponent<Purse>();
             if (!purse) return false;
 
@@ -87,6 +89,8 @@ namespace RPG.Inventories
 
         public bool HasInventorySpace()
         {
+            if (!isBuying) return true;
+
             var inventory = shopper.GetComponent<Inventory>();
             if (!inventory) return false;
 
@@ -124,13 +128,25 @@ namespace RPG.Inventories
             {
                 for (int i = 0; i < item.GetQuantity(); i++)
                 {
-                    if (purse.GetBalance() < item.GetPrice()) break;                
-                    bool success = inventory.AddToFirstEmptySlot(item.GetInventoryItem(), 1);
+                    bool success = false;
+                    if (isBuying)
+                    {
+                        if (purse.GetBalance() < item.GetPrice()) break;
+                        success = inventory.AddToFirstEmptySlot(item.GetInventoryItem(), 1);
+                    }             
+                    else
+                    {
+                        int slot = FindFirstItemSlot(item.GetInventoryItem());
+                        if (slot == -1) break;
+                        inventory.RemoveFromSlot(slot, 1);
+                        success = true;
+                    }
                     if (success)
                     {
                         transaction[item.GetInventoryItem()]--;
-                        stock[item.GetInventoryItem()]--;
-                        purse.UpdateBalance(-item.GetPrice());
+                        int sign = isBuying ? -1 : 1;
+                        stock[item.GetInventoryItem()] += sign;
+                        purse.UpdateBalance(sign * item.GetPrice());
                     }
                 }
             }
@@ -203,6 +219,22 @@ namespace RPG.Inventories
                 }
             }
             return count;
+        }
+
+        private int FindFirstItemSlot(InventoryItem item)
+        {
+            var inventory = shopper.GetComponent<Inventory>();
+            if (!inventory) return -1;
+
+            for (int i = 0; i < inventory.GetSize(); i++)
+            {
+                if (inventory.GetItemInSlot(i) == item)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
 
         private int GetItemAvailability(InventoryItem item)
