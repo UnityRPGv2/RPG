@@ -4,6 +4,7 @@ using UnityEngine;
 using GameDevTV.Inventories;
 using System;
 using RPG.Control;
+using RPG.Stats;
 
 namespace RPG.Inventories
 {
@@ -47,6 +48,8 @@ namespace RPG.Inventories
         {
             foreach (StockItemConfig item in stockConfig)
             {
+                if (item.unlockLevel > GetLevel()) continue;
+
                 float price = item.inventoryItem.GetPrice() * (1 - item.buyDiscountPercentage);
                 if (!isBuying)
                 {
@@ -260,12 +263,20 @@ namespace RPG.Inventories
             }
         }
 
+        private int GetLevel()
+        {
+            var baseStats = shopper.GetComponent<BaseStats>();
+            if (!baseStats) return 0;
+            return baseStats.GetLevel();
+        }
+
         [System.Serializable]
         private class StockItemConfig
         {
             public InventoryItem inventoryItem;
             public int initialStock;
             public float buyDiscountPercentage;
+            public int unlockLevel;
         }
     }
 
