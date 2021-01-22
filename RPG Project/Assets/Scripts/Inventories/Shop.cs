@@ -46,23 +46,52 @@ namespace RPG.Inventories
 
         public IEnumerable<ShopItem> GetAllItems()
         {
+            var prices = GetPrices();
+            foreach (InventoryItem item in GetAvailableItems())
+            {
+                float price = 0;
+                prices.TryGetValue(item, out price);
+                int transactionQuantity = 0;
+                if (transaction.ContainsKey(item))
+                {
+                    transactionQuantity = transaction[item];
+                }
+                int itemAvailability = GetItemAvailability(item);
+                yield return new ShopItem(item, itemAvailability, price, transactionQuantity);
+            }
+        }
+
+        public IEnumerable<InventoryItem> GetAvailableItems()
+        {
+            var available = new Dictionary<InventoryItem, int>();
+            int level = GetLevel();
             foreach (StockItemConfig item in stockConfig)
             {
                 if (item.unlockLevel > GetLevel()) continue;
-
-                float price = item.inventoryItem.GetPrice() * (1 - item.buyDiscountPercentage);
-                if (!isBuying)
-                {
-                    price *= sellingDiscount;
-                }
-                int transactionQuantity = 0;
-                if (transaction.ContainsKey(item.inventoryItem))
-                {
-                    transactionQuantity = transaction[item.inventoryItem];
-                }
-                int itemAvailability = GetItemAvailability(item.inventoryItem);
-                yield return new ShopItem(item.inventoryItem, itemAvailability, price, transactionQuantity);
+                available[item.inventoryItem] = 1;
             }
+            return available.Keys;
+        }
+
+        public Dictionary<InventoryItem, float> GetPrices()
+        {
+            var prices = new Dictionary<InventoryItem, float>();
+            foreach (StockItemConfig item in stockConfig)
+            {
+                var invItem = item.inventoryItem;
+                if (item.unlockLevel > GetLevel()) continue;
+
+                if (!prices.ContainsKey(invItem))
+                {
+                    prices[invItem] = item.inventoryItem.GetPrice();
+                    if (!isBuying)
+                    {
+                        prices[invItem] *= sellingDiscount;
+                    }
+                }
+                prices[invItem] *= (1 - item.buyDiscountPercentage);
+            }
+            return prices;
         }
 
         public void SelectFilter(ItemCategory category)
