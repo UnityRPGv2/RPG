@@ -15,20 +15,13 @@ namespace RPG.Inventories
         [SerializeField] float sellingDiscount = 0.6f;
 
         Dictionary<InventoryItem, int> transaction = new Dictionary<InventoryItem, int>();
-        Dictionary<InventoryItem, int> stock = new Dictionary<InventoryItem, int>();
+        Dictionary<InventoryItem, int> stockSold = new Dictionary<InventoryItem, int>();
         bool isBuying = true;
         ItemCategory filter = ItemCategory.None;
 
         Shopper shopper = null;
 
         public event Action onChange; 
-
-        private void Awake() {
-            foreach (StockItemConfig item in stockConfig)
-            {
-                stock[item.inventoryItem] = item.initialStock;
-            }
-        }
 
         public void SetCurrentShopper(Shopper newShopper)
         {
@@ -47,16 +40,15 @@ namespace RPG.Inventories
         public IEnumerable<ShopItem> GetAllItems()
         {
             var prices = GetPrices();
+            var itemAvailabilities = GetItemAvailabilities();
             foreach (InventoryItem item in GetAvailableItems())
             {
                 float price = 0;
                 prices.TryGetValue(item, out price);
                 int transactionQuantity = 0;
-                if (transaction.ContainsKey(item))
-                {
-                    transactionQuantity = transaction[item];
-                }
-                int itemAvailability = GetItemAvailability(item);
+                transaction.TryGetValue(item, out transactionQuantity);
+                int itemAvailability = 0;
+                itemAvailabilities.TryGetValue(item, out itemAvailability);
                 yield return new ShopItem(item, itemAvailability, price, transactionQuantity);
             }
         }
@@ -89,9 +81,38 @@ namespace RPG.Inventories
                         prices[invItem] *= sellingDiscount;
                     }
                 }
-                prices[invItem] *= (1 - item.buyDiscountPercentage);
+                if (isBuying)
+                {  
+                    prices[invItem] *= (1 - item.buyDiscountPercentage);
+                }    
             }
             return prices;
+        }
+
+        public Dictionary<InventoryItem, int> GetItemAvailabilities()
+        {
+            var availabilities = new Dictionary<InventoryItem, int>();
+            foreach (StockItemConfig item in stockConfig)
+            {
+                var invItem = item.inventoryItem;
+                if (item.unlockLevel > GetLevel()) continue;
+
+                if (isBuying)
+                {
+                    if (!availabilities.ContainsKey(invItem))
+                    {
+                        int sold = 0;
+                        stockSold.TryGetValue(invItem, out sold);   
+                        availabilities[invItem] = -sold;
+                    }
+                    availabilities[invItem] += item.initialStock;
+                }
+                else
+                {
+                    availabilities[invItem] = CountItemsInInventory(invItem);
+                }
+            }
+            return availabilities;
         }
 
         public void SelectFilter(ItemCategory category)
@@ -172,23 +193,28 @@ namespace RPG.Inventories
                 for (int i = 0; i < item.GetQuantity(); i++)
                 {
                     bool success = false;
+                    var invItem = item.GetInventoryItem();
                     if (isBuying)
                     {
                         if (purse.GetBalance() < item.GetPrice()) break;
-                        success = inventory.AddToFirstEmptySlot(item.GetInventoryItem(), 1);
+                        success = inventory.AddToFirstEmptySlot(invItem, 1);
                     }             
                     else
                     {
-                        int slot = FindFirstItemSlot(item.GetInventoryItem());
+                        int slot = FindFirstItemSlot(invItem);
                         if (slot == -1) break;
                         inventory.RemoveFromSlot(slot, 1);
                         success = true;
                     }
                     if (success)
                     {
-                        transaction[item.GetInventoryItem()]--;
+                        transaction[invItem]--;
                         int sign = isBuying ? -1 : 1;
-                        stock[item.GetInventoryItem()] += sign;
+                        if (!stockSold.ContainsKey(invItem))
+                        {
+                            stockSold[invItem] = 0;
+                        }
+                        stockSold[invItem] -= sign;
                         purse.UpdateBalance(sign * item.GetPrice());
                     }
                 }
@@ -214,7 +240,10 @@ namespace RPG.Inventories
                 transaction[item] = 0;
             }
 
-            if (GetItemAvailability(item) >= transaction[item] + quantity)
+            var availabilities = GetItemAvailabilities();
+            int availability = 0;
+            availabilities.TryGetValue(item, out availability);
+            if (availability >= transaction[item] + quantity)
             {
                 transaction[item] += quantity;
 
@@ -278,18 +307,6 @@ namespace RPG.Inventories
             }
 
             return -1;
-        }
-
-        private int GetItemAvailability(InventoryItem item)
-        {
-            if (isBuying)
-            {
-                return stock[item];
-            }
-            else
-            {
-                return CountItemsInInventory(item);
-            }
         }
 
         private int GetLevel()
