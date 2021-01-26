@@ -10,6 +10,13 @@ namespace RPG.Stats
 
         public event Action onExperienceGained;
 
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                GainExperience(100);
+            }
+        }
+
         public void GainExperience(float experience)
         {
             experiencePoints += experience;
