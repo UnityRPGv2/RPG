@@ -9,6 +9,8 @@ namespace RPG.Shops
 {
     public class Shop : MonoBehaviour, IRaycastable
     {
+        [SerializeField] string shopName;
+
         public class ShopItem
         {
             InventoryItem item;
@@ -27,6 +29,12 @@ namespace RPG.Shops
         public bool CanTransact() { return true; }
         public void ConfirmTransaction() {}
         public float TransactionTotal() { return 0; }
+
+        public string GetShopName()
+        {
+            return shopName;
+        }
+
         public void AddToTransaction(InventoryItem item, int quantity) {}
 
         public CursorType GetCursorType()
