@@ -151,8 +151,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -438.6702, y: 0}
-  m_SizeDelta: {x: 200.7526, y: 0}
+  m_AnchoredPosition: {x: -507.85876, y: 0}
+  m_SizeDelta: {x: 339.1297, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1245259259904247753
 CanvasRenderer:
@@ -227,8 +227,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -421.52, y: 0}
-  m_SizeDelta: {x: -1081.4, y: 0}
+  m_AnchoredPosition: {x: -495.2, y: 0}
+  m_SizeDelta: {x: -1228.8, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2850307756920017947
 CanvasRenderer:
@@ -378,7 +378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -750.62, y: 0}
+  m_AnchoredPosition: {x: -898, y: 0}
   m_SizeDelta: {x: 383.14453, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5323530127763523708
@@ -430,6 +430,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Availability
+      objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 1972818374610651644, guid: c6d989578f63d364f8c5d2b76fc7e805,
         type: 3}
@@ -561,6 +576,21 @@ PrefabInstance:
       propertyPath: m_text
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 1972818374610651644, guid: c6d989578f63d364f8c5d2b76fc7e805,
         type: 3}
       propertyPath: m_Name
@@ -691,6 +721,21 @@ PrefabInstance:
       propertyPath: m_text
       value: Quantity
       objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 1972818374610651644, guid: c6d989578f63d364f8c5d2b76fc7e805,
         type: 3}
       propertyPath: m_Name
@@ -820,6 +865,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: Price
+      objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 603391758730708060, guid: c6d989578f63d364f8c5d2b76fc7e805,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 1972818374610651644, guid: c6d989578f63d364f8c5d2b76fc7e805,
         type: 3}
