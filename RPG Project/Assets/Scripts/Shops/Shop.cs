@@ -52,7 +52,10 @@ namespace RPG.Shops
             return shopName;
         }
 
-        public void AddToTransaction(InventoryItem item, int quantity) {}
+        public void AddToTransaction(InventoryItem item, int quantity) 
+        {
+            print($"Added To Transaction: {item.GetDisplayName()} x {quantity}");
+        }
 
         public CursorType GetCursorType()
         {
