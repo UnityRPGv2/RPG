@@ -84,6 +84,7 @@ MonoBehaviour:
   listRoot: {fileID: 2800125846185987718}
   rowPrefab: {fileID: 2077951992817571671, guid: ddcf5a22e52f0af49b22c58815e86af0,
     type: 3}
+  totalField: {fileID: 8896881395085566898}
 --- !u!1001 &918027577007705047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -208,6 +209,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c1f4a1be2eaf2e41ab6aef8a961f0dd, type: 3}
+--- !u!114 &8896881395085566898 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8630426625069410405, guid: 5c1f4a1be2eaf2e41ab6aef8a961f0dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 918027577007705047}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1262350085931975571
 PrefabInstance:
   m_ObjectHideFlags: 0
