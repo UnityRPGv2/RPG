@@ -86,6 +86,7 @@ MonoBehaviour:
     type: 3}
   totalField: {fileID: 8896881395085566898}
   confirmButton: {fileID: 7416497191470844299}
+  switchButton: {fileID: 756222803568236782}
 --- !u!1001 &918027577007705047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1219,6 +1220,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 999061091640579043, guid: eba67c3ec1261064aa3bcd41077cf892,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2001032434580791122, guid: eba67c3ec1261064aa3bcd41077cf892,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -2016,6 +2022,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d345666d66488f4a91eeba6eab054de, type: 3}
+--- !u!114 &756222803568236782 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5838669046367561204, guid: 6d345666d66488f4a91eeba6eab054de,
+    type: 3}
+  m_PrefabInstance: {fileID: 6591504254558715162}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6884662955936867805
 PrefabInstance:
   m_ObjectHideFlags: 0

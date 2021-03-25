@@ -11,6 +11,8 @@ namespace RPG.Shops
     public class Shop : MonoBehaviour, IRaycastable
     {
         [SerializeField] string shopName;
+        [Range(0, 100)]
+        [SerializeField] float sellingPercentage = 80f;
 
         // Stock Config
             // Item: 
@@ -32,6 +34,7 @@ namespace RPG.Shops
         Dictionary<InventoryItem, int> transaction = new Dictionary<InventoryItem, int>();
         Dictionary<InventoryItem, int> stock = new Dictionary<InventoryItem, int>();
         Shopper currentShopper = null;
+        bool isBuyingMode = true;
 
         public event Action onChange;
 
@@ -56,7 +59,7 @@ namespace RPG.Shops
         {
             foreach (StockItemConfig config in stockConfig)
             {
-                float price = config.item.GetPrice() * (1 - config.buyingDiscountPercentage / 100);
+                float price = GetPrice(config);
                 int quantityInTransaction = 0;
                 transaction.TryGetValue(config.item, out quantityInTransaction);
                 int currentStock = stock[config.item];
@@ -64,10 +67,33 @@ namespace RPG.Shops
             }
         }
 
+        private float GetPrice(StockItemConfig config)
+        {
+            if (isBuyingMode)
+            {
+                return config.item.GetPrice() * (1 - config.buyingDiscountPercentage / 100);
+            }
+
+            return config.item.GetPrice() * (sellingPercentage / 100);
+        }
+
         public void SelectFilter(ItemCategory category) {}
         public ItemCategory GetFilter() { return ItemCategory.None; }
-        public void SelectMode(bool isBuying) {}
-        public bool IsBuyingMode() { return true; }
+
+        public void SelectMode(bool isBuying) 
+        {
+            isBuyingMode = isBuying;
+            if (onChange != null)
+            {
+                onChange();
+            }
+        }
+
+        public bool IsBuyingMode() 
+        { 
+            return isBuyingMode; 
+        }
+
         public bool CanTransact() 
         { 
             if (IsTransactionEmpty()) return false;
