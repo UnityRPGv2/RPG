@@ -67,16 +67,17 @@ namespace RPG.Shops
 
         public IEnumerable<ShopItem> GetAllItems()
         {
-            int shopperLevel = GetShopperLevel();
-            foreach (StockItemConfig config in stockConfig)
+            Dictionary<InventoryItem, float> prices = GetPrices();
+            Dictionary<InventoryItem, int> availabilities = GetAvailabilities();
+            foreach (InventoryItem item in availabilities.Keys)
             {
-                if (config.levelToUnlock > shopperLevel) continue;
-                
-                float price = GetPrice(config);
+                if (availabilities[item] <= 0) continue;
+
+                float price = prices[item];
                 int quantityInTransaction = 0;
-                transaction.TryGetValue(config.item, out quantityInTransaction);
-                int availability = GetAvailability(config.item);
-                yield return new ShopItem(config.item, availability, price, quantityInTransaction);
+                transaction.TryGetValue(item, out quantityInTransaction);
+                int availability = availabilities[item];
+                yield return new ShopItem(item, availability, price, quantityInTransaction);
             }
         }
 
@@ -280,6 +281,48 @@ namespace RPG.Shops
             return config.item.GetPrice() * (sellingPercentage / 100);
         }
 
+        private Dictionary<InventoryItem, int> GetAvailabilities()
+        {
+            Dictionary<InventoryItem, int> availabilities = new Dictionary<InventoryItem, int>();
+
+            foreach (var config in GetAvailableConfigs())
+            {
+                if (!availabilities.ContainsKey(config.item))
+                {
+                    availabilities[config.item] = 0;
+                }
+                availabilities[config.item] += config.initialStock;
+            }
+
+            return availabilities;
+        }
+
+        private Dictionary<InventoryItem, float> GetPrices()
+        {
+            Dictionary<InventoryItem, float> prices = new Dictionary<InventoryItem, float>();
+
+            foreach (var config in GetAvailableConfigs())
+            {
+                if (!prices.ContainsKey(config.item))
+                {
+                    prices[config.item] = config.item.GetPrice();
+                }
+
+                prices[config.item] *= (1 - config.buyingDiscountPercentage / 100);
+            }
+
+            return prices;
+        }
+
+        private IEnumerable<StockItemConfig> GetAvailableConfigs()
+        {
+            int shopperLevel = GetShopperLevel();
+            foreach (var config in stockConfig)
+            {
+                if (config.levelToUnlock > shopperLevel) continue;
+                yield return config;
+            }
+        }
 
         private void SellItem(Inventory shopperInventory, Purse shopperPurse, InventoryItem item, float price)
         {
