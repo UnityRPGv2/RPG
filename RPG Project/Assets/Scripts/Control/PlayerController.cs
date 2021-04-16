@@ -5,6 +5,7 @@ using RPG.Attributes;
 using System;
 using UnityEngine.EventSystems;
 using UnityEngine.AI;
+using GameDevTV.Inventories;
 
 namespace RPG.Control
 {
@@ -32,17 +33,31 @@ namespace RPG.Control
 
         private void Update()
         {
+
             if (InteractWithUI()) return;
             if (health.IsDead()) 
             {
                 SetCursor(CursorType.None);
                 return;
             }
+            UseAbilities();
 
             if (InteractWithComponent()) return;
             if (InteractWithMovement()) return;
 
             SetCursor(CursorType.None);
+        }
+
+        private void UseAbilities()
+        {
+            ActionStore actionStore = GetComponent<ActionStore>();
+            for (int i = 0; i < 9; i++)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+                {
+                    actionStore.Use(i, gameObject);
+                }
+            }
         }
 
         private bool InteractWithUI()
