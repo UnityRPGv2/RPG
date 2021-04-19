@@ -11,6 +11,8 @@ namespace RPG.Abilities.Targeting
     {
         [SerializeField] Texture2D effectCursor;
         [SerializeField] Vector2 cursorHotspot;
+        [SerializeField] float areaOfEffect;
+        [SerializeField] LayerMask castingLayer;
 
         PlayerController playerController;
 
@@ -28,17 +30,26 @@ namespace RPG.Abilities.Targeting
                 Cursor.SetCursor(effectCursor, cursorHotspot, CursorMode.Auto);
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (confirm != null) confirm(new List<GameObject>());
+                    if (confirm != null) confirm(GetGameObjectsInArea());
                     // Capture the whole of this mouse click so we don't move.
-                    while (Input.GetMouseButton(0))
-                    {
-                        yield return null;
-                    }
-                    // yield return new WaitWhile(() => Input.GetMouseButton(0));
+                    yield return new WaitWhile(() => Input.GetMouseButton(0));
                     playerController.enabled = true;
                     yield break;
                 }
                 yield return null;
+            }
+        }
+
+        private IEnumerable<GameObject> GetGameObjectsInArea()
+        {
+            RaycastHit mouseHit;
+            if (Physics.Raycast(PlayerController.GetMouseRay(), out mouseHit, 100, castingLayer))
+            {
+                RaycastHit[] hits = Physics.SphereCastAll(mouseHit.point, areaOfEffect, Vector3.up, 0);
+                foreach (RaycastHit hit in hits)
+                {
+                    yield return hit.transform.gameObject;
+                }
             }
         }
     }

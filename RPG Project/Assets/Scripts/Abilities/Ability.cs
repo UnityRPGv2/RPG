@@ -17,8 +17,15 @@ namespace RPG.Abilities
 
             if (targeting != null)
             {
-                Debug.Log("Targeting");
-                targeting.StartTargeting(user, null);
+                targeting.StartTargeting(user, TargetAquired);
+            }
+        }
+
+        private void TargetAquired(IEnumerable<GameObject> targets)
+        {
+            foreach (var target in targets)
+            {
+                Debug.Log(target);
             }
         }
     }
