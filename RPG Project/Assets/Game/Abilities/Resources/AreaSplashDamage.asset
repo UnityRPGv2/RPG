@@ -22,3 +22,5 @@ MonoBehaviour:
   category: 0
   consumable: 0
   targeting: {fileID: 11400000, guid: 11a4913e2de85e64a96724078c5b1747, type: 2}
+  filters:
+  - {fileID: 11400000, guid: c6f3a32e2f0023f49952a6b01ccb5a14, type: 2}

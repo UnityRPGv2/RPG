@@ -11,6 +11,7 @@ namespace RPG.Abilities
     {
         [Header("Ability")]
         [SerializeField] TargetingStrategy targeting;
+        [SerializeField] FilterStrategy[] filters;
 
         public override void Use(GameObject user)
         {
@@ -23,6 +24,10 @@ namespace RPG.Abilities
 
         private void TargetAquired(IEnumerable<GameObject> targets)
         {
+            foreach (var filter in filters)
+            {
+                targets = filter.Filter(targets);
+            }
             foreach (var target in targets)
             {
                 Debug.Log(target);
