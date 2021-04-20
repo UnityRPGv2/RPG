@@ -24,3 +24,5 @@ MonoBehaviour:
   targeting: {fileID: 11400000, guid: 11a4913e2de85e64a96724078c5b1747, type: 2}
   filters:
   - {fileID: 11400000, guid: c6f3a32e2f0023f49952a6b01ccb5a14, type: 2}
+  effects:
+  - {fileID: 11400000, guid: ac4c8242a7094cd45913a0b9713d2b7a, type: 2}
