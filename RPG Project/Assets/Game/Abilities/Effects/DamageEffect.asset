@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DamageEffect
   m_EditorClassIdentifier: 
   amount: 1
+  effectPrefab: {fileID: 444372, guid: 6636b3078b0905e489f698a11b7a6b6b, type: 3}

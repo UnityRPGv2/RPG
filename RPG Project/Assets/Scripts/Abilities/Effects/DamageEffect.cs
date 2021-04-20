@@ -9,9 +9,12 @@ namespace RPG.Abilities.Effects
     public class DamageEffect : EffectStrategy
     {
         [SerializeField] float amount = 1;
+        [SerializeField] Transform effectPrefab;
 
         public override void StartEffect(TargetingData data, Action complete)
         {
+            var effect = Instantiate(effectPrefab);
+            effect.position = data.GetTargetPoint();
             foreach (var target in data.GetTargets())
             {
                 Health healthComp = target.GetComponent<Health>();

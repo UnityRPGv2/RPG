@@ -22,6 +22,11 @@ namespace RPG.Abilities
             targetPoint = target;
         }
 
+        public Vector3 GetTargetPoint()
+        {
+            return targetPoint;
+        }
+
         public void SetTargets(IEnumerable<GameObject> targets)
         {
             targetGameObjects = targets;
