@@ -4,6 +4,6 @@ using UnityEngine;
 namespace RPG.Abilities
 {
     public abstract class EffectStrategy : ScriptableObject {
-        public abstract void StartEffect(GameObject source, IEnumerable<GameObject> targets, Action complete);
+        public abstract void StartEffect(TargetingData data, Action complete);
     }
 }

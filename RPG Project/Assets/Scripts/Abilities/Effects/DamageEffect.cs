@@ -8,16 +8,16 @@ namespace RPG.Abilities.Effects
     [CreateAssetMenu(fileName = "DamageEffect", menuName = "Abilities/Effects/Damage", order = 0)]
     public class DamageEffect : EffectStrategy
     {
-        [SerializeField] float amount;
+        [SerializeField] float amount = 1;
 
-        public override void StartEffect(GameObject source, IEnumerable<GameObject> targets, Action complete)
+        public override void StartEffect(TargetingData data, Action complete)
         {
-            foreach (var target in targets)
+            foreach (var target in data.GetTargets())
             {
                 Health healthComp = target.GetComponent<Health>();
                 if (healthComp != null)
                 {
-                    healthComp.TakeDamage(source, amount);
+                    healthComp.TakeDamage(data.GetSource(), amount * data.GetEffectScaling());
                 }
             }
             if (complete != null) complete();

@@ -18,13 +18,13 @@ namespace RPG.Abilities.Targeting
         PlayerController playerController;
         Transform targettingCircle;
 
-        public override void StartTargeting(GameObject user, Action<IEnumerable<GameObject>> confirm)
+        public override void StartTargeting(TargetingData data, Action<TargetingData> callback)
         {
-            playerController = user.GetComponent<PlayerController>();
-            playerController.StartCoroutine(Targeting(user, confirm));
+            playerController = data.GetSource().GetComponent<PlayerController>();
+            playerController.StartCoroutine(Targeting(data, callback));
         }
 
-        private IEnumerator Targeting(GameObject user, Action<IEnumerable<GameObject>> confirm)
+        private IEnumerator Targeting(TargetingData data, Action<TargetingData> callback)
         {
             playerController.enabled = false;
             if (!targettingCircle) targettingCircle = Instantiate(targettingCirclePrefab);
@@ -48,7 +48,8 @@ namespace RPG.Abilities.Targeting
                 if (Input.GetMouseButtonDown(0))
                 {
                     targettingCircle.gameObject.SetActive(false);
-                    if (confirm != null) confirm(GetGameObjectsInArea());
+                    data.SetTargets(GetGameObjectsInArea());
+                    if (callback != null) callback(data);
                     // Capture the whole of this mouse click so we don't move.
                     yield return new WaitWhile(() => Input.GetMouseButton(0));
                     playerController.enabled = true;
