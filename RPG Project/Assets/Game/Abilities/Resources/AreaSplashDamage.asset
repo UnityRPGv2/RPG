@@ -27,4 +27,4 @@ MonoBehaviour:
   effects:
   - {fileID: 11400000, guid: ac4c8242a7094cd45913a0b9713d2b7a, type: 2}
   effectScale: 10
-  cooldown: 10
+  cooldown: 2
