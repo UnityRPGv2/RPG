@@ -14,9 +14,16 @@ namespace RPG.Abilities
         [SerializeField] FilterStrategy[] filters;
         [SerializeField] EffectStrategy[] effects;
         [SerializeField] float effectScale = 1;
+        [SerializeField] float cooldown = 0;
 
         public override void Use(GameObject user)
         {
+            var cooldownStore = user.GetComponent<CooldownStore>();
+            if (cooldownStore && cooldownStore.GetTimeRemaining(this) > 0)
+            {
+                return;
+            }
+
             if (targeting != null)
             {
                 var targetingData = new TargetingData(effectScale, user);
@@ -26,6 +33,12 @@ namespace RPG.Abilities
 
         private void TargetAquired(TargetingData data)
         {
+            var cooldownStore = data.GetSource().GetComponent<CooldownStore>();
+            if (cooldownStore)
+            {
+                cooldownStore.StartCooldown(this, cooldown);
+            }
+
             foreach (var filter in filters)
             {
                 data.SetTargets(filter.Filter(data.GetTargets()));
