@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameDevTV.Inventories;
+using RPG.Attributes;
 using UnityEngine;
 
 namespace RPG.Abilities
@@ -15,9 +16,15 @@ namespace RPG.Abilities
         [SerializeField] EffectStrategy[] effects;
         [SerializeField] float effectScale = 1;
         [SerializeField] float cooldown = 0;
+        [SerializeField] float manaCost = 0;
 
         public override void Use(GameObject user)
         {
+            if (manaCost > 0)
+            {
+                var mana = user.GetComponent<Mana>();
+                if (mana.GetMana() < manaCost) return;
+            }
             var cooldownStore = user.GetComponent<CooldownStore>();
             if (cooldownStore && cooldownStore.GetTimeRemaining(this) > 0)
             {
@@ -33,6 +40,12 @@ namespace RPG.Abilities
 
         private void TargetAquired(TargetingData data)
         {
+            if (manaCost > 0)
+            {
+                var mana = data.GetSource().GetComponent<Mana>();
+                if (!mana.UseMana(manaCost)) return;
+            }
+
             var cooldownStore = data.GetSource().GetComponent<CooldownStore>();
             if (cooldownStore)
             {
