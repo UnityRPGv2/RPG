@@ -7,11 +7,21 @@ namespace RPG.Attributes
 {
     public class Mana : MonoBehaviour
     {
-        float mana = 100;
+        [SerializeField] float maxMana = 100;
+        float mana;
+
+        private void Awake() {
+            mana = maxMana;
+        }
 
         public float GetMana()
         {
             return mana;
+        }
+
+        public float GetMaxMana()
+        {
+            return maxMana;
         }
 
         public bool UseMana(float amount)
@@ -21,7 +31,6 @@ namespace RPG.Attributes
                 return false;
             }
             mana -= amount;
-            Debug.Log($"Mana {mana}");
             return true;
         }
     }
