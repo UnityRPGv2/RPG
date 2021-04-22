@@ -164,18 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: Herbet Socksworthy
---- !u!114 &9084336647027707127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4902660786131331472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72fcc1a41e8645c4c86dc6f435f38aaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7809044748746219132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +174,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e602b194c3e78704f9ce4fec3a1c23ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 100
+  regenerationRate: 5
+--- !u!114 &9084336647027707127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902660786131331472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72fcc1a41e8645c4c86dc6f435f38aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1080417002832114521
