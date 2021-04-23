@@ -29,3 +29,5 @@ MonoBehaviour:
   effectScale: 10
   cooldown: 2
   manaCost: 50
+  animatorTrigger: special1
+  turnToTarget: 1
