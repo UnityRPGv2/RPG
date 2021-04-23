@@ -17,6 +17,8 @@ namespace RPG.Abilities
         [SerializeField] float effectScale = 1;
         [SerializeField] float cooldown = 0;
         [SerializeField] float manaCost = 0;
+        [SerializeField] string animatorTrigger = null;
+        [SerializeField] bool turnToTarget = false;
 
         public override void Use(GameObject user)
         {
@@ -56,6 +58,14 @@ namespace RPG.Abilities
             {
                 data.SetTargets(filter.Filter(data.GetTargets()));
             }
+
+            var animator = data.GetSource().GetComponent<Animator>();
+            animator.SetTrigger(animatorTrigger);
+            if (turnToTarget)
+            {
+                data.GetSource().transform.LookAt(data.GetTargetPoint());
+            }
+
             foreach (var effect in effects)
             {
                 effect.StartEffect(data, null);

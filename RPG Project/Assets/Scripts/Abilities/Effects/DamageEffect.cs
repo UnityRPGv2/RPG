@@ -13,6 +13,7 @@ namespace RPG.Abilities.Effects
         [SerializeField] float amount = 1;
         [SerializeField] int steps = 1;
         [SerializeField] float totalTime = 1;
+        [SerializeField] float initialDelay = 0;
         [SerializeField] Transform effectPrefab;
 
         public override void StartEffect(TargetingData data, Action complete)
@@ -23,6 +24,7 @@ namespace RPG.Abilities.Effects
 
         private IEnumerator Effect(TargetingData data, Action complete)
         {
+            yield return new WaitForSeconds(initialDelay);
             SpawnEffect(data.GetTargetPoint());
             for (int i = 0; i < steps; i++)
             {
