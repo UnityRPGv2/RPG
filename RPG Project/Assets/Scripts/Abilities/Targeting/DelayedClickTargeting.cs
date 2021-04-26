@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using RPG.Control;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Abilities.Targeting
@@ -13,61 +14,85 @@ namespace RPG.Abilities.Targeting
         [SerializeField] Vector2 cursorHotspot;
         [SerializeField] float areaOfEffectRadius;
         [SerializeField] LayerMask castingLayer;
-        [SerializeField] Transform targettingCirclePrefab;
+        [SerializeField] Transform targetingCirclePrefab;
 
-        PlayerController playerController;
-        Transform targettingCircle;
+        Transform targetingCircle;
 
         public override void StartTargeting(TargetingData data, Action<TargetingData> callback)
         {
-            playerController = data.GetSource().GetComponent<PlayerController>();
-            playerController.StartCoroutine(Targeting(data, callback));
+            new TargetingAction(this, data, callback);
         }
 
-        private IEnumerator Targeting(TargetingData data, Action<TargetingData> callback)
+        class TargetingAction : IAction
         {
-            playerController.enabled = false;
-            if (!targettingCircle) targettingCircle = Instantiate(targettingCirclePrefab);
-            
-            while (true)
+            PlayerController playerController = null;
+            DelayedClickTargeting strategy;
+            Coroutine targetingRoutine;
+            ActionScheduler scheduler;
+
+            public TargetingAction(DelayedClickTargeting strategy, TargetingData data, Action<TargetingData> callback)
             {
-                Cursor.SetCursor(effectCursor, cursorHotspot, CursorMode.Auto);
+                this.strategy = strategy;
+                playerController = data.GetSource().GetComponent<PlayerController>();
+                scheduler = data.GetSource().GetComponent<ActionScheduler>();
+                scheduler.StartAction(this, 2, 3);
+                targetingRoutine = playerController.StartCoroutine(Targeting(data, callback));
+            }
+            
+            private IEnumerator Targeting(TargetingData data, Action<TargetingData> callback)
+            {
+                yield return new WaitUntil(() => scheduler.isCurrentAction(this));
+                playerController.enabled = false;
+                if (!strategy.targetingCircle) strategy.targetingCircle = Instantiate(strategy.targetingCirclePrefab);
+                Transform targetingCircle = strategy.targetingCircle;
 
-                RaycastHit mouseHit;
-                if (Physics.Raycast(PlayerController.GetMouseRay(), out mouseHit, 100, castingLayer))
+                while (true)
                 {
-                    targettingCircle.gameObject.SetActive(true);
-                    targettingCircle.position = mouseHit.point;
-                    targettingCircle.localScale = new Vector3(areaOfEffectRadius*2, 1, areaOfEffectRadius*2);
+                    Cursor.SetCursor(strategy.effectCursor, strategy.cursorHotspot, CursorMode.Auto);
 
-                    if (Input.GetMouseButtonDown(0))
+                    RaycastHit mouseHit;
+                    if (Physics.Raycast(PlayerController.GetMouseRay(), out mouseHit, 100, strategy.castingLayer))
                     {
-                        targettingCircle.gameObject.SetActive(false);
-                        data.SetTarget(mouseHit.point);
-                        data.SetTargets(GetGameObjectsInArea(mouseHit.point));
-                        if (callback != null) callback(data);
-                        // Capture the whole of this mouse click so we don't move.
-                        yield return new WaitWhile(() => Input.GetMouseButton(0));
-                        playerController.enabled = true;
-                        yield break;
+                        targetingCircle.gameObject.SetActive(true);
+                        targetingCircle.position = mouseHit.point;
+                        targetingCircle.localScale = new Vector3(strategy.areaOfEffectRadius * 2, 1, strategy.areaOfEffectRadius * 2);
+
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            data.SetTarget(mouseHit.point);
+                            data.SetTargets(GetGameObjectsInArea(mouseHit.point));
+                            // Capture the whole of this mouse click so we don't move.
+                            yield return new WaitWhile(() => Input.GetMouseButton(0));
+                            if (callback != null) callback(data);
+                            scheduler.FinishAction(this);
+                            Cancel();
+                            yield break;
+                        }
+
+                    }
+                    else
+                    {
+                        targetingCircle.gameObject.SetActive(false);
                     }
 
+                    yield return null;
                 }
-                else
-                {
-                    targettingCircle.gameObject.SetActive(false);
-                }
-
-                yield return null;
             }
-        }
 
-        private IEnumerable<GameObject> GetGameObjectsInArea(Vector3 point)
-        {
-            RaycastHit[] hits = Physics.SphereCastAll(point, areaOfEffectRadius, Vector3.up, 0);
-            foreach (RaycastHit hit in hits)
+            private IEnumerable<GameObject> GetGameObjectsInArea(Vector3 point)
             {
-                yield return hit.transform.gameObject;
+                RaycastHit[] hits = Physics.SphereCastAll(point, strategy.areaOfEffectRadius, Vector3.up, 0);
+                foreach (RaycastHit hit in hits)
+                {
+                    yield return hit.transform.gameObject;
+                }
+            }
+
+            public void Cancel()
+            {
+                playerController.StopCoroutine(targetingRoutine);
+                strategy.targetingCircle.gameObject.SetActive(false);
+                playerController.enabled = true;
             }
         }
     }
