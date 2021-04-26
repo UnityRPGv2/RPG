@@ -61,9 +61,9 @@ namespace RPG.Abilities.Targeting
                         {
                             data.SetTarget(mouseHit.point);
                             data.SetTargets(GetGameObjectsInArea(mouseHit.point));
-                            if (callback != null) callback(data);
                             // Capture the whole of this mouse click so we don't move.
                             yield return new WaitWhile(() => Input.GetMouseButton(0));
+                            if (callback != null) callback(data);
                             scheduler.FinishAction(this);
                             Cancel();
                             yield break;
