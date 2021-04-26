@@ -18,5 +18,5 @@ MonoBehaviour:
   castingLayer:
     serializedVersion: 2
     m_Bits: 64
-  targettingCirclePrefab: {fileID: 1540956442928662196, guid: 1919a188fe5bf9c438c14d9bad000c4a,
+  targetingCirclePrefab: {fileID: 1540956442928662196, guid: 1919a188fe5bf9c438c14d9bad000c4a,
     type: 3}
