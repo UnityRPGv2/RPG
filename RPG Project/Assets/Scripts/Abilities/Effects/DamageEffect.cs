@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using RPG.Attributes;
 using RPG.Control;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Abilities.Effects
 {
     [CreateAssetMenu(fileName = "DamageEffect", menuName = "Abilities/Effects/Damage", order = 0)]
-    public class DamageEffect : EffectStrategy
+    public class DamageEffect : EffectStrategy, IAction
     {
         [SerializeField] float amount = 1;
         [SerializeField] int steps = 1;
@@ -24,11 +25,18 @@ namespace RPG.Abilities.Effects
 
         private IEnumerator Effect(TargetingData data, Action complete)
         {
+            var scheduler = data.GetSource().GetComponent<ActionScheduler>();
+            scheduler.StartAction(this, 3, 3);
+            yield return new WaitUntil(() => scheduler.isCurrentAction(this));
             yield return new WaitForSeconds(initialDelay);
             SpawnEffect(data.GetTargetPoint());
             for (int i = 0; i < steps; i++)
             {
                 DealDamage(data);
+                if (scheduler.isCurrentAction(this))
+                {
+                    scheduler.FinishAction(this);
+                }
                 yield return new WaitForSeconds(totalTime / steps);
             }
             if (complete != null) complete();
@@ -50,6 +58,11 @@ namespace RPG.Abilities.Effects
         {
             var effect = Instantiate(effectPrefab);
             effect.position = position;
+        }
+
+        public void Cancel()
+        {
+            // Don't need to do anything.
         }
     }
 }
