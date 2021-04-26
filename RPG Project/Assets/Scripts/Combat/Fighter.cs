@@ -20,11 +20,13 @@ namespace RPG.Combat
 
         Health target;
         Equipment equipment;
+        ActionScheduler actionScheduler;
         float timeSinceLastAttack = Mathf.Infinity;
         WeaponConfig currentWeaponConfig;
         LazyValue<Weapon> currentWeapon;
 
         private void Awake() {
+            actionScheduler = GetComponent<ActionScheduler>();
             currentWeaponConfig = defaultWeapon;
             currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
             equipment = GetComponent<Equipment>();
@@ -50,6 +52,7 @@ namespace RPG.Combat
 
             if (target == null) return;
             if (target.IsDead()) return;
+            if (!actionScheduler.isCurrentAction(this)) return;
 
             if (!GetIsInRange(target.transform))
             {
@@ -155,7 +158,7 @@ namespace RPG.Combat
 
         public void Attack(GameObject combatTarget)
         {
-            GetComponent<ActionScheduler>().StartAction(this);
+            actionScheduler.StartAction(this, 1, 2);
             target = combatTarget.GetComponent<Health>();
         }
 

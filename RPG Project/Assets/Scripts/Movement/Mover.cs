@@ -14,23 +14,33 @@ namespace RPG.Movement
 
         NavMeshAgent navMeshAgent;
         Health health;
+        ActionScheduler actionScheduler;
+        Vector3 requestedDestination;
+        float requestedSpeedFraction;
 
         private void Awake() {
             navMeshAgent = GetComponent<NavMeshAgent>();
             health = GetComponent<Health>();
+            actionScheduler = GetComponent<ActionScheduler>();
         }
 
         void Update()
         {
             navMeshAgent.enabled = !health.IsDead();
 
+            if (actionScheduler.isCurrentAction(this))
+            {
+                MoveTo(requestedDestination, requestedSpeedFraction);
+            }
+
             UpdateAnimator();
         }
 
         public void StartMoveAction(Vector3 destination, float speedFraction)
         {
-            GetComponent<ActionScheduler>().StartAction(this);
-            MoveTo(destination, speedFraction);
+            actionScheduler.StartAction(this, 1, 2);
+            requestedDestination = destination;
+            requestedSpeedFraction = speedFraction;
         }
 
         public bool CanMoveTo(Vector3 destination)
@@ -87,7 +97,7 @@ namespace RPG.Movement
             navMeshAgent.enabled = false;
             transform.position = position.ToVector();
             navMeshAgent.enabled = true;
-            GetComponent<ActionScheduler>().CancelCurrentAction();
+            GetComponent<ActionScheduler>().CancelCurrentAction(2);
         }
     }
 }
