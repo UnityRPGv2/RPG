@@ -8,8 +8,8 @@ using UnityEngine;
 
 namespace RPG.Abilities.Effects
 {
-    [CreateAssetMenu(fileName = "DamageEffect", menuName = "Abilities/Effects/Damage", order = 0)]
-    public class DamageEffect : EffectStrategy, IAction
+    [CreateAssetMenu(fileName = "HealthEffect", menuName = "Abilities/Effects/Health", order = 0)]
+    public class HealthEffect : EffectStrategy, IAction
     {
         [SerializeField] float amount = 1;
         [SerializeField] int steps = 1;
@@ -44,12 +44,20 @@ namespace RPG.Abilities.Effects
 
         private void DealDamage(TargetingData data)
         {
+            float damage = amount * data.GetEffectScaling() / steps;
             foreach (var target in data.GetTargets())
             {
                 Health healthComp = target.GetComponent<Health>();
                 if (healthComp != null)
                 {
-                    healthComp.TakeDamage(data.GetSource(), amount * data.GetEffectScaling() / steps);
+                    if (damage >= 0)
+                    {
+                        healthComp.TakeDamage(data.GetSource(), damage);
+                    }
+                    else
+                    {
+                        healthComp.Heal(-damage);
+                    }
                 }
             }
         }

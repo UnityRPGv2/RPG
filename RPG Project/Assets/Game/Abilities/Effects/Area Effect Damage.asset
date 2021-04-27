@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c61a72d241b4f7047b229a6369e05389, type: 3}
-  m_Name: DamageEffect
+  m_Name: Area Effect Damage
   m_EditorClassIdentifier: 
   amount: 1
   steps: 10

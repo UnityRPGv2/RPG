@@ -8,6 +8,7 @@ namespace RPG.Abilities.Targeting
     {
         public override void StartTargeting(TargetingData data, Action<TargetingData> callback)
         {
+            data.SetTarget(data.GetSource().transform.position);
             data.SetTargets(new GameObject[]{data.GetSource()});
             callback(data);
         }
