@@ -7,48 +7,52 @@ namespace RPG.Attributes
 {
     public class Mana : MonoBehaviour
     {
-        [SerializeField] float maxMana = 100;
-        [SerializeField] float regenerationRate = 5;
-        float mana;
+        LazyValue<float> mana;
 
         private void Awake() {
-            mana = maxMana;
+            mana = new LazyValue<float>(GetMaxMana);
         }
 
         private void Update() {
-            if (mana < maxMana)
+            if (mana.value < GetMaxMana())
             {
-                RegenerateMana(regenerationRate * Time.deltaTime);
+                RegenerateMana(GetRegenerationRate() * Time.deltaTime);
             }
         }
 
         public void RegenerateMana(float points)
         {
-            mana += points;
-            if (mana > maxMana)
+            mana.value += points;
+            float maxMana = GetMaxMana();
+            if (mana.value > maxMana)
             {
-                mana = maxMana;
+                mana.value = maxMana;
             }
         }
 
         public float GetMana()
         {
-            return mana;
+            return mana.value;
         }
 
         public float GetMaxMana()
         {
-            return maxMana;
+            return GetComponent<BaseStats>().GetStat(Stat.Mana);
         }
 
         public bool UseMana(float amount)
         {
-            if (mana < amount)
+            if (mana.value < amount)
             {
                 return false;
             }
-            mana -= amount;
+            mana.value -= amount;
             return true;
+        }
+
+        private float GetRegenerationRate()
+        {
+            return GetComponent<BaseStats>().GetStat(Stat.ManaRegeneration);
         }
     }
 }
