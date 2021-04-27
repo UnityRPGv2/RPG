@@ -24,8 +24,8 @@ MonoBehaviour:
   targeting: {fileID: 11400000, guid: e98793cadcc6e254ab48a248190a153b, type: 2}
   filters: []
   effects:
-  - {fileID: 11400000, guid: ac4c8242a7094cd45913a0b9713d2b7a, type: 2}
-  effectScale: 10
+  - {fileID: 11400000, guid: 7bd89d75fc8e1b7439c9cf85fd7b1baa, type: 2}
+  effectScale: 50
   cooldown: 0
   manaCost: 0
   animatorTrigger: 
