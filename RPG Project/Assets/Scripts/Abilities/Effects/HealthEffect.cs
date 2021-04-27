@@ -26,7 +26,7 @@ namespace RPG.Abilities.Effects
         private IEnumerator Effect(TargetingData data, Action complete)
         {
             var scheduler = data.GetSource().GetComponent<ActionScheduler>();
-            scheduler.StartAction(this, 3, 3);
+            scheduler.SuspendAndStartAction(this, 3, 3);
             yield return new WaitUntil(() => scheduler.isCurrentAction(this));
             yield return new WaitForSeconds(initialDelay);
             SpawnEffect(data.GetTargetPoint());
@@ -71,6 +71,10 @@ namespace RPG.Abilities.Effects
         public void Cancel()
         {
             // Don't need to do anything.
+        }
+
+        public void Activated()
+        {
         }
     }
 }

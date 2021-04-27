@@ -19,18 +19,20 @@ namespace RPG.Abilities
         [SerializeField] float manaCost = 0;
         [SerializeField] string animatorTrigger = null;
         [SerializeField] bool turnToTarget = false;
+        [SerializeField] bool rapidFire = false;
 
-        public override void Use(GameObject user)
+        public override bool Use(GameObject user, bool keyDownThisFrame)
         {
+            if (!rapidFire && !keyDownThisFrame) return false;
             if (manaCost > 0)
             {
                 var mana = user.GetComponent<Mana>();
-                if (mana.GetMana() < manaCost) return;
+                if (mana.GetMana() < manaCost) return false;
             }
             var cooldownStore = user.GetComponent<CooldownStore>();
             if (cooldownStore && cooldownStore.GetTimeRemaining(this) > 0)
             {
-                return;
+                return false;
             }
 
             if (targeting != null)
@@ -38,6 +40,7 @@ namespace RPG.Abilities
                 var targetingData = new TargetingData(effectScale, user);
                 targeting.StartTargeting(targetingData, TargetAquired);
             }
+            return true;
         }
 
         private void TargetAquired(TargetingData data)

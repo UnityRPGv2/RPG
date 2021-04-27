@@ -20,26 +20,32 @@ namespace RPG.Abilities.Targeting
 
         public override void StartTargeting(TargetingData data, Action<TargetingData> callback)
         {
-            new TargetingAction(this, data, callback);
+            new TargetingAction(this, data, callback).Start();
         }
 
         class TargetingAction : IAction
         {
             PlayerController playerController = null;
             DelayedClickTargeting strategy;
+            private readonly TargetingData data;
+            private readonly Action<TargetingData> callback;
             Coroutine targetingRoutine;
             ActionScheduler scheduler;
 
             public TargetingAction(DelayedClickTargeting strategy, TargetingData data, Action<TargetingData> callback)
             {
                 this.strategy = strategy;
-                playerController = data.GetSource().GetComponent<PlayerController>();
-                scheduler = data.GetSource().GetComponent<ActionScheduler>();
-                scheduler.StartAction(this, 2, 3);
-                targetingRoutine = playerController.StartCoroutine(Targeting(data, callback));
+                this.data = data;
+                this.callback = callback;
             }
-            
-            private IEnumerator Targeting(TargetingData data, Action<TargetingData> callback)
+
+            public void Start()
+            {
+                scheduler = data.GetSource().GetComponent<ActionScheduler>();
+                scheduler.SuspendAndStartAction(this, 2, 3);
+            }
+
+            private IEnumerator Targeting()
             {
                 yield return new WaitUntil(() => scheduler.isCurrentAction(this));
                 playerController.enabled = false;
@@ -63,9 +69,9 @@ namespace RPG.Abilities.Targeting
                             data.SetTargets(GetGameObjectsInArea(mouseHit.point));
                             // Capture the whole of this mouse click so we don't move.
                             yield return new WaitWhile(() => Input.GetMouseButton(0));
-                            if (callback != null) callback(data);
                             scheduler.FinishAction(this);
                             Cancel();
+                            if (callback != null) callback(data);
                             yield break;
                         }
 
@@ -93,6 +99,12 @@ namespace RPG.Abilities.Targeting
                 playerController.StopCoroutine(targetingRoutine);
                 strategy.targetingCircle.gameObject.SetActive(false);
                 playerController.enabled = true;
+            }
+
+            public void Activated()
+            {
+                playerController = data.GetSource().GetComponent<PlayerController>();
+                targetingRoutine = playerController.StartCoroutine(Targeting());
             }
         }
     }

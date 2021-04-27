@@ -90,16 +90,16 @@ namespace GameDevTV.Inventories
         /// </summary>
         /// <param name="user">The character that wants to use this action.</param>
         /// <returns>False if the action could not be executed.</returns>
-        public bool Use(int index, GameObject user)
+        public bool Use(int index, GameObject user, bool keyDownThisFrame = false)
         {
             if (dockedItems.ContainsKey(index))
             {
-                dockedItems[index].item.Use(user);
-                if (dockedItems[index].item.isConsumable())
+                bool success = dockedItems[index].item.Use(user, keyDownThisFrame);
+                if (success && dockedItems[index].item.isConsumable())
                 {
                     RemoveItems(index, 1);
                 }
-                return true;
+                return success;
             }
             return false;
         }

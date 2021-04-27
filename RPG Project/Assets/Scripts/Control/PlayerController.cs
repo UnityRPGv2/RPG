@@ -53,9 +53,9 @@ namespace RPG.Control
             ActionStore actionStore = GetComponent<ActionStore>();
             for (int i = 0; i < 9; i++)
             {
-                if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+                if (Input.GetKey(KeyCode.Alpha1 + i))
                 {
-                    actionStore.Use(i, gameObject);
+                    actionStore.Use(i, gameObject, Input.GetKeyDown(KeyCode.Alpha1 + i));
                 }
             }
         }

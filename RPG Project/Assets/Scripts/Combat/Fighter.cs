@@ -50,9 +50,10 @@ namespace RPG.Combat
         {
             timeSinceLastAttack += Time.deltaTime;
 
+            if (!actionScheduler.isCurrentAction(this)) return;
+
             if (target == null) return;
             if (target.IsDead()) return;
-            if (!actionScheduler.isCurrentAction(this)) return;
 
             if (!GetIsInRange(target.transform))
             {
@@ -62,6 +63,23 @@ namespace RPG.Combat
             {
                 GetComponent<Mover>().Cancel();
                 AttackBehaviour();
+            }
+        }
+
+        private void UpdateTarget()
+        {
+            if (target != null && !target.IsDead()) return;
+
+            var hits = Physics.SphereCastAll(transform.position, currentWeaponConfig.GetRange(), Vector3.up, 0);
+            foreach (var hit in hits)
+            {
+                var health = hit.collider.GetComponent<Health>();
+                CombatTarget combatTarget = hit.collider.GetComponent<CombatTarget>();
+                if (combatTarget != null && health != null && !health.IsDead())
+                {
+                    target = health;
+                    return;
+                }
             }
         }
 
@@ -90,6 +108,18 @@ namespace RPG.Combat
             return weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
+        public Transform GetHandTransform(bool forRightHand)
+        {
+            if (forRightHand)
+            {
+                return rightHandTransform;
+            }
+            else
+            {
+                return leftHandTransform;
+            }
+        }
+
         public Health GetTarget()
         {
             return target;
@@ -115,7 +145,7 @@ namespace RPG.Combat
         // Animation Event
         void Hit()
         {
-            if(target == null) { return; }
+            if(target == null || !actionScheduler.isCurrentAction(this)) { return; }
 
             float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
 
@@ -162,11 +192,21 @@ namespace RPG.Combat
             target = combatTarget.GetComponent<Health>();
         }
 
+        public void AttackIfIdle(GameObject combatTarget)
+        {
+            if (target != null && !target.IsDead()) return;
+            Attack(combatTarget);
+        }
+
         public void Cancel()
         {
+            print("cancel attack");
             StopAttack();
-            target = null;
             GetComponent<Mover>().Cancel();
+        }
+
+        public void Activated()
+        {
         }
 
         private void StopAttack()
@@ -186,5 +226,6 @@ namespace RPG.Combat
             WeaponConfig weapon = UnityEngine.Resources.Load<WeaponConfig>(weaponName);
             EquipWeapon(weapon);
         }
+
     }
 }

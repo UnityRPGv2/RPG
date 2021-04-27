@@ -26,8 +26,8 @@ namespace RPG.Movement
 
         void Update()
         {
-            navMeshAgent.enabled = !health.IsDead();
-
+            navMeshAgent.enabled = health == null || !health.IsDead();
+        
             if (actionScheduler.isCurrentAction(this))
             {
                 MoveTo(requestedDestination, requestedSpeedFraction);
@@ -64,6 +64,10 @@ namespace RPG.Movement
         public void Cancel()
         {
             navMeshAgent.isStopped = true;
+        }
+
+        public void Activated()
+        {
         }
 
         private void UpdateAnimator()

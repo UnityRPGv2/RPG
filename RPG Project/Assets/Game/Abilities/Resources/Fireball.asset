@@ -10,25 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4188491c7d89bd479116a0b5053099d, type: 3}
-  m_Name: AreaSplashDamage
+  m_Name: Fireball
   m_EditorClassIdentifier: 
-  itemID: 0297a28a-90d5-48bd-8fcd-a9e86b016cd6
-  displayName: Mega Splash
-  description: 
+  itemID: 5e5f1db9-7ab7-4b7e-8671-c0918b7f907b
+  displayName: Fireball Potion
+  description: Ignite your foes with holy fire.
   icon: {fileID: 21300000, guid: a1ec2c0ddc0da634b85f0f465fec2d0d, type: 3}
-  pickup: {fileID: 743510599615345213, guid: 0715da6d594191c43a75bbdd035e8646, type: 3}
+  pickup: {fileID: 2211437023775121198, guid: bc751394949388f4b9270cb19b495c63, type: 3}
   stackable: 0
-  price: 10
-  category: 0
+  price: 100
+  category: 5
   consumable: 0
-  targeting: {fileID: 11400000, guid: 11a4913e2de85e64a96724078c5b1747, type: 2}
-  filters:
-  - {fileID: 11400000, guid: c6f3a32e2f0023f49952a6b01ccb5a14, type: 2}
+  targeting: {fileID: 11400000, guid: 477de879c73f32347a057f38509f8b92, type: 2}
+  filters: []
   effects:
-  - {fileID: 11400000, guid: ac4c8242a7094cd45913a0b9713d2b7a, type: 2}
-  effectScale: 50
-  cooldown: 2
-  manaCost: 50
+  - {fileID: 11400000, guid: d6b9a938f5db1da4fa5f6c53d4e2c73f, type: 2}
+  effectScale: 25
+  cooldown: 0.6
+  manaCost: 10
   animatorTrigger: special1
   turnToTarget: 1
-  rapidFire: 0
+  rapidFire: 1

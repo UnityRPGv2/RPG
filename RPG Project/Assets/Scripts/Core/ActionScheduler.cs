@@ -17,12 +17,23 @@ namespace RPG.Core
                 if (currentAction != null) currentAction.Cancel();
                 currentAction = action;
                 currentPriority = priority;
+                if (currentAction != null) currentAction.Activated();
             }
             else
             {
                 nextAction = action;
                 nextPriority = priority;
             }
+        }
+
+        public void SuspendAndStartAction(IAction action, int priority, int suspendAllBelow)
+        {
+            if (suspendAllBelow > currentPriority)
+            {
+                nextAction = currentAction;
+                nextPriority = currentPriority;
+            }
+            StartAction(action, priority, suspendAllBelow);
         }
 
         public void FinishAction(IAction action)
@@ -33,6 +44,7 @@ namespace RPG.Core
             nextAction = null;
             currentPriority = nextPriority;
             nextPriority = 0;
+            if (currentAction != null) currentAction.Activated();
         }
 
         public bool isCurrentAction(IAction action)
