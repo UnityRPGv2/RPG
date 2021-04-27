@@ -95,6 +95,18 @@ namespace RPG.Combat
             return target;
         } 
 
+        public Transform GetHandTransform(bool right)
+        {
+            if (right)
+            {
+                return rightHandTransform;
+            }
+            else
+            {
+                return leftHandTransform;
+            }
+        }
+
         private void AttackBehaviour()
         {
             transform.LookAt(target.transform);

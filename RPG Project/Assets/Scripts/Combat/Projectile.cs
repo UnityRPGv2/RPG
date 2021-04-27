@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using RPG.Attributes;
 using UnityEngine.Events;
+using System;
 
 namespace RPG.Combat
 {
@@ -33,7 +34,13 @@ namespace RPG.Combat
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
 
-        public void SetTarget(Health target, GameObject instigator, float damage)
+        public static void Launch(Projectile projectile, Vector3 position, Health target, GameObject instigator, float calculatedDamage)
+        {
+            Projectile projectileInstance = Instantiate(projectile, position, Quaternion.identity);
+            projectileInstance.SetTarget(target, instigator, calculatedDamage);
+        }
+
+        private void SetTarget(Health target, GameObject instigator, float damage)
         {
             this.target = target;
             this.damage = damage;
@@ -75,7 +82,6 @@ namespace RPG.Combat
             Destroy(gameObject, lifeAfterImpact);
 
         }
-
     }
 
 }
