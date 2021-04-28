@@ -30,7 +30,6 @@ namespace RPG.Abilities.Targeting
             private readonly TargetingData data;
             private readonly Action<TargetingData> callback;
             Coroutine targetingRoutine;
-            ActionScheduler scheduler;
 
             public TargetingAction(DelayedClickTargeting strategy, TargetingData data, Action<TargetingData> callback)
             {
@@ -42,8 +41,6 @@ namespace RPG.Abilities.Targeting
             public void Activate()
             {
                 playerController = data.GetSource().GetComponent<PlayerController>();
-                scheduler = data.GetSource().GetComponent<ActionScheduler>();
-                scheduler.StartAction(this, 2, 3);
                 targetingRoutine = playerController.StartCoroutine(Targeting(data, callback));
             }
 
@@ -57,7 +54,6 @@ namespace RPG.Abilities.Targeting
 
             private IEnumerator Targeting(TargetingData data, Action<TargetingData> callback)
             {
-                yield return new WaitUntil(() => scheduler.isCurrentAction(this));
                 playerController.enabled = false;
                 if (!strategy.targetingCircle) strategy.targetingCircle = Instantiate(strategy.targetingCirclePrefab);
                 Transform targetingCircle = strategy.targetingCircle;
@@ -80,7 +76,6 @@ namespace RPG.Abilities.Targeting
                             // Capture the whole of this mouse click so we don't move.
                             yield return new WaitWhile(() => Input.GetMouseButton(0));
                             if (callback != null) callback(data);
-                            scheduler.FinishAction(this);
                             Cancel();
                             yield break;
                         }
