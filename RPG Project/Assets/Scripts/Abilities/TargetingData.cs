@@ -42,6 +42,11 @@ namespace RPG.Abilities
             return source;
         }
 
+        public MonoBehaviour GetCoroutineOwner()
+        {
+            return source.GetComponent<CooldownStore>();
+        }
+
         public IEnumerable<GameObject> GetTargets()
         {
             return targetGameObjects;

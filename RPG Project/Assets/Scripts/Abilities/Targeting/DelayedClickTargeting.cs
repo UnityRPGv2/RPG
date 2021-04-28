@@ -18,27 +18,43 @@ namespace RPG.Abilities.Targeting
 
         Transform targetingCircle;
 
-        public override void StartTargeting(TargetingData data, Action<TargetingData> callback)
+        public override IAction MakeAction(TargetingData data, Action<TargetingData> callback)
         {
-            new TargetingAction(this, data, callback);
+            return new TargetingAction(this, data, callback);
         }
 
         class TargetingAction : IAction
         {
             PlayerController playerController = null;
             DelayedClickTargeting strategy;
+            private readonly TargetingData data;
+            private readonly Action<TargetingData> callback;
             Coroutine targetingRoutine;
             ActionScheduler scheduler;
 
             public TargetingAction(DelayedClickTargeting strategy, TargetingData data, Action<TargetingData> callback)
             {
                 this.strategy = strategy;
+                this.data = data;
+                this.callback = callback;
+            }
+
+            public void Activate()
+            {
                 playerController = data.GetSource().GetComponent<PlayerController>();
                 scheduler = data.GetSource().GetComponent<ActionScheduler>();
                 scheduler.StartAction(this, 2, 3);
                 targetingRoutine = playerController.StartCoroutine(Targeting(data, callback));
             }
-            
+
+            public void Cancel()
+            {
+                playerController.StopCoroutine(targetingRoutine);
+                strategy.targetingCircle.gameObject.SetActive(false);
+                playerController.enabled = true;
+            }
+
+
             private IEnumerator Targeting(TargetingData data, Action<TargetingData> callback)
             {
                 yield return new WaitUntil(() => scheduler.isCurrentAction(this));
@@ -86,13 +102,6 @@ namespace RPG.Abilities.Targeting
                 {
                     yield return hit.transform.gameObject;
                 }
-            }
-
-            public void Cancel()
-            {
-                playerController.StopCoroutine(targetingRoutine);
-                strategy.targetingCircle.gameObject.SetActive(false);
-                playerController.enabled = true;
             }
         }
     }

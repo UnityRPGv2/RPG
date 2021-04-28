@@ -1,4 +1,5 @@
 using System;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Abilities.Targeting
@@ -6,11 +7,13 @@ namespace RPG.Abilities.Targeting
     [CreateAssetMenu(fileName = "SelfTargeting", menuName = "Abilities/Targeting/Self", order = 0)]
     public class SelfTargeting : TargetingStrategy
     {
-        public override void StartTargeting(TargetingData data, Action<TargetingData> callback)
+        public override IAction MakeAction(TargetingData data, Action<TargetingData> callback)
         {
-            data.SetTarget(data.GetSource().transform.position);
-            data.SetTargets(new GameObject[]{data.GetSource()});
-            callback(data);
+            return new LambdaAction(() => {
+                data.SetTarget(data.GetSource().transform.position);
+                data.SetTargets(new GameObject[] { data.GetSource() });
+                callback(data);
+            });
         }
     }
 }

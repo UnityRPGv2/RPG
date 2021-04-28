@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Abilities
 {
     public abstract class TargetingStrategy : ScriptableObject {
-        public abstract void StartTargeting(TargetingData data, Action<TargetingData> callback);
+        public abstract IAction MakeAction(TargetingData data, Action<TargetingData> callback);
     }
 }

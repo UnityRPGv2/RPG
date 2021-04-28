@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using RPG.Abilities.Helpers;
 using RPG.Attributes;
 using RPG.Combat;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Abilities.Effects
@@ -14,10 +16,9 @@ namespace RPG.Abilities.Effects
         [SerializeField] Projectile projectilePrefab = null;
         [SerializeField] bool useRightHand = true;
 
-        public override void StartEffect(TargetingData data, Action complete)
+        public override IAction MakeAction(TargetingData data, Action complete)
         {
-            CooldownStore store = data.GetSource().GetComponent<CooldownStore>();
-            store.StartCoroutine(Effect(data, complete));
+            return new CoroutineAction(data.GetCoroutineOwner(), Effect(data, complete));
         }
 
         private IEnumerator Effect(TargetingData data, Action complete)
@@ -30,6 +31,7 @@ namespace RPG.Abilities.Effects
                 var health = target.GetComponent<Health>();
                 Projectile.Launch(projectilePrefab, fighter.GetHandTransform(useRightHand).position, health, data.GetSource(), calculatedDamage);
             }
+            complete();
         }
     }
 }

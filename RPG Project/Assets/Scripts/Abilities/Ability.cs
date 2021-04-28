@@ -36,7 +36,7 @@ namespace RPG.Abilities
             if (targeting != null)
             {
                 var targetingData = new TargetingData(effectScale, user);
-                targeting.StartTargeting(targetingData, TargetAquired);
+                targeting.MakeAction(targetingData, TargetAquired).Activate();
             }
         }
 
@@ -71,8 +71,13 @@ namespace RPG.Abilities
 
             foreach (var effect in effects)
             {
-                effect.StartEffect(data, null);
+                effect.MakeAction(data, EffectFinished).Activate();
             }
+        }
+
+        private void EffectFinished()
+        {
+
         }
     }
 }
