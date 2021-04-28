@@ -26,7 +26,14 @@ namespace RPG.Abilities.Effects
             yield return new WaitForSeconds(spawnDelay);
             var fighter = data.GetSource().GetComponent<Fighter>();
             float calculatedDamage = damage * data.GetEffectScaling();
-            foreach (var target in data.GetTargets())
+            var targets = data.GetTargets();
+            if (targets == null)
+            {
+                Projectile.Launch(projectilePrefab, fighter.GetHandTransform(useRightHand).position, data.GetTargetPoint(), data.GetSource(), calculatedDamage);
+                complete();
+                yield break;
+            }
+            foreach (var target in targets)
             {
                 var health = target.GetComponent<Health>();
                 Projectile.Launch(projectilePrefab, fighter.GetHandTransform(useRightHand).position, health, data.GetSource(), calculatedDamage);
