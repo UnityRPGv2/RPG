@@ -10,7 +10,7 @@ namespace RPG.Abilities
 
         public override void Use(GameObject user)
         {
-            targetingStrategy.StartTargeting();
+            targetingStrategy.StartTargeting(user);
         }
     }
 }
