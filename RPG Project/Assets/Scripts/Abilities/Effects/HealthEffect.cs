@@ -10,16 +10,16 @@ namespace RPG.Abilities.Effects
     {
         [SerializeField] float healthChange;
 
-        public override void StartEffect(GameObject user, IEnumerable<GameObject> targets, Action finished)
+        public override void StartEffect(AbilityData data, Action finished)
         {
-            foreach (var target in targets)
+            foreach (var target in data.GetTargets())
             {
                 var health = target.GetComponent<Health>();
                 if (health)
                 {
                     if (healthChange < 0)
                     {
-                        health.TakeDamage(user, -healthChange);
+                        health.TakeDamage(data.GetUser(), -healthChange);
                     }
                     else
                     {
