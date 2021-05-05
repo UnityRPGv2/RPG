@@ -9,24 +9,32 @@ namespace RPG.Abilities
     {
         [SerializeField] TargetingStrategy targetingStrategy;
         [SerializeField] FilterStrategy[] filterStrategies;
+        [SerializeField] EffectStrategy[] effectStrategies;
 
         public override void Use(GameObject user)
         {
-            targetingStrategy.StartTargeting(user, TargetAquired);
+            targetingStrategy.StartTargeting(user, 
+                (IEnumerable<GameObject> targets) => {
+                    TargetAquired(user, targets);
+                });
         }
 
-        private void TargetAquired(IEnumerable<GameObject> targets)
+        private void TargetAquired(GameObject user, IEnumerable<GameObject> targets)
         {
-            Debug.Log("Target Aquired");
             foreach (var filterStrategy in filterStrategies)
             {
                 targets = filterStrategy.Filter(targets);
             }
             
-            foreach (var target in targets)
+            foreach (var effect in effectStrategies)
             {
-                Debug.Log(target);
+                effect.StartEffect(user, targets, EffectFinished);
             }
+        }
+
+        private void EffectFinished()
+        {
+            
         }
     }
 }
