@@ -5,11 +5,23 @@ namespace RPG.Attributes
     public class Mana : MonoBehaviour
     {
         [SerializeField] float maxMana = 200;
+        [SerializeField] float manaRegenRate = 2;
 
         float mana;
 
         private void Awake() {
             mana = maxMana;
+        }
+
+        private void Update() {
+            if (mana < maxMana)
+            {
+                mana += manaRegenRate * Time.deltaTime;
+                if (mana > maxMana)
+                {
+                    mana = maxMana;
+                }
+            }
         }
 
         public float GetMana()
