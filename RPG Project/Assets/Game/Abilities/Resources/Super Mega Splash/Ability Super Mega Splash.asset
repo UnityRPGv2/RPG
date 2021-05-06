@@ -28,3 +28,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0bc4bb07f34fad443ac2a6177657d5aa, type: 2}
   - {fileID: 11400000, guid: 006b420887b4e724a953ee6048df0f48, type: 2}
   cooldownTime: 10
+  manaCost: 20
