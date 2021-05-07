@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a268240bee372e438b021698e445a8a, type: 3}
-  m_Name: Effect Super Mega Splash
+  m_Name: Damage Super Mega Splash
   m_EditorClassIdentifier: 
   healthChange: -10
