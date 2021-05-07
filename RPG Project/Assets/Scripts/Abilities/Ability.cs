@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using GameDevTV.Inventories;
 using RPG.Attributes;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Abilities
@@ -29,6 +30,10 @@ namespace RPG.Abilities
             }
 
             AbilityData data = new AbilityData(user);
+
+            ActionScheduler actionScheduler = user.GetComponent<ActionScheduler>();
+            actionScheduler.StartAction(data);
+
             targetingStrategy.StartTargeting(data, 
                 () => {
                     TargetAquired(data);
@@ -37,6 +42,8 @@ namespace RPG.Abilities
 
         private void TargetAquired(AbilityData data)
         {
+            if (data.IsCancelled()) return;
+
             Mana mana = data.GetUser().GetComponent<Mana>();
             if (!mana.UseMana(manaCost)) return;
 
