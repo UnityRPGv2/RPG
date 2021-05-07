@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39805e6e934cf32468cc27708c9a7dd3, type: 3}
-  m_Name: Fireballs
+  m_Script: {fileID: 11500000, guid: 2697fe2cee89f6f4483cb54011484c39, type: 3}
+  m_Name: Delay Launch Fireball
   m_EditorClassIdentifier: 
-  projectileToSpawn: {fileID: 4363093564197430368, guid: fcff971cc6939004ca7e345f8d0db844,
-    type: 3}
-  damage: 10
-  isRightHand: 0
-  useTargetPoint: 1
+  delay: 0.53
+  delayedEffects:
+  - {fileID: 11400000, guid: ed1beb5aaf7c6844795d443d0cddb701, type: 2}
+  abortIfCancelled: 0

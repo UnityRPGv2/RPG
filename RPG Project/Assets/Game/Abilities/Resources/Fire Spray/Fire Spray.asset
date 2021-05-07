@@ -13,17 +13,19 @@ MonoBehaviour:
   m_Name: Fire Spray
   m_EditorClassIdentifier: 
   itemID: 970f4efc-6e23-4cdd-86c7-c9e0ba4c2ee2
-  displayName: 
+  displayName: Fire Spray
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f1dd815974b2d4240a6bc912d6585497, type: 3}
   pickup: {fileID: 0}
   stackable: 0
-  price: 0
+  price: 100
   category: 0
   consumable: 0
   targetingStrategy: {fileID: 11400000, guid: 665bee124aa6181479b5ff7bad9b2815, type: 2}
   filterStrategies: []
   effectStrategies:
-  - {fileID: 11400000, guid: ed1beb5aaf7c6844795d443d0cddb701, type: 2}
-  cooldownTime: 4
-  manaCost: 30
+  - {fileID: 11400000, guid: 6d33885397fbf2a4abbf67396fff6907, type: 2}
+  - {fileID: 11400000, guid: abdcab1145fb62c47b3e9596c5bf01b0, type: 2}
+  - {fileID: 11400000, guid: 352d4fd1f4e96264b866d1a07343be8b, type: 2}
+  cooldownTime: 0.6
+  manaCost: 20
