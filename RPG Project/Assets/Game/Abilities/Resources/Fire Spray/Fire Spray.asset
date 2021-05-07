@@ -21,9 +21,8 @@ MonoBehaviour:
   price: 0
   category: 0
   consumable: 0
-  targetingStrategy: {fileID: 11400000, guid: 11a6189151832e445aa6aa6836b63ceb, type: 2}
-  filterStrategies:
-  - {fileID: 11400000, guid: 0098456f78c2daf47b5eebd4eec037f0, type: 2}
+  targetingStrategy: {fileID: 11400000, guid: 665bee124aa6181479b5ff7bad9b2815, type: 2}
+  filterStrategies: []
   effectStrategies:
   - {fileID: 11400000, guid: ed1beb5aaf7c6844795d443d0cddb701, type: 2}
   cooldownTime: 4
