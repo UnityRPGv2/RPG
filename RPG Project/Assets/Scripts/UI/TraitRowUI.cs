@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace RPG.UI
 {
-    public class TraitUI : MonoBehaviour
+    public class TraitRowUI : MonoBehaviour
     {
         [SerializeField] Trait trait;
         [SerializeField] TextMeshProUGUI valueText;
