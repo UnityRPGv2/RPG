@@ -6,8 +6,6 @@ namespace RPG.Stats
 {
     public class Traits : MonoBehaviour
     {
-        [SerializeField] int availablePoints = 10;
-
         Dictionary<Trait, int> assignedPoints = new Dictionary<Trait, int>();
         Dictionary<Trait, int> stagedPoints = new Dictionary<Trait, int>();
 
@@ -26,24 +24,18 @@ namespace RPG.Stats
             return stagedPoints.ContainsKey(trait) ? stagedPoints[trait] : 0;
         }
 
-        public int GetAvailablePoints()
-        {
-            return availablePoints;
-        }
-
         public bool AssignPoints(Trait trait, int points)
         {
-            if (points > availablePoints) return false;
+            if (points > GetUnassigned()) return false;
             if (GetStagedPoints(trait) + points < 0) return false;
 
             stagedPoints[trait] = GetStagedPoints(trait) + points;
-            availablePoints -= points;
             return true;
         }
 
         public int GetUnassigned()
         {
-            return availablePoints;
+            return GetTotalPointsForLevel() - GetTotalProposedPoints();
         }
 
         public void Commit()
@@ -54,6 +46,25 @@ namespace RPG.Stats
                 assignedPoints[trait] = GetProposedPoints(trait);
                 stagedPoints.Remove(trait);
             }
+        }
+
+        private int GetTotalProposedPoints()
+        {
+            int total = 0;
+            foreach (var points in assignedPoints.Values)
+            {
+                total += points;
+            }
+            foreach (var points in stagedPoints.Values)
+            {
+                total += points;
+            }
+            return total;
+        }
+
+        private int GetTotalPointsForLevel()
+        {
+            return (int)GetComponent<BaseStats>().GetStat(Stat.TotalTraitPoints);
         }
     }
 }
