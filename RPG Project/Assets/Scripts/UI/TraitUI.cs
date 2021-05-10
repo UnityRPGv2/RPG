@@ -15,6 +15,7 @@ namespace RPG.UI
         private void Awake()
         {
             playerTraits = GameObject.FindGameObjectWithTag("Player").GetComponent<Traits>();
+            commitButton.onClick.AddListener(playerTraits.Commit);
         }
 
 

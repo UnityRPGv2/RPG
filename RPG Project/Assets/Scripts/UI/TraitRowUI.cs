@@ -25,10 +25,10 @@ namespace RPG.UI
         
         private void Update()
         {
-            minusButton.interactable = playerTraits.GetPoints(trait) > 0;
+            minusButton.interactable = playerTraits.GetStagedPoints(trait) > 0;
             plusButton.interactable = playerTraits.GetUnassigned() > 0;
 
-            valueText.text = playerTraits.GetPoints(trait).ToString();
+            valueText.text = playerTraits.GetProposedPoints(trait).ToString();
         }
 
         public void Assign(int amount)
