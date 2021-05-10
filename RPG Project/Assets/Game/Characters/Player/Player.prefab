@@ -39,6 +39,9 @@ MonoBehaviour:
   - trait: 3
     stat: 5
     amount: 2
+  - trait: 4
+    stat: 7
+    amount: -5
 --- !u!114 &2391086362736754212
 MonoBehaviour:
   m_ObjectHideFlags: 0

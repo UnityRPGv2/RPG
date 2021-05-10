@@ -15,6 +15,7 @@ namespace RPG.Shops
         [SerializeField] string shopName;
         [Range(0, 100)]
         [SerializeField] float sellingPercentage = 80f;
+        [SerializeField] float minimumDiscount = 0.1f;
 
         // Stock Config
             // Item: 
@@ -291,7 +292,7 @@ namespace RPG.Shops
                 {
                     if (!prices.ContainsKey(config.item))
                     {
-                        prices[config.item] = config.item.GetPrice();
+                        prices[config.item] = config.item.GetPrice() * GetBuyingMultiplier();
                     }
 
                     prices[config.item] *= (1 - config.buyingDiscountPercentage / 100);
@@ -303,6 +304,12 @@ namespace RPG.Shops
             }
 
             return prices;
+        }
+
+        private float GetBuyingMultiplier()
+        {
+
+            return Mathf.Max(currentShopper.GetComponent<BaseStats>().GetStat(Stat.BuyingMultiplier), minimumDiscount);
         }
 
         private IEnumerable<StockItemConfig> GetAvailableConfigs()

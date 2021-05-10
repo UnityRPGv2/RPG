@@ -107,6 +107,9 @@ MonoBehaviour:
       - 6
       - 10
       - 15
+    - stat: 7
+      levels:
+      - 1
   - characterClass: 1
     stats:
     - stat: 0
