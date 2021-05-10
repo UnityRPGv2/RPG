@@ -12,27 +12,28 @@ namespace RPG.UI
         [SerializeField] Button minusButton;
         [SerializeField] Button plusButton;
 
-        int value = 0;
+        Traits playerTraits = null;
+
+        private void Awake() {
+            playerTraits = GameObject.FindGameObjectWithTag("Player").GetComponent<Traits>();
+        }
 
         private void Start() {
             minusButton.onClick.AddListener(() => Assign(-1));
             plusButton.onClick.AddListener(() => Assign(1));
         }
         
-        private void Update() {
-            minusButton.interactable = value > 0;
+        private void Update()
+        {
+            minusButton.interactable = playerTraits.GetPoints(trait) > 0;
+            plusButton.interactable = playerTraits.GetUnassigned() > 0;
 
-            valueText.text = value.ToString();
-
+            valueText.text = playerTraits.GetPoints(trait).ToString();
         }
 
         public void Assign(int amount)
         {
-            value += amount;
-            if (value <= 0)
-            {
-                value = 0;
-            }
+            playerTraits.AssignPoints(trait, amount);
         }
     }
 }
