@@ -1,13 +1,37 @@
 using System;
 using System.Collections.Generic;
+using GameDevTV.Saving;
 using UnityEngine;
 
 namespace RPG.Stats
 {
-    public class Traits : MonoBehaviour
+    public class Traits : MonoBehaviour, ISaveable, IModifierProvider
     {
+        [SerializeField] BonusPair[] bonusConfig;
+        [System.Serializable]
+        private class BonusPair
+        {
+            public Trait trait;
+            public Stat stat;
+            public float amount;
+        }
+
         Dictionary<Trait, int> assignedPoints = new Dictionary<Trait, int>();
         Dictionary<Trait, int> stagedPoints = new Dictionary<Trait, int>();
+
+        Dictionary<Stat, Dictionary<Trait, float>> bonusLookup;
+
+        private void Awake() {
+            bonusLookup = new Dictionary<Stat, Dictionary<Trait, float>>();
+            foreach (BonusPair bonus in bonusConfig)
+            {
+                if (!bonusLookup.ContainsKey(bonus.stat))
+                {
+                    bonusLookup[bonus.stat] = new Dictionary<Trait, float>();
+                }
+                bonusLookup[bonus.stat][bonus.trait] = bonus.amount;
+            }
+        }
 
         public int GetProposedPoints(Trait trait)
         {
@@ -65,6 +89,33 @@ namespace RPG.Stats
         private int GetTotalPointsForLevel()
         {
             return (int)GetComponent<BaseStats>().GetStat(Stat.TotalTraitPoints);
+        }
+
+        public object CaptureState()
+        {
+            return assignedPoints;
+        }
+
+        public void RestoreState(object state)
+        {
+            assignedPoints = new Dictionary<Trait, int>((IDictionary<Trait, int>)state);
+        }
+
+        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
+        {
+            yield break;
+        }
+
+        public IEnumerable<float> GetPercentageModifiers(Stat stat)
+        {
+            if (bonusLookup.ContainsKey(stat))
+            {
+                var traitLookup = bonusLookup[stat];
+                foreach (var trait in traitLookup.Keys)
+                {
+                    yield return traitLookup[trait] * GetPoints(trait);   
+                }
+            }
         }
     }
 }
