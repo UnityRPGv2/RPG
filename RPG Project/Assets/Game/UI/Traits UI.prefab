@@ -453,6 +453,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trait Row (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6603300822348131333, guid: 90fe9c0b69cf94243930cd625f247bb3,
+        type: 3}
+      propertyPath: trait
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8698122900593377090, guid: 90fe9c0b69cf94243930cd625f247bb3,
         type: 3}
       propertyPath: m_text
@@ -576,6 +581,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trait Row (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603300822348131333, guid: 90fe9c0b69cf94243930cd625f247bb3,
+        type: 3}
+      propertyPath: trait
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8698122900593377090, guid: 90fe9c0b69cf94243930cd625f247bb3,
         type: 3}
@@ -830,6 +840,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trait Row (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6603300822348131333, guid: 90fe9c0b69cf94243930cd625f247bb3,
+        type: 3}
+      propertyPath: trait
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8698122900593377090, guid: 90fe9c0b69cf94243930cd625f247bb3,
         type: 3}
       propertyPath: m_text
@@ -953,6 +968,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trait Row (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603300822348131333, guid: 90fe9c0b69cf94243930cd625f247bb3,
+        type: 3}
+      propertyPath: trait
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8698122900593377090, guid: 90fe9c0b69cf94243930cd625f247bb3,
         type: 3}
