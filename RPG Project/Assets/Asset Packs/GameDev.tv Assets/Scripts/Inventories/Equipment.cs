@@ -86,18 +86,18 @@ namespace GameDevTV.Inventories
 
         void ISaveable.RestoreState(object state)
         {
-            equippedItems = new Dictionary<EquipLocation, EquipableItem>();
+            // equippedItems = new Dictionary<EquipLocation, EquipableItem>();
 
-            var equippedItemsForSerialization = (Dictionary<EquipLocation, string>)state;
+            // var equippedItemsForSerialization = (Dictionary<EquipLocation, string>)state;
 
-            foreach (var pair in equippedItemsForSerialization)
-            {
-                var item = (EquipableItem)InventoryItem.GetFromID(pair.Value);
-                if (item != null)
-                {
-                    equippedItems[pair.Key] = item;
-                }
-            }
+            // foreach (var pair in equippedItemsForSerialization)
+            // {
+            //     var item = (EquipableItem)InventoryItem.GetFromID(pair.Value);
+            //     if (item != null)
+            //     {
+            //         equippedItems[pair.Key] = item;
+            //     }
+            // }
         }
     }
 }

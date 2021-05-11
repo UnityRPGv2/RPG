@@ -60,7 +60,7 @@ namespace GameDevTV.Inventories
         private struct DropRecord
         {
             public string itemID;
-            public SerializableVector3 position;
+            public object position;
             public int number;
         }
 
@@ -71,7 +71,7 @@ namespace GameDevTV.Inventories
             for (int i = 0; i < droppedItemsList.Length; i++)
             {
                 droppedItemsList[i].itemID = droppedItems[i].GetItem().GetItemID();
-                droppedItemsList[i].position = new SerializableVector3(droppedItems[i].transform.position);
+                droppedItemsList[i].position = SerializableVector3.ToObject(droppedItems[i].transform.position);
                 droppedItemsList[i].number = droppedItems[i].GetNumber();
             }
             return droppedItemsList;
@@ -79,14 +79,14 @@ namespace GameDevTV.Inventories
 
         void ISaveable.RestoreState(object state)
         {
-            var droppedItemsList = (DropRecord[])state;
-            foreach (var item in droppedItemsList)
-            {
-                var pickupItem = InventoryItem.GetFromID(item.itemID);
-                Vector3 position = item.position.ToVector();
-                int number = item.number;
-                SpawnPickup(pickupItem, position, number);
-            }
+            // var droppedItemsList = (DropRecord[])state;
+            // foreach (var item in droppedItemsList)
+            // {
+            //     var pickupItem = InventoryItem.GetFromID(item.itemID);
+            //     Vector3 position = SerializableVector3.FromObject(item.position);
+            //     int number = item.number;
+            //     SpawnPickup(pickupItem, position, number);
+            // }
         }
 
         /// <summary>

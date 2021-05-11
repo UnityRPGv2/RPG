@@ -276,16 +276,16 @@ namespace GameDevTV.Inventories
 
         void ISaveable.RestoreState(object state)
         {
-            var slotStrings = (InventorySlotRecord[])state;
-            for (int i = 0; i < inventorySize; i++)
-            {
-                slots[i].item = InventoryItem.GetFromID(slotStrings[i].itemID);
-                slots[i].number = slotStrings[i].number;
-            }
-            if (inventoryUpdated != null)
-            {
-                inventoryUpdated();
-            }
+            // var slotStrings = (InventorySlotRecord[])state;
+            // for (int i = 0; i < inventorySize; i++)
+            // {
+            //     slots[i].item = InventoryItem.GetFromID(slotStrings[i].itemID);
+            //     slots[i].number = slotStrings[i].number;
+            // }
+            // if (inventoryUpdated != null)
+            // {
+            //     inventoryUpdated();
+            // }
         }
 
         public bool? Evaluate(string predicate, string[] parameters)

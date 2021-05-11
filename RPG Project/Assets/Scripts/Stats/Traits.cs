@@ -98,7 +98,7 @@ namespace RPG.Stats
 
         public void RestoreState(object state)
         {
-            assignedPoints = new Dictionary<Trait, int>((IDictionary<Trait, int>)state);
+            // assignedPoints = new Dictionary<Trait, int>((IDictionary<Trait, int>)state);
         }
 
         public IEnumerable<float> GetAdditiveModifiers(Stat stat)

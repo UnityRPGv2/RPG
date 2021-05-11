@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GameDevTV.Saving
@@ -8,25 +11,41 @@ namespace GameDevTV.Saving
     [System.Serializable]
     public class SerializableVector3
     {
-        float x, y, z;
 
-        /// <summary>
-        /// Copy over the state from an existing Vector3.
-        /// </summary>
-        public SerializableVector3(Vector3 vector)
+        public static object ToObject(Vector3 v)
         {
-            x = vector.x;
-            y = vector.y;
-            z = vector.z;
+            return new List<float>{v.x, v.y, v.z};
         }
 
-        /// <summary>
-        /// Create a Vector3 from this class' state.
-        /// </summary>
-        /// <returns></returns>
-        public Vector3 ToVector()
+        public static Vector3 FromObject(object o)
         {
-            return new Vector3(x, y, z);
+            Vector3 v = default;
+            if (o is IList asList)
+            {
+                if (asList.Count != 3)
+                {
+                    return v;
+                }
+
+                v.x = GetFloat(asList, 0);
+                v.y = GetFloat(asList, 1);
+                v.z = GetFloat(asList, 2);
+            }
+            return v;
+        }
+
+        private static float GetFloat(IList list, int i)
+        {
+            switch(list[i])
+            {
+                case double d:
+                    return (float) d;
+                case float f:
+                    return f;
+                default:
+                    return 0;
+            }
+
         }
     }
 }

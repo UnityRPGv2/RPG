@@ -56,7 +56,10 @@ namespace RPG.Attributes
 
         public void RestoreState(object state)
         {
-            mana.value = (float) state;
+            if (state is double d)
+            {
+                mana.value = (float)state;
+            }
         }
     }
 }

@@ -389,11 +389,19 @@ namespace RPG.Shops
 
         public void RestoreState(object state)
         {
-            Dictionary<string, int> saveObject = (Dictionary<string, int>) state;
-            stockSold.Clear();
-            foreach (var pair in saveObject)
+            if (state is IDictionary asDict)
             {
-                stockSold[InventoryItem.GetFromID(pair.Key)] = pair.Value;
+                stockSold.Clear();
+                foreach (var key in asDict.Keys)
+                {
+                    if (key is string itemID)
+                    {
+                        if (asDict[key] is Int64 stock)
+                        {
+                            stockSold[InventoryItem.GetFromID(itemID)] = (int)stock;
+                        }
+                    }
+                }
             }
         }
     }

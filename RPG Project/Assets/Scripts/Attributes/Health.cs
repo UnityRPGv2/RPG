@@ -121,7 +121,10 @@ namespace RPG.Attributes
 
         public void RestoreState(object state)
         {
-            healthPoints.value = (float) state;
+            if (state is double d)
+            {
+                healthPoints.value = (float) d;
+            }
             
             if (healthPoints.value <= 0)
             {

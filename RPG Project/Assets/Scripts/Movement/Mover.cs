@@ -78,14 +78,14 @@ namespace RPG.Movement
 
         public object CaptureState()
         {
-            return new SerializableVector3(transform.position);
+            return SerializableVector3.ToObject(transform.position);
         }
 
         public void RestoreState(object state)
         {
-            SerializableVector3 position = (SerializableVector3)state;
             navMeshAgent.enabled = false;
-            transform.position = position.ToVector();
+            print(state.GetType());
+            transform.position = SerializableVector3.FromObject(state);
             navMeshAgent.enabled = true;
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using MiniJSON;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,7 +29,8 @@ namespace GameDevTV.Saving
             int buildIndex = SceneManager.GetActiveScene().buildIndex;
             if (state.ContainsKey("lastSceneBuildIndex"))
             {
-                buildIndex = (int)state["lastSceneBuildIndex"];
+                print(state["lastSceneBuildIndex"].GetType());
+                buildIndex = (int)(Int64)state["lastSceneBuildIndex"];
             }
             yield return SceneManager.LoadSceneAsync(buildIndex);
             RestoreState(state);
@@ -66,22 +68,16 @@ namespace GameDevTV.Saving
             {
                 return new Dictionary<string, object>();
             }
-            using (FileStream stream = File.Open(path, FileMode.Open))
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                return (Dictionary<string, object>)formatter.Deserialize(stream);
-            }
+            var json = System.IO.File.ReadAllText(path);
+            return (Dictionary<string, object>)Json.Deserialize(json);
         }
 
-        private void SaveFile(string saveFile, object state)
+        private void SaveFile(string saveFile, Dictionary<string, object> state)
         {
             string path = GetPathFromSaveFile(saveFile);
             print("Saving to " + path);
-            using (FileStream stream = File.Open(path, FileMode.Create))
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(stream, state);
-            }
+            var json = Json.Serialize(state);
+            System.IO.File.WriteAllText(path, json);
         }
 
         private void CaptureState(Dictionary<string, object> state)
