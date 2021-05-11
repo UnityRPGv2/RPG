@@ -35,10 +35,7 @@ namespace RPG.Stats
 
         public void RestoreState(object state)
         {
-            if (state is double d)
-            {
-                experiencePoints = (float)d;
-            }
+            experiencePoints = Convert.ToSingle(state);
         }
     }
 }

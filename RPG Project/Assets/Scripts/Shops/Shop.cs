@@ -396,10 +396,7 @@ namespace RPG.Shops
                 {
                     if (key is string itemID)
                     {
-                        if (asDict[key] is Int64 stock)
-                        {
-                            stockSold[InventoryItem.GetFromID(itemID)] = (int)stock;
-                        }
+                        stockSold[InventoryItem.GetFromID(itemID)] = Convert.ToInt32(asDict[key]);
                     }
                 }
             }

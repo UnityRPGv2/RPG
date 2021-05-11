@@ -27,25 +27,11 @@ namespace GameDevTV.Saving
                     return v;
                 }
 
-                v.x = GetFloat(asList, 0);
-                v.y = GetFloat(asList, 1);
-                v.z = GetFloat(asList, 2);
+                v.x = Convert.ToSingle(asList[0]);
+                v.y = Convert.ToSingle(asList[1]);
+                v.z = Convert.ToSingle(asList[2]);
             }
             return v;
-        }
-
-        private static float GetFloat(IList list, int i)
-        {
-            switch(list[i])
-            {
-                case double d:
-                    return (float) d;
-                case float f:
-                    return f;
-                default:
-                    return 0;
-            }
-
         }
     }
 }

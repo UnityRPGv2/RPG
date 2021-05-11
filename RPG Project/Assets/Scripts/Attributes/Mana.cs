@@ -1,3 +1,4 @@
+using System;
 using GameDevTV.Saving;
 using GameDevTV.Utils;
 using RPG.Stats;
@@ -56,10 +57,7 @@ namespace RPG.Attributes
 
         public void RestoreState(object state)
         {
-            if (state is double d)
-            {
-                mana.value = (float)state;
-            }
+            mana.value = Convert.ToSingle(state);
         }
     }
 }

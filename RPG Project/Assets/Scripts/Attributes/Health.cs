@@ -121,10 +121,7 @@ namespace RPG.Attributes
 
         public void RestoreState(object state)
         {
-            if (state is double d)
-            {
-                healthPoints.value = (float) d;
-            }
+            healthPoints.value = Convert.ToSingle(state);
             
             if (healthPoints.value <= 0)
             {

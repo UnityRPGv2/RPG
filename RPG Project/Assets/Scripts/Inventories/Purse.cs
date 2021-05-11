@@ -36,10 +36,7 @@ namespace RPG.Inventories {
 
         public void RestoreState(object state)
         {
-            if (state is double d)
-            {
-                balance = (float) d;
-            }
+            balance = Convert.ToSingle(state);
         }
     }
 }
