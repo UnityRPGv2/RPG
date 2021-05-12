@@ -26,7 +26,7 @@ namespace RPG.UI
             minusButton.interactable = playerTraitStore.CanAssignPoints(trait, -1);
             plusButton.interactable = playerTraitStore.CanAssignPoints(trait, +1);
 
-            valueText.text = playerTraitStore.GetPoints(trait).ToString();
+            valueText.text = playerTraitStore.GetProposedPoints(trait).ToString();
         }
 
         public void Allocate(int points)
