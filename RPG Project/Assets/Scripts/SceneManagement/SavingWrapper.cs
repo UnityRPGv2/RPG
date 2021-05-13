@@ -31,7 +31,10 @@ namespace RPG.SceneManagement
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
-                LoadManualSave();
+                foreach (var item in GetComponent<SavingSystem>().ListSaves())
+                {
+                    print(item);
+                }
             }
             if (Input.GetKeyDown(KeyCode.Delete))
             {

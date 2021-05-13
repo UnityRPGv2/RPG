@@ -57,6 +57,17 @@ namespace GameDevTV.Saving
             RestoreState(LoadFile(saveFile));
         }
 
+        public IEnumerable<string> ListSaves()
+        {
+            foreach (string file in Directory.EnumerateFiles(Application.persistentDataPath))
+            {
+                if (file.EndsWith(".sav"))
+                {
+                    yield return file.Remove(file.Length-4);
+                }
+            }
+        }
+
         // PRIVATE
 
         private Dictionary<string, object> LoadFile(string saveFile)
