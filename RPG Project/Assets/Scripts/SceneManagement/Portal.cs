@@ -46,19 +46,19 @@ namespace RPG.SceneManagement
             
             yield return fader.FadeOut(fadeOutTime);
 
-            savingWrapper.Save();
+            savingWrapper.AutoSave();
 
             yield return SceneManager.LoadSceneAsync(sceneToLoad);
             PlayerController newPlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
             newPlayerController.enabled = false;
 
 
-            savingWrapper.Load();
+            savingWrapper.LoadAutoSave();
             
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
 
-            savingWrapper.Save();
+            savingWrapper.AutoSave();
 
             yield return new WaitForSeconds(fadeWaitTime);
             fader.FadeIn(fadeInTime);

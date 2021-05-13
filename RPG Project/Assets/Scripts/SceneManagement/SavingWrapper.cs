@@ -6,7 +6,8 @@ namespace RPG.SceneManagement
 {
     public class SavingWrapper : MonoBehaviour
     {
-        const string defaultSaveFile = "save";
+        const string autoSaveFile = "autosave";
+        const string manualSaveFile = "manualsave";
 
         [SerializeField] float fadeInTime = 0.2f;
         
@@ -16,7 +17,7 @@ namespace RPG.SceneManagement
         }
 
         private IEnumerator LoadLastScene() {
-            yield return GetComponent<SavingSystem>().LoadLastScene(defaultSaveFile);
+            yield return GetComponent<SavingSystem>().LoadLastScene(manualSaveFile);
             Fader fader = FindObjectOfType<Fader>();
             fader.FadeOutImmediate();
             yield return fader.FadeIn(fadeInTime);
@@ -25,11 +26,11 @@ namespace RPG.SceneManagement
         private void Update() {
             if (Input.GetKeyDown(KeyCode.S))
             {
-                Save();
+                ManualSave();
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
-                Load();
+                LoadManualSave();
             }
             if (Input.GetKeyDown(KeyCode.Delete))
             {
@@ -37,19 +38,29 @@ namespace RPG.SceneManagement
             }
         }
 
-        public void Load()
+        public void LoadManualSave()
         {
-            GetComponent<SavingSystem>().Load(defaultSaveFile);
+            GetComponent<SavingSystem>().Load(manualSaveFile);
         }
 
-        public void Save()
+        public void ManualSave()
         {
-            GetComponent<SavingSystem>().Save(defaultSaveFile);
+            GetComponent<SavingSystem>().Save(manualSaveFile);
+        }
+
+        public void LoadAutoSave()
+        {
+            GetComponent<SavingSystem>().Load(autoSaveFile);
+        }
+
+        public void AutoSave()
+        {
+            GetComponent<SavingSystem>().Save(autoSaveFile);
         }
 
         public void Delete()
         {
-            GetComponent<SavingSystem>().Delete(defaultSaveFile);
+            GetComponent<SavingSystem>().Delete(autoSaveFile);
         }
     }
 }
