@@ -6,6 +6,7 @@ namespace RPG.SceneManagement
 {
     public class SavingWrapper : MonoBehaviour
     {
+        const string latestSaveFileKey = "latestSaveFile";
         const string autoSaveFile = "autosave";
         const string manualSaveFile = "manualsave";
 
@@ -17,7 +18,7 @@ namespace RPG.SceneManagement
         }
 
         private IEnumerator LoadLastScene() {
-            yield return GetComponent<SavingSystem>().LoadLastScene(manualSaveFile);
+            yield return GetComponent<SavingSystem>().LoadLastScene(GetLatestSave());
             Fader fader = FindObjectOfType<Fader>();
             fader.FadeOutImmediate();
             yield return fader.FadeIn(fadeInTime);
@@ -38,6 +39,11 @@ namespace RPG.SceneManagement
             }
         }
 
+        public string GetLatestSave()
+        {
+            return PlayerPrefs.GetString(latestSaveFileKey, null);
+        }
+
         public void LoadManualSave()
         {
             GetComponent<SavingSystem>().Load(manualSaveFile);
@@ -45,7 +51,11 @@ namespace RPG.SceneManagement
 
         public void ManualSave()
         {
-            GetComponent<SavingSystem>().Save(manualSaveFile);
+            var saveFile = $"{manualSaveFile} {System.DateTime.Now.ToString()}";
+            saveFile = saveFile.Replace("/","-").Replace(":", "");
+            GetComponent<SavingSystem>().Save(saveFile);
+            PlayerPrefs.SetString(latestSaveFileKey, saveFile);
+            PlayerPrefs.Save();
         }
 
         public void LoadAutoSave()
@@ -56,6 +66,8 @@ namespace RPG.SceneManagement
         public void AutoSave()
         {
             GetComponent<SavingSystem>().Save(autoSaveFile);
+            PlayerPrefs.SetString(latestSaveFileKey, autoSaveFile);
+            PlayerPrefs.Save();
         }
 
         public void Delete()
