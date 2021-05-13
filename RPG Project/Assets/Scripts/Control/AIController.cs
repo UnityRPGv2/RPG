@@ -7,6 +7,7 @@ using RPG.Movement;
 using UnityEngine;
 using RPG.Attributes;
 using GameDevTV.Utils;
+using UnityEngine.Events;
 
 namespace RPG.Control
 {
@@ -21,6 +22,8 @@ namespace RPG.Control
         [Range(0,1)]
         [SerializeField] float patrolSpeedFraction = 0.2f;
         [SerializeField] float shoutDistance = 5f;
+        [SerializeField] bool aggroOnSight = false;
+        [SerializeField] UnityEvent onAgro;
 
         Fighter fighter;
         Health health;
@@ -128,6 +131,7 @@ namespace RPG.Control
         {
             timeSinceLastSawPlayer = 0;
             fighter.Attack(player);
+            onAgro.Invoke();
 
             AggrevateNearbyEnemies();
         }
@@ -147,7 +151,7 @@ namespace RPG.Control
         private bool IsAggrevated()
         {
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-            return distanceToPlayer < chaseDistance || timeSinceAggrevated < agroCooldownTime;
+            return aggroOnSight ? distanceToPlayer < chaseDistance : false || timeSinceAggrevated < agroCooldownTime;
         }
 
         // Called by Unity

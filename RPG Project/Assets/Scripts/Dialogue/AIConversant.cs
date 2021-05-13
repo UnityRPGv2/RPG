@@ -17,6 +17,7 @@ namespace RPG.Dialogue
 
         public bool HandleRaycast(PlayerController callingController)
         {
+            if (!enabled) return false;
             if (dialogue == null)
             {
                 return false;
