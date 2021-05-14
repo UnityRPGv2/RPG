@@ -23,6 +23,11 @@ namespace RPG.SceneManagement
             StartCoroutine(LoadFirstScene());
         }
 
+        public void OpenMenu()
+        {
+            StartCoroutine(LoadMenu());
+        }
+
         private IEnumerator LoadLastScene() {
             Fader fader = FindObjectOfType<Fader>();
             yield return fader.FadeOut(fadeInTime);
@@ -35,6 +40,14 @@ namespace RPG.SceneManagement
             Fader fader = FindObjectOfType<Fader>();
             yield return fader.FadeOut(fadeInTime);
             yield return SceneManager.LoadSceneAsync(1);
+            yield return fader.FadeIn(fadeInTime);
+        }
+
+        private IEnumerator LoadMenu()
+        {
+            Fader fader = FindObjectOfType<Fader>();
+            yield return fader.FadeOut(fadeInTime);
+            yield return SceneManager.LoadSceneAsync(0);
             yield return fader.FadeIn(fadeInTime);
         }
 

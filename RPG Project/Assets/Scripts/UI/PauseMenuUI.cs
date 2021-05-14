@@ -1,3 +1,4 @@
+using RPG.SceneManagement;
 using UnityEngine;
 
 namespace RPG.UI
@@ -9,6 +10,18 @@ namespace RPG.UI
 
         private void OnDisable() {
             Time.timeScale = 1;
+        }
+
+        public void Save()
+        {
+            FindObjectOfType<SavingWrapper>().ManualSave();
+        }
+
+        public void SaveAndQuit()
+        {
+            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+            savingWrapper.ManualSave();
+            savingWrapper.OpenMenu();
         }
     }
 }

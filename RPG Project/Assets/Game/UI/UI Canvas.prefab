@@ -909,7 +909,7 @@ RectTransform:
   - {fileID: 7052307779220652158}
   - {fileID: 7418336218860383813}
   - {fileID: 4183144529869133617}
-  - {fileID: 3563488800450472849}
+  - {fileID: 5467863479553503308}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8671,6 +8671,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 4574795556058263079, guid: 7c9ebf5abd575c643a4c193b0f603568,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574795556058263079, guid: 7c9ebf5abd575c643a4c193b0f603568,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.023422
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574795556058263079, guid: 7c9ebf5abd575c643a4c193b0f603568,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000030518
+      objectReference: {fileID: 0}
     - target: {fileID: 5037626530978838010, guid: 7c9ebf5abd575c643a4c193b0f603568,
         type: 3}
       propertyPath: m_RootOrder
@@ -8728,9 +8743,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c9ebf5abd575c643a4c193b0f603568, type: 3}
---- !u!4 &3563488800450472849 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5037626530978838010, guid: 7c9ebf5abd575c643a4c193b0f603568,
+--- !u!224 &5467863479553503308 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4574795556058263079, guid: 7c9ebf5abd575c643a4c193b0f603568,
     type: 3}
   m_PrefabInstance: {fileID: 8402925860784266859}
   m_PrefabAsset: {fileID: 0}
