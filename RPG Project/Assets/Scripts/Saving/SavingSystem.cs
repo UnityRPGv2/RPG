@@ -22,10 +22,10 @@ namespace GameDevTV.Saving
         /// must be run as a coroutine.
         /// </summary>
         /// <param name="saveFile">The save file to consult for loading.</param>
-        public IEnumerator LoadLastScene(string saveFile)
+        public IEnumerator LoadLastScene(string saveFile, int defaultBuildIndex)
         {
             Dictionary<string, object> state = LoadFile(saveFile);
-            int buildIndex = SceneManager.GetActiveScene().buildIndex;
+            int buildIndex = defaultBuildIndex;
             if (state.ContainsKey("lastSceneBuildIndex"))
             {
                 buildIndex = (int)state["lastSceneBuildIndex"];

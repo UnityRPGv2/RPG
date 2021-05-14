@@ -5,14 +5,15 @@ using GameDevTV.Saving;
 using RPG.Stats;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] float regenerationPercentage = 70;
-        [SerializeField] TakeDamageEvent takeDamage;
-        [SerializeField] UnityEvent onDie;
+        public TakeDamageEvent takeDamage;
+        public UnityEvent onDie;
 
         [System.Serializable]
         public class TakeDamageEvent : UnityEvent<float>
@@ -20,8 +21,6 @@ namespace RPG.Attributes
         }
 
         LazyValue<float> healthPoints;
-
-        bool isDead = false;
 
         private void Awake() {
             healthPoints = new LazyValue<float>(GetInitialHealth);
@@ -47,18 +46,19 @@ namespace RPG.Attributes
 
         public bool IsDead()
         {
-            return isDead;
+            return healthPoints.value <= 0;
         }
 
         public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
-            
-            if(healthPoints.value == 0)
+
+            UpdateAnimator();
+
+            if(IsDead())
             {
                 onDie.Invoke();
-                Die();
-                AwardExperience(instigator);
+                GetComponent<ActionScheduler>().CancelCurrentAction();
             } 
             else
             {
@@ -69,6 +69,7 @@ namespace RPG.Attributes
         public void Heal(float healthToRestore)
         {
             healthPoints.value = Mathf.Min(healthPoints.value + healthToRestore, GetMaxHealthPoints());
+            UpdateAnimator();
         }
 
         public float GetHealthPoints()
@@ -91,13 +92,14 @@ namespace RPG.Attributes
             return healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
-        private void Die()
+        private void UpdateAnimator(bool instant = false)
         {
-            if (isDead) return;
-
-            isDead = true;
-            GetComponent<Animator>().SetTrigger("die");
-            GetComponent<ActionScheduler>().CancelCurrentAction();
+            Animator animator = GetComponent<Animator>();
+            if (IsDead() && instant)
+            {
+                animator.SetTrigger("instantDeath");
+            }
+            animator.SetBool("isDead", IsDead());
         }
 
         private void AwardExperience(GameObject instigator)
@@ -122,11 +124,7 @@ namespace RPG.Attributes
         public void RestoreState(object state)
         {
             healthPoints.value = (float) state;
-            
-            if (healthPoints.value <= 0)
-            {
-                Die();
-            }
+            UpdateAnimator(true);
         }
     }
 }
