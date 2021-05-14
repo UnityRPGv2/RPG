@@ -1,6 +1,7 @@
 using System.Collections;
 using GameDevTV.Saving;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RPG.SceneManagement
 {
@@ -17,10 +18,23 @@ namespace RPG.SceneManagement
             StartCoroutine(LoadLastScene());
         }
 
+        public void NewGame()
+        {
+            StartCoroutine(LoadFirstScene());
+        }
+
         private IEnumerator LoadLastScene() {
             Fader fader = FindObjectOfType<Fader>();
             yield return fader.FadeOut(fadeInTime);
             yield return GetComponent<SavingSystem>().LoadLastScene(GetLatestSave());
+            yield return fader.FadeIn(fadeInTime);
+        }
+
+        private IEnumerator LoadFirstScene()
+        {
+            Fader fader = FindObjectOfType<Fader>();
+            yield return fader.FadeOut(fadeInTime);
+            yield return SceneManager.LoadSceneAsync(1);
             yield return fader.FadeIn(fadeInTime);
         }
 

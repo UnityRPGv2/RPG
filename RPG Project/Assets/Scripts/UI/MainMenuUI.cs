@@ -19,7 +19,7 @@ namespace RPG.UI
 
         public void New()
         {
-
+            savingWrapper.value.NewGame();
         }
     }
 }
