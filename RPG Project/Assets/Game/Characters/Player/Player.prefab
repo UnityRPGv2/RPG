@@ -231,7 +231,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1172905977, guid: 750e3c6876a501e42b5827ec7a3d24d1, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 488557239800501724, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
@@ -316,16 +316,16 @@ PrefabInstance:
     - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
       propertyPath: disableIfDead.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
-      propertyPath: disableIfDead.Array.data[2]
+      propertyPath: disableIfDead.Array.data[3]
       value: 
       objectReference: {fileID: 3936838565304354204}
     - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
-      propertyPath: disableIfDead.Array.data[3]
+      propertyPath: disableIfDead.Array.data[4]
       value: 
       objectReference: {fileID: 7122694563460434362}
     - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,

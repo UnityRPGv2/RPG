@@ -6,6 +6,7 @@ using RPG.Stats;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace RPG.Attributes
 {
@@ -14,7 +15,7 @@ namespace RPG.Attributes
         [SerializeField] float regenerationPercentage = 70;
         public TakeDamageEvent takeDamage;
         public UnityEvent onDie;
-        [SerializeField] Behaviour[] disableIfDead;
+        [SerializeField] List<UnityEngine.Object> disableIfDead;
 
         [System.Serializable]
         public class TakeDamageEvent : UnityEvent<float>
@@ -102,9 +103,20 @@ namespace RPG.Attributes
             }
             animator.SetBool("isDead", IsDead());
 
-            foreach (var component in disableIfDead)
+            foreach (var unityObject in disableIfDead)
             {
-                component.enabled = !IsDead();
+                switch (unityObject)
+                {
+                    case Behaviour asBehaviour:
+                        asBehaviour.enabled = !IsDead();
+                        break;
+                    case Collider asCollider:
+                        asCollider.enabled = !IsDead();
+                        break;
+                    case GameObject asGameObject:
+                        asGameObject.SetActive(!IsDead());
+                        break;
+                }
             }
         }
 

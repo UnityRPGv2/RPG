@@ -479,6 +479,7 @@ MonoBehaviour:
   disableIfDead:
   - {fileID: 1172905976}
   - {fileID: 3125957438692005694}
+  - {fileID: 1172905977}
 --- !u!114 &488557239800501724
 MonoBehaviour:
   m_ObjectHideFlags: 0

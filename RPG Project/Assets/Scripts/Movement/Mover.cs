@@ -13,17 +13,13 @@ namespace RPG.Movement
         [SerializeField] float maxNavPathLength = 40f;
 
         NavMeshAgent navMeshAgent;
-        Health health;
 
         private void Awake() {
             navMeshAgent = GetComponent<NavMeshAgent>();
-            health = GetComponent<Health>();
         }
 
         void Update()
         {
-            navMeshAgent.enabled = !health.IsDead();
-
             UpdateAnimator();
         }
 

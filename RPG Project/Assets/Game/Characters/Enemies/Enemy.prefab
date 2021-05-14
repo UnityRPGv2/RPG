@@ -249,23 +249,28 @@ PrefabInstance:
     - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
       propertyPath: disableIfDead.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,
-        type: 3}
-      propertyPath: disableIfDead.Array.data[2]
-      value: 
-      objectReference: {fileID: 983642264934612947}
     - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
       propertyPath: disableIfDead.Array.data[3]
       value: 
-      objectReference: {fileID: 8820277714443684423}
+      objectReference: {fileID: 983642264934612947}
     - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
       propertyPath: disableIfDead.Array.data[4]
       value: 
+      objectReference: {fileID: 8820277714443684423}
+    - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+        type: 3}
+      propertyPath: disableIfDead.Array.data[5]
+      value: 
       objectReference: {fileID: 4869708733900857438}
+    - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+        type: 3}
+      propertyPath: disableIfDead.Array.data[6]
+      value: 
+      objectReference: {fileID: 2243200825154178256}
     - target: {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
       propertyPath: onDie.m_PersistentCalls.m_Calls.Array.size
@@ -350,6 +355,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401972681186859721, guid: 750e3c6876a501e42b5827ec7a3d24d1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5401972681186859721, guid: 750e3c6876a501e42b5827ec7a3d24d1,
         type: 3}
