@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using GameDevTV.Saving;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,7 +16,7 @@ namespace RPG.SceneManagement
         
         public void ContinueGame() 
         {
-            StartCoroutine(LoadLastScene());
+            LoadSave(GetLatestSave());
         }
 
         public void NewGame()
@@ -23,15 +24,57 @@ namespace RPG.SceneManagement
             StartCoroutine(LoadFirstScene());
         }
 
+        public void LoadSave(string saveFile)
+        {
+            StartCoroutine(LoadScene(saveFile));
+        }
+
         public void OpenMenu()
         {
             StartCoroutine(LoadMenu());
         }
 
-        private IEnumerator LoadLastScene() {
+        public string GetLatestSave()
+        {
+            return PlayerPrefs.GetString(latestSaveFileKey, null);
+        }
+
+        public IEnumerable<string> GetAllSaves()
+        {
+            return GetComponent<SavingSystem>().ListSaves();
+        }
+
+        public void ManualSave()
+        {
+            var saveFile = $"{manualSaveFile} {System.DateTime.Now.ToString()}";
+            saveFile = saveFile.Replace("/","-").Replace(":", "");
+            GetComponent<SavingSystem>().Save(saveFile);
+            PlayerPrefs.SetString(latestSaveFileKey, saveFile);
+            PlayerPrefs.Save();
+        }
+
+        public void AutoSave()
+        {
+            GetComponent<SavingSystem>().Save(autoSaveFile);
+            PlayerPrefs.SetString(latestSaveFileKey, autoSaveFile);
+            PlayerPrefs.Save();
+        }
+
+        public void Delete()
+        {
+            GetComponent<SavingSystem>().Delete(autoSaveFile);
+        }
+
+        public void LoadAutoSave()
+        {
+            GetComponent<SavingSystem>().Load(autoSaveFile);
+        }
+
+        private IEnumerator LoadScene(string saveFile)
+        {
             Fader fader = FindObjectOfType<Fader>();
             yield return fader.FadeOut(fadeInTime);
-            yield return GetComponent<SavingSystem>().LoadLastScene(GetLatestSave());
+            yield return GetComponent<SavingSystem>().LoadLastScene(saveFile);
             yield return fader.FadeIn(fadeInTime);
         }
 
@@ -49,60 +92,6 @@ namespace RPG.SceneManagement
             yield return fader.FadeOut(fadeInTime);
             yield return SceneManager.LoadSceneAsync(0);
             yield return fader.FadeIn(fadeInTime);
-        }
-
-        private void Update() {
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                ManualSave();
-            }
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                foreach (var item in GetComponent<SavingSystem>().ListSaves())
-                {
-                    print(item);
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.Delete))
-            {
-                Delete();
-            }
-        }
-
-        public string GetLatestSave()
-        {
-            return PlayerPrefs.GetString(latestSaveFileKey, null);
-        }
-
-        public void LoadManualSave()
-        {
-            GetComponent<SavingSystem>().Load(manualSaveFile);
-        }
-
-        public void ManualSave()
-        {
-            var saveFile = $"{manualSaveFile} {System.DateTime.Now.ToString()}";
-            saveFile = saveFile.Replace("/","-").Replace(":", "");
-            GetComponent<SavingSystem>().Save(saveFile);
-            PlayerPrefs.SetString(latestSaveFileKey, saveFile);
-            PlayerPrefs.Save();
-        }
-
-        public void LoadAutoSave()
-        {
-            GetComponent<SavingSystem>().Load(autoSaveFile);
-        }
-
-        public void AutoSave()
-        {
-            GetComponent<SavingSystem>().Save(autoSaveFile);
-            PlayerPrefs.SetString(latestSaveFileKey, autoSaveFile);
-            PlayerPrefs.Save();
-        }
-
-        public void Delete()
-        {
-            GetComponent<SavingSystem>().Delete(autoSaveFile);
         }
     }
 }
