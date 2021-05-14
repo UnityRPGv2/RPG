@@ -20,7 +20,7 @@ namespace RPG.UI
                 GameObject saveRow = Instantiate<GameObject>(saveRowPrefab, loadListRoot);
                 saveRow.GetComponentInChildren<TextMeshProUGUI>().text = saveFile;
                 saveRow.GetComponentInChildren<Button>().onClick.AddListener(() => {
-                    savingWrapper.LoadSave(saveFile);
+                    savingWrapper.LoadGame(saveFile);
                 });
             }
         }

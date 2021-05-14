@@ -61,9 +61,9 @@ namespace GameDevTV.Saving
         {
             foreach (string file in Directory.EnumerateFiles(Application.persistentDataPath))
             {
-                if (file.EndsWith(".sav"))
+                if (Path.GetExtension(file) == ".sav")
                 {
-                    yield return file.Remove(file.Length-4);
+                    yield return Path.GetFileNameWithoutExtension(file);
                 }
             }
         }
@@ -119,6 +119,7 @@ namespace GameDevTV.Saving
 
         private string GetPathFromSaveFile(string saveFile)
         {
+            saveFile = string.Concat(saveFile.Split(Path.GetInvalidFileNameChars()));
             return Path.Combine(Application.persistentDataPath, saveFile + ".sav");
         }
     }

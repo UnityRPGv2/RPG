@@ -9,23 +9,23 @@ namespace RPG.SceneManagement
     public class SavingWrapper : MonoBehaviour
     {
         const string latestSaveFileKey = "latestSaveFile";
-        const string autoSaveFile = "autosave";
-        const string manualSaveFile = "manualsave";
 
         [SerializeField] float fadeInTime = 0.2f;
         
         public void ContinueGame() 
         {
-            LoadSave(GetLatestSave());
+            StartCoroutine(LoadScene(GetCurrentSave()));
         }
 
-        public void NewGame()
+        public void NewGame(string saveFile)
         {
+            SetCurrentSave(saveFile);
             StartCoroutine(LoadFirstScene());
         }
 
-        public void LoadSave(string saveFile)
+        public void LoadGame(string saveFile)
         {
+            SetCurrentSave(saveFile);
             StartCoroutine(LoadScene(saveFile));
         }
 
@@ -34,9 +34,15 @@ namespace RPG.SceneManagement
             StartCoroutine(LoadMenu());
         }
 
-        public string GetLatestSave()
+        public string GetCurrentSave()
         {
             return PlayerPrefs.GetString(latestSaveFileKey, null);
+        }
+
+        public void SetCurrentSave(string saveFile)
+        {
+            PlayerPrefs.SetString(latestSaveFileKey, saveFile);
+            PlayerPrefs.Save();
         }
 
         public IEnumerable<string> GetAllSaves()
@@ -44,30 +50,14 @@ namespace RPG.SceneManagement
             return GetComponent<SavingSystem>().ListSaves();
         }
 
-        public void ManualSave()
+        public void Save()
         {
-            var saveFile = $"{manualSaveFile} {System.DateTime.Now.ToString()}";
-            saveFile = saveFile.Replace("/","-").Replace(":", "");
-            GetComponent<SavingSystem>().Save(saveFile);
-            PlayerPrefs.SetString(latestSaveFileKey, saveFile);
-            PlayerPrefs.Save();
+            GetComponent<SavingSystem>().Save(GetCurrentSave());
         }
 
-        public void AutoSave()
+        public void Load()
         {
-            GetComponent<SavingSystem>().Save(autoSaveFile);
-            PlayerPrefs.SetString(latestSaveFileKey, autoSaveFile);
-            PlayerPrefs.Save();
-        }
-
-        public void Delete()
-        {
-            GetComponent<SavingSystem>().Delete(autoSaveFile);
-        }
-
-        public void LoadAutoSave()
-        {
-            GetComponent<SavingSystem>().Load(autoSaveFile);
+            GetComponent<SavingSystem>().Load(GetCurrentSave());
         }
 
         private IEnumerator LoadScene(string saveFile)

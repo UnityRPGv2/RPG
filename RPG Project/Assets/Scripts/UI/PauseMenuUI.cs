@@ -14,13 +14,13 @@ namespace RPG.UI
 
         public void Save()
         {
-            FindObjectOfType<SavingWrapper>().ManualSave();
+            FindObjectOfType<SavingWrapper>().Save();
         }
 
         public void SaveAndQuit()
         {
             SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
-            savingWrapper.ManualSave();
+            savingWrapper.Save();
             savingWrapper.OpenMenu();
         }
     }
