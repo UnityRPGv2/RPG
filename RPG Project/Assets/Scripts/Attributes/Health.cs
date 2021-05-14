@@ -14,6 +14,7 @@ namespace RPG.Attributes
         [SerializeField] float regenerationPercentage = 70;
         public TakeDamageEvent takeDamage;
         public UnityEvent onDie;
+        [SerializeField] Behaviour[] disableIfDead;
 
         [System.Serializable]
         public class TakeDamageEvent : UnityEvent<float>
@@ -53,7 +54,7 @@ namespace RPG.Attributes
         {
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
 
-            UpdateAnimator();
+            UpdateState();
 
             if(IsDead())
             {
@@ -69,7 +70,7 @@ namespace RPG.Attributes
         public void Heal(float healthToRestore)
         {
             healthPoints.value = Mathf.Min(healthPoints.value + healthToRestore, GetMaxHealthPoints());
-            UpdateAnimator();
+            UpdateState();
         }
 
         public float GetHealthPoints()
@@ -92,7 +93,7 @@ namespace RPG.Attributes
             return healthPoints.value / GetComponent<BaseStats>().GetStat(Stat.Health);
         }
 
-        private void UpdateAnimator(bool instant = false)
+        private void UpdateState(bool instant = false)
         {
             Animator animator = GetComponent<Animator>();
             if (IsDead() && instant)
@@ -100,6 +101,11 @@ namespace RPG.Attributes
                 animator.SetTrigger("instantDeath");
             }
             animator.SetBool("isDead", IsDead());
+
+            foreach (var component in disableIfDead)
+            {
+                component.enabled = !IsDead();
+            }
         }
 
         private void AwardExperience(GameObject instigator)
@@ -124,7 +130,7 @@ namespace RPG.Attributes
         public void RestoreState(object state)
         {
             healthPoints.value = (float) state;
-            UpdateAnimator(true);
+            UpdateState(true);
         }
     }
 }

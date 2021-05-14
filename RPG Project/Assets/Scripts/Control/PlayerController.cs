@@ -30,19 +30,12 @@ namespace RPG.Control
         bool isDraggingUI = false;
 
         private void Awake() {
-            health = GetComponent<Health>();
             actionStore = GetComponent<ActionStore>();
         }
 
         private void Update()
         {
             if (InteractWithUI()) return;
-            if (health.IsDead()) 
-            {
-                SetCursor(CursorType.None);
-                return;
-            }
-
             UseAbilities();
 
             if (InteractWithComponent()) return;
@@ -92,6 +85,7 @@ namespace RPG.Control
                 IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
                 foreach (IRaycastable raycastable in raycastables)
                 {
+                    if (raycastable is Behaviour b && !b.enabled) continue;
                     if (raycastable.HandleRaycast(this))
                     {
                         SetCursor(raycastable.GetCursorType());

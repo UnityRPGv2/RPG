@@ -24,7 +24,6 @@ namespace RPG.Control
         [SerializeField] float shoutDistance = 5f;
 
         Fighter fighter;
-        Health health;
         Mover mover;
         GameObject player;
 
@@ -36,7 +35,6 @@ namespace RPG.Control
 
         private void Awake() {
             fighter = GetComponent<Fighter>();
-            health = GetComponent<Health>();
             mover = GetComponent<Mover>();
             player = GameObject.FindWithTag("Player");
 
@@ -64,8 +62,6 @@ namespace RPG.Control
 
         private void Update()
         {
-            if (health.IsDead()) return;
-
             if (IsAggrevated() && fighter.CanAttack(player))
             {
                 AttackBehaviour();
