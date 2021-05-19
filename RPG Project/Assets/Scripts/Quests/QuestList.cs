@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameDevTV.Inventories;
 using GameDevTV.Saving;
+using Newtonsoft.Json.Linq;
 using RPG.Core;
 using UnityEngine;
 
@@ -73,9 +74,9 @@ namespace RPG.Quests
             }
         }
 
-        public object CaptureState()
+        public JToken CaptureState()
         {
-            List<object> state = new List<object>();
+            JArray state = new JArray();
             foreach (QuestStatus status in statuses)
             {
                 state.Add(status.CaptureState());
@@ -83,13 +84,13 @@ namespace RPG.Quests
             return state;
         }
 
-        public void RestoreState(object state)
+        public void RestoreState(JToken state)
         {
-            List<object> stateList = state as List<object>;
+            JArray stateList = state.ToObject<JArray>();
             if (stateList == null) return;
 
             statuses.Clear();
-            foreach (object objectState in stateList)
+            foreach (JToken objectState in stateList)
             {
                 statuses.Add(new QuestStatus(objectState));
             }

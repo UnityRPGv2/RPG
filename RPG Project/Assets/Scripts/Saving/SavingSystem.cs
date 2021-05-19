@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Bson;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,11 +25,12 @@ namespace GameDevTV.Saving
         /// <param name="saveFile">The save file to consult for loading.</param>
         public IEnumerator LoadLastScene(string saveFile)
         {
-            Dictionary<string, object> state = LoadFile(saveFile);
+            JObject state = LoadFile(saveFile);
+            IDictionary<string, JToken> stateDict = state;
             int buildIndex = SceneManager.GetActiveScene().buildIndex;
-            if (state.ContainsKey("lastSceneBuildIndex"))
+            if (stateDict.ContainsKey("lastSceneBuildIndex"))
             {
-                buildIndex = (int)state["lastSceneBuildIndex"];
+                buildIndex = (int)stateDict["lastSceneBuildIndex"];
             }
             yield return SceneManager.LoadSceneAsync(buildIndex);
             RestoreState(state);
@@ -39,7 +41,7 @@ namespace GameDevTV.Saving
         /// </summary>
         public void Save(string saveFile)
         {
-            Dictionary<string, object> state = LoadFile(saveFile);
+            JObject state = LoadFile(saveFile);
             CaptureState(state);
             SaveFile(saveFile, state);
         }
@@ -61,7 +63,7 @@ namespace GameDevTV.Saving
         {
             foreach (string path in Directory.EnumerateFiles(Application.persistentDataPath))
             {
-                if (Path.GetExtension(path) == ".sav")
+                if (Path.GetExtension(path) == ".json")
                 {
                     yield return Path.GetFileNameWithoutExtension(path);
                 }
@@ -70,56 +72,87 @@ namespace GameDevTV.Saving
 
         // PRIVATE
 
-        private Dictionary<string, object> LoadFile(string saveFile)
+        private JObject LoadFile(string saveFile)
         {
             string path = GetPathFromSaveFile(saveFile);
             if (!File.Exists(path))
             {
-                return new Dictionary<string, object>();
+                return new JObject();
             }
-            using (FileStream stream = File.Open(path, FileMode.Open))
+
+            // using (var file = File.OpenRead(path))
+            // {
+            //     using (var reader = new BsonReader(file))
+            //     {
+            using (var textReader = File.OpenText(path))
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                return (Dictionary<string, object>)formatter.Deserialize(stream);
+                using (var reader = new JsonTextReader(textReader))
+                {
+                    reader.FloatParseHandling = FloatParseHandling.Double;
+
+                    return JObject.Load(reader);
+                }
             }
+
+
+            //using (FileStream stream = File.Open(path, FileMode.Open))
+            //{
+            //    BinaryFormatter formatter = new BinaryFormatter();
+            //    return (Dictionary<string, object>)formatter.Deserialize(stream);
+            //}
         }
 
-        private void SaveFile(string saveFile, object state)
+        private void SaveFile(string saveFile, JObject state)
         {
             string path = GetPathFromSaveFile(saveFile);
             print("Saving to " + path);
-            using (FileStream stream = File.Open(path, FileMode.Create))
+
+            // using (var file = File.Open(path, FileMode.Create))
+            // {
+            //     using (var writer = new BsonWriter(file))
+            //     {
+            using (var textWriter = File.CreateText(path))
             {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(stream, state);
+                using (var writer = new JsonTextWriter(textWriter))
+                {
+                    writer.Formatting = Formatting.Indented;
+                    state.WriteTo(writer);
+                }
             }
+            //using (FileStream stream = File.Open(path, FileMode.Create))
+            //{
+            //    BinaryFormatter formatter = new BinaryFormatter();
+            //    formatter.Serialize(stream, state);
+            //}
         }
 
-        private void CaptureState(Dictionary<string, object> state)
+        private void CaptureState(JObject state)
         {
+            IDictionary<string, JToken> stateDict = state;
             foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
             {
-                state[saveable.GetUniqueIdentifier()] = saveable.CaptureState();
+                stateDict[saveable.GetUniqueIdentifier()] = saveable.CaptureState();
             }
 
-            state["lastSceneBuildIndex"] = SceneManager.GetActiveScene().buildIndex;
+            stateDict["lastSceneBuildIndex"] = SceneManager.GetActiveScene().buildIndex;
         }
 
-        private void RestoreState(Dictionary<string, object> state)
+        private void RestoreState(JObject state)
         {
+            IDictionary<string, JToken> stateDict = state;
             foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
             {
                 string id = saveable.GetUniqueIdentifier();
-                if (state.ContainsKey(id))
+                if (stateDict.ContainsKey(id))
                 {
-                    saveable.RestoreState(state[id]);
+                    saveable.RestoreState(stateDict[id]);
                 }
             }
         }
 
         private string GetPathFromSaveFile(string saveFile)
         {
-            return Path.Combine(Application.persistentDataPath, saveFile + ".sav");
+            return Path.Combine(Application.persistentDataPath, saveFile + ".json");
         }
     }
 }

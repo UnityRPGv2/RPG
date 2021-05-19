@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameDevTV.Inventories;
 using GameDevTV.Saving;
+using Newtonsoft.Json.Linq;
 using RPG.Control;
 using RPG.Inventories;
 using RPG.Stats;
@@ -376,7 +377,7 @@ namespace RPG.Shops
             return stats.GetLevel();
         }
 
-        public object CaptureState()
+        public JToken CaptureState()
         {
             Dictionary<string, int> saveObject = new Dictionary<string, int>();
 
@@ -385,12 +386,12 @@ namespace RPG.Shops
                 saveObject[pair.Key.GetItemID()] = pair.Value;
             }
 
-            return saveObject;
+            return JToken.FromObject(saveObject);
         }
 
-        public void RestoreState(object state)
+        public void RestoreState(JToken state)
         {
-            Dictionary<string, int> saveObject = (Dictionary<string, int>) state;
+            Dictionary<string, int> saveObject = state.ToObject<Dictionary<string, int>>();
             stockSold.Clear();
             foreach (var pair in saveObject)
             {

@@ -3,6 +3,7 @@ using UnityEngine;
 using GameDevTV.Saving;
 using RPG.Core;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace GameDevTV.Inventories
 {
@@ -260,7 +261,7 @@ namespace GameDevTV.Inventories
             public int number;
         }
     
-        object ISaveable.CaptureState()
+        JToken ISaveable.CaptureState()
         {
             var slotStrings = new InventorySlotRecord[inventorySize];
             for (int i = 0; i < inventorySize; i++)
@@ -271,12 +272,12 @@ namespace GameDevTV.Inventories
                     slotStrings[i].number = slots[i].number;
                 }
             }
-            return slotStrings;
+            return JToken.FromObject(slotStrings);
         }
 
-        void ISaveable.RestoreState(object state)
+        void ISaveable.RestoreState(JToken state)
         {
-            var slotStrings = (InventorySlotRecord[])state;
+            var slotStrings = state.ToObject<InventorySlotRecord[]>();
             for (int i = 0; i < inventorySize; i++)
             {
                 slots[i].item = InventoryItem.GetFromID(slotStrings[i].itemID);

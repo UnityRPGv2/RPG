@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using GameDevTV.Saving;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -126,14 +127,14 @@ namespace RPG.Stats
             }
         }
 
-        public object CaptureState()
+        public JToken CaptureState()
         {
-            return assignedPoints;
+            return JToken.FromObject(assignedPoints);
         }
 
-        public void RestoreState(object state)
+        public void RestoreState(JToken state)
         {
-            assignedPoints = new Dictionary<Trait, int>((IDictionary<Trait, int>)state);
+            assignedPoints = new Dictionary<Trait, int>(state.ToObject<IDictionary<Trait, int>>());
         }
     }
 }

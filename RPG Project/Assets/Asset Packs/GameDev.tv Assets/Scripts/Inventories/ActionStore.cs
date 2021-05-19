@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameDevTV.Saving;
+using Newtonsoft.Json.Linq;
 
 namespace GameDevTV.Inventories
 {
@@ -162,7 +163,7 @@ namespace GameDevTV.Inventories
             public int number;
         }
 
-        object ISaveable.CaptureState()
+        JToken ISaveable.CaptureState()
         {
             var state = new Dictionary<int, DockedItemRecord>();
             foreach (var pair in dockedItems)
@@ -172,12 +173,12 @@ namespace GameDevTV.Inventories
                 record.number = pair.Value.number;
                 state[pair.Key] = record;
             }
-            return state;
+            return JToken.FromObject(state);
         }
 
-        void ISaveable.RestoreState(object state)
+        void ISaveable.RestoreState(JToken state)
         {
-            var stateDict = (Dictionary<int, DockedItemRecord>)state;
+            var stateDict = state.ToObject<Dictionary<int, DockedItemRecord>>();
             foreach (var pair in stateDict)
             {
                 AddAction(InventoryItem.GetFromID(pair.Value.itemID), pair.Key, pair.Value.number);

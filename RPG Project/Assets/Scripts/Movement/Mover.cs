@@ -3,6 +3,7 @@ using GameDevTV.Saving;
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Attributes;
+using Newtonsoft.Json.Linq;
 
 namespace RPG.Movement
 {
@@ -76,16 +77,15 @@ namespace RPG.Movement
             return total;
         }
 
-        public object CaptureState()
+        public JToken CaptureState()
         {
-            return new SerializableVector3(transform.position);
+            return JToken.FromObject(transform.position);
         }
 
-        public void RestoreState(object state)
+        public void RestoreState(JToken state)
         {
-            SerializableVector3 position = (SerializableVector3)state;
             navMeshAgent.enabled = false;
-            transform.position = position.ToVector();
+            transform.position = state.ToObject<Vector3>();
             navMeshAgent.enabled = true;
             GetComponent<ActionScheduler>().CancelCurrentAction();
         }

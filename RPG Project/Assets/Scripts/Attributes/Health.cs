@@ -5,6 +5,7 @@ using GameDevTV.Saving;
 using RPG.Stats;
 using UnityEngine;
 using UnityEngine.Events;
+using Newtonsoft.Json.Linq;
 
 namespace RPG.Attributes
 {
@@ -123,14 +124,14 @@ namespace RPG.Attributes
             healthPoints.value = Mathf.Max(healthPoints.value, regenHealthPoints);
         }
 
-        public object CaptureState()
+        public JToken CaptureState()
         {
             return healthPoints.value;
         }
 
-        public void RestoreState(object state)
+        public void RestoreState(JToken state)
         {
-            healthPoints.value = (float) state;
+            healthPoints.value = (float)state;
             
             UpdateState();
         }

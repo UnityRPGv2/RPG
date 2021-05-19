@@ -1,5 +1,6 @@
 using System;
 using GameDevTV.Saving;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 namespace RPG.Inventories {
@@ -29,12 +30,12 @@ namespace RPG.Inventories {
             }
         }
 
-        public object CaptureState()
+        public JToken CaptureState()
         {
             return balance;
         }
 
-        public void RestoreState(object state)
+        public void RestoreState(JToken state)
         {
             balance = (float)state;
         }

@@ -1,3 +1,5 @@
+using Newtonsoft.Json.Linq;
+
 namespace GameDevTV.Saving
 {
     /// <summary>
@@ -12,7 +14,7 @@ namespace GameDevTV.Saving
         /// Return a `System.Serializable` object that represents the state of the
         /// component.
         /// </returns>
-        object CaptureState();
+        JToken CaptureState();
 
         /// <summary>
         /// Called when restoring the state of a scene.
@@ -21,6 +23,6 @@ namespace GameDevTV.Saving
         /// The same `System.Serializable` object that was returned by
         /// CaptureState when saving.
         /// </param>
-        void RestoreState(object state);
+        void RestoreState(JToken state);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using GameDevTV.Saving;
+using Newtonsoft.Json.Linq;
 
 namespace GameDevTV.Inventories
 {
@@ -55,12 +56,12 @@ namespace GameDevTV.Inventories
             }
         }
 
-        object ISaveable.CaptureState()
+        JToken ISaveable.CaptureState()
         {
             return isCollected();
         }
 
-        void ISaveable.RestoreState(object state)
+        void ISaveable.RestoreState(JToken state)
         {
             bool shouldBeCollected = (bool)state;
 

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using GameDevTV.Utils;
 using System;
 using GameDevTV.Inventories;
+using Newtonsoft.Json.Linq;
 
 namespace RPG.Combat
 {
@@ -184,12 +185,12 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("stopAttack");
         }
 
-        public object CaptureState()
+        public JToken CaptureState()
         {
             return currentWeaponConfig.name;
         }
 
-        public void RestoreState(object state)
+        public void RestoreState(JToken state)
         {
             string weaponName = (string)state;
             WeaponConfig weapon = UnityEngine.Resources.Load<WeaponConfig>(weaponName);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -37,12 +38,13 @@ namespace GameDevTV.Saving
         /// return a `System.Serializable` object that can restore this state
         /// later.
         /// </summary>
-        public object CaptureState()
+        public JToken CaptureState()
         {
-            Dictionary<string, object> state = new Dictionary<string, object>();
+            JObject state = new JObject();
+            IDictionary<string, JToken> stateDict = state;
             foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
-                state[saveable.GetType().ToString()] = saveable.CaptureState();
+                stateDict[saveable.GetType().ToString()] = saveable.CaptureState();
             }
             return state;
         }
@@ -53,9 +55,9 @@ namespace GameDevTV.Saving
         /// <param name="state">
         /// The same object that was returned by `CaptureState`.
         /// </param>
-        public void RestoreState(object state)
+        public void RestoreState(JToken state)
         {
-            Dictionary<string, object> stateDict = (Dictionary<string, object>)state;
+            IDictionary<string, JToken> stateDict = state.ToObject<JObject>();
             foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
                 string typeString = saveable.GetType().ToString();

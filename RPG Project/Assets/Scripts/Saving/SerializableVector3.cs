@@ -8,7 +8,7 @@ namespace GameDevTV.Saving
     [System.Serializable]
     public class SerializableVector3
     {
-        float x, y, z;
+        public float x, y, z;
 
         /// <summary>
         /// Copy over the state from an existing Vector3.

@@ -1,6 +1,7 @@
 using UnityEngine;
 using GameDevTV.Saving;
 using System;
+using Newtonsoft.Json.Linq;
 
 namespace RPG.Stats
 {
@@ -28,12 +29,12 @@ namespace RPG.Stats
             return experiencePoints;
         }
 
-        public object CaptureState()
+        public JToken CaptureState()
         {
             return experiencePoints;
         }
 
-        public void RestoreState(object state)
+        public void RestoreState(JToken state)
         {
             experiencePoints = (float)state;
         }
