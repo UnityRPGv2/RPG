@@ -140,7 +140,7 @@ namespace RPG.Control
             timeSinceLastSawPlayer = 0;
             fighter.Attack(player);
 
-            AggrevateNearbyEnemies();
+            if (IsPlayerInChaseRadius()) AggrevateNearbyEnemies();
         }
 
         private void AggrevateNearbyEnemies()
@@ -157,8 +157,13 @@ namespace RPG.Control
 
         private bool IsAggrevated()
         {
+            return IsPlayerInChaseRadius() || timeSinceAggrevated < agroCooldownTime;
+        }
+
+        private bool IsPlayerInChaseRadius()
+        {
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-            return distanceToPlayer < chaseDistance || timeSinceAggrevated < agroCooldownTime;
+            return distanceToPlayer < chaseDistance;
         }
 
         // Called by Unity

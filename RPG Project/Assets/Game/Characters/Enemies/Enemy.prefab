@@ -28,7 +28,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 5.5
   suspicionTime: 5
-  agroCooldownTime: 5
+  agroCooldownTime: 2
   patrolPath: {fileID: 0}
   waypointTolerance: 1
   waypointDwellTime: 3

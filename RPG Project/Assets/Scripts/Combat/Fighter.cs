@@ -126,7 +126,13 @@ namespace RPG.Combat
         {
             if(target == null) { return; }
 
-            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+            BaseStats baseStats = GetComponent<BaseStats>();
+            float damage = baseStats.GetStat(Stat.Damage);
+            BaseStats targetStats = target.GetComponent<BaseStats>();
+            if (targetStats)
+            {
+                damage = Mathf.Max(0, damage - targetStats.GetStat(Stat.Defence));
+            }
 
             if (currentWeapon.value != null)
             {
