@@ -6,6 +6,8 @@ namespace RPG.Inventories
 {
     public class CurrencyPickup : Pickup
     {
+        [SerializeField] UnityEvent<float> pickupMoney;
+
         Purse purse;
 
         private void Awake()
@@ -20,6 +22,7 @@ namespace RPG.Inventories
             {
                 float amount = item.GetPrice() * GetNumber();
                 purse.UpdateBalance(amount);
+                pickupMoney.Invoke(amount);
                 Destroy(gameObject);
             }
             else

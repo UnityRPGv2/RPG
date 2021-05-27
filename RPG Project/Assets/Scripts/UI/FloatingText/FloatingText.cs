@@ -9,6 +9,7 @@ namespace RPG.UI.FloatingText
     public class FloatingText : MonoBehaviour
     {
         [SerializeField] Text damageText = null;
+        [SerializeField] string format = "{0:0}";
 
         public void DestroyText()
         {
@@ -17,7 +18,7 @@ namespace RPG.UI.FloatingText
 
         public void SetValue(float amount)
         {
-            damageText.text = String.Format("{0:0}", amount);
+            damageText.text = String.Format(format, amount);
         }
     }
 }

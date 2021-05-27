@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129d3d9238de77441b71942ec63ae476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyPickedUp:
+  pickupMoney:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RPG.UI.DamageText.DamageTextSpawner, Assembly-CSharp
+      - m_Target: {fileID: 6266552936156100219}
+        m_TargetAssemblyTypeName: RPG.UI.FloatingText.FloatingTextSpawner, Assembly-CSharp
         m_MethodName: Spawn
         m_Mode: 0
         m_Arguments:
@@ -123,3 +123,96 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7101198639913758036}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &4553314214701583627 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6754301773404282975, guid: 0715da6d594191c43a75bbdd035e8646,
+    type: 3}
+  m_PrefabInstance: {fileID: 7101198639913758036}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7126997263620511867
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4553314214701583627}
+    m_Modifications:
+    - target: {fileID: 2049986578577140850, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049986578577140850, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049986578577140850, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049986578577140850, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049986578577140850, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049986578577140850, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049986578577140850, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049986578577140850, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049986578577140850, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049986578577140850, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049986578577140850, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3755838200397688320, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: damageTextPrefab
+      value: 
+      objectReference: {fileID: 6809651782309711067, guid: 8e2511f71a25e6246967d75485618a8c,
+        type: 3}
+    - target: {fileID: 9030812713818455770, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+        type: 3}
+      propertyPath: m_Name
+      value: Floating Text Spawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c, type: 3}
+--- !u!114 &6266552936156100219 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3755838200397688320, guid: 1fa53c3ca92ac104fa6996fa9fc2b81c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7126997263620511867}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565a6cf83d2e1ac4fa7d453686c7ff03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

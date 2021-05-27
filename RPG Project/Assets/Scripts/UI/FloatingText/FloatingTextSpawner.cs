@@ -10,7 +10,8 @@ namespace RPG.UI.FloatingText
 
         public void Spawn(float damageAmount)
         {
-            FloatingText instance = Instantiate<FloatingText>(damageTextPrefab, transform);
+            FloatingText instance = Instantiate<FloatingText>(damageTextPrefab);
+            instance.transform.position = transform.position;
             instance.SetValue(damageAmount);
         }
     }
