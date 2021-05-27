@@ -50,7 +50,7 @@ namespace GameDevTV.Inventories
             return number;
         }
 
-        public void PickupItem()
+        public virtual void PickupItem()
         {
             bool foundSlot = inventory.AddToFirstEmptySlot(item, number);
             if (foundSlot)
@@ -59,7 +59,7 @@ namespace GameDevTV.Inventories
             }
         }
 
-        public bool CanBePickedUp()
+        public virtual bool CanBePickedUp()
         {
             return inventory.HasSpaceFor(item);
         }

@@ -26,7 +26,7 @@ namespace GameDevTV.Inventories
         [Tooltip("The prefab that should be spawned when this item is dropped.")]
         [SerializeField] Pickup pickup = null;
         [Tooltip("If true, multiple items of this type can be stacked in the same inventory slot.")]
-        [SerializeField] bool stackable = false;
+        [SerializeField] protected bool stackable = false;
         [SerializeField] float price;
         [SerializeField] ItemCategory category = ItemCategory.None;
 

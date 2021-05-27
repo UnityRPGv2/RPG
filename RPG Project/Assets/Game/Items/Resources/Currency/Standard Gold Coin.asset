@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56881fcf0921e9b4494be33043ef809f, type: 3}
+  m_Name: Standard Gold Coin
+  m_EditorClassIdentifier: 
+  itemID: e1bbf58a-0d35-4641-9d8c-5968e51e9246
+  displayName: Gold Coin
+  description: The gold standard
+  icon: {fileID: 0}
+  pickup: {fileID: 1195387444312397205, guid: 65734d6000d8969489a2947d0a6a6ac7, type: 3}
+  stackable: 1
+  price: 1
+  category: 0
