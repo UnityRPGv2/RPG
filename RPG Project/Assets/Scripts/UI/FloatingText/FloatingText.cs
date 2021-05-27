@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace RPG.UI.DamageText
+namespace RPG.UI.FloatingText
 {
-    public class DamageText : MonoBehaviour
+    public class FloatingText : MonoBehaviour
     {
         [SerializeField] Text damageText = null;
 
