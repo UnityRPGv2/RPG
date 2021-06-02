@@ -131,7 +131,7 @@ namespace RPG.Combat
             BaseStats targetStats = target.GetComponent<BaseStats>();
             if (targetStats)
             {
-                damage = Mathf.Max(0, damage - targetStats.GetStat(Stat.Defence));
+                damage /= 1 + targetStats.GetStat(Stat.Defence) / damage;
             }
 
             if (currentWeapon.value != null)
