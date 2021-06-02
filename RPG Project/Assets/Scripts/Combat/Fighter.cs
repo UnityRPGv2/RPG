@@ -17,6 +17,7 @@ namespace RPG.Combat
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] WeaponConfig defaultWeapon = null;
+        [SerializeField] float autoAttackRange = 4f;
 
         Health target;
         Equipment equipment;
@@ -49,7 +50,11 @@ namespace RPG.Combat
             timeSinceLastAttack += Time.deltaTime;
 
             if (target == null) return;
-            if (target.IsDead()) return;
+            if (target.IsDead())
+            {
+                target = FindNewTargetInRange();
+                if (target == null) return;
+            }
 
             if (!GetIsInRange(target.transform))
             {
@@ -113,6 +118,33 @@ namespace RPG.Combat
                 TriggerAttack();
                 timeSinceLastAttack = 0;
             }
+        }
+
+        private Health FindNewTargetInRange()
+        {
+            Vector3 position = transform.position;
+            RaycastHit[] hits = Physics.SphereCastAll(position, autoAttackRange, Vector3.up);
+            Health target = null;
+            foreach (var hit in hits)
+            {
+                GameObject hitGameObject = hit.transform.gameObject;
+                if (hitGameObject == gameObject) continue;
+                if (!CanAttack(hitGameObject)) continue;
+                Health candidate = hitGameObject.GetComponent<Health>();
+                if (target == null)
+                {
+                    target = candidate;
+                    continue;
+                }
+
+                float candidateDistance = Vector3.Distance(position, candidate.transform.position);
+                float bestDistance = Vector3.Distance(position, target.transform.position);
+                if (candidateDistance < bestDistance)
+                {
+                    target = candidate;
+                }
+            }
+            return target;
         }
 
         private void TriggerAttack()
