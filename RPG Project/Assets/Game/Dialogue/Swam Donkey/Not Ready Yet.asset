@@ -1,5 +1,72 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8191852066162880898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: ef535f21-830b-4f42-86b5-b03843b8069c
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: You seem pretty strong, but you don't have the Sword!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 388
+    y: 249
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and:
+    - or:
+      - predicate: MinimumTrait
+        parameters:
+        - Strength
+        - 4
+        negate: 0
+    - or:
+      - predicate: HasEquipmentItem
+        parameters:
+        - 77ad666c-513c-4c88-87b2-c8594bcd5a89
+        negate: 1
+--- !u!114 &-2388781936558716269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 45b72c63-4a92-4974-9576-ad012e5df15b
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: You look pretty weak mate! I wouldn't recommend it.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 381
+    y: 146
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and:
+    - or:
+      - predicate: MinimumTrait
+        parameters:
+        - Strength
+        - 4
+        negate: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14,7 +81,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: 4841446501187768548}
+  - {fileID: -2388781936558716269}
+  - {fileID: -8191852066162880898}
+  - {fileID: 4617176262057036170}
   newNodeOffset: {x: 250, y: 0}
+--- !u!114 &4617176262057036170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 2bf1939d-9675-4b1f-861f-9f5e62c1d3c1
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Nice sword! That should do the trick.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 387
+    y: 369
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and:
+    - or:
+      - predicate: HasEquipmentItem
+        parameters:
+        - 77ad666c-513c-4c88-87b2-c8594bcd5a89
+        negate: 0
 --- !u!114 &4841446501187768548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,12 +128,15 @@ MonoBehaviour:
   m_Name: 6ddf06c8-956b-4980-8cea-b0128f7e701d
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: You don't look like you could take the Swamp Donkey
-  children: []
+  text: So want to take on the Swamp Donkey?
+  children:
+  - 45b72c63-4a92-4974-9576-ad012e5df15b
+  - ef535f21-830b-4f42-86b5-b03843b8069c
+  - 2bf1939d-9675-4b1f-861f-9f5e62c1d3c1
   rect:
     serializedVersion: 2
-    x: 79
-    y: 73
+    x: 127
+    y: 148
     width: 200
     height: 100
   onEnterAction: 
