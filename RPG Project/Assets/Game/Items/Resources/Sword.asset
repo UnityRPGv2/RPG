@@ -13,19 +13,23 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   itemID: 77ad666c-513c-4c88-87b2-c8594bcd5a89
-  displayName: Sword
-  description: 
+  displayName: Sword Of Convenient Plot Device
+  description: Requires a minimum strongness of 4
   icon: {fileID: 21300000, guid: d19901b0ee3c38743a7d383bd484b0b5, type: 3}
   pickup: {fileID: 5791415848479646380, guid: fdfb68bd34d88af4fbb8a679645d8598, type: 3}
   stackable: 0
-  price: 59.8
+  price: 200
   category: 2
   allowedEquipLocation: 5
+  requirement:
+    trait: 0
+    minimumTrait: 4
+    minimumLevel: 0
   animatorOverride: {fileID: 22100000, guid: 6abe8133a41100b4695842c4b61fdb80, type: 2}
   equippedPrefab: {fileID: 442137872338528657, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
     type: 3}
-  weaponDamage: 8
-  percentageBonus: 40
+  weaponDamage: 13
+  percentageBonus: 0
   weaponRange: 2
   isRightHanded: 1
   projectile: {fileID: 0}

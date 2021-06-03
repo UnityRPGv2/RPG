@@ -1,4 +1,5 @@
 using UnityEngine;
+using RPG.Stats;
 
 namespace GameDevTV.Inventories
 {
@@ -12,12 +13,14 @@ namespace GameDevTV.Inventories
         // CONFIG DATA
         [Tooltip("Where are we allowed to put this item.")]
         [SerializeField] EquipLocation allowedEquipLocation = EquipLocation.Weapon;
+        [SerializeField] Requirement requirement;
 
         // PUBLIC
 
-        public EquipLocation GetAllowedEquipLocation()
+
+        public bool CanEquip(GameObject player, EquipLocation equipLocation)
         {
-            return allowedEquipLocation;
+            return equipLocation == allowedEquipLocation && requirement.CheckRequirement(player);
         }
     }
 }

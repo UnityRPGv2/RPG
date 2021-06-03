@@ -42,7 +42,7 @@ namespace GameDevTV.Inventories
         /// </summary>
         public void AddItem(EquipLocation slot, EquipableItem item)
         {
-            Debug.Assert(item.GetAllowedEquipLocation() == slot);
+            Debug.Assert(item.CanEquip(gameObject, slot));
 
             equippedItems[slot] = item;
 

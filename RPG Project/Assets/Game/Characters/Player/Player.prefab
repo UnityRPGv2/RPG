@@ -64,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bonusConfig:
   - trait: 0
-    stat: 0
+    stat: 3
     additiveBonusPerPoint: 0
     percentageBonusPerPoint: 5
   - trait: 2
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f789e6ec28b200459df6fd28a4d363c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingBalance: 400
+  startingBalance: 100
 --- !u!114 &6703574276284088049
 MonoBehaviour:
   m_ObjectHideFlags: 0
