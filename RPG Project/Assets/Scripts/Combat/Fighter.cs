@@ -11,7 +11,7 @@ using GameDevTV.Inventories;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
@@ -220,18 +220,6 @@ namespace RPG.Combat
         {
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
-        }
-
-        public object CaptureState()
-        {
-            return currentWeaponConfig.name;
-        }
-
-        public void RestoreState(object state)
-        {
-            string weaponName = (string)state;
-            WeaponConfig weapon = UnityEngine.Resources.Load<WeaponConfig>(weaponName);
-            EquipWeapon(weapon);
         }
     }
 }
