@@ -2246,7 +2246,7 @@ PrefabInstance:
     - target: {fileID: 866117710050258566, guid: 9c5ee1e3381fcd942af4cc4ab04d33e1,
         type: 3}
       propertyPath: m_Name
-      value: NPC (2)
+      value: Quest Giver
       objectReference: {fileID: 0}
     - target: {fileID: 3597451667169919536, guid: 9c5ee1e3381fcd942af4cc4ab04d33e1,
         type: 3}
@@ -4519,6 +4519,53 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &727608488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 866117710050258566, guid: 9c5ee1e3381fcd942af4cc4ab04d33e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 354513652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &727608489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727608488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f8be4928d6b7a42ae3817a73e03a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest: {fileID: 11400000, guid: 49bed4a501b6dc84e9edcef254b0c688, type: 2}
+--- !u!114 &727608490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727608488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0adecd80eba9ef940bc5b8fc57658298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: give-quest
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 727608489}
+        m_TargetAssemblyTypeName: RPG.Quests.QuestGiver, Assembly-CSharp
+        m_MethodName: GiveQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &727608501 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3977309470487872227, guid: 9c5ee1e3381fcd942af4cc4ab04d33e1,
@@ -13563,7 +13610,7 @@ PrefabInstance:
     - target: {fileID: 5263524460118599961, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -569.8281
+      value: -569.82806
       objectReference: {fileID: 0}
     - target: {fileID: 5263917500653042737, guid: 9065ec7e81ca8034a865d6fdd7906af9,
         type: 3}

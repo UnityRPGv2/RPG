@@ -45,7 +45,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 1293
-    y: 140
+    y: 139
     width: 200
     height: 100
   onEnterAction: 
@@ -208,7 +208,7 @@ MonoBehaviour:
     width: 200
     height: 100
   onEnterAction: 
-  onExitAction: 
+  onExitAction: give-quest
   condition:
     and: []
 --- !u!114 &3672774709895698999

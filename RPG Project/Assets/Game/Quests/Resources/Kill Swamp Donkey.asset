@@ -10,9 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 307d87d27f907ab409224ea823bb2f13, type: 3}
-  m_Name: Find the missing sock
+  m_Name: Kill Swamp Donkey
   m_EditorClassIdentifier: 
   objectives:
-  - a
-  - b
-  - c
+  - reference: levelup
+    description: Get strong enough
+  - reference: sword
+    description: Obtain the Sword
+  - reference: kill
+    description: Kill the Swamp Donkey
+  rewards:
+  - number: 1000
+    item: {fileID: 11400000, guid: ca7804e0b0bf761429dbc604c13d142b, type: 2}
