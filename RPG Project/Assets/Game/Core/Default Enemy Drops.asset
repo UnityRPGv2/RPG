@@ -16,10 +16,9 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: ca7804e0b0bf761429dbc604c13d142b, type: 2}
     relativeChance:
     - 1
-    minNumber: 2100000002000000
-    maxNumber: 2100000005000000
+    minNumber: 0f0000001b000000
+    maxNumber: 1500000025000000
   dropChancePercentage:
-  - 75
-  - 90
-  minDrops: 0100000006000000
-  maxDrops: 010000000c000000
+  - 100
+  minDrops: 01000000
+  maxDrops: 01000000

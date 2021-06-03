@@ -23,7 +23,7 @@ namespace RPG.UI
         {
             if (playerController == null) return;
             Time.timeScale = 1;
-            Time.timeScale = 2;
+            Time.timeScale = 5;
             playerController.enabled = true;
         }
 
