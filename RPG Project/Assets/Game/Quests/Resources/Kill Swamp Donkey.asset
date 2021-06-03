@@ -15,10 +15,30 @@ MonoBehaviour:
   objectives:
   - reference: levelup
     description: Get strong enough
+    useCondition: 1
+    condition:
+      and:
+      - or:
+        - predicate: MinimumTrait
+          parameters:
+          - Strength
+          - 4
+          negate: 0
   - reference: sword
     description: Obtain the Sword
+    useCondition: 1
+    condition:
+      and:
+      - or:
+        - predicate: HasInventoryItem
+          parameters:
+          - 77ad666c-513c-4c88-87b2-c8594bcd5a89
+          negate: 0
   - reference: kill
     description: Kill the Swamp Donkey
+    useCondition: 0
+    condition:
+      and: []
   rewards:
   - number: 1000
     item: {fileID: 11400000, guid: ca7804e0b0bf761429dbc604c13d142b, type: 2}

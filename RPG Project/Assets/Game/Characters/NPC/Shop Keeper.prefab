@@ -79,6 +79,36 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Shop
+--- !u!136 &6316729052562199258
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855440868402026099}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8205975171699169539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855440868402026099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e586c37b47df8254d809c0cadc74291e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopName: 
+  sellingPercentage: 50
+  maximumBarterDiscount: 80
+  stockConfig: []
 --- !u!1 &8321889144678933770
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,36 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9820a81ff9f4bc442a6b247d2c5734ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &6316729052562199258
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8855440868402026099}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &8205975171699169539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8855440868402026099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e586c37b47df8254d809c0cadc74291e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopName: 
-  sellingPercentage: 50
-  maximumBarterDiscount: 80
-  stockConfig: []
 --- !u!1001 &3464236806379506874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -292,6 +292,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3125957438692005694, guid: 750e3c6876a501e42b5827ec7a3d24d1, type: 3}
     - {fileID: 3307795589981818629, guid: 750e3c6876a501e42b5827ec7a3d24d1, type: 3}
+    - {fileID: 1172905976, guid: 750e3c6876a501e42b5827ec7a3d24d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 750e3c6876a501e42b5827ec7a3d24d1, type: 3}
 --- !u!1 &8855440868402026099 stripped
 GameObject:
