@@ -1,0 +1,370 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7902957952779518762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: ca7a92a8-3d74-4c3d-8997-02e6590df6c8
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: A rebel, I like it!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 2043
+    y: 140
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-6148104501216097782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 066dd981-cb54-4ecf-ad23-90a2dc6b1e49
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Oh, well in that case you will need the Sword of Convenient Plot Device.
+    You can buy it at the shop.
+  children:
+  - 203c96d3-e231-4754-a60a-31bbfbd4becc
+  rect:
+    serializedVersion: 2
+    x: 1293
+    y: 140
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-1577532963536870847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 203c96d3-e231-4754-a60a-31bbfbd4becc
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: But you are neither right enough, nor strong enough.
+  children:
+  - d885cf21-ec53-4e7b-aff8-6676a62a85e6
+  - e1a26280-1b0c-4521-aa36-aa2d4f96e674
+  rect:
+    serializedVersion: 2
+    x: 1543
+    y: 140
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-1360780980030314058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 174cc8bb-14d5-4f20-a5cf-ac3051c6be8e
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Ho There, You seem like a fine fellow!
+  children:
+  - 24b37279-5d64-406d-9b41-68e7462c4ae5
+  rect:
+    serializedVersion: 2
+    x: 54
+    y: 145
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-1094757576607591916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 52a50858-7782-43a7-b35a-db678c3a482f
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Yes
+  children:
+  - 2f7291a9-9942-4ce8-987f-77584d2cba61
+  rect:
+    serializedVersion: 2
+    x: 554
+    y: 143
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20020754e2d077c45a6d80bb16361ff0, type: 3}
+  m_Name: Quest Giver
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -1360780980030314058}
+  - {fileID: 369724478745870232}
+  - {fileID: -1094757576607591916}
+  - {fileID: 3672774709895698999}
+  - {fileID: 8261630646433553018}
+  - {fileID: 8527749261657981073}
+  - {fileID: 2975728589991709453}
+  - {fileID: 7584954879857707935}
+  - {fileID: -6148104501216097782}
+  - {fileID: -1577532963536870847}
+  - {fileID: 7594445107393190435}
+  - {fileID: -7902957952779518762}
+  - {fileID: 6289217425673316765}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &369724478745870232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 24b37279-5d64-406d-9b41-68e7462c4ae5
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Are you interested in a quest?
+  children:
+  - 52a50858-7782-43a7-b35a-db678c3a482f
+  - 0eabd5b7-93bc-45f8-a08c-263915fbeda9
+  rect:
+    serializedVersion: 2
+    x: 288
+    y: 142
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &2975728589991709453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 196b1f91-9be9-4872-b2d2-30289357644e
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Sure, will slay the Swamp Donkey!
+  children:
+  - 066dd981-cb54-4ecf-ad23-90a2dc6b1e49
+  rect:
+    serializedVersion: 2
+    x: 1043
+    y: 140
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &3672774709895698999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 0eabd5b7-93bc-45f8-a08c-263915fbeda9
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: No
+  children:
+  - 053bd63b-d9c1-4910-aa2d-02211b6a0662
+  rect:
+    serializedVersion: 2
+    x: 644
+    y: 304
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &6289217425673316765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: e1a26280-1b0c-4521-aa36-aa2d4f96e674
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Oh, well, seems like too much work.
+  children:
+  - 053bd63b-d9c1-4910-aa2d-02211b6a0662
+  rect:
+    serializedVersion: 2
+    x: 1793
+    y: 243
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &7584954879857707935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 9968e3ef-270d-4b05-b5a3-05205fab9a1a
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: I don't like confrontation
+  children:
+  - 053bd63b-d9c1-4910-aa2d-02211b6a0662
+  rect:
+    serializedVersion: 2
+    x: 1043
+    y: 234
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &7594445107393190435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: d885cf21-ec53-4e7b-aff8-6676a62a85e6
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: I shall go and train on the guards in the village!
+  children:
+  - ca7a92a8-3d74-4c3d-8997-02e6590df6c8
+  rect:
+    serializedVersion: 2
+    x: 1793
+    y: 140
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &8261630646433553018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 053bd63b-d9c1-4910-aa2d-02211b6a0662
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Come back if you change your mind.
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1334
+    y: 349
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &8527749261657981073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 2f7291a9-9942-4ce8-987f-77584d2cba61
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: 'There''s a Swamp Donkey round the corner that has been scaring all the kiddies.
+    Could you give him a good talking to? '
+  children:
+  - 196b1f91-9be9-4872-b2d2-30289357644e
+  - 9968e3ef-270d-4b05-b5a3-05205fab9a1a
+  rect:
+    serializedVersion: 2
+    x: 793
+    y: 140
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []

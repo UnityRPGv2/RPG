@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9044117499935546873
+--- !u!114 &-8891526347658294641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,188 +10,154 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: a4a35310-c46d-439c-a6e7-b4f8dfa2067f
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 1
-  text: Did I say Newton? I'm actually from Springville.
-  children:
-  - 400a2ae0-a614-4c57-8617-2d06aff3999e
-  rect:
-    serializedVersion: 2
-    x: 792
-    y: 234
-    width: 200
-    height: 100
-  onEnterAction: 
-  onExitAction: 
---- !u!114 &-7706724002735128974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: 72e7122a-aee7-4ad3-b6b4-8c430d1768e8
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 1
-  text: Mr Bowler is a good friend of mine!
-  children:
-  - 86baabc4-d11a-4bba-85e4-c9674e3ad295
-  rect:
-    serializedVersion: 2
-    x: 796
-    y: 24
-    width: 200
-    height: 100
-  onEnterAction: 
-  onExitAction: 
---- !u!114 &-7137721878253192398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: 9841c466-a290-4bdb-a3dc-18ad076a136e
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 1
-  text: I've lived here all my life!
-  children:
-  - 400a2ae0-a614-4c57-8617-2d06aff3999e
-  rect:
-    serializedVersion: 2
-    x: 300
-    y: 16
-    width: 200
-    height: 100
-  onEnterAction: TestSelection
-  onExitAction: 
---- !u!114 &-5808646823886583516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: 92ac522a-64e4-4099-85fb-f42c5b0eca73
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 1
-  text: I came here from Newton.
-  children:
-  - 756c8a99-a6ee-40a2-a13b-fe142d0516af
-  rect:
-    serializedVersion: 2
-    x: 297
-    y: 196
-    width: 200
-    height: 100
-  onEnterAction: 
-  onExitAction: 
---- !u!114 &-3607042247456705817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: ecd1e850-83b5-41a2-a895-afe283ca75a4
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 1
-  text: Who?
-  children:
-  - 99b29bb8-7f70-4c6c-b314-b70a73ed5eb9
-  rect:
-    serializedVersion: 2
-    x: 792
-    y: 119
-    width: 200
-    height: 100
-  onEnterAction: 
-  onExitAction: 
---- !u!114 &-2736274835188972913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: 86baabc4-d11a-4bba-85e4-c9674e3ad295
+  m_Name: c76914d0-4bfa-46bb-89de-feb153a4050d
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: You liar! There ain't no Mr Bowler, I made him up!
+  text: Looks like you are a weakling.
+  children:
+  - 99f5f3e3-d9b0-4a16-94f3-da22886e9e34
+  - 6b7c32fb-20f8-41c2-b51b-46390118f596
+  - 3b727c26-41ed-480b-99f8-09d042e11fe4
+  rect:
+    serializedVersion: 2
+    x: 72
+    y: 214
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-7226666348057634131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 476d874c-1bfd-4f4e-8dd5-a0c12c5e77a5
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: You can get stronger by slapping up some guards till you level up.
+  children:
+  - a1869dce-e342-4e40-87b8-6fe832b37e81
+  - 4db7a655-ec19-4e15-901e-695468426a0b
+  rect:
+    serializedVersion: 2
+    x: 564
+    y: 222
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-4944216548928402334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 6b7c32fb-20f8-41c2-b51b-46390118f596
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: How strong do I need to be?
+  children:
+  - e90c1956-065a-4e17-a523-b541c21b1cbb
+  rect:
+    serializedVersion: 2
+    x: 321
+    y: 331
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-3843387854285519177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 4db7a655-ec19-4e15-901e-695468426a0b
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Then what?
+  children:
+  - 4ab581da-a05c-462f-a9cf-4968c08eae2c
+  rect:
+    serializedVersion: 2
+    x: 810
+    y: 332
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-2057531203121065757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: a1869dce-e342-4e40-87b8-6fe832b37e81
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: That's the plan!
+  children:
+  - 4ab581da-a05c-462f-a9cf-4968c08eae2c
+  rect:
+    serializedVersion: 2
+    x: 816
+    y: 223
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-1702385858636316891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 4ab581da-a05c-462f-a9cf-4968c08eae2c
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Then you can assign trait points to increase your strongness.
   children: []
   rect:
     serializedVersion: 2
-    x: 1056
-    y: 27
-    width: 200
-    height: 100
-  onEnterAction: 
-  onExitAction: Attack
---- !u!114 &-2269859173898635050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: 99b29bb8-7f70-4c6c-b314-b70a73ed5eb9
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: Don't worry about it. Say, do you have something to eat? I'm starving.
-  children: []
-  rect:
-    serializedVersion: 2
-    x: 1054
-    y: 246
-    width: 200
-    height: 100
-  onEnterAction: 
-  onExitAction: TestObjective
---- !u!114 &-109935732593986643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: 756c8a99-a6ee-40a2-a13b-fe142d0516af
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: Newton, eh? I heard there's trouble brewing down there.
-  children:
-  - a4a35310-c46d-439c-a6e7-b4f8dfa2067f
-  - 17f3237d-6f88-4466-9e88-b6e23067a84f
-  - 1b6fa02e-ef8f-4335-a118-c4d59ed6c4dd
-  rect:
-    serializedVersion: 2
-    x: 534
-    y: 197
+    x: 1100
+    y: 295
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    and: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,22 +168,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20020754e2d077c45a6d80bb16361ff0, type: 3}
-  m_Name: New In Town
+  m_Name: Hint Giver
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 6388391180527436417}
-  - {fileID: -7137721878253192398}
-  - {fileID: -5808646823886583516}
-  - {fileID: 7354686360060116108}
-  - {fileID: -109935732593986643}
-  - {fileID: -9044117499935546873}
-  - {fileID: -2269859173898635050}
-  - {fileID: -3607042247456705817}
-  - {fileID: -7706724002735128974}
-  - {fileID: -2736274835188972913}
-  - {fileID: 1525743417543769965}
+  - {fileID: -8891526347658294641}
+  - {fileID: 8066292886674669759}
+  - {fileID: -4944216548928402334}
+  - {fileID: -7226666348057634131}
+  - {fileID: -2057531203121065757}
+  - {fileID: -3843387854285519177}
+  - {fileID: -1702385858636316891}
+  - {fileID: 5834691650729180339}
+  - {fileID: 8630574203191401313}
+  - {fileID: 6913898252495722395}
   newNodeOffset: {x: 250, y: 0}
---- !u!114 &1525743417543769965
+--- !u!114 &5834691650729180339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,21 +192,75 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: 1b6fa02e-ef8f-4335-a118-c4d59ed6c4dd
+  m_Name: e90c1956-065a-4e17-a523-b541c21b1cbb
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Depends on what you need. You need a strongness 4 to hold the Sword of Convenient
+    plot device.
+  children:
+  - 476d874c-1bfd-4f4e-8dd5-a0c12c5e77a5
+  rect:
+    serializedVersion: 2
+    x: 571
+    y: 331
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &6913898252495722395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: b05c1227-2a94-4f5f-8051-f279aba82f4e
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: So long puny man!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 568
+    y: 443
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &8066292886674669759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 99f5f3e3-d9b0-4a16-94f3-da22886e9e34
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
-  text: I haven't heard about any trouble.
+  text: Yeah, I'm not sure how to get stronger.
   children:
-  - 99b29bb8-7f70-4c6c-b314-b70a73ed5eb9
+  - 476d874c-1bfd-4f4e-8dd5-a0c12c5e77a5
   rect:
     serializedVersion: 2
-    x: 793
-    y: 334
+    x: 322
+    y: 215
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
---- !u!114 &6388391180527436417
+  condition:
+    and: []
+--- !u!114 &8630574203191401313
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,43 +270,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: d6f664c2-8a1e-43c2-af56-be04a3b3b14d
+  m_Name: 3b727c26-41ed-480b-99f8-09d042e11fe4
   m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: You don't look like you're from around here.
+  isPlayerSpeaking: 1
+  text: I'm not putting up with this!
   children:
-  - 9841c466-a290-4bdb-a3dc-18ad076a136e
-  - 92ac522a-64e4-4099-85fb-f42c5b0eca73
+  - b05c1227-2a94-4f5f-8051-f279aba82f4e
   rect:
     serializedVersion: 2
-    x: 32
-    y: 91
-    width: 200
-    height: 100
-  onEnterAction: TestRootEntry
-  onExitAction: 
---- !u!114 &7354686360060116108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
-  m_Name: 400a2ae0-a614-4c57-8617-2d06aff3999e
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: Oh really? Then you must know Mr Bowler.
-  children:
-  - ecd1e850-83b5-41a2-a895-afe283ca75a4
-  - 72e7122a-aee7-4ad3-b6b4-8c430d1768e8
-  rect:
-    serializedVersion: 2
-    x: 541
-    y: 12
+    x: 317
+    y: 447
     width: 200
     height: 100
   onEnterAction: 
-  onExitAction: TestAIExit
+  onExitAction: 
+  condition:
+    and: []

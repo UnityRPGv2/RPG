@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9120599993201685290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: a5065f67-e8ae-4ee9-8bff-cbd7ecc08662
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: I probably shouldn't say any more.
+  children:
+  - 6a341ead-7d70-4b13-9906-f75f920a8aae
+  rect:
+    serializedVersion: 2
+    x: 804
+    y: 147
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-7613253340096424252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: bc3ef2c1-7686-49ca-bebd-543be5b5204d
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Tell me more.
+  children:
+  - a5065f67-e8ae-4ee9-8bff-cbd7ecc08662
+  rect:
+    serializedVersion: 2
+    x: 554
+    y: 147
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &-5062433580425358901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 6a341ead-7d70-4b13-9906-f75f920a8aae
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Watch out for the guard up at the castle. They are really tough nuts. Make
+    sure you have good equipment!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1072
+    y: 250
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and:
+    - or:
+      - predicate: 
+        parameters: []
+        negate: 0
+--- !u!114 &-3358503951924529952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 6438b530-b3fa-412c-999c-778815c0f10d
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Thanks for saving me! Those guards were trying to make me pay my taxes.
+  children:
+  - 9b8ececa-1abc-4f30-ad48-564c14920c95
+  rect:
+    serializedVersion: 2
+    x: 56
+    y: 150
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20020754e2d077c45a6d80bb16361ff0, type: 3}
+  m_Name: Thanks For Saving Me
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -3358503951924529952}
+  - {fileID: 8597575129103402289}
+  - {fileID: -7613253340096424252}
+  - {fileID: 1453849126032630441}
+  - {fileID: -9120599993201685290}
+  - {fileID: -5062433580425358901}
+  newNodeOffset: {x: 250, y: 0}
+--- !u!114 &1453849126032630441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: c10d0184-ff41-4dc8-9b10-100ddb7ec32e
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Tell me something relevant!
+  children:
+  - 6a341ead-7d70-4b13-9906-f75f920a8aae
+  rect:
+    serializedVersion: 2
+    x: 548
+    y: 260
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
+--- !u!114 &8597575129103402289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 9b8ececa-1abc-4f30-ad48-564c14920c95
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: I told them about my offshore accountant but they wouldn't listen.
+  children:
+  - bc3ef2c1-7686-49ca-bebd-543be5b5204d
+  - c10d0184-ff41-4dc8-9b10-100ddb7ec32e
+  rect:
+    serializedVersion: 2
+    x: 306
+    y: 150
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
