@@ -119,6 +119,7 @@ namespace RPG.Quests
             {
                 statuses.Add(new QuestStatus(objectState));
             }
+            onUpdate?.Invoke();
         }
 
         public bool? Evaluate(string predicate, string[] parameters)

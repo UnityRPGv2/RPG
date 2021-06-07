@@ -19,6 +19,11 @@ namespace GameDevTV.Inventories
 
         // PUBLIC
 
+        private void Start() {
+            AddItem(EquipLocation.Weapon, (EquipableItem)EquipableItem.GetFromID("77ad666c-513c-4c88-87b2-c8594bcd5a89"));
+            // AddItem(EquipLocation.Shield, (EquipableItem)EquipableItem.GetFromID("803520ee-c7fc-4ab3-8aa1-0c14a9647cf7"));
+        }
+
         /// <summary>
         /// Broadcasts when the items in the slots are added/removed.
         /// </summary>

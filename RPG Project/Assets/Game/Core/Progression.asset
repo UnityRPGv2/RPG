@@ -203,3 +203,14 @@ MonoBehaviour:
       - 544
       - 576
       - 608
+  - characterClass: 4
+    stats:
+    - stat: 0
+      levels:
+      - 450
+    - stat: 3
+      levels:
+      - 32
+    - stat: 1
+      levels:
+      - 630

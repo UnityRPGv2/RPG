@@ -409,6 +409,7 @@ MonoBehaviour:
   rightHandTransform: {fileID: 0}
   leftHandTransform: {fileID: 0}
   defaultWeapon: {fileID: 0}
+  autoAttackRange: 4
 --- !u!114 &7346836368589747626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,7 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f681b2338b2fccc428a8e51d8f2adc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regenerationPercentage: 70
+  regenerationPercentage: 100
   takeDamage:
     m_PersistentCalls:
       m_Calls:
