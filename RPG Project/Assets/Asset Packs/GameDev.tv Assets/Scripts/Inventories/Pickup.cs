@@ -13,14 +13,13 @@ namespace GameDevTV.Inventories
         int number = 1;
 
         // CACHED REFERENCE
-        Inventory inventory;
+        GameObject player;
 
         // LIFECYCLE METHODS
 
         private void Awake()
         {
-            var player = GameObject.FindGameObjectWithTag("Player");
-            inventory = player.GetComponent<Inventory>();
+            player = GameObject.FindGameObjectWithTag("Player");
         }
 
         // PUBLIC
@@ -52,16 +51,17 @@ namespace GameDevTV.Inventories
 
         public virtual void PickupItem()
         {
-            bool foundSlot = inventory.AddToFirstEmptySlot(item, number);
-            if (foundSlot)
+            if (CanBePickedUp())
             {
+                ItemStore.GiveItem(player, item, number);
                 Destroy(gameObject);
             }
+            
         }
 
         public virtual bool CanBePickedUp()
         {
-            return inventory.HasSpaceFor(item);
+            return ItemStore.CanAccept(player, item, number);
         }
     }
 }

@@ -16,7 +16,7 @@ MonoBehaviour:
   displayName: Gold Coin
   description: The gold standard
   icon: {fileID: 0}
-  pickup: {fileID: 1195387444312397205, guid: 65734d6000d8969489a2947d0a6a6ac7, type: 3}
+  pickup: {fileID: 743510599615345213, guid: 0715da6d594191c43a75bbdd035e8646, type: 3}
   stackable: 1
   price: 1
   category: 0

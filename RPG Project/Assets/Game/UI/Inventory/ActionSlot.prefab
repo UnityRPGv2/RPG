@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 2553571840514115964}
   - component: {fileID: 2697681315837448349}
   - component: {fileID: 36275641556654789}
+  - component: {fileID: 7357620228823768428}
   m_Layer: 5
   m_Name: Cooldown Overlay
   m_TagString: Untagged
@@ -219,6 +220,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &7357620228823768428
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4952801887087271865}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &5047377936775530924
 PrefabInstance:
   m_ObjectHideFlags: 0

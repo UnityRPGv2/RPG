@@ -46,15 +46,12 @@ namespace GameDevTV.Inventories
         /// </returns>
         public static InventoryItem GetFromID(string itemID)
         {
-            Debug.Log(itemID);
             if (itemLookupCache == null)
             {
                 itemLookupCache = new Dictionary<string, InventoryItem>();
                 var itemList = Resources.LoadAll<InventoryItem>("");
-                Debug.Log("Get From ID:");
                 foreach (var item in itemList)
                 {
-                    Debug.Log(item.name);
                     if (itemLookupCache.ContainsKey(item.itemID))
                     {
                         Debug.LogError(string.Format("Looks like there's a duplicate GameDevTV.UI.InventorySystem ID for objects: {0} and {1}", itemLookupCache[item.itemID], item));

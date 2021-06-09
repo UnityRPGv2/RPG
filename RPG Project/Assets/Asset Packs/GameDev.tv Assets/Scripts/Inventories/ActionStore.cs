@@ -11,7 +11,7 @@ namespace GameDevTV.Inventories
     /// 
     /// This component should be placed on the GameObject tagged "Player".
     /// </summary>
-    public class ActionStore : MonoBehaviour, ISaveable
+    public class ActionStore : MonoBehaviour, ISaveable, IItemStore
     {
         // STATE
         Dictionary<int, DockedItemSlot> dockedItems = new Dictionary<int, DockedItemSlot>();
@@ -54,6 +54,18 @@ namespace GameDevTV.Inventories
                 return dockedItems[index].number;
             }
             return 0;
+        }
+
+        public int GetSlot(ActionItem actionItem)
+        {
+            foreach (var item in dockedItems)
+            {
+                if (item.Value.item == actionItem)
+                {
+                    return item.Key;
+                }
+            }
+            return -1;
         }
 
         /// <summary>
@@ -182,6 +194,36 @@ namespace GameDevTV.Inventories
             {
                 AddAction(InventoryItem.GetFromID(pair.Value.itemID), pair.Key, pair.Value.number);
             }
+        }
+
+        public void AddItems(InventoryItem item, int number)
+        {
+            if (item is ActionItem actionItem)
+            {
+                int slot = GetSlot(actionItem);
+                AddAction(actionItem, slot, number);
+            }
+        }
+
+        public IEnumerable<(InventoryItem, int)> CanAcceptItems(IEnumerable<(InventoryItem, int)> items)
+        {
+            foreach (var (item, number) in items)
+            {
+                if (item is ActionItem actionItem)
+                {
+                    int slot = GetSlot(actionItem);
+                    if (slot < 0) continue;
+
+                    if (!actionItem.IsStackable()) continue;
+                    
+                    yield return (actionItem, number);
+                }
+            }
+        }
+
+        public int GetPriority()
+        {
+            return 50;
         }
     }
 }

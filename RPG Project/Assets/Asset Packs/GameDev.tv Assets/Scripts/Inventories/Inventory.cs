@@ -12,7 +12,7 @@ namespace GameDevTV.Inventories
     ///
     /// This component should be placed on the GameObject tagged "Player".
     /// </summary>
-    public class Inventory : MonoBehaviour, ISaveable, IPredicateEvaluator
+    public class Inventory : MonoBehaviour, ISaveable, IPredicateEvaluator, IItemStore
     {
         // CONFIG DATA
         [Tooltip("Allowed size")]
@@ -49,25 +49,6 @@ namespace GameDevTV.Inventories
         public bool HasSpaceFor(InventoryItem item)
         {
             return FindSlot(item) >= 0;
-        }
-
-        public bool HasSpaceFor(IEnumerable<InventoryItem> items)
-        {
-            int freeSlots = FreeSlots();
-            List<InventoryItem> stackedItems = new List<InventoryItem>();
-            foreach (var item in items)
-            {
-                if (item.IsStackable())
-                {
-                    if (HasItem(item)) continue;
-                    if (stackedItems.Contains(item)) continue;
-                    stackedItems.Add(item);
-                }
-                // Already seen in the list
-                if (freeSlots <= 0) return false;
-                freeSlots--;
-            }
-            return true;
         }
 
         public int FreeSlots()
@@ -297,6 +278,42 @@ namespace GameDevTV.Inventories
             }
 
             return null;
+        }
+
+        public void AddItems(InventoryItem item, int number)
+        {
+            AddToFirstEmptySlot(item, number);
+        }
+
+        public IEnumerable<(InventoryItem, int)> CanAcceptItems(IEnumerable<(InventoryItem, int)> items)
+        {
+            int freeSlots = FreeSlots();
+            List<InventoryItem> stackedItems = new List<InventoryItem>();
+            foreach (var (item, number) in items)
+            {
+                if (item.IsStackable())
+                {
+                    if (!stackedItems.Contains(item) && !HasItem(item))
+                    {
+                        if (freeSlots <= 0) continue;
+                        freeSlots --;
+                        stackedItems.Add(item);
+                    }
+                    yield return (item, number);
+                }
+                else
+                {
+                    int acceptable = Mathf.Min(freeSlots, number);
+                    if (acceptable == 0) continue;
+                    freeSlots -= acceptable;
+                    yield return (item, acceptable);
+                }
+            }
+        }
+
+        public int GetPriority()
+        {
+            return 0;
         }
     }
 }

@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
+using GameDevTV.Inventories;
 using GameDevTV.Saving;
 using UnityEngine;
 
 namespace RPG.Inventories {
-    public class Purse : MonoBehaviour, ISaveable
+    public class Purse : MonoBehaviour, ISaveable, IItemStore
     {
         [SerializeField] float startingBalance = 400f;
 
@@ -37,6 +39,27 @@ namespace RPG.Inventories {
         public void RestoreState(object state)
         {
             balance = (float)state;
+        }
+
+        public void AddItems(InventoryItem item, int number)
+        {
+            UpdateBalance(number * item.GetPrice());
+        }
+
+        public IEnumerable<(InventoryItem, int)> CanAcceptItems(IEnumerable<(InventoryItem, int)> items)
+        {
+            foreach (var (item, number) in items)
+            {
+                if (item is CurrencyItem currencyItem)
+                {
+                    yield return (currencyItem, number);
+                }
+            }
+        }
+
+        public int GetPriority()
+        {
+            return 20;
         }
     }
 }

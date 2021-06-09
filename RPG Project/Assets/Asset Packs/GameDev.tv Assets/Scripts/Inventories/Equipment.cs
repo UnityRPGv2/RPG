@@ -12,7 +12,7 @@ namespace GameDevTV.Inventories
     /// 
     /// This component should be placed on the GameObject tagged "Player".
     /// </summary>
-    public class Equipment : MonoBehaviour, ISaveable, IPredicateEvaluator
+    public class Equipment : MonoBehaviour, ISaveable, IPredicateEvaluator, IItemStore
     {
         // STATE
         Dictionary<EquipLocation, EquipableItem> equippedItems = new Dictionary<EquipLocation, EquipableItem>();
@@ -119,6 +119,35 @@ namespace GameDevTV.Inventories
             }
 
             return null;
+        }
+
+        public void AddItems(InventoryItem item, int number)
+        {
+            if (item is EquipableItem equipableItem)
+            {
+                AddItem(equipableItem.GetEquipLocation(), equipableItem);
+            }
+        }
+
+        public IEnumerable<(InventoryItem, int)> CanAcceptItems(IEnumerable<(InventoryItem, int)> items)
+        {
+            var equippedItemsCopy = new Dictionary<EquipLocation, EquipableItem>(equippedItems);
+            foreach (var (item, number) in items)
+            {
+                if (item is EquipableItem equipableItem)
+                {
+                    EquipLocation location = equipableItem.GetEquipLocation();
+                    if (equippedItemsCopy.ContainsKey(location)) continue;
+                    if (!equipableItem.CanEquip(gameObject, location)) continue;
+                    equippedItemsCopy[location] = equipableItem;
+                    yield return (equipableItem, 1);
+                }
+            }
+        }
+
+        public int GetPriority()
+        {
+            return 50;
         }
     }
 }

@@ -70,8 +70,11 @@ namespace RPG.Quests
         {
             foreach (var reward in quest.GetRewards())
             {
-                bool success = GetComponent<Inventory>().AddToFirstEmptySlot(reward.item, reward.number);
-                if (!success)
+                if (ItemStore.CanAccept(gameObject, reward.item, reward.number))
+                {
+                    ItemStore.GiveItem(gameObject, reward.item, reward.number);
+                }
+                else
                 {
                     GetComponent<ItemDropper>().DropItem(reward.item, reward.number);
                 }

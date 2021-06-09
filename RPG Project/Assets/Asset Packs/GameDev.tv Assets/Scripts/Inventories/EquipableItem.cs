@@ -1,5 +1,6 @@
 using UnityEngine;
 using RPG.Stats;
+using System;
 
 namespace GameDevTV.Inventories
 {
@@ -21,6 +22,11 @@ namespace GameDevTV.Inventories
         public bool CanEquip(GameObject player, EquipLocation equipLocation)
         {
             return equipLocation == allowedEquipLocation && requirement.CheckRequirement(player);
+        }
+
+        public EquipLocation GetEquipLocation()
+        {
+            return allowedEquipLocation;
         }
     }
 }
