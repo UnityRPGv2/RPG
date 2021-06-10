@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2903321361866646142
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2984313576964255663, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984313576964255663, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984313576964255663, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984313576964255663, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984313576964255663, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984313576964255663, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984313576964255663, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984313576964255663, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984313576964255663, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984313576964255663, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984313576964255663, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7944882419799141435, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_Name
+      value: Equipped Dagger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890097713410719258, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4844024
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890097713410719258, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.47901782
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890097713410719258, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.512125
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c77f288c2f5ccac44bbf4e7d1eb1dee0, type: 3}
