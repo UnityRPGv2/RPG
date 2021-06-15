@@ -1,4 +1,5 @@
 using UnityEngine;
+using GameDevTV.Utils;
 
 namespace GameDevTV.Inventories
 {
@@ -12,8 +13,16 @@ namespace GameDevTV.Inventories
         // CONFIG DATA
         [Tooltip("Where are we allowed to put this item.")]
         [SerializeField] EquipLocation allowedEquipLocation = EquipLocation.Weapon;
+        [SerializeField] Condition equipCondition;
 
         // PUBLIC
+
+        public bool CanEquip(EquipLocation equipLocation, Equipment equipment)
+        {
+            if (equipLocation != allowedEquipLocation) return false;
+
+            return equipCondition.Check(equipment.GetComponents<IPredicateEvaluator>());
+        }
 
         public EquipLocation GetAllowedEquipLocation()
         {

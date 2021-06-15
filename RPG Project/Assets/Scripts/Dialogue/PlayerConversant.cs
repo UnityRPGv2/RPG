@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using RPG.Core;
+using GameDevTV.Utils;
 
 namespace RPG.Dialogue
 {
