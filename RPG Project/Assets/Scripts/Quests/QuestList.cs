@@ -14,6 +14,10 @@ namespace RPG.Quests
 
         public event Action onUpdate;
 
+        private void Update() {
+            CompleteObjectivesByPredicates();
+        }
+
         public void AddQuest(Quest quest)
         {
             if (HasQuest(quest)) return;
@@ -69,6 +73,24 @@ namespace RPG.Quests
                 if (!success)
                 {
                     GetComponent<ItemDropper>().DropItem(reward.item, reward.number);
+                }
+            }
+        }
+
+        private void CompleteObjectivesByPredicates()
+        {
+            foreach (QuestStatus status in statuses)
+            {
+                if (status.IsComplete()) continue;
+                Quest quest = status.GetQuest();
+                foreach (var objective in quest.GetObjectives())
+                {
+                    if (status.IsObjectiveComplete(objective.reference)) continue;
+                    if (!objective.usesCondition) continue;
+                    if (objective.completionCondition.Check(GetComponents<IPredicateEvaluator>()))
+                    {
+                        CompleteObjective(quest, objective.reference);
+                    }
                 }
             }
         }

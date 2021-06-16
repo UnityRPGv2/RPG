@@ -24,7 +24,17 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
-    and: []
+    and:
+    - or:
+      - predicate: HasQuest
+        parameters:
+        - Swamp Donkey
+        negate: 0
+    - or:
+      - predicate: CompletedQuest
+        parameters:
+        - Swamp Donkey
+        negate: 0
 --- !u!114 &-8369584359585968763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,7 +62,12 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
-    and: []
+    and:
+    - or:
+      - predicate: HasQuest
+        parameters:
+        - Swamp Donkey
+        negate: 1
 --- !u!114 &-7008198234993274821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,8 +139,8 @@ MonoBehaviour:
   - 4e3a3d7f-7c71-4e1b-9611-53fafef4f16d
   rect:
     serializedVersion: 2
-    x: 1205
-    y: 4
+    x: 1207
+    y: 21
     width: 200
     height: 100
   onEnterAction: 
@@ -183,6 +198,41 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
+    and:
+    - or:
+      - predicate: HasQuest
+        parameters:
+        - Swamp Donkey
+        negate: 0
+    - or:
+      - predicate: CompletedQuest
+        parameters:
+        - Swamp Donkey
+        negate: 1
+--- !u!114 &-921092748919413891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d682c531190610744a9a5e8627450547, type: 3}
+  m_Name: 2876e652-7253-4233-ac72-8b13d1f09152
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Amazing!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1720
+    y: 2
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
     and: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -211,6 +261,7 @@ MonoBehaviour:
   - {fileID: -4501401751111011594}
   - {fileID: 4791288953716937972}
   - {fileID: 3735941827676554500}
+  - {fileID: -921092748919413891}
   newNodeOffset: {x: 250, y: 0}
 --- !u!114 &659612705236244187
 MonoBehaviour:
@@ -281,8 +332,8 @@ MonoBehaviour:
   - 0834d9d4-ab57-4ebc-b925-dd998e6c5fa8
   rect:
     serializedVersion: 2
-    x: 1472
-    y: 105
+    x: 1456
+    y: 118
     width: 200
     height: 100
   onEnterAction: 
@@ -303,15 +354,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: Yes
-  children: []
+  children:
+  - 2876e652-7253-4233-ac72-8b13d1f09152
   rect:
     serializedVersion: 2
-    x: 1455
+    x: 1453
     y: 4
     width: 200
     height: 100
   onEnterAction: 
-  onExitAction: 
+  onExitAction: GiveQuest
   condition:
     and: []
 --- !u!114 &5984327278358963836
