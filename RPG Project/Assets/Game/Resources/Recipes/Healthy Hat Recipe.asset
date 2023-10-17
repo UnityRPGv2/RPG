@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47f4cff53cc17c4baed9f3b31d7663f, type: 3}
+  m_Name: Healthy Hat Recipe
+  m_EditorClassIdentifier: 
+  ingredients:
+  - Item: {fileID: 11400000, guid: 8bb0e49a942820a44af61e0ed9f2993c, type: 2}
+    Amount: 1
+  - Item: {fileID: 11400000, guid: ccb9d52d625d0704cb9a2caf9cbf62ed, type: 2}
+    Amount: 2
+  resultingItem:
+    Item: {fileID: 11400000, guid: 629178aff4dad64439109e22245ae586, type: 2}
+    Amount: 1
+  craftDuration: 1
