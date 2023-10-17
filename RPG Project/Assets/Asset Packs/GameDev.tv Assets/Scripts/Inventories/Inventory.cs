@@ -77,7 +77,7 @@ namespace GameDevTV.Inventories
             {
                 if (slot.number == 0)
                 {
-                    count ++;
+                    count++;
                 }
             }
             return count;
@@ -137,6 +137,24 @@ namespace GameDevTV.Inventories
         }
 
         /// <summary>
+        /// Is there an instance of the item in the inventory? If so, how many
+        /// </summary>
+        public bool HasItem(InventoryItem item, out int amount)
+        {
+            amount = 0;
+            var hasItem = false;
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (object.ReferenceEquals(slots[i].item, item))
+                {
+                    amount += slots[i].number;
+                    hasItem = true;
+                }
+            }
+            return hasItem;
+        }
+
+        /// <summary>
         /// Return the item type in the given slot.
         /// </summary>
         public InventoryItem GetItemInSlot(int slot)
@@ -168,6 +186,24 @@ namespace GameDevTV.Inventories
             {
                 inventoryUpdated();
             }
+        }
+
+        public bool RemoveItem(InventoryItem item, int number)
+        {
+            var slot = -1;
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (object.ReferenceEquals(slots[i].item, item))
+                {
+                    slot = i;
+                    break;
+                }
+            }
+            if (slot < 0) return false;
+            if (GetNumberInSlot(slot) < number) return false;
+            RemoveFromSlot(slot, number);
+            inventoryUpdated?.Invoke();
+            return true;
         }
 
         /// <summary>
@@ -265,7 +301,7 @@ namespace GameDevTV.Inventories
             public string itemID;
             public int number;
         }
-    
+
         object ISaveable.CaptureState()
         {
             var slotStrings = new InventorySlotRecord[inventorySize];
@@ -299,7 +335,7 @@ namespace GameDevTV.Inventories
             switch (predicate)
             {
                 case "HasInventoryItem":
-                return HasItem(InventoryItem.GetFromID(parameters[0]));
+                    return HasItem(InventoryItem.GetFromID(parameters[0]));
             }
 
             return null;
