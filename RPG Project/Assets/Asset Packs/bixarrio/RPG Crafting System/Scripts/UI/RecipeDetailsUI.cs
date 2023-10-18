@@ -78,6 +78,14 @@ namespace RPG.Crafting.UI
             // Remove all children from the ingredient list container
             CleanupIngredientsList();
 
+            // Reset the progress image
+            craftProgressImage.fillAmount = 0f;
+            // Hide the progress image
+            craftProgressContainer.SetActive(false);
+
+            // Initially disable the craft button
+            craftButton.interactable = false;
+
             // If we have no recipe, we're done
             if (recipe == null)
             {
@@ -92,11 +100,6 @@ namespace RPG.Crafting.UI
             recipeName.text = resultingItem.GetRecipeName();
             // Set the resulting item description
             recipeDescription.text = resultingItem.Item.GetDescription();
-
-            // Reset the progress image
-            craftProgressImage.fillAmount = 0f;
-            // Hide the progress image
-            craftProgressContainer.SetActive(false);
 
             // Populate the ingredients list
             PopulateIngredientsList(recipe.GetIngredients());
