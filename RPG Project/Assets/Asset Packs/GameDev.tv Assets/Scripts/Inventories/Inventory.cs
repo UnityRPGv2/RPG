@@ -137,24 +137,6 @@ namespace GameDevTV.Inventories
         }
 
         /// <summary>
-        /// Is there an instance of the item in the inventory? If so, how many
-        /// </summary>
-        public bool HasItem(InventoryItem item, out int amount)
-        {
-            amount = 0;
-            var hasItem = false;
-            for (int i = 0; i < slots.Length; i++)
-            {
-                if (object.ReferenceEquals(slots[i].item, item))
-                {
-                    amount += slots[i].number;
-                    hasItem = true;
-                }
-            }
-            return hasItem;
-        }
-
-        /// <summary>
         /// Return the item type in the given slot.
         /// </summary>
         public InventoryItem GetItemInSlot(int slot)
